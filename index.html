@@ -1,11 +1,16 @@
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FFFEF9">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--color-background-secondary);font-family:'Nunito',sans-serif;}
-.frame{width:340px;margin:0 auto;background:#FFFEF9;border-radius:44px;border:6px solid #e8e0d4;overflow:hidden;}
-.sb{padding:14px 22px 6px;display:flex;justify-content:space-between;background:#FFFEF9;}
+html,body{height:100%;overflow:hidden;background:#FFFEF9;}
+body{font-family:'Nunito',sans-serif;}
+.frame{width:100%;max-width:480px;margin:0 auto;background:#FFFEF9;height:100dvh;display:flex;flex-direction:column;overflow:hidden;}
+.sb{padding:max(env(safe-area-inset-top),14px) 22px 6px;display:flex;justify-content:space-between;background:#FFFEF9;flex-shrink:0;}
 .sb-time{font-size:13px;font-weight:700;color:#2d2d2d;}
-.page{display:none;flex-direction:column;height:620px;}
+.page{display:none;flex-direction:column;flex:1;overflow:hidden;}
 .page.active{display:flex;}
 .scroll{overflow-y:auto;flex:1;padding:14px 16px;}
 .blk{background:#fff;border-radius:16px;border:2px solid #f0ece4;margin-bottom:10px;overflow:hidden;}
@@ -102,7 +107,7 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
 .sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
 .sec-t{font-size:13px;font-weight:800;color:#2d2d2d;}
 .sec-more{font-size:11px;font-weight:700;color:#D85A30;cursor:pointer;}
-.tabbar{padding:8px 8px 18px;display:flex;justify-content:space-around;border-top:2px solid #f0ece4;background:#FFFEF9;flex-shrink:0;}
+.tabbar{padding:8px 8px max(env(safe-area-inset-bottom),18px);display:flex;justify-content:space-around;border-top:2px solid #f0ece4;background:#FFFEF9;flex-shrink:0;}
 .tb{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;min-width:52px;}
 .tb-ico{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
 .tb-ico.on{background:#FAEEDA;}
@@ -110,31 +115,34 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
 .tb-lbl.on{color:#D85A30;}.tb-lbl.off{color:#c8c0b4;}
 
 /* ── Onboarding ── */
-.ob-page{display:none;flex-direction:column;height:620px;}
+.ob-page{display:none;flex-direction:column;flex:1;overflow:hidden;}
 .ob-page.active{display:flex;}
-.ob-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 22px 16px;gap:10px;}
-.ob-emoji{font-size:52px;line-height:1;}
-.ob-title{font-size:22px;font-weight:900;color:#2d2d2d;text-align:center;line-height:1.25;}
-.ob-sub{font-size:13px;color:#b0a99a;font-weight:600;text-align:center;line-height:1.6;}
-.feat-list{display:flex;flex-direction:column;gap:8px;width:100%;margin:4px 0;}
-.feat-item{display:flex;align-items:center;gap:10px;background:#FFF5F0;border-radius:12px;border:1.5px solid #F5C4B3;padding:10px 14px;}
-.feat-ico{font-size:18px;width:26px;text-align:center;flex-shrink:0;}
-.feat-txt{font-size:12px;font-weight:700;color:#555;}
-.ob-footer{padding:14px 18px 20px;display:flex;flex-direction:column;gap:8px;}
-.ob-btn-main{background:#D85A30;color:#fff;border:none;border-radius:14px;padding:14px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;letter-spacing:0.02em;}
-.ob-btn-ghost{background:transparent;color:#b0a99a;border:none;padding:8px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;}
+.ob-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:32px 24px 16px;gap:0;overflow:hidden;background:#fff;}
+.ob-illus{width:100%;max-width:300px;margin:0 auto 20px;}
+.ob-title{font-size:24px;font-weight:900;color:#2d2d2d;text-align:center;line-height:1.25;margin-bottom:8px;}
+.ob-sub{font-size:13px;color:#b0a99a;font-weight:600;text-align:center;line-height:1.7;margin-bottom:20px;}
+.feat-list{display:flex;flex-direction:column;gap:10px;width:100%;}
+.feat-item{display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;border:1.5px solid #f0ece4;padding:12px 16px;box-shadow:0 2px 8px rgba(216,90,48,0.06);}
+.feat-ico-wrap{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.feat-ico{font-size:20px;}
+.feat-info{flex:1;}
+.feat-title{font-size:13px;font-weight:800;color:#2d2d2d;margin-bottom:1px;}
+.feat-txt{font-size:11px;font-weight:600;color:#b0a99a;}
+.ob-footer{padding:14px 22px max(env(safe-area-inset-bottom),24px);display:flex;flex-direction:column;gap:8px;flex-shrink:0;background:#fff;}
+.ob-btn-main{background:#D85A30;color:#fff;border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;letter-spacing:0.02em;box-shadow:0 4px 14px rgba(216,90,48,0.3);}
+.ob-btn-ghost{background:transparent;color:#c8c0b4;border:none;padding:8px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;}
 
 /* step header */
-.step-hd{background:#D85A30;padding:14px 18px 0;flex-shrink:0;}
+.step-hd{background:#fff;padding:max(env(safe-area-inset-top),14px) 18px 0;border-bottom:1.5px solid #f0ece4;flex-shrink:0;}
 .step-hd-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
-.step-back{background:rgba(255,255,255,.18);border:none;border-radius:8px;padding:5px 10px;color:#fff;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;}
-.step-label{color:#fff;font-size:14px;font-weight:800;flex:1;}
-.step-count{color:rgba(255,255,255,.65);font-size:12px;font-weight:700;}
+.step-back{background:#f5f2ee;border:none;border-radius:10px;padding:7px 12px;color:#888;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;}
+.step-label{color:#2d2d2d;font-size:15px;font-weight:900;flex:1;}
+.step-count{color:#c8c0b4;font-size:12px;font-weight:700;}
 .step-dots{display:flex;gap:5px;padding-bottom:12px;}
-.step-dot{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.3);transition:background .25s;}
-.step-dot.done{background:#fff;}
-.step-body{flex:1;overflow-y:auto;padding:18px 18px 10px;display:flex;flex-direction:column;gap:12px;}
-.step-footer{padding:10px 18px 18px;display:flex;flex-direction:column;gap:8px;}
+.step-dot{flex:1;height:4px;border-radius:2px;background:#f0ece4;transition:background .25s;}
+.step-dot.done{background:#D85A30;}
+.step-body{flex:1;overflow-y:auto;padding:20px 18px 10px;display:flex;flex-direction:column;gap:14px;background:#fff;}
+.step-footer{padding:10px 18px max(env(safe-area-inset-bottom),18px);display:flex;flex-direction:column;gap:8px;background:#fff;border-top:1.5px solid #f0ece4;flex-shrink:0;}
 
 /* fields */
 .sf-group{display:flex;flex-direction:column;gap:5px;}
@@ -171,7 +179,6 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
 .sc-val.big{font-size:22px;}
 </style>
 
-<div style="padding:20px;background:var(--color-background-secondary);border-radius:var(--border-radius-lg)">
 <div class="frame">
 <div class="sb" id="top-sb"><span class="sb-time" id="sb-time">9:41</span><span style="font-size:11px;color:#b0a99a;font-weight:700" id="sb-title">我的財務</span></div>
 
@@ -180,13 +187,55 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
 <!-- OB-0: 歡迎 -->
 <div class="ob-page active" id="ob-welcome">
   <div class="ob-hero">
-    <div class="ob-emoji">💰</div>
+    <!-- 插畫 SVG -->
+    <div class="ob-illus">
+      <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <!-- 背景裝飾圓 -->
+        <circle cx="250" cy="30" r="40" fill="#FFF0EC" opacity="0.8"/>
+        <circle cx="40" cy="160" r="30" fill="#E1F5EE" opacity="0.8"/>
+        <circle cx="270" cy="170" r="20" fill="#FAEEDA" opacity="0.7"/>
+        <!-- 主要圖表插畫 -->
+        <!-- 卡片底座 -->
+        <rect x="30" y="60" width="240" height="120" rx="20" fill="#fff" stroke="#f0ece4" stroke-width="2"/>
+        <!-- 圖表柱狀 -->
+        <rect x="55" y="120" width="22" height="44" rx="6" fill="#F5C4B3"/>
+        <rect x="88" y="100" width="22" height="64" rx="6" fill="#EF9F27"/>
+        <rect x="121" y="85" width="22" height="79" rx="6" fill="#D85A30"/>
+        <rect x="154" y="95" width="22" height="69" rx="6" fill="#EF9F27"/>
+        <rect x="187" y="78" width="22" height="86" rx="6" fill="#9FE1CB"/>
+        <rect x="220" y="68" width="22" height="96" rx="6" fill="#D85A30"/>
+        <!-- 折線 -->
+        <polyline points="66,112 99,94 132,78 165,88 198,70 231,58" fill="none" stroke="#D85A30" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        <!-- 折線點 -->
+        <circle cx="66" cy="112" r="4" fill="#D85A30"/>
+        <circle cx="132" cy="78" r="4" fill="#D85A30"/>
+        <circle cx="231" cy="58" r="5" fill="#D85A30" stroke="#fff" stroke-width="2"/>
+        <!-- 上方標籤 -->
+        <rect x="195" y="38" width="72" height="22" rx="8" fill="#FAEEDA"/>
+        <text x="231" y="53" text-anchor="middle" font-size="10" font-weight="800" fill="#854F0B" font-family="sans-serif">淨資產 ↑</text>
+        <!-- 小裝飾幣 -->
+        <circle cx="48" cy="52" r="14" fill="#FAEEDA" stroke="#FAC775" stroke-width="2"/>
+        <text x="48" y="57" text-anchor="middle" font-size="13" font-family="sans-serif">💰</text>
+        <!-- 小房子 -->
+        <circle cx="258" cy="88" r="14" fill="#FFF0EC" stroke="#F5C4B3" stroke-width="2"/>
+        <text x="258" y="93" text-anchor="middle" font-size="13" font-family="sans-serif">🏠</text>
+      </svg>
+    </div>
     <div class="ob-title">個人財務管家</div>
-    <div class="ob-sub">輕鬆掌握資產、收支<br>與你的財務健康狀況</div>
+    <div class="ob-sub">輕鬆掌握你的資產與收支<br>讓財務健康一目瞭然</div>
     <div class="feat-list">
-      <div class="feat-item"><span class="feat-ico">🏦</span><span class="feat-txt">資產負債表 — 不動產、車輛、存款一目瞭然</span></div>
-      <div class="feat-item"><span class="feat-ico">📊</span><span class="feat-txt">每月收支分析 — 即時顯示儲蓄率與預估</span></div>
-      <div class="feat-item"><span class="feat-ico">📈</span><span class="feat-txt">財務報表 — 自動產生個人化建議</span></div>
+      <div class="feat-item">
+        <div class="feat-ico-wrap" style="background:#FFF0EC;"><span class="feat-ico">🏦</span></div>
+        <div class="feat-info"><div class="feat-title">資產負債表</div><div class="feat-txt">存款、不動產、車輛一次管理</div></div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-ico-wrap" style="background:#E1F5EE;"><span class="feat-ico">📊</span></div>
+        <div class="feat-info"><div class="feat-title">每月收支分析</div><div class="feat-txt">即時顯示儲蓄率與6個月預估</div></div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-ico-wrap" style="background:#FAEEDA;"><span class="feat-ico">📈</span></div>
+        <div class="feat-info"><div class="feat-title">財務報表建議</div><div class="feat-txt">自動產生個人化財務健康建議</div></div>
+      </div>
     </div>
   </div>
   <div class="ob-footer">
@@ -337,14 +386,23 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
   </div>
 </div>
 
-<!-- OB-5: 完成快照 -->
 <div class="ob-page" id="ob-finish">
   <div class="finish-hero">
-    <div class="check-circle">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div style="position:relative;margin-bottom:4px;">
+      <svg viewBox="0 0 120 100" width="120" height="100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="45" r="38" fill="#FFF0EC"/>
+        <circle cx="60" cy="45" r="28" fill="#D85A30"/>
+        <path d="M46 45l10 10 18-18" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="22" cy="18" r="10" fill="#FAEEDA"/>
+        <text x="22" y="23" text-anchor="middle" font-size="11" font-family="sans-serif">🌟</text>
+        <circle cx="98" cy="22" r="10" fill="#E1F5EE"/>
+        <text x="98" y="27" text-anchor="middle" font-size="11" font-family="sans-serif">💰</text>
+        <circle cx="100" cy="75" r="8" fill="#FAEEDA"/>
+        <text x="100" y="79" text-anchor="middle" font-size="9" font-family="sans-serif">🏠</text>
+      </svg>
     </div>
-    <div style="font-size:18px;font-weight:900;color:#2d2d2d;">財務快照完成！</div>
-    <div style="font-size:12px;color:#b0a99a;font-weight:600;">初始資料已帶入 App</div>
+    <div style="font-size:20px;font-weight:900;color:#2d2d2d;">財務快照完成！</div>
+    <div style="font-size:12px;color:#b0a99a;font-weight:600;margin-bottom:4px;">初始資料已帶入 App</div>
     <div class="snap-grid">
       <div class="snap-cell g"><div class="sc-lbl g">總資產</div><div class="sc-val" id="sn-assets">$0</div></div>
       <div class="snap-cell r"><div class="sc-lbl r">總負債</div><div class="sc-val" id="sn-liab">$0</div></div>
@@ -534,7 +592,7 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
 </div>
 
 </div><!-- /main-app -->
-</div></div>
+</div><!-- /frame -->
 
 <script>
 /* ── 時間顯示 ── */
