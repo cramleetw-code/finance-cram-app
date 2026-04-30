@@ -402,7 +402,7 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
     <div id="prop-list">
       <div class="prop-card" data-prop>
         <div class="prop-top"><input class="prop-name" value="房屋 A"><button class="rdel" onclick="delProp(this)">×</button></div>
-        <div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="openLink('https://lvr.land.moi.gov.tw/')" disabled>查實價登錄 ↗</button></div>
+        <div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="window.open('https://lvr.land.moi.gov.tw/','_blank')" disabled>查實價登錄 ↗</button></div>
         <div class="prop-grid">
           <div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div>
           <div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div>
@@ -690,7 +690,7 @@ function calcProps(){
   ge.textContent='損益 '+(gt>=0?'+':'')+'$'+fmt(gt);ge.style.color=gt>=0?'#1D9E75':'#E24B4A';
   calc();
 }
-function addProp(){pCnt++;const d=document.createElement('div');d.className='prop-card';d.setAttribute('data-prop','');d.innerHTML=`<div class="prop-top"><input class="prop-name" value="房屋 ${pCnt}"><button class="rdel" onclick="delProp(this)">×</button></div><div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="openLink('https://lvr.land.moi.gov.tw/')" disabled>查實價登錄 ↗</button></div><div class="prop-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>每坪均價</label><input placeholder="—" readonly></div></div><div class="gain-info"></div>`;document.getElementById('prop-list').appendChild(d);}
+function addProp(){pCnt++;const d=document.createElement('div');d.className='prop-card';d.setAttribute('data-prop','');d.innerHTML=`<div class="prop-top"><input class="prop-name" value="房屋 ${pCnt}"><button class="rdel" onclick="delProp(this)">×</button></div><div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="window.open('https://lvr.land.moi.gov.tw/','_blank')" disabled>查實價登錄 ↗</button></div><div class="prop-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>每坪均價</label><input placeholder="—" readonly></div></div><div class="gain-info"></div>`;document.getElementById('prop-list').appendChild(d);}
 function delProp(btn){if(document.querySelectorAll('#prop-list [data-prop]').length<=1){alert('至少保留一筆');return;}btn.closest('.prop-card').remove();calcProps();}
 
 function getCarVal(c){
