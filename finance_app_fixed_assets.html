@@ -1,0 +1,463 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--color-background-secondary);font-family:'Nunito',sans-serif;}
+.frame{width:340px;margin:0 auto;background:#FFFEF9;border-radius:44px;border:6px solid #e8e0d4;overflow:hidden;}
+.sb{padding:14px 22px 6px;display:flex;justify-content:space-between;background:#FFFEF9;}
+.sb-time{font-size:13px;font-weight:700;color:#2d2d2d;}
+.page{display:none;flex-direction:column;height:620px;}
+.page.active{display:flex;}
+.scroll{overflow-y:auto;flex:1;padding:14px 16px;}
+.blk{background:#fff;border-radius:16px;border:2px solid #f0ece4;margin-bottom:10px;overflow:hidden;}
+.blk-head{padding:8px 12px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid;}
+.blk-head.green{background:#F0FFF4;color:#0F6E56;border-color:#9FE1CB;}
+.blk-head.red{background:#FFF5F5;color:#A32D2D;border-color:#F7C1C1;}
+.blk-head.amber{background:#FFFBF0;color:#854F0B;border-color:#FAC775;}
+.blk-head.blue{background:#F0F6FF;color:#0C447C;border-color:#85B7EB;}
+.blk-head.coral{background:#FFF0EC;color:#993C1D;border-color:#F0997B;}
+.blk-head.teal{background:#E1F5EE;color:#085041;border-color:#5DCAA5;}
+.row{display:flex;align-items:center;padding:7px 12px;border-bottom:1.5px solid #f5f2ee;gap:6px;min-height:38px;}
+.row:last-child{border-bottom:none;}
+.rlabel{font-size:12px;font-weight:700;color:#555;white-space:nowrap;width:80px;flex-shrink:0;}
+.rval{flex:1;min-width:0;border:1.5px solid #f0ece4;border-radius:8px;padding:5px 8px;font-size:13px;font-weight:700;text-align:right;font-family:'Nunito',sans-serif;color:#2d2d2d;background:#FFFEF9;}
+.rval:focus{outline:none;border-color:#EF9F27;}
+.rval[readonly]{background:#f5f2ee;color:#aaa;border-color:transparent;}
+.rdel{width:22px;height:22px;border-radius:50%;border:1.5px solid #f0ece4;background:#fff;color:#ccc;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rdel:hover{background:#FCEBEB;color:#A32D2D;border-color:#F7C1C1;}
+.add-btn{padding:7px 12px;font-size:11px;font-weight:700;color:#378ADD;background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;}
+.prop-card{padding:10px 12px;border-bottom:1.5px solid #f5f2ee;}
+.prop-top{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+.prop-name{flex:1;border:none;background:transparent;font-size:13px;font-weight:700;color:#2d2d2d;font-family:'Nunito',sans-serif;}
+.prop-name:focus{outline:none;border-bottom:1px solid #EF9F27;}
+.prop-addr{display:flex;gap:5px;margin-bottom:7px;}
+.addr-inp{flex:1;border:1.5px solid #f0ece4;border-radius:8px;padding:5px 8px;font-size:11px;font-family:'Nunito',sans-serif;color:#555;background:#FFFEF9;}
+.lookup-btn{padding:5px 10px;background:#BA7517;color:#fff;border:none;border-radius:7px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;}
+.lookup-btn:hover{background:#854F0B;}
+.lookup-btn:disabled{opacity:0.4;cursor:not-allowed;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.pf{display:flex;flex-direction:column;gap:3px;}
+.pf label{font-size:10px;font-weight:700;color:#b0a99a;text-transform:uppercase;letter-spacing:0.05em;}
+.pf input{border:1.5px solid #f0ece4;border-radius:7px;padding:5px 7px;font-size:12px;font-weight:700;text-align:right;font-family:'Nunito',sans-serif;color:#2d2d2d;background:#FFFEF9;width:100%;}
+.pf input:focus{outline:none;border-color:#EF9F27;}
+.pf input[readonly]{background:#f5f2ee;color:#aaa;}
+.gain-info{margin-top:5px;}
+.gain-badge{display:inline-block;padding:2px 7px;border-radius:7px;font-size:10px;font-weight:700;margin-right:3px;}
+.gb-up{background:#EAF3DE;color:#27500A;}.gb-dn{background:#FCEBEB;color:#791F1F;}
+.gb-blue{background:#E6F1FB;color:#0C447C;}.gb-amber{background:#FAEEDA;color:#633806;}
+.car-card{padding:10px 12px;border-bottom:1.5px solid #f5f2ee;}
+.car-top{display:flex;align-items:center;gap:6px;margin-bottom:7px;}
+.method-toggle{display:flex;gap:3px;margin-left:auto;}
+.mt-btn{padding:3px 8px;font-size:10px;border:1.5px solid #f0ece4;border-radius:14px;cursor:pointer;background:#FFFEF9;color:#aaa;font-family:'Nunito',sans-serif;font-weight:700;}
+.mt-btn.on{background:#E6F1FB;border-color:#85B7EB;color:#0C447C;}
+.car-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.net-bar{background:#FAEEDA;border-radius:14px;border:2px solid #FAC775;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.net-label{font-size:12px;font-weight:700;color:#633806;}
+.net-val{font-size:20px;font-weight:900;}
+.sum-strip{background:#fff;border-radius:14px;border:2px solid #f0ece4;display:flex;margin-bottom:10px;overflow:hidden;}
+.ss-cell{flex:1;padding:8px 4px;text-align:center;border-right:1.5px solid #f0ece4;}
+.ss-cell:last-child{border-right:none;}
+.ss-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.03em;color:#b0a99a;margin-bottom:2px;}
+.ss-val{font-size:11px;font-weight:800;}
+.ss-val.g{color:#1D9E75;}.ss-val.r{color:#E24B4A;}.ss-val.a{color:#D85A30;}.ss-val.b{color:#185FA5;}
+.fc-wrap{background:#F7F5F0;border-radius:14px;padding:12px 14px;border:2px solid #ede9e0;margin-bottom:10px;}
+.fc-head{display:flex;justify-content:space-between;margin-bottom:8px;}
+.fc-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#2d2d2d;}
+.fc-s{font-size:10px;color:#b0a99a;font-weight:600;}
+.fc-bars{display:flex;gap:5px;align-items:flex-end;}
+.fc-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.fc-bar{width:100%;border-radius:5px 5px 2px 2px;}
+.fc-lbl{font-size:9px;font-weight:700;color:#b0a99a;}
+.fc-sum{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;}
+.fcs{border-radius:10px;border:2px solid;padding:8px 10px;text-align:center;}
+.fcs.g{background:#F0FFF4;border-color:#9FE1CB;}.fcs.r{background:#FFF5F5;border-color:#F7C1C1;}
+.fcs.a{background:#FFFBF0;border-color:#FAC775;}.fcs.b{background:#F0F6FF;border-color:#85B7EB;}
+.fcs-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;}
+.fcs-lbl.g{color:#0F6E56;}.fcs-lbl.r{color:#A32D2D;}.fcs-lbl.a{color:#854F0B;}.fcs-lbl.b{color:#0C447C;}
+.fcs-val{font-size:13px;font-weight:800;}
+.fcs-val.g{color:#1D9E75;}.fcs-val.r{color:#E24B4A;}.fcs-val.a{color:#D85A30;}.fcs-val.b{color:#185FA5;}
+.net-card{background:#FFF8EE;border-radius:20px;border:2px solid #F5C4B3;padding:14px 16px 12px;margin:8px 0;position:relative;overflow:hidden;}
+.nc-blob{position:absolute;right:-14px;top:-14px;width:60px;height:60px;border-radius:50%;background:#FAEEDA;opacity:0.5;}
+.nc-blob2{position:absolute;right:16px;bottom:-14px;width:36px;height:36px;border-radius:50%;background:#F5C4B3;opacity:0.4;}
+.nc-lbl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D85A30;margin-bottom:4px;}
+.nc-val{font-size:28px;font-weight:900;color:#2d2d2d;letter-spacing:-0.03em;line-height:1;}
+.nc-pill{display:inline-flex;align-items:center;background:#EAF3DE;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;color:#3B6D11;margin-top:6px;}
+.two-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+.mini{border-radius:14px;padding:11px 12px;border:2px solid;}
+.mini.g{background:#F0FFF4;border-color:#9FE1CB;}.mini.r{background:#FFF5F5;border-color:#F7C1C1;}
+.mini-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;}
+.mini-lbl.g{color:#0F6E56;}.mini-lbl.r{color:#A32D2D;}
+.mini-val{font-size:16px;font-weight:800;}
+.mini-val.g{color:#1D9E75;}.mini-val.r{color:#E24B4A;}
+.asset-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;}
+.arow{background:#fff;border-radius:12px;border:2px solid #f0ece4;padding:9px 11px;display:flex;align-items:center;gap:8px;}
+.aico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.aico.h{background:#FFF0E6;}.aico.c{background:#FFF8DC;}.aico.m{background:#E8F5E9;}.aico.s{background:#EAF3DE;}
+.ainfo{flex:1;min-width:0;}
+.aname{font-size:12px;font-weight:700;color:#2d2d2d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.asub{font-size:10px;color:#b0a99a;font-weight:600;margin-top:1px;}
+.aright{text-align:right;flex-shrink:0;}
+.aval{font-size:12px;font-weight:800;color:#2d2d2d;white-space:nowrap;}
+.atag{font-size:9px;font-weight:700;padding:1px 5px;border-radius:5px;display:inline-block;margin-top:2px;}
+.atag.up{background:#EAF3DE;color:#3B6D11;}.atag.dep{background:#E6F1FB;color:#185FA5;}.atag.neg{background:#FCEBEB;color:#791F1F;}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.sec-t{font-size:13px;font-weight:800;color:#2d2d2d;}
+.sec-more{font-size:11px;font-weight:700;color:#D85A30;cursor:pointer;}
+.tabbar{padding:8px 8px 18px;display:flex;justify-content:space-around;border-top:2px solid #f0ece4;background:#FFFEF9;flex-shrink:0;}
+.tb{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;min-width:52px;}
+.tb-ico{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.tb-ico.on{background:#FAEEDA;}
+.tb-lbl{font-size:9px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;}
+.tb-lbl.on{color:#D85A30;}.tb-lbl.off{color:#c8c0b4;}
+</style>
+
+<div style="padding:20px;background:var(--color-background-secondary);border-radius:var(--border-radius-lg)">
+<div class="frame">
+<div class="sb"><span class="sb-time">9:41</span><span style="font-size:11px;color:#b0a99a;font-weight:700">我的財務</span></div>
+
+<!-- 總覽 -->
+<div class="page active" id="pg-home">
+<div class="scroll">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span style="font-size:13px;color:#b0a99a;font-weight:700">早安 👋</span><div style="width:32px;height:32px;border-radius:50%;background:#FAEEDA;border:2px solid #EF9F27;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#633806">我</div></div>
+  <div class="net-card"><div class="nc-blob"></div><div class="nc-blob2"></div><div class="nc-lbl">淨資產</div><div class="nc-val" id="h-net">$0</div><div class="nc-pill" id="h-pill">輸入資料後自動計算</div></div>
+  <div class="two-mini">
+    <div class="mini g"><div class="mini-lbl g">總資產</div><div class="mini-val g" id="h-assets">$0</div></div>
+    <div class="mini r"><div class="mini-lbl r">總負債</div><div class="mini-val r" id="h-liab">$0</div></div>
+  </div>
+  <div class="sec-head"><span class="sec-t">資產快覽</span><span class="sec-more" onclick="goPage('pg-assets')">編輯 →</span></div>
+  <div class="asset-list" id="h-list"><div class="arow"><div class="aico m">💡</div><div class="ainfo"><div class="aname">尚未輸入資料</div><div class="asub">點下方「資產」開始填寫</div></div></div></div>
+  <div class="fc-wrap"><div class="fc-head"><span class="fc-t">收支預估</span><span class="fc-s">6個月</span></div><div class="fc-bars" id="h-chart" style="height:40px"><div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#ede9e0"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#ede9e0"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#ede9e0"></div><div class="fc-lbl">—</div></div></div></div>
+</div>
+<div class="tabbar">
+  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl on">總覽</span></div>
+  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl off">資產</span></div>
+  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl off">收支</span></div>
+  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl off">報表</span></div>
+</div>
+</div>
+
+<!-- 資產負債 -->
+<div class="page" id="pg-assets">
+<div class="scroll">
+  <div style="font-size:15px;font-weight:900;color:#2d2d2d;margin-bottom:10px">資產負債表 📋</div>
+
+  <!-- 流動資產：只有真正的資產 -->
+  <div class="blk">
+    <div class="blk-head green"><span>流動資產</span><span id="cur-lbl">$0</span></div>
+    <div class="row"><span class="rlabel">銀行存款</span><input class="rval" type="number" placeholder="0" id="a-cash" oninput="calc()"></div>
+    <div class="row"><span class="rlabel">股票/基金</span><input class="rval" type="number" placeholder="0" id="a-stock" oninput="calc()"></div>
+    <div id="cur-extra-rows"></div>
+    <button class="add-btn" onclick="addCurRow()">＋ 新增流動資產</button>
+  </div>
+
+  <!-- 不動產 -->
+  <div class="blk">
+    <div class="blk-head amber"><span>不動產</span><span id="p-val-lbl">$0</span></div>
+    <div id="prop-list">
+      <div class="prop-card" data-prop>
+        <div class="prop-top"><input class="prop-name" value="房屋 A"><button class="rdel" onclick="delProp(this)">×</button></div>
+        <div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="openLink('https://lvr.land.moi.gov.tw/')" disabled>查實價登錄 ↗</button></div>
+        <div class="prop-grid">
+          <div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div>
+          <div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div>
+          <div class="pf"><label>坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div>
+          <div class="pf"><label>每坪均價</label><input placeholder="—" readonly></div>
+        </div>
+        <div class="gain-info"></div>
+      </div>
+    </div>
+    <button class="add-btn" onclick="addProp()">＋ 新增不動產</button>
+    <div style="display:flex;justify-content:space-between;padding:8px 12px;background:#FFFBF0;border-top:1.5px solid #FAC775;font-size:11px;font-weight:800">
+      <span style="color:#854F0B">不動產合計</span>
+      <span>成本 <span id="p-cost">$0</span>&nbsp;現值 <span id="p-val" style="color:#1D9E75">$0</span>&nbsp;<span id="p-gain">損益 $0</span></span>
+    </div>
+  </div>
+
+  <!-- 車輛 -->
+  <div class="blk">
+    <div class="blk-head blue"><span>車輛折舊</span><span id="c-val-lbl">$0</span></div>
+    <div id="car-list">
+      <div class="car-card" data-car data-method="straight">
+        <div class="car-top"><input class="prop-name" value="車輛 A"><div class="method-toggle"><button class="mt-btn on" onclick="setMethod(this,'straight')">直線</button><button class="mt-btn" onclick="setMethod(this,'declining')">遞減</button></div><button class="rdel" onclick="delCar(this)">×</button></div>
+        <div class="car-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcCar(this)"></div><div class="pf"><label>購入年份</label><input type="number" value="2022" oninput="calcCar(this)"></div><div class="pf"><label>年限(年)</label><input type="number" value="5" oninput="calcCar(this)"></div><div class="pf"><label>殘值率(%)</label><input type="number" value="10" oninput="calcCar(this)"></div></div>
+        <div class="gain-info" style="margin-top:5px"></div>
+      </div>
+    </div>
+    <button class="add-btn" onclick="addCar()">＋ 新增車輛</button>
+    <div style="display:flex;justify-content:space-between;padding:8px 12px;background:#F0F6FF;border-top:1.5px solid #85B7EB;font-size:11px;font-weight:800">
+      <span style="color:#0C447C">車輛合計</span>
+      <span>成本 <span id="c-cost">$0</span>&nbsp;帳面 <span id="c-val" style="color:#185FA5">$0</span>&nbsp;折舊 <span id="c-dep" style="color:#E24B4A">$0</span></span>
+    </div>
+  </div>
+
+  <!-- 負債 -->
+  <div class="blk">
+    <div class="blk-head red"><span>銀行貸款</span><span id="loan-lbl">$0</span></div>
+    <div id="loan-rows">
+      <div class="row" data-loan><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="房貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
+      <div class="row" data-loan><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="車貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
+    </div>
+    <button class="add-btn" onclick="addLoanRow()">＋ 新增貸款</button>
+  </div>
+  <div class="blk">
+    <div class="blk-head coral"><span>其他負債</span><span id="other-lbl">$0</span></div>
+    <div id="other-rows">
+      <div class="row" data-other><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="信用卡"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delORow(this)">×</button></div>
+    </div>
+    <button class="add-btn" onclick="addOtherRow()">＋ 新增其他負債</button>
+  </div>
+
+  <div class="net-bar"><span class="net-label">淨資產 = 資產 − 負債</span><span class="net-val" id="net-val" style="color:#D85A30">$0</span></div>
+  <div class="sum-strip">
+    <div class="ss-cell"><div class="ss-lbl">流動資產</div><div class="ss-val g" id="s-cur">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">不動產</div><div class="ss-val a" id="s-prop">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">車輛</div><div class="ss-val b" id="s-car">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">負債</div><div class="ss-val r" id="s-liab">$0</div></div>
+  </div>
+</div>
+<div class="tabbar">
+  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl off">總覽</span></div>
+  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl on">資產</span></div>
+  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl off">收支</span></div>
+  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl off">報表</span></div>
+</div>
+</div>
+
+<!-- 收支 -->
+<div class="page" id="pg-cashflow">
+<div class="scroll">
+  <div style="font-size:15px;font-weight:900;color:#2d2d2d;margin-bottom:10px">每月收支 💰</div>
+  <div class="blk">
+    <div class="blk-head green"><span>收入</span><span id="inc-total">$0</span></div>
+    <div id="inc-rows">
+      <div class="row" data-inc><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="薪資收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
+      <div class="row" data-inc><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="投資收益"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
+      <div class="row" data-inc><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="副業收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
+    </div>
+    <button class="add-btn" onclick="addIncRow()">＋ 新增收入</button>
+  </div>
+  <div class="blk">
+    <div class="blk-head coral"><span>支出</span><span id="exp-total">$0</span></div>
+    <div id="cf-exp-rows">
+      <div class="row" data-cfexp><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="房貸/租金"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="餐飲"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="水電瓦斯"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="交通"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="娛樂"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" value="保險"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+    </div>
+    <button class="add-btn" onclick="addExpRow()">＋ 新增支出</button>
+  </div>
+  <div class="sum-strip">
+    <div class="ss-cell"><div class="ss-lbl">月收入</div><div class="ss-val g" id="cf-inc">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">月支出</div><div class="ss-val r" id="cf-exp">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">月結餘</div><div class="ss-val a" id="cf-sur">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">儲蓄率</div><div class="ss-val b" id="cf-rate">0%</div></div>
+  </div>
+  <div class="fc-wrap"><div class="fc-head"><span class="fc-t">6個月預估</span><span class="fc-s" id="cf-range">—</span></div><div class="fc-bars" id="cf-chart" style="height:56px"></div></div>
+  <div class="fc-sum" id="cf-sum"></div>
+</div>
+<div class="tabbar">
+  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl off">總覽</span></div>
+  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl off">資產</span></div>
+  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl on">收支</span></div>
+  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl off">報表</span></div>
+</div>
+</div>
+
+<!-- 報表 -->
+<div class="page" id="pg-report">
+<div class="scroll">
+  <div style="font-size:15px;font-weight:900;color:#2d2d2d;margin-bottom:10px">財務報表 📊</div>
+  <div class="sum-strip" style="margin-bottom:10px">
+    <div class="ss-cell"><div class="ss-lbl">總資產</div><div class="ss-val g" id="r-assets">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">總負債</div><div class="ss-val r" id="r-liab">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">淨資產</div><div class="ss-val a" id="r-net">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl">負債比</div><div class="ss-val b" id="r-ratio">0%</div></div>
+  </div>
+  <div class="blk"><div class="blk-head teal"><span>資產結構</span></div><div id="r-asset-bd"><div style="padding:10px 12px;font-size:12px;color:#b0a99a;font-weight:600">尚無資料</div></div></div>
+  <div class="blk"><div class="blk-head coral"><span>支出結構</span></div><div id="r-exp-bd"><div style="padding:10px 12px;font-size:12px;color:#b0a99a;font-weight:600">尚無資料</div></div></div>
+  <div class="blk" style="margin-bottom:4px"><div class="blk-head amber"><span>財務建議</span><span>🌟</span></div><div id="r-advice" style="padding:10px 12px;font-size:12px;font-weight:600;color:#555;line-height:1.7">請先填入資產與收支資料</div></div>
+</div>
+<div class="tabbar">
+  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl off">總覽</span></div>
+  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl off">資產</span></div>
+  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl off">收支</span></div>
+  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl on">報表</span></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+let pCnt=1,cCnt=1;
+function fmt(v){return Math.round(v).toLocaleString('zh-TW');}
+function n(id){return parseFloat(document.getElementById(id)?.value)||0;}
+function goPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');updateAll();}
+function onAddr(inp){inp.closest('.prop-card').querySelector('.lookup-btn').disabled=!inp.value.trim();}
+
+function addCurRow(){
+  const d=document.createElement('div');d.className='row';d.setAttribute('data-cur','');
+  d.innerHTML=`<input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" placeholder="資產名稱"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="this.closest('.row').remove();calc()">×</button>`;
+  document.getElementById('cur-extra-rows').appendChild(d);
+}
+function addLoanRow(){
+  const d=document.createElement('div');d.className='row';d.setAttribute('data-loan','');
+  d.innerHTML=`<input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" placeholder="貸款名稱"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button>`;
+  document.getElementById('loan-rows').appendChild(d);
+}
+function addOtherRow(){
+  const d=document.createElement('div');d.className='row';d.setAttribute('data-other','');
+  d.innerHTML=`<input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" placeholder="負債名稱"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delORow(this)">×</button>`;
+  document.getElementById('other-rows').appendChild(d);
+}
+function delLRow(btn){if(document.querySelectorAll('#loan-rows [data-loan]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calc();}
+function delORow(btn){if(document.querySelectorAll('#other-rows [data-other]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calc();}
+
+function calcProps(){
+  let cs=0,vs=0;
+  document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{
+    const inp=c.querySelectorAll('.pf input');
+    const cost=parseFloat(inp[0].value)||0,val=parseFloat(inp[1].value)||0,sqm=parseFloat(inp[2].value)||0;
+    cs+=cost;vs+=val;
+    inp[3].value=sqm>0&&val>0?Math.round(val/sqm).toLocaleString('zh-TW'):'—';
+    const g=val-cost,r=cost>0?g/cost*100:0;
+    c.querySelector('.gain-info').innerHTML=cost>0||val>0?`<span class="gain-badge ${g>=0?'gb-up':'gb-dn'}">${g>=0?'▲':'▼'} 損益 ${g>=0?'+':''}$${fmt(g)} (${r.toFixed(1)}%)</span>`:'';
+  });
+  document.getElementById('p-cost').textContent='$'+fmt(cs);
+  document.getElementById('p-val').textContent='$'+fmt(vs);
+  document.getElementById('p-val-lbl').textContent='$'+fmt(vs);
+  const gt=vs-cs,ge=document.getElementById('p-gain');
+  ge.textContent='損益 '+(gt>=0?'+':'')+'$'+fmt(gt);ge.style.color=gt>=0?'#1D9E75':'#E24B4A';
+  calc();
+}
+function addProp(){pCnt++;const d=document.createElement('div');d.className='prop-card';d.setAttribute('data-prop','');d.innerHTML=`<div class="prop-top"><input class="prop-name" value="房屋 ${pCnt}"><button class="rdel" onclick="delProp(this)">×</button></div><div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="openLink('https://lvr.land.moi.gov.tw/')" disabled>查實價登錄 ↗</button></div><div class="prop-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>每坪均價</label><input placeholder="—" readonly></div></div><div class="gain-info"></div>`;document.getElementById('prop-list').appendChild(d);}
+function delProp(btn){if(document.querySelectorAll('#prop-list [data-prop]').length<=1){alert('至少保留一筆');return;}btn.closest('.prop-card').remove();calcProps();}
+
+function getCarVal(c){
+  const inp=c.querySelectorAll('.pf input');
+  const cost=parseFloat(inp[0].value)||0,year=parseInt(inp[1].value)||2022,life=Math.max(parseInt(inp[2].value)||5,1),sr=(parseFloat(inp[3].value)||10)/100;
+  const elapsed=Math.max(0,new Date().getFullYear()-year),salvage=cost*sr,method=c.dataset.method||'straight';
+  if(method==='straight')return elapsed>=life?salvage:Math.max(cost-(cost-salvage)/life*elapsed,salvage);
+  const rate=1-Math.pow(Math.max(sr,0.01),1/life);let v=cost;
+  for(let i=0;i<Math.min(elapsed,life);i++)v=Math.max(v*(1-rate),salvage);
+  return v;
+}
+function calcCar(input){
+  const card=input.closest('[data-car]');
+  const inp=card.querySelectorAll('.pf input');
+  const cost=parseFloat(inp[0].value)||0,val=getCarVal(card),dep=cost-val,dr=cost>0?dep/cost*100:0;
+  const life=Math.max(parseInt(inp[2].value)||5,1),year=parseInt(inp[1].value)||2022,elapsed=Math.max(0,new Date().getFullYear()-year);
+  card.querySelector('.gain-info').innerHTML=cost>0?`<span class="gain-badge gb-blue">帳面 $${fmt(val)}</span><span class="gain-badge gb-amber">折舊 $${fmt(dep)} (${dr.toFixed(1)}%)</span><span class="gain-badge ${elapsed>=life?'gb-dn':'gb-blue'}">${elapsed>=life?'已達年限':'剩 '+(life-elapsed)+' 年'}</span>`:'';
+  let cs=0,vs=0;
+  document.querySelectorAll('#car-list [data-car]').forEach(c=>{cs+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;vs+=getCarVal(c);});
+  document.getElementById('c-cost').textContent='$'+fmt(cs);
+  document.getElementById('c-val').textContent='$'+fmt(vs);
+  document.getElementById('c-val-lbl').textContent='$'+fmt(vs);
+  document.getElementById('c-dep').textContent='$'+fmt(cs-vs);
+  calc();
+}
+function setMethod(btn,m){const card=btn.closest('[data-car]');card.querySelectorAll('.mt-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');card.dataset.method=m;calcCar(card.querySelector('input'));}
+function addCar(){cCnt++;const d=document.createElement('div');d.className='car-card';d.setAttribute('data-car','');d.dataset.method='straight';d.innerHTML=`<div class="car-top"><input class="prop-name" value="車輛 ${cCnt}"><div class="method-toggle"><button class="mt-btn on" onclick="setMethod(this,'straight')">直線</button><button class="mt-btn" onclick="setMethod(this,'declining')">遞減</button></div><button class="rdel" onclick="delCar(this)">×</button></div><div class="car-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcCar(this)"></div><div class="pf"><label>購入年份</label><input type="number" value="${new Date().getFullYear()}" oninput="calcCar(this)"></div><div class="pf"><label>年限(年)</label><input type="number" value="5" oninput="calcCar(this)"></div><div class="pf"><label>殘值率(%)</label><input type="number" value="10" oninput="calcCar(this)"></div></div><div class="gain-info" style="margin-top:5px"></div>`;document.getElementById('car-list').appendChild(d);}
+function delCar(btn){if(document.querySelectorAll('#car-list [data-car]').length<=1){alert('至少保留一筆');return;}btn.closest('.car-card').remove();calc();}
+
+function calc(){
+  const cash=n('a-cash'),stock=n('a-stock');
+  const extraCur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const cur=cash+stock+extraCur;
+  document.getElementById('cur-lbl').textContent='$'+fmt(cur);
+  let propV=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{propV+=parseFloat(c.querySelectorAll('.pf input')[1].value)||0;});
+  let carV=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carV+=getCarVal(c);});
+  const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const liabT=loanT+otherT;
+  document.getElementById('loan-lbl').textContent='$'+fmt(loanT);
+  document.getElementById('other-lbl').textContent='$'+fmt(otherT);
+  const totalA=cur+propV+carV,net=totalA-liabT;
+  const nv=document.getElementById('net-val');nv.textContent='$'+fmt(net);nv.style.color=net>=0?'#D85A30':'#E24B4A';
+  document.getElementById('s-cur').textContent='$'+fmt(cur);
+  document.getElementById('s-prop').textContent='$'+fmt(propV);
+  document.getElementById('s-car').textContent='$'+fmt(carV);
+  document.getElementById('s-liab').textContent='$'+fmt(liabT);
+  updateAll();
+}
+
+function addIncRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-inc','');d.innerHTML=`<input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" placeholder="收入名稱"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button>`;document.getElementById('inc-rows').appendChild(d);}
+function addExpRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-cfexp','');d.innerHTML=`<input style="border:none;background:transparent;font-weight:700;color:#555;font-family:'Nunito',sans-serif;width:80px;flex-shrink:0;font-size:12px;" placeholder="支出名稱"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button>`;document.getElementById('cf-exp-rows').appendChild(d);}
+function delIRow(btn){if(document.querySelectorAll('#inc-rows [data-inc]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
+function delERow(btn){if(document.querySelectorAll('#cf-exp-rows [data-cfexp]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
+
+function calcFlow(){
+  const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const exp=[...document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;
+  document.getElementById('inc-total').textContent='$'+fmt(inc);
+  document.getElementById('exp-total').textContent='$'+fmt(exp);
+  document.getElementById('cf-inc').textContent='$'+fmt(inc);
+  document.getElementById('cf-exp').textContent='$'+fmt(exp);
+  const se=document.getElementById('cf-sur');se.textContent=(sur>=0?'+':'')+'$'+fmt(sur);se.style.color=sur>=0?'#D85A30':'#E24B4A';
+  document.getElementById('cf-rate').textContent=rate+'%';
+  renderChart(inc,exp,sur,'cf-chart','cf-range','cf-sum');
+  updateAll();
+}
+
+function renderChart(inc,exp,sur,chartId,rangeId,sumId){
+  const now=new Date();
+  const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  const cash=n('a-cash');let c=cash,vals=[];
+  for(let i=0;i<6;i++){c+=sur;vals.push(c);}
+  const maxV=Math.max(...vals.map(v=>Math.abs(v)),1);
+  let html='';
+  for(let i=0;i<6;i++){
+    const m=(now.getMonth()+i)%12,h=Math.max(Math.round(Math.abs(vals[i])/maxV*50),4);
+    const col=vals[i]>=0?(i<3?'#9FE1CB':'#EF9F27'):'#F09595';
+    html+=`<div class="fc-col"><div class="fc-bar" style="height:${h}px;background:${col}"></div><div class="fc-lbl">${mn[m]}</div></div>`;
+  }
+  document.getElementById(chartId).innerHTML=html;
+  document.getElementById(rangeId).textContent=(now.getMonth()+1)+'月起';
+  const ec=vals[5];
+  document.getElementById(sumId).innerHTML=`<div class="fcs g"><div class="fcs-lbl g">月收入</div><div class="fcs-val g">$${fmt(inc)}</div></div><div class="fcs r"><div class="fcs-lbl r">月支出</div><div class="fcs-val r">$${fmt(exp)}</div></div><div class="fcs a"><div class="fcs-lbl a">月結餘</div><div class="fcs-val a">${sur>=0?'+':''}$${fmt(sur)}</div></div><div class="fcs b"><div class="fcs-lbl b">6月後現金</div><div class="fcs-val b">$${fmt(ec)}</div></div>`;
+  document.getElementById('h-chart').innerHTML=html;
+}
+
+function updateAll(){
+  const cash=n('a-cash'),stock=n('a-stock');
+  const extraCur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const cur=cash+stock+extraCur;
+  let propV=0,propC=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const i=c.querySelectorAll('.pf input');propC+=parseFloat(i[0].value)||0;propV+=parseFloat(i[1].value)||0;});
+  let carV=0,carC=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carC+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;carV+=getCarVal(c);});
+  const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const liabT=loanT+otherT,totalA=cur+propV+carV,net=totalA-liabT,ratio=totalA>0?Math.round(liabT/totalA*100):0;
+  document.getElementById('h-net').textContent='$'+fmt(net);
+  document.getElementById('h-assets').textContent='$'+fmt(totalA);
+  document.getElementById('h-liab').textContent='$'+fmt(liabT);
+  document.getElementById('h-pill').textContent=totalA>0?'總資產 $'+fmt(totalA):'輸入資料後自動計算';
+  const items=[];
+  if(cash>0)items.push({t:'m',ico:'💰',n:'銀行存款',s:'流動資產',v:cash,tag:'現金',tc:'up'});
+  if(stock>0)items.push({t:'s',ico:'📈',n:'股票/基金',s:'流動資產',v:stock,tag:'投資',tc:'up'});
+  if(propV>0){const g=propV-propC,r=propC>0?g/propC*100:0;items.push({t:'h',ico:'🏠',n:'不動產',s:'成本 $'+fmt(propC),v:propV,tag:(r>=0?'▲':'')+r.toFixed(1)+'%',tc:r>=0?'up':'neg'});}
+  if(carV>0){const d=carC>0?(carC-carV)/carC*100:0;items.push({t:'c',ico:'🚗',n:'車輛',s:'折舊 '+d.toFixed(0)+'%',v:carV,tag:'帳面值',tc:'dep'});}
+  document.getElementById('h-list').innerHTML=items.length?items.map(i=>`<div class="arow"><div class="aico ${i.t}">${i.ico}</div><div class="ainfo"><div class="aname">${i.n}</div><div class="asub">${i.s}</div></div><div class="aright"><div class="aval">$${fmt(i.v)}</div><span class="atag ${i.tc}">${i.tag}</span></div></div>`).join(''):'<div class="arow"><div class="aico m">💡</div><div class="ainfo"><div class="aname">尚未輸入資料</div><div class="asub">點下方「資產」開始填寫</div></div></div>';
+  document.getElementById('r-assets').textContent='$'+fmt(totalA);
+  document.getElementById('r-liab').textContent='$'+fmt(liabT);
+  const rn=document.getElementById('r-net');rn.textContent='$'+fmt(net);rn.className='ss-val '+(net>=0?'a':'r');
+  document.getElementById('r-ratio').textContent=ratio+'%';
+  const colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC'];
+  document.getElementById('r-asset-bd').innerHTML=[{n:'流動資產',v:cur},{n:'不動產',v:propV},{n:'車輛',v:carV}].filter(x=>x.v>0).map((x,i)=>{const pct=totalA>0?Math.round(x.v/totalA*100):0;return`<div style="display:flex;align-items:center;padding:8px 12px;border-bottom:1.5px solid #f5f2ee;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:${colors[i]};flex-shrink:0"></div><div style="flex:1;font-size:12px;font-weight:700;color:#2d2d2d">${x.n}</div><div style="text-align:right"><div style="font-size:12px;font-weight:800">$${fmt(x.v)}</div><div style="font-size:10px;color:#b0a99a">${pct}%</div></div></div>`;}).join('')||'<div style="padding:10px 12px;font-size:12px;color:#b0a99a;font-weight:600">尚無資料</div>';
+  const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  const cfExpRows=[...document.querySelectorAll('#cf-exp-rows [data-cfexp]')];
+  const eItems=cfExpRows.map(r=>({n:r.querySelector('input').value||'支出',v:parseFloat(r.querySelector('.rval').value)||0})).filter(x=>x.v>0);
+  const tExp=eItems.reduce((s,x)=>s+x.v,0);
+  document.getElementById('r-exp-bd').innerHTML=eItems.map((x,i)=>{const pct=tExp>0?Math.round(x.v/tExp*100):0;return`<div style="display:flex;align-items:center;padding:8px 12px;border-bottom:1.5px solid #f5f2ee;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:${colors[i]||'#ccc'};flex-shrink:0"></div><div style="flex:1;font-size:12px;font-weight:700;color:#2d2d2d">${x.n}</div><div style="text-align:right"><div style="font-size:12px;font-weight:800">$${fmt(x.v)}</div><div style="font-size:10px;color:#b0a99a">${pct}%</div></div></div>`;}).join('')||'<div style="padding:10px 12px;font-size:12px;color:#b0a99a;font-weight:600">尚無資料</div>';
+  const sur=inc-tExp,sr=inc>0?sur/inc*100:0;
+  const adv=[];
+  if(sr<20&&inc>0)adv.push('💡 儲蓄率 '+Math.round(sr)+'%，建議提升至 20% 以上');
+  if(ratio>50)adv.push('⚠️ 負債比 '+ratio+'%，建議優先還款');
+  if(cash<tExp*3&&tExp>0)adv.push('🏦 緊急預備金不足，建議存至 3～6 個月生活費');
+  if(propV>propC&&propC>0)adv.push('🏠 不動產增值 $'+fmt(propV-propC)+'，資產狀況良好');
+  if(sr>=20&&ratio<=50&&totalA>0)adv.push('🌟 財務健康！繼續保持良好習慣');
+  document.getElementById('r-advice').innerHTML=adv.length?adv.join('<br>'):'請先填入資產與收支資料';
+}
+</script>
