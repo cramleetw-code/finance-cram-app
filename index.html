@@ -1,4 +1,3 @@
-index.html
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -109,11 +108,258 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
 .tb-ico.on{background:#FAEEDA;}
 .tb-lbl{font-size:9px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;}
 .tb-lbl.on{color:#D85A30;}.tb-lbl.off{color:#c8c0b4;}
+
+/* ── Onboarding ── */
+.ob-page{display:none;flex-direction:column;height:620px;}
+.ob-page.active{display:flex;}
+.ob-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 22px 16px;gap:10px;}
+.ob-emoji{font-size:52px;line-height:1;}
+.ob-title{font-size:22px;font-weight:900;color:#2d2d2d;text-align:center;line-height:1.25;}
+.ob-sub{font-size:13px;color:#b0a99a;font-weight:600;text-align:center;line-height:1.6;}
+.feat-list{display:flex;flex-direction:column;gap:8px;width:100%;margin:4px 0;}
+.feat-item{display:flex;align-items:center;gap:10px;background:#FFF5F0;border-radius:12px;border:1.5px solid #F5C4B3;padding:10px 14px;}
+.feat-ico{font-size:18px;width:26px;text-align:center;flex-shrink:0;}
+.feat-txt{font-size:12px;font-weight:700;color:#555;}
+.ob-footer{padding:14px 18px 20px;display:flex;flex-direction:column;gap:8px;}
+.ob-btn-main{background:#D85A30;color:#fff;border:none;border-radius:14px;padding:14px;font-size:14px;font-weight:800;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;letter-spacing:0.02em;}
+.ob-btn-ghost{background:transparent;color:#b0a99a;border:none;padding:8px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;width:100%;}
+
+/* step header */
+.step-hd{background:#D85A30;padding:14px 18px 0;flex-shrink:0;}
+.step-hd-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.step-back{background:rgba(255,255,255,.18);border:none;border-radius:8px;padding:5px 10px;color:#fff;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;}
+.step-label{color:#fff;font-size:14px;font-weight:800;flex:1;}
+.step-count{color:rgba(255,255,255,.65);font-size:12px;font-weight:700;}
+.step-dots{display:flex;gap:5px;padding-bottom:12px;}
+.step-dot{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.3);transition:background .25s;}
+.step-dot.done{background:#fff;}
+.step-body{flex:1;overflow-y:auto;padding:18px 18px 10px;display:flex;flex-direction:column;gap:12px;}
+.step-footer{padding:10px 18px 18px;display:flex;flex-direction:column;gap:8px;}
+
+/* fields */
+.sf-group{display:flex;flex-direction:column;gap:5px;}
+.sf-label{font-size:12px;font-weight:800;color:#888;text-transform:uppercase;letter-spacing:0.06em;}
+.sf-input{border:2px solid #f0ece4;border-radius:10px;padding:10px 13px;font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;color:#2d2d2d;background:#FFFEF9;outline:none;width:100%;}
+.sf-input:focus{border-color:#D85A30;}
+.sf-hint{font-size:11px;color:#c8c0b4;font-weight:600;}
+
+/* preview card */
+.preview-card{border-radius:12px;padding:12px 14px;display:none;}
+.preview-card.show{display:block;}
+.pc-row{display:flex;justify-content:space-between;align-items:center;}
+.pc-item{text-align:center;}
+.pc-lbl{font-size:10px;font-weight:700;color:#854F0B;text-transform:uppercase;letter-spacing:0.05em;}
+.pc-val{font-size:16px;font-weight:900;color:#2d2d2d;margin-top:1px;}
+.health-bar{margin-top:10px;}
+.hb-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;margin-bottom:3px;}
+.hb-track{height:6px;background:#f0ece4;border-radius:3px;overflow:hidden;}
+.hb-fill{height:100%;border-radius:3px;transition:width .4s;}
+
+/* finish snapshot */
+.finish-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 18px;gap:8px;}
+.check-circle{width:64px;height:64px;border-radius:50%;background:#D85A30;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
+.snap-cell{border-radius:12px;border:2px solid;padding:10px 12px;text-align:center;}
+.snap-cell.g{background:#F0FFF4;border-color:#9FE1CB;}
+.snap-cell.r{background:#FFF5F5;border-color:#F7C1C1;}
+.snap-cell.a{background:#FFFBF0;border-color:#FAC775;grid-column:1/-1;}
+.snap-cell.b{background:#F0F6FF;border-color:#85B7EB;}
+.snap-cell.p{background:#FFF0EC;border-color:#F0997B;}
+.sc-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;}
+.sc-lbl.g{color:#0F6E56;}.sc-lbl.r{color:#A32D2D;}.sc-lbl.a{color:#854F0B;}.sc-lbl.b{color:#0C447C;}.sc-lbl.p{color:#993C1D;}
+.sc-val{font-size:15px;font-weight:900;color:#2d2d2d;}
+.sc-val.big{font-size:22px;}
 </style>
 
 <div style="padding:20px;background:var(--color-background-secondary);border-radius:var(--border-radius-lg)">
 <div class="frame">
-<div class="sb"><span class="sb-time">9:41</span><span style="font-size:11px;color:#b0a99a;font-weight:700">我的財務</span></div>
+<div class="sb" id="top-sb"><span class="sb-time" id="sb-time">9:41</span><span style="font-size:11px;color:#b0a99a;font-weight:700" id="sb-title">我的財務</span></div>
+
+<!-- ══════════ ONBOARDING ══════════ -->
+
+<!-- OB-0: 歡迎 -->
+<div class="ob-page active" id="ob-welcome">
+  <div class="ob-hero">
+    <div class="ob-emoji">💰</div>
+    <div class="ob-title">個人財務管家</div>
+    <div class="ob-sub">輕鬆掌握資產、收支<br>與你的財務健康狀況</div>
+    <div class="feat-list">
+      <div class="feat-item"><span class="feat-ico">🏦</span><span class="feat-txt">資產負債表 — 不動產、車輛、存款一目瞭然</span></div>
+      <div class="feat-item"><span class="feat-ico">📊</span><span class="feat-txt">每月收支分析 — 即時顯示儲蓄率與預估</span></div>
+      <div class="feat-item"><span class="feat-ico">📈</span><span class="feat-txt">財務報表 — 自動產生個人化建議</span></div>
+    </div>
+  </div>
+  <div class="ob-footer">
+    <button class="ob-btn-main" onclick="obGo('ob-s1')">開始設定 →</button>
+    <button class="ob-btn-ghost" onclick="enterApp()">跳過，直接進入 App</button>
+  </div>
+</div>
+
+<!-- OB-1: 存款 -->
+<div class="ob-page" id="ob-s1">
+  <div class="step-hd">
+    <div class="step-hd-row">
+      <button class="step-back" onclick="obGo('ob-welcome')">← 返回</button>
+      <span class="step-label">存款與投資</span>
+      <span class="step-count">1 / 4</span>
+    </div>
+    <div class="step-dots">
+      <div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div>
+    </div>
+  </div>
+  <div class="step-body">
+    <div class="sf-group">
+      <div class="sf-label">💳 銀行存款（元）</div>
+      <input class="sf-input" type="number" id="ob-bank" placeholder="例：500,000" oninput="obCalcLiquid()">
+    </div>
+    <div class="sf-group">
+      <div class="sf-label">📈 股票 / 基金（元）</div>
+      <input class="sf-input" type="number" id="ob-stock" placeholder="例：200,000" oninput="obCalcLiquid()">
+      <div class="sf-hint">填入目前市值即可</div>
+    </div>
+    <div class="preview-card" id="ob-liquid-card" style="background:#E1F5EE;border:1.5px solid #9FE1CB;">
+      <div class="pc-row">
+        <div class="pc-item"><div class="pc-lbl" style="color:#085041;">流動資產合計</div><div class="pc-val" id="ob-liquid-total">$0</div></div>
+        <div style="font-size:28px;">💚</div>
+      </div>
+    </div>
+  </div>
+  <div class="step-footer">
+    <button class="ob-btn-main" onclick="obGo('ob-s2')">下一步 →</button>
+  </div>
+</div>
+
+<!-- OB-2: 不動產 -->
+<div class="ob-page" id="ob-s2">
+  <div class="step-hd">
+    <div class="step-hd-row">
+      <button class="step-back" onclick="obGo('ob-s1')">← 返回</button>
+      <span class="step-label">不動產</span>
+      <span class="step-count">2 / 4</span>
+    </div>
+    <div class="step-dots">
+      <div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div>
+    </div>
+  </div>
+  <div class="step-body">
+    <div class="sf-group">
+      <div class="sf-label">🏠 買入價格（元）</div>
+      <input class="sf-input" type="number" id="ob-pcost" placeholder="例：8,000,000" oninput="obCalcProp()">
+    </div>
+    <div class="sf-group">
+      <div class="sf-label">📍 目前市值（元）</div>
+      <input class="sf-input" type="number" id="ob-pmkt" placeholder="例：9,500,000" oninput="obCalcProp()">
+    </div>
+    <div class="sf-group">
+      <div class="sf-label">📐 坪數</div>
+      <input class="sf-input" type="number" id="ob-ping" placeholder="例：30" oninput="obCalcProp()">
+    </div>
+    <div class="preview-card" id="ob-prop-card" style="background:#FFFBF0;border:1.5px solid #FAC775;">
+      <div class="pc-row">
+        <div class="pc-item"><div class="pc-lbl">增值率</div><div class="pc-val" id="ob-pgain" style="color:#D85A30;">—</div></div>
+        <div class="pc-item"><div class="pc-lbl">每坪均價</div><div class="pc-val" id="ob-pping" style="color:#D85A30;">—</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="step-footer">
+    <button class="ob-btn-main" onclick="obGo('ob-s3')">下一步 →</button>
+    <button class="ob-btn-ghost" onclick="obGo('ob-s3')">略過（暫無不動產）</button>
+  </div>
+</div>
+
+<!-- OB-3: 負債 -->
+<div class="ob-page" id="ob-s3">
+  <div class="step-hd">
+    <div class="step-hd-row">
+      <button class="step-back" onclick="obGo('ob-s2')">← 返回</button>
+      <span class="step-label">貸款與負債</span>
+      <span class="step-count">3 / 4</span>
+    </div>
+    <div class="step-dots">
+      <div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div>
+    </div>
+  </div>
+  <div class="step-body">
+    <div class="sf-group">
+      <div class="sf-label">🏦 房貸餘額（元）</div>
+      <input class="sf-input" type="number" id="ob-mortgage" placeholder="例：6,000,000">
+    </div>
+    <div class="sf-group">
+      <div class="sf-label">🚗 車貸餘額（元）</div>
+      <input class="sf-input" type="number" id="ob-carloan" placeholder="例：300,000">
+    </div>
+    <div class="sf-group">
+      <div class="sf-label">💳 信用卡未繳（元）</div>
+      <input class="sf-input" type="number" id="ob-cc" placeholder="例：30,000">
+      <div class="sf-hint">填入本月帳單未繳金額</div>
+    </div>
+  </div>
+  <div class="step-footer">
+    <button class="ob-btn-main" onclick="obGo('ob-s4')">下一步 →</button>
+    <button class="ob-btn-ghost" onclick="obGo('ob-s4')">略過（暫無負債）</button>
+  </div>
+</div>
+
+<!-- OB-4: 收支 -->
+<div class="ob-page" id="ob-s4">
+  <div class="step-hd">
+    <div class="step-hd-row">
+      <button class="step-back" onclick="obGo('ob-s3')">← 返回</button>
+      <span class="step-label">每月收支</span>
+      <span class="step-count">4 / 4</span>
+    </div>
+    <div class="step-dots">
+      <div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div>
+    </div>
+  </div>
+  <div class="step-body">
+    <div class="sf-group">
+      <div class="sf-label">💼 月收入（元）</div>
+      <input class="sf-input" type="number" id="ob-income" placeholder="例：60,000" oninput="obCalcFlow()">
+    </div>
+    <div class="sf-group">
+      <div class="sf-label">💸 月支出（元）</div>
+      <input class="sf-input" type="number" id="ob-expense" placeholder="例：40,000" oninput="obCalcFlow()">
+    </div>
+    <div class="preview-card" id="ob-flow-card" style="background:#FFF5F0;border:1.5px solid #F5C4B3;">
+      <div class="pc-row" style="margin-bottom:8px;">
+        <div class="pc-item"><div class="pc-lbl">月結餘</div><div class="pc-val" id="ob-surplus">$0</div></div>
+        <div class="pc-item"><div class="pc-lbl">儲蓄率</div><div class="pc-val" id="ob-rate" style="color:#D85A30;">0%</div></div>
+      </div>
+      <div class="health-bar">
+        <div class="hb-label"><span style="color:#888;font-size:10px;font-weight:700;">財務健康</span><span id="ob-health-lbl" style="font-size:10px;font-weight:800;color:#D85A30;">—</span></div>
+        <div class="hb-track"><div class="hb-fill" id="ob-health-bar" style="width:0%;background:#9FE1CB;"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="step-footer">
+    <button class="ob-btn-main" onclick="obFinish()">完成設定 ✓</button>
+  </div>
+</div>
+
+<!-- OB-5: 完成快照 -->
+<div class="ob-page" id="ob-finish">
+  <div class="finish-hero">
+    <div class="check-circle">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="font-size:18px;font-weight:900;color:#2d2d2d;">財務快照完成！</div>
+    <div style="font-size:12px;color:#b0a99a;font-weight:600;">初始資料已帶入 App</div>
+    <div class="snap-grid">
+      <div class="snap-cell g"><div class="sc-lbl g">總資產</div><div class="sc-val" id="sn-assets">$0</div></div>
+      <div class="snap-cell r"><div class="sc-lbl r">總負債</div><div class="sc-val" id="sn-liab">$0</div></div>
+      <div class="snap-cell a"><div class="sc-lbl a">淨資產</div><div class="sc-val big" id="sn-net">$0</div></div>
+      <div class="snap-cell b"><div class="sc-lbl b">月結餘</div><div class="sc-val" id="sn-surplus">$0</div></div>
+      <div class="snap-cell p"><div class="sc-lbl p">儲蓄率</div><div class="sc-val" id="sn-rate">0%</div></div>
+    </div>
+  </div>
+  <div class="ob-footer">
+    <button class="ob-btn-main" onclick="enterApp()">進入我的財務 →</button>
+  </div>
+</div>
+
+<!-- ══════════ MAIN APP ══════════ -->
+<div id="main-app" style="display:none;">
 
 <!-- 總覽 -->
 <div class="page active" id="pg-home">
@@ -287,8 +533,120 @@ body{background:var(--color-background-secondary);font-family:'Nunito',sans-seri
 </div>
 </div>
 
-</div>
-</div>
+</div><!-- /main-app -->
+</div></div>
+
+<script>
+/* ── 時間顯示 ── */
+(function tick(){const now=new Date();const h=now.getHours(),m=now.getMinutes();const el=document.getElementById('sb-time');if(el)el.textContent=h+':'+(m<10?'0':'')+m;setTimeout(tick,15000);})();
+
+/* ── Onboarding 頁面切換 ── */
+function obGo(id){
+  document.querySelectorAll('.ob-page').forEach(p=>p.classList.remove('active'));
+  const t=document.getElementById(id);if(t)t.classList.add('active');
+}
+
+/* ── 即時計算 ── */
+function obCalcLiquid(){
+  const b=parseFloat(document.getElementById('ob-bank').value)||0;
+  const s=parseFloat(document.getElementById('ob-stock').value)||0;
+  const c=document.getElementById('ob-liquid-card');
+  c.classList.toggle('show',b+s>0);
+  document.getElementById('ob-liquid-total').textContent='$'+(b+s).toLocaleString('zh-TW');
+}
+function obCalcProp(){
+  const cost=parseFloat(document.getElementById('ob-pcost').value)||0;
+  const mkt=parseFloat(document.getElementById('ob-pmkt').value)||0;
+  const ping=parseFloat(document.getElementById('ob-ping').value)||0;
+  const c=document.getElementById('ob-prop-card');
+  c.classList.toggle('show',cost>0&&mkt>0);
+  if(cost>0&&mkt>0){
+    const g=((mkt-cost)/cost*100).toFixed(1);
+    document.getElementById('ob-pgain').textContent=(g>=0?'+':'')+g+'%';
+    document.getElementById('ob-pping').textContent=ping>0?'$'+(mkt/ping|0).toLocaleString('zh-TW')+'/坪':'—';
+  }
+}
+function obCalcFlow(){
+  const inc=parseFloat(document.getElementById('ob-income').value)||0;
+  const exp=parseFloat(document.getElementById('ob-expense').value)||0;
+  const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;
+  const c=document.getElementById('ob-flow-card');
+  c.classList.toggle('show',inc>0);
+  document.getElementById('ob-surplus').textContent=(sur>=0?'+':'')+'$'+Math.abs(sur).toLocaleString('zh-TW');
+  document.getElementById('ob-surplus').style.color=sur>=0?'#1D9E75':'#E24B4A';
+  document.getElementById('ob-rate').textContent=rate+'%';
+  const pct=Math.min(rate,100),bar=document.getElementById('ob-health-bar');
+  bar.style.width=pct+'%';
+  bar.style.background=rate>=30?'#9FE1CB':rate>=20?'#EF9F27':'#F09595';
+  const lbl=document.getElementById('ob-health-lbl');
+  lbl.textContent=rate>=30?'優秀 🌟':rate>=20?'良好 👍':rate>=0?'待加強 ⚠️':'赤字 🔴';
+  lbl.style.color=rate>=30?'#1D9E75':rate>=20?'#BA7517':rate>=0?'#D85A30':'#E24B4A';
+}
+
+/* ── 完成：寫入快照並顯示完成頁 ── */
+function obFinish(){
+  const bank=parseFloat(document.getElementById('ob-bank').value)||0;
+  const stock=parseFloat(document.getElementById('ob-stock').value)||0;
+  const pmkt=parseFloat(document.getElementById('ob-pmkt').value)||0;
+  const pcost=parseFloat(document.getElementById('ob-pcost').value)||0;
+  const ping=parseFloat(document.getElementById('ob-ping').value)||0;
+  const mortgage=parseFloat(document.getElementById('ob-mortgage').value)||0;
+  const carloan=parseFloat(document.getElementById('ob-carloan').value)||0;
+  const cc=parseFloat(document.getElementById('ob-cc').value)||0;
+  const income=parseFloat(document.getElementById('ob-income').value)||0;
+  const expense=parseFloat(document.getElementById('ob-expense').value)||0;
+  const assets=bank+stock+pmkt;
+  const liab=mortgage+carloan+cc;
+  const net=assets-liab;
+  const sur=income-expense;
+  const rate=income>0?Math.round(sur/income*100):0;
+  const fmt=v=>v.toLocaleString('zh-TW');
+  document.getElementById('sn-assets').textContent='$'+fmt(assets);
+  document.getElementById('sn-liab').textContent='$'+fmt(liab);
+  document.getElementById('sn-net').textContent='$'+fmt(net);
+  document.getElementById('sn-surplus').textContent=(sur>=0?'+':'')+'$'+fmt(Math.abs(sur));
+  document.getElementById('sn-rate').textContent=rate+'%';
+  /* 帶入主 App */
+  _obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense);
+  obGo('ob-finish');
+}
+
+/* ── 把 OB 資料寫入主 App 欄位 ── */
+function _obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense){
+  const set=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
+  set('a-cash',bank);
+  set('a-stock',stock);
+  /* 不動產第一筆 */
+  if(pmkt||pcost){
+    const propInp=document.querySelectorAll('#prop-list [data-prop] .pf input');
+    if(propInp.length>=4){propInp[0].value=pcost||'';propInp[1].value=pmkt||'';propInp[2].value=ping||'';}
+  }
+  /* 房貸 */
+  const loanInp=document.querySelectorAll('#loan-rows [data-loan] .rval');
+  if(loanInp[0]&&mortgage)loanInp[0].value=mortgage;
+  if(loanInp[1]&&carloan)loanInp[1].value=carloan;
+  /* 信用卡 */
+  const otherInp=document.querySelectorAll('#other-rows [data-other] .rval');
+  if(otherInp[0]&&cc)otherInp[0].value=cc;
+  /* 收支 */
+  const incInp=document.querySelectorAll('#inc-rows [data-inc] .rval');
+  if(incInp[0]&&income)incInp[0].value=income;
+  const expInp=document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval');
+  if(expInp[0]&&expense)expInp[0].value=expense;
+}
+
+/* ── 進入主 App ── */
+function enterApp(){
+  document.querySelectorAll('.ob-page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('main-app').style.display='block';
+  document.getElementById('sb-title').textContent='我的財務';
+  const h=new Date().getHours();
+  const greeting=h<12?'早安 👋':h<18?'午安 👋':'晚安 👋';
+  const hEl=document.querySelector('#pg-home .scroll span');
+  if(hEl)hEl.textContent=greeting;
+  calcProps();calcCar(document.querySelector('#car-list .pf input'));calc();calcFlow();updateAll();
+}
+</script>
 
 <script>
 let pCnt=1,cCnt=1;
