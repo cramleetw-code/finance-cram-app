@@ -6,13 +6,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
 html{height:100%;background:#FFFEF9;}
-body{height:100%;font-family:'Nunito',sans-serif;background:#FFFEF9;display:flex;justify-content:center;overflow:hidden;}
-.frame{width:100%;max-width:480px;margin:0 auto;background:#FFFEF9;height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;}
+body{height:100%;font-family:'Nunito',sans-serif;background:#FFFEF9;margin:0;padding:0;}
+.frame{width:100%;max-width:480px;margin:0 auto;background:#FFFEF9;height:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidden;}
 .sb{padding:max(env(safe-area-inset-top),14px) 22px 6px;display:flex;justify-content:space-between;background:#FFFEF9;flex-shrink:0;}
 .sb-time{font-size:13px;font-weight:700;color:#2d2d2d;}
-.page{display:none;flex-direction:column;flex:1;min-height:0;overflow:hidden;}
+.page{display:none;flex-direction:column;flex:1;min-height:0;}
 .page.active{display:flex;}
-.scroll{overflow-y:auto;flex:1;min-height:0;padding:14px 16px;-webkit-overflow-scrolling:touch;}
+.scroll{overflow-y:scroll;flex:1;min-height:0;padding:14px 16px;-webkit-overflow-scrolling:touch;}
 .blk{background:#fff;border-radius:16px;border:2px solid #f0ece4;margin-bottom:10px;overflow:hidden;}
 .blk-head{padding:8px 12px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid;}
 .blk-head.green{background:#F0FFF4;color:#0F6E56;border-color:#9FE1CB;}
@@ -107,7 +107,7 @@ body{height:100%;font-family:'Nunito',sans-serif;background:#FFFEF9;display:flex
 .sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
 .sec-t{font-size:13px;font-weight:800;color:#2d2d2d;}
 .sec-more{font-size:11px;font-weight:700;color:#D85A30;cursor:pointer;}
-.tabbar{padding:8px 8px max(env(safe-area-inset-bottom),18px);display:flex;justify-content:space-around;border-top:2px solid #f0ece4;background:#FFFEF9;flex-shrink:0;}
+.tabbar{padding:8px 8px max(env(safe-area-inset-bottom),8px);display:flex;justify-content:space-around;border-top:2px solid #f0ece4;background:#FFFEF9;flex-shrink:0;position:sticky;bottom:0;}
 .tb{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;min-width:52px;}
 .tb-ico{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
 .tb-ico.on{background:#FAEEDA;}
