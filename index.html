@@ -4,115 +4,132 @@
 <meta name="theme-color" content="#FFFEF9">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+:root{
+  --bg-main:#FFFEF9;
+  --text-main:#2d2d2d;
+  --text-muted:#b0a99a;
+  --orange-main:#D85A30;
+  --orange-soft:#FAEEDA;
+  --green-main:#1D9E75;
+  --green-soft:#F0FFF4;
+  --red-main:#E24B4A;
+  --red-soft:#FFF5F5;
+  --border-soft:#f0ece4;
+}
 *{box-sizing:border-box;margin:0;padding:0;}
-html{background:#FFFEF9;}
-body{font-family:'Nunito',sans-serif;background:#FFFEF9;margin:0;padding:0;}
-.frame{width:100%;max-width:480px;margin:0 auto;background:#FFFEF9;min-height:100vh;display:flex;flex-direction:column;}
-.sb{padding:max(env(safe-area-inset-top),14px) 22px 6px;display:flex;justify-content:space-between;background:#FFFEF9;position:sticky;top:0;z-index:10;}
-.sb-time{font-size:13px;font-weight:700;color:#2d2d2d;}
-.page{display:none;flex-direction:column;flex:1;padding-bottom:80px;}
+html{background:var(--bg-main);}
+body{font-family:'Nunito',sans-serif;background:var(--bg-main);color:var(--text-main);margin:0;padding:0;}
+.frame{width:100%;max-width:480px;margin:0 auto;background:var(--bg-main);min-height:100vh;display:flex;flex-direction:column;}
+.sb{padding:max(env(safe-area-inset-top),14px) 22px 6px;display:flex;justify-content:space-between;background:var(--bg-main);position:sticky;top:0;z-index:10;}
+.sb-time{font-size:13px;font-weight:700;color:var(--text-main);}
+.page{display:none;flex-direction:column;flex:1;padding-bottom:90px;}
 .page.active{display:flex;}
 .scroll{padding:14px 16px;}
-.blk{background:#fff;border-radius:16px;border:2px solid #f0ece4;margin-bottom:10px;overflow:hidden;}
-.blk-head{padding:8px 12px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.07em;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid;}
-.blk-head.green{background:#F0FFF4;color:#0F6E56;border-color:#9FE1CB;}
-.blk-head.red{background:#FFF5F5;color:#A32D2D;border-color:#F7C1C1;}
-.blk-head.amber{background:#FFFBF0;color:#854F0B;border-color:#FAC775;}
-.blk-head.blue{background:#F0F6FF;color:#0C447C;border-color:#85B7EB;}
-.blk-head.coral{background:#FFF0EC;color:#993C1D;border-color:#F0997B;}
-.blk-head.teal{background:#E1F5EE;color:#085041;border-color:#5DCAA5;}
-.row{display:flex;align-items:center;padding:7px 12px;border-bottom:1.5px solid #f5f2ee;gap:6px;min-height:38px;}
+.blk{background:#fff;border-radius:16px;border:1.5px solid var(--border-soft);margin-bottom:10px;overflow:hidden;}
+.blk-head{padding:9px 14px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;border-bottom:1.5px solid var(--border-soft);}
+.blk-head.green{background:var(--green-soft);color:var(--green-main);}
+.blk-head.red{background:var(--red-soft);color:var(--red-main);}
+.blk-head.amber{background:var(--orange-soft);color:#854F0B;}
+.blk-head.blue{background:#F0F6FF;color:#0C447C;}
+.blk-head.coral{background:var(--orange-soft);color:var(--orange-main);}
+.blk-head.teal{background:var(--green-soft);color:var(--green-main);}
+.row{display:flex;align-items:center;padding:8px 14px;border-bottom:1px solid var(--border-soft);gap:6px;min-height:40px;}
 .row:last-child{border-bottom:none;}
-.rlabel{font-size:12px;font-weight:700;color:#555;white-space:nowrap;width:80px;flex-shrink:0;}
-.rval{flex:1;min-width:0;border:1.5px solid #f0ece4;border-radius:8px;padding:5px 8px;font-size:13px;font-weight:700;text-align:right;font-family:'Nunito',sans-serif;color:#2d2d2d;background:#FFFEF9;}
-.rval:focus{outline:none;border-color:#EF9F27;}
+.rlabel{font-size:13px;font-weight:600;color:var(--text-muted);white-space:nowrap;width:80px;flex-shrink:0;}
+.rval{flex:1;min-width:0;border:1.5px solid var(--border-soft);border-radius:10px;padding:6px 10px;font-size:14px;font-weight:700;text-align:right;font-family:'Nunito',sans-serif;color:var(--text-main);background:var(--bg-main);}
+.rval:focus{outline:none;border-color:var(--orange-main);}
 .rval[readonly]{background:#f5f2ee;color:#aaa;border-color:transparent;}
-.rdel{width:22px;height:22px;border-radius:50%;border:1.5px solid #f0ece4;background:#fff;color:#ccc;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
-.rdel:hover{background:#FCEBEB;color:#A32D2D;border-color:#F7C1C1;}
-.add-btn{padding:7px 12px;font-size:11px;font-weight:700;color:#378ADD;background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;}
-.prop-card{padding:10px 12px;border-bottom:1.5px solid #f5f2ee;}
-.prop-top{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
-.prop-name{flex:1;border:none;background:transparent;font-size:13px;font-weight:700;color:#2d2d2d;font-family:'Nunito',sans-serif;}
-.prop-name:focus{outline:none;border-bottom:1px solid #EF9F27;}
-.prop-addr{display:flex;gap:5px;margin-bottom:7px;}
-.addr-inp{flex:1;border:1.5px solid #f0ece4;border-radius:8px;padding:5px 8px;font-size:11px;font-family:'Nunito',sans-serif;color:#555;background:#FFFEF9;}
-.lookup-btn{padding:5px 10px;background:#BA7517;color:#fff;border:none;border-radius:7px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;}
-.lookup-btn:hover{background:#854F0B;}
+.rdel{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border-soft);background:#fff;color:#ccc;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rdel:hover{background:var(--red-soft);color:var(--red-main);}
+.add-btn{padding:8px 14px;font-size:13px;font-weight:600;color:var(--orange-main);background:none;border:none;cursor:pointer;font-family:'Nunito',sans-serif;}
+.prop-card{padding:12px 14px;border-bottom:1.5px solid var(--border-soft);}
+.prop-top{display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+.prop-name{flex:1;border:none;background:transparent;font-size:14px;font-weight:700;color:var(--text-main);font-family:'Nunito',sans-serif;}
+.prop-name:focus{outline:none;border-bottom:1px solid var(--orange-main);}
+.prop-addr{display:flex;gap:5px;margin-bottom:8px;}
+.addr-inp{flex:1;border:1.5px solid var(--border-soft);border-radius:10px;padding:6px 10px;font-size:12px;font-family:'Nunito',sans-serif;color:var(--text-muted);background:var(--bg-main);}
+.lookup-btn{padding:6px 12px;background:var(--orange-main);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif;}
+.lookup-btn:hover{opacity:0.85;}
 .lookup-btn:disabled{opacity:0.4;cursor:not-allowed;}
-.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.pf{display:flex;flex-direction:column;gap:3px;}
-.pf label{font-size:10px;font-weight:700;color:#b0a99a;text-transform:uppercase;letter-spacing:0.05em;}
-.pf input{border:1.5px solid #f0ece4;border-radius:7px;padding:5px 7px;font-size:12px;font-weight:700;text-align:right;font-family:'Nunito',sans-serif;color:#2d2d2d;background:#FFFEF9;width:100%;}
-.pf input:focus{outline:none;border-color:#EF9F27;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.pf{display:flex;flex-direction:column;gap:4px;}
+.pf label{font-size:11px;font-weight:600;color:var(--text-muted);}
+.pf input{border:1.5px solid var(--border-soft);border-radius:10px;padding:6px 8px;font-size:13px;font-weight:700;text-align:right;font-family:'Nunito',sans-serif;color:var(--text-main);background:var(--bg-main);width:100%;}
+.pf input:focus{outline:none;border-color:var(--orange-main);}
 .pf input[readonly]{background:#f5f2ee;color:#aaa;}
-.gain-info{margin-top:5px;}
-.gain-badge{display:inline-block;padding:2px 7px;border-radius:7px;font-size:10px;font-weight:700;margin-right:3px;}
-.gb-up{background:#EAF3DE;color:#27500A;}.gb-dn{background:#FCEBEB;color:#791F1F;}
-.gb-blue{background:#E6F1FB;color:#0C447C;}.gb-amber{background:#FAEEDA;color:#633806;}
-.car-card{padding:10px 12px;border-bottom:1.5px solid #f5f2ee;}
-.car-top{display:flex;align-items:center;gap:6px;margin-bottom:7px;}
-.method-toggle{display:flex;gap:3px;margin-left:auto;}
-.mt-btn{padding:3px 8px;font-size:10px;border:1.5px solid #f0ece4;border-radius:14px;cursor:pointer;background:#FFFEF9;color:#aaa;font-family:'Nunito',sans-serif;font-weight:700;}
-.mt-btn.on{background:#E6F1FB;border-color:#85B7EB;color:#0C447C;}
-.car-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.net-bar{background:#FAEEDA;border-radius:14px;border:2px solid #FAC775;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.net-label{font-size:12px;font-weight:700;color:#633806;}
-.net-val{font-size:20px;font-weight:900;}
-.sum-strip{background:#fff;border-radius:14px;border:2px solid #f0ece4;display:flex;margin-bottom:10px;overflow:hidden;}
-.ss-cell{flex:1;padding:8px 4px;text-align:center;border-right:1.5px solid #f0ece4;}
+.gain-info{margin-top:6px;}
+.gain-badge{display:inline-block;padding:3px 8px;border-radius:8px;font-size:11px;font-weight:700;margin-right:4px;}
+.gb-up{background:var(--green-soft);color:var(--green-main);}.gb-dn{background:var(--red-soft);color:var(--red-main);}
+.gb-blue{background:#E6F1FB;color:#0C447C;}.gb-amber{background:var(--orange-soft);color:#633806;}
+.car-card{padding:12px 14px;border-bottom:1.5px solid var(--border-soft);}
+.car-top{display:flex;align-items:center;gap:6px;margin-bottom:8px;}
+.method-toggle{display:flex;gap:4px;margin-left:auto;}
+.mt-btn{padding:4px 10px;font-size:11px;border:1.5px solid var(--border-soft);border-radius:20px;cursor:pointer;background:var(--bg-main);color:var(--text-muted);font-family:'Nunito',sans-serif;font-weight:600;}
+.mt-btn.on{background:var(--orange-soft);border-color:var(--orange-main);color:var(--orange-main);}
+.car-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.net-bar{background:var(--orange-soft);border-radius:16px;border:1.5px solid #f5c4a0;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.net-label{font-size:13px;font-weight:700;color:#854F0B;}
+.net-val{font-size:22px;font-weight:800;}
+.sum-strip{background:#fff;border-radius:16px;border:1.5px solid var(--border-soft);display:flex;margin-bottom:10px;overflow:hidden;}
+.ss-cell{flex:1;padding:9px 4px;text-align:center;border-right:1px solid var(--border-soft);}
 .ss-cell:last-child{border-right:none;}
-.ss-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.03em;color:#b0a99a;margin-bottom:2px;}
-.ss-val{font-size:11px;font-weight:800;}
-.ss-val.g{color:#1D9E75;}.ss-val.r{color:#E24B4A;}.ss-val.a{color:#D85A30;}.ss-val.b{color:#185FA5;}
-.fc-wrap{background:#F7F5F0;border-radius:14px;padding:12px 14px;border:2px solid #ede9e0;margin-bottom:10px;}
+.ss-lbl{font-size:10px;font-weight:600;color:var(--text-muted);margin-bottom:3px;}
+.ss-val{font-size:12px;font-weight:700;}
+.ss-val.g{color:var(--green-main);}.ss-val.r{color:var(--red-main);}.ss-val.a{color:var(--orange-main);}.ss-val.b{color:#185FA5;}
+.fc-wrap{background:#f7f5f0;border-radius:16px;padding:12px 14px;border:1.5px solid var(--border-soft);margin-bottom:10px;}
 .fc-head{display:flex;justify-content:space-between;margin-bottom:8px;}
-.fc-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#2d2d2d;}
-.fc-s{font-size:10px;color:#b0a99a;font-weight:600;}
+.fc-t{font-size:12px;font-weight:700;color:var(--text-main);}
+.fc-s{font-size:11px;color:var(--text-muted);font-weight:500;}
 .fc-bars{display:flex;gap:5px;align-items:flex-end;}
 .fc-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
 .fc-bar{width:100%;border-radius:5px 5px 2px 2px;}
-.fc-lbl{font-size:9px;font-weight:700;color:#b0a99a;}
-.fc-sum{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;}
-.fcs{border-radius:10px;border:2px solid;padding:8px 10px;text-align:center;}
-.fcs.g{background:#F0FFF4;border-color:#9FE1CB;}.fcs.r{background:#FFF5F5;border-color:#F7C1C1;}
-.fcs.a{background:#FFFBF0;border-color:#FAC775;}.fcs.b{background:#F0F6FF;border-color:#85B7EB;}
-.fcs-lbl{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;}
-.fcs-lbl.g{color:#0F6E56;}.fcs-lbl.r{color:#A32D2D;}.fcs-lbl.a{color:#854F0B;}.fcs-lbl.b{color:#0C447C;}
-.fcs-val{font-size:13px;font-weight:800;}
-.fcs-val.g{color:#1D9E75;}.fcs-val.r{color:#E24B4A;}.fcs-val.a{color:#D85A30;}.fcs-val.b{color:#185FA5;}
-.net-card{background:#FFF8EE;border-radius:20px;border:2px solid #F5C4B3;padding:14px 16px 12px;margin:8px 0;position:relative;overflow:hidden;}
-.nc-blob{position:absolute;right:-14px;top:-14px;width:60px;height:60px;border-radius:50%;background:#FAEEDA;opacity:0.5;}
-.nc-blob2{position:absolute;right:16px;bottom:-14px;width:36px;height:36px;border-radius:50%;background:#F5C4B3;opacity:0.4;}
-.nc-lbl{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D85A30;margin-bottom:4px;}
-.nc-val{font-size:28px;font-weight:900;color:#2d2d2d;letter-spacing:-0.03em;line-height:1;}
-.nc-pill{display:inline-flex;align-items:center;background:#EAF3DE;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700;color:#3B6D11;margin-top:6px;}
+.fc-lbl{font-size:10px;font-weight:600;color:var(--text-muted);}
+.fc-sum{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+.fcs{border-radius:12px;border:1.5px solid;padding:9px 12px;text-align:center;}
+.fcs.g{background:var(--green-soft);border-color:#9FE1CB;}.fcs.r{background:var(--red-soft);border-color:#F7C1C1;}
+.fcs.a{background:var(--orange-soft);border-color:#FAC775;}.fcs.b{background:#F0F6FF;border-color:#85B7EB;}
+.fcs-lbl{font-size:10px;font-weight:600;margin-bottom:3px;}
+.fcs-lbl.g{color:var(--green-main);}.fcs-lbl.r{color:var(--red-main);}.fcs-lbl.a{color:var(--orange-main);}.fcs-lbl.b{color:#0C447C;}
+.fcs-val{font-size:14px;font-weight:800;}
+.fcs-val.g{color:var(--green-main);}.fcs-val.r{color:var(--red-main);}.fcs-val.a{color:var(--orange-main);}.fcs-val.b{color:#185FA5;}
+.net-card{background:var(--orange-soft);border-radius:20px;border:1.5px solid #f5c4a0;padding:16px 18px 14px;margin:8px 0;position:relative;overflow:hidden;}
+.nc-blob{position:absolute;right:-14px;top:-14px;width:60px;height:60px;border-radius:50%;background:#fad9b0;opacity:0.5;}
+.nc-blob2{position:absolute;right:16px;bottom:-14px;width:36px;height:36px;border-radius:50%;background:#f5c4a0;opacity:0.4;}
+.nc-lbl{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange-main);margin-bottom:6px;}
+.nc-val{font-size:32px;font-weight:800;color:var(--text-main);letter-spacing:-0.03em;line-height:1;}
+.nc-pill{display:inline-flex;align-items:center;background:var(--green-soft);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;color:var(--green-main);margin-top:8px;}
 .two-mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
-.mini{border-radius:14px;padding:11px 12px;border:2px solid;}
-.mini.g{background:#F0FFF4;border-color:#9FE1CB;}.mini.r{background:#FFF5F5;border-color:#F7C1C1;}
-.mini-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;}
-.mini-lbl.g{color:#0F6E56;}.mini-lbl.r{color:#A32D2D;}
-.mini-val{font-size:16px;font-weight:800;}
-.mini-val.g{color:#1D9E75;}.mini-val.r{color:#E24B4A;}
-.asset-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;}
-.arow{background:#fff;border-radius:12px;border:2px solid #f0ece4;padding:9px 11px;display:flex;align-items:center;gap:8px;}
-.aico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.aico.h{background:#FFF0E6;}.aico.c{background:#FFF8DC;}.aico.m{background:#E8F5E9;}.aico.s{background:#EAF3DE;}
+.mini{border-radius:16px;padding:12px 14px;border:1.5px solid;}
+.mini.g{background:var(--green-soft);border-color:#9FE1CB;}.mini.r{background:var(--red-soft);border-color:#F7C1C1;}
+.mini-lbl{font-size:11px;font-weight:600;margin-bottom:4px;}
+.mini-lbl.g{color:var(--green-main);}.mini-lbl.r{color:var(--red-main);}
+.mini-val{font-size:18px;font-weight:800;}
+.mini-val.g{color:var(--green-main);}.mini-val.r{color:var(--red-main);}
+.asset-list{display:flex;flex-direction:column;gap:8px;margin-bottom:8px;}
+.arow{background:#fff;border-radius:14px;border:1.5px solid var(--border-soft);padding:10px 13px;display:flex;align-items:center;gap:10px;}
+.aico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.aico.h{background:#FFF0E6;}.aico.c{background:var(--orange-soft);}.aico.m{background:var(--green-soft);}.aico.s{background:var(--green-soft);}
 .ainfo{flex:1;min-width:0;}
-.aname{font-size:12px;font-weight:700;color:#2d2d2d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.asub{font-size:10px;color:#b0a99a;font-weight:600;margin-top:1px;}
+.aname{font-size:13px;font-weight:700;color:var(--text-main);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.asub{font-size:11px;color:var(--text-muted);font-weight:500;margin-top:2px;}
 .aright{text-align:right;flex-shrink:0;}
-.aval{font-size:12px;font-weight:800;color:#2d2d2d;white-space:nowrap;}
-.atag{font-size:9px;font-weight:700;padding:1px 5px;border-radius:5px;display:inline-block;margin-top:2px;}
-.atag.up{background:#EAF3DE;color:#3B6D11;}.atag.dep{background:#E6F1FB;color:#185FA5;}.atag.neg{background:#FCEBEB;color:#791F1F;}
-.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
-.sec-t{font-size:13px;font-weight:800;color:#2d2d2d;}
-.sec-more{font-size:11px;font-weight:700;color:#D85A30;cursor:pointer;}
-.tabbar{display:flex;justify-content:space-around;border-top:2px solid #f0ece4;background:#FFFEF9;position:fixed;bottom:0;left:0;right:0;z-index:100;padding:8px 8px max(env(safe-area-inset-bottom),8px);max-width:480px;margin:0 auto;}
-.tb{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;min-width:52px;}
-.tb-ico{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;}
-.tb-ico.on{background:#FAEEDA;}
-.tb-lbl{font-size:9px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;}
-.tb-lbl.on{color:#D85A30;}.tb-lbl.off{color:#c8c0b4;}
+.aval{font-size:13px;font-weight:800;color:var(--text-main);white-space:nowrap;}
+.atag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;display:inline-block;margin-top:3px;}
+.atag.up{background:var(--green-soft);color:var(--green-main);}.atag.dep{background:#E6F1FB;color:#185FA5;}.atag.neg{background:var(--red-soft);color:var(--red-main);}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.sec-t{font-size:14px;font-weight:700;color:var(--text-main);}
+.sec-more{font-size:12px;font-weight:600;color:var(--orange-main);cursor:pointer;}
+
+/* ── Bottom Tabbar（新設計）── */
+.tabbar{display:flex;justify-content:space-around;align-items:center;border-top:1px solid var(--border-soft);background:var(--bg-main);position:fixed;bottom:0;left:0;right:0;z-index:100;height:78px;padding-bottom:max(env(safe-area-inset-bottom),0px);max-width:480px;margin:0 auto;}
+.tb{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;flex:1;}
+.tb .icon-bg{width:56px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.tb-lbl{font-size:12px;font-weight:600;color:#c8c0b4;}
+.tb-lbl.on{font-weight:700;color:var(--orange-main);}
+.tb svg{width:22px;height:22px;transition:all .15s;}
+.tb.active .icon-bg{background:var(--orange-soft);}
+.tb.active .tb-lbl{font-weight:700;color:var(--orange-main);}
+.tb.active svg{width:24px;height:24px;}
 
 /* ── Onboarding ── */
 .ob-page{display:none;flex-direction:column;min-height:100vh;}
@@ -433,10 +450,10 @@ body{font-family:'Nunito',sans-serif;background:#FFFEF9;margin:0;padding:0;}
   <div class="fc-wrap"><div class="fc-head"><span class="fc-t">收支預估</span><span class="fc-s">6個月</span></div><div class="fc-bars" id="h-chart" style="height:40px"><div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#ede9e0"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#ede9e0"></div><div class="fc-lbl">—</div></div><div class="fc-col"><div class="fc-bar" style="height:26px;background:#ede9e0"></div><div class="fc-lbl">—</div></div></div></div>
 </div>
 <div class="tabbar">
-  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl on">總覽</span></div>
-  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl off">資產</span></div>
-  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl off">收支</span></div>
-  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl off">報表</span></div>
+  <div class="tb active" onclick="goPage('pg-home')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#D85A30"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl on">總覽</span></div>
+  <div class="tb" onclick="goPage('pg-assets')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl">資產</span></div>
+  <div class="tb" onclick="goPage('pg-cashflow')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl">收支</span></div>
+  <div class="tb" onclick="goPage('pg-report')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl">報表</span></div>
 </div>
 </div>
 
@@ -520,10 +537,10 @@ body{font-family:'Nunito',sans-serif;background:#FFFEF9;margin:0;padding:0;}
   </div>
 </div>
 <div class="tabbar">
-  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl off">總覽</span></div>
-  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl on">資產</span></div>
-  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl off">收支</span></div>
-  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl off">報表</span></div>
+  <div class="tb" onclick="goPage('pg-home')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl">總覽</span></div>
+  <div class="tb active" onclick="goPage('pg-assets')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#D85A30"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl on">資產</span></div>
+  <div class="tb" onclick="goPage('pg-cashflow')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl">收支</span></div>
+  <div class="tb" onclick="goPage('pg-report')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl">報表</span></div>
 </div>
 </div>
 
@@ -562,10 +579,10 @@ body{font-family:'Nunito',sans-serif;background:#FFFEF9;margin:0;padding:0;}
   <div class="fc-sum" id="cf-sum"></div>
 </div>
 <div class="tabbar">
-  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl off">總覽</span></div>
-  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl off">資產</span></div>
-  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl on">收支</span></div>
-  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl off">報表</span></div>
+  <div class="tb" onclick="goPage('pg-home')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl">總覽</span></div>
+  <div class="tb" onclick="goPage('pg-assets')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl">資產</span></div>
+  <div class="tb active" onclick="goPage('pg-cashflow')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#D85A30"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl on">收支</span></div>
+  <div class="tb" onclick="goPage('pg-report')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl">報表</span></div>
 </div>
 </div>
 
@@ -584,10 +601,10 @@ body{font-family:'Nunito',sans-serif;background:#FFFEF9;margin:0;padding:0;}
   <div class="blk" style="margin-bottom:4px"><div class="blk-head amber"><span>財務建議</span><span>🌟</span></div><div id="r-advice" style="padding:10px 12px;font-size:12px;font-weight:600;color:#555;line-height:1.7">請先填入資產與收支資料</div></div>
 </div>
 <div class="tabbar">
-  <div class="tb" onclick="goPage('pg-home')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl off">總覽</span></div>
-  <div class="tb" onclick="goPage('pg-assets')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl off">資產</span></div>
-  <div class="tb" onclick="goPage('pg-cashflow')"><div class="tb-ico off"><svg width="16" height="16" viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl off">收支</span></div>
-  <div class="tb" onclick="goPage('pg-report')"><div class="tb-ico on"><svg width="16" height="16" viewBox="0 0 24 24" fill="#D85A30"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl on">報表</span></div>
+  <div class="tb" onclick="goPage('pg-home')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="tb-lbl">總覽</span></div>
+  <div class="tb" onclick="goPage('pg-assets')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div><span class="tb-lbl">資產</span></div>
+  <div class="tb" onclick="goPage('pg-cashflow')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#c8c0b4"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg></div><span class="tb-lbl">收支</span></div>
+  <div class="tb active" onclick="goPage('pg-report')"><div class="icon-bg"><svg viewBox="0 0 24 24" fill="#D85A30"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div><span class="tb-lbl on">報表</span></div>
 </div>
 </div>
 
