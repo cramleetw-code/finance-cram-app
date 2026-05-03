@@ -5,22 +5,36 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap');
 :root{
-  --coral:#D85A30;
-  --coral-soft:#FFF5F0;
-  --coral-pill:#FAEEDA;
-  --green:#1D9E75;
-  --green-soft:#F0FFF4;
-  --red:#E24B4A;
-  --red-soft:#FFF5F5;
-  --amber:#854F0B;
-  --amber-soft:#FFFBF0;
-  --blue:#0C447C;
-  --blue-soft:#F0F6FF;
-  --border:#f0ece4;
+  /* 主色 D97A52 */
+  --coral:#D97A52;
+  --coral-soft:#FFF1EC;
+  --coral-100:#FFF1EC;
+  --coral-200:#FFE1D6;
+  --coral-300:#FFC9B6;
+  --coral-400:#FFB093;
+  --coral-pill:#FFE1D6;
+  /* 狀態色：成功/正常 */
+  --green:#5BBE8A;
+  --green-soft:#E8F7EF;
+  /* 狀態色：錯誤/負向 */
+  --red:#E45D5D;
+  --red-soft:#FFECEC;
+  /* 狀態色：警告/提醒 */
+  --amber:#F5A623;
+  --amber-soft:#FFF5E5;
+  /* 功能色：報表/分析 */
+  --blue:#6CA8F7;
+  --blue-soft:#ECF3FF;
+  /* 功能色：其他/輔助 */
+  --purple:#9C8FFF;
+  --purple-soft:#F1EDFF;
+  /* 中性色 */
+  --border:#EAE4DC;
   --bg:#FAF8F5;
   --card:#ffffff;
-  --text:#1a1a1a;
-  --muted:#c0b8ae;
+  --text:#3A3028;
+  --muted:#9A9088;
+  --hint:#C8C0B8;
   --shadow:0 2px 16px rgba(0,0,0,0.07);
   --shadow-sm:0 1px 8px rgba(0,0,0,0.05);
 }
@@ -44,23 +58,26 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 
 /* ── Tabbar ── */
 .tabbar-wrap{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;z-index:100;padding:8px 20px max(env(safe-area-inset-bottom),14px);background:var(--bg);}
-.tabbar{display:flex;justify-content:space-around;align-items:center;padding:10px 8px;border-top:none;background:var(--card);border-radius:28px;box-shadow:0 4px 24px rgba(0,0,0,0.12);}
-.tab{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;cursor:pointer;border:none;background:none;padding:4px 0;}
-.tab-inner{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 16px;border-radius:20px;transition:background .15s;}
-.tab.active .tab-inner{background:var(--coral-soft);}
-.tab-lbl{font-size:11px;font-weight:700;font-family:'Noto Sans TC',sans-serif;}
-.tab-lbl.on{color:var(--coral);}
+.tabbar{display:flex;justify-content:space-around;align-items:center;padding:10px 8px 12px;border-top:none;background:var(--card);border-radius:28px;box-shadow:0 4px 24px rgba(0,0,0,0.12);}
+.tab{display:flex;flex-direction:column;align-items:center;flex:1;cursor:pointer;border:none;background:none;padding:4px 0;}
+.tab-inner{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 16px 7px;border-radius:22px;transition:background .15s;}
+.tab-ico-wrap{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tab-ico-wrap svg{width:28px;height:28px;display:block;image-rendering:crisp-edges;}
+.tab-ico-wrap svg *{shape-rendering:geometricPrecision;}
+.tab.active .tab-inner{background:#FFF1EC;}
+.tab-lbl{font-size:13px;font-weight:700;font-family:'Noto Sans TC',sans-serif;line-height:1;margin-top:0;}
+.tab-lbl.on{color:#D97A52;}
 .tab-lbl.off{color:var(--muted);}
 
 /* ── Cards & Blocks（無邊框，陰影）── */
 .blk{background:var(--card);border-radius:20px;border:none;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;}
 .blk-head{padding:12px 16px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,0.04);font-family:'Noto Sans TC',sans-serif;white-space:nowrap;gap:8px;}
-.blk-head.green{background:var(--green-soft);color:#0F6E56;}
-.blk-head.red{background:var(--red-soft);color:#A32D2D;}
-.blk-head.amber{background:var(--amber-soft);color:var(--amber);}
-.blk-head.blue{background:var(--blue-soft);color:var(--blue);}
-.blk-head.coral{background:var(--coral-soft);color:#993C1D;}
-.blk-head.teal{background:var(--green-soft);color:#085041;}
+.blk-head.green{background:var(--green-soft);color:#2A7A50;}
+.blk-head.red{background:var(--red-soft);color:#B84848;}
+.blk-head.amber{background:var(--amber-soft);color:#D97A52;}
+.blk-head.blue{background:var(--blue-soft);color:#3868C0;}
+.blk-head.coral{background:var(--red-soft);color:#B84848;}
+.blk-head.teal{background:var(--green-soft);color:#2A7A50;}
 .blk-head .hval{font-family:'Inter',sans-serif;font-weight:800;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';}
 
 /* ── Rows ── */
@@ -72,7 +89,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .rval[readonly]{background:transparent;color:#bbb;}
 .rdel{width:28px;height:28px;border-radius:50%;border:none;background:#F5F3F0;color:#ccc;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
 .rdel:hover{background:var(--red-soft);color:var(--red);}
-.add-btn{padding:10px 16px;font-size:13px;font-weight:600;color:var(--coral);background:none;border:none;cursor:pointer;font-family:'Noto Sans TC',sans-serif;}
+.add-btn{padding:10px 16px;font-size:13px;font-weight:600;color:#D97A52;background:none;border:none;cursor:pointer;font-family:'Noto Sans TC',sans-serif;}
 
 /* ── 不動產 ── */
 .prop-card{padding:14px 16px;border-bottom:1px solid rgba(0,0,0,0.04);}
@@ -105,24 +122,24 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .car-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 
 /* ── 總覽頁 ── */
-.hero-card{background:var(--coral-soft);border-radius:24px;padding:22px 22px 18px;margin:8px 20px 14px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(216,90,48,0.12);}
-.hero-blob{position:absolute;right:-16px;top:-16px;width:70px;height:70px;border-radius:50%;background:var(--coral-pill);opacity:0.5;}
-.hero-blob2{position:absolute;right:24px;bottom:-16px;width:44px;height:44px;border-radius:50%;background:#F5C4B3;opacity:0.35;}
-.hero-tag{font-size:11px;font-weight:700;color:var(--coral);letter-spacing:0.12em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:8px;}
-.hero-num{font-size:34px;font-weight:800;color:var(--text);font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.03em;line-height:1;}
-.hero-pill{display:inline-flex;align-items:center;background:rgba(29,158,117,0.12);border-radius:20px;padding:4px 14px;margin-top:10px;}
-.hero-pill-txt{font-size:11px;font-weight:700;color:var(--green);font-family:'Inter',sans-serif;}
+.hero-card{background:#FFF1EC;border-radius:24px;padding:22px 22px 18px;margin:8px 20px 14px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(217,122,82,0.14);}
+.hero-blob{display:none;}
+.hero-blob2{display:none;}
+.hero-tag{font-size:11px;font-weight:700;color:#D97A52;letter-spacing:0.12em;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:8px;}
+.hero-num{font-size:34px;font-weight:800;color:#3A3028;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.03em;line-height:1;}
+.hero-pill{display:inline-flex;align-items:center;background:#D8EFE4;border-radius:20px;padding:4px 14px;margin-top:10px;}
+.hero-pill-txt{font-size:12px;font-weight:700;color:#1A6A40;font-family:'Inter',sans-serif;}
 
 .two-mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 20px 14px;}
 .mini{border-radius:20px;padding:16px;border:none;background:var(--card);box-shadow:var(--shadow-sm);}
 .mini-lbl{font-size:11px;font-weight:600;color:var(--muted);margin-bottom:6px;font-family:'Noto Sans TC',sans-serif;}
 .mini-val{font-size:20px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;}
-.mini-val.g{color:var(--green);}
-.mini-val.r{color:var(--red);}
+.mini-val.g{color:#1A6A40;}
+.mini-val.r{color:#A83838;}
 
 .sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
 .sec-t{font-size:14px;font-weight:800;color:var(--text);font-family:'Noto Sans TC',sans-serif;}
-.sec-more{font-size:12px;font-weight:600;color:var(--coral);cursor:pointer;font-family:'Noto Sans TC',sans-serif;}
+.sec-more{font-size:12px;font-weight:600;color:#D97A52;cursor:pointer;font-family:'Noto Sans TC',sans-serif;}
 
 .asset-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
 .arow{background:var(--card);border-radius:18px;border:none;box-shadow:var(--shadow-sm);padding:14px 16px;display:flex;align-items:center;gap:12px;}
@@ -137,51 +154,51 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .aright{text-align:right;flex-shrink:0;}
 .aval{font-size:14px;font-weight:800;color:var(--text);font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';}
 .atag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:6px;display:inline-block;margin-top:4px;font-family:'Inter',sans-serif;}
-.atag.up{background:#E1F5EE;color:#0F6E56;}
+.atag.up{background:#E8F7EF;color:#2A7A50;}
 .atag.dep{background:var(--blue-soft);color:var(--blue);}
-.atag.neg{background:var(--red-soft);color:#A32D2D;}
+.atag.neg{background:#FFECEC;color:#B84848;}
 
 /* ── 圖表 ── */
 .fc-wrap{background:var(--card);border-radius:20px;padding:16px;border:none;box-shadow:var(--shadow-sm);margin-bottom:14px;}
 .fc-head{display:flex;justify-content:space-between;margin-bottom:12px;}
 .fc-t{font-size:13px;font-weight:700;color:var(--text);font-family:'Noto Sans TC',sans-serif;}
 .fc-s{font-size:11px;color:var(--muted);font-weight:500;font-family:'Inter',sans-serif;}
-.fc-bars{display:flex;gap:6px;align-items:flex-end;}
-.fc-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;}
-.fc-bar{width:100%;border-radius:6px 6px 3px 3px;}
+.fc-bars{display:flex;gap:6px;align-items:flex-end;height:64px;}
+.fc-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%;}
+.fc-bar{width:100%;border-radius:6px 6px 3px 3px;min-height:4px;}
 .fc-lbl{font-size:9px;font-weight:600;color:var(--muted);font-family:'Inter',sans-serif;}
 
 /* ── 收支小結 ── */
 .fc-sum{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
 .fcs{border-radius:16px;border:none;padding:14px;text-align:center;box-shadow:var(--shadow-sm);}
-.fcs.g{background:var(--green-soft);}
-.fcs.r{background:var(--red-soft);}
-.fcs.a{background:var(--amber-soft);}
-.fcs.b{background:var(--blue-soft);}
+.fcs.g{background:#E8F7EF;}
+.fcs.r{background:#FFECEC;}
+.fcs.a{background:#FFF6E1;}
+.fcs.b{background:#ECF3FF;}
 .fcs-lbl{font-size:11px;font-weight:600;margin-bottom:4px;font-family:'Noto Sans TC',sans-serif;}
-.fcs-lbl.g{color:#0F6E56;}
-.fcs-lbl.r{color:#A32D2D;}
-.fcs-lbl.a{color:var(--amber);}
-.fcs-lbl.b{color:var(--blue);}
+.fcs-lbl.g{color:#2A7A50;}
+.fcs-lbl.r{color:#B84848;}
+.fcs-lbl.a{color:#D97A52;}
+.fcs-lbl.b{color:#3868C0;}
 .fcs-val{font-size:16px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.01em;}
-.fcs-val.g{color:var(--green);}
-.fcs-val.r{color:var(--red);}
-.fcs-val.a{color:var(--coral);}
-.fcs-val.b{color:#185FA5;}
+.fcs-val.g{color:#2A7A50;}
+.fcs-val.r{color:#B84848;}
+.fcs-val.a{color:#D97A52;}
+.fcs-val.b{color:#3868C0;}
 
 /* ── 資產頁底部彙總 ── */
 .net-bar{background:var(--coral-soft);border-radius:18px;border:none;box-shadow:0 2px 12px rgba(216,90,48,0.1);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
-.net-label{font-size:13px;font-weight:700;color:var(--coral);font-family:'Noto Sans TC',sans-serif;}
-.net-val{font-size:24px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;}
+.net-label{font-size:13px;font-weight:700;color:#8A6820;font-family:'Noto Sans TC',sans-serif;}
+.net-val{font-size:24px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;color:#D97A52;}
 .sum-strip{background:var(--card);border-radius:18px;border:none;box-shadow:var(--shadow-sm);display:flex;margin-bottom:14px;overflow:hidden;}
 .ss-cell{flex:1;padding:14px 4px;text-align:center;border-right:1px solid rgba(0,0,0,0.05);}
 .ss-cell:last-child{border-right:none;}
 .ss-lbl{font-size:10px;font-weight:600;color:var(--muted);margin-bottom:4px;font-family:'Noto Sans TC',sans-serif;}
 .ss-val{font-size:13px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';}
-.ss-val.g{color:var(--green);}
-.ss-val.r{color:var(--red);}
-.ss-val.a{color:var(--coral);}
-.ss-val.b{color:#185FA5;}
+.ss-val.g{color:#2A7A50;}
+.ss-val.r{color:#B84848;}
+.ss-val.a{color:#D97A52;}
+.ss-val.b{color:#3868C0;}
 
 /* ── 頁面標題 ── */
 .page-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px;font-family:'Noto Sans TC',sans-serif;}
@@ -194,14 +211,15 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .ob-title{font-size:24px;font-weight:800;color:var(--text);text-align:center;line-height:1.25;margin-bottom:8px;font-family:'Noto Sans TC',sans-serif;}
 .ob-sub{font-size:14px;color:var(--muted);font-weight:500;text-align:center;line-height:1.7;margin-bottom:20px;font-family:'Noto Sans TC',sans-serif;}
 .feat-list{display:flex;flex-direction:column;gap:10px;width:100%;}
-.feat-item{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:18px;border:none;box-shadow:var(--shadow-sm);padding:14px 16px;}
-.feat-ico-wrap{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;}
+.feat-item{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:16px;border:none;box-shadow:var(--shadow-sm);padding:14px 16px;cursor:pointer;}
+.feat-ico-wrap{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .feat-info{flex:1;}
-.feat-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px;font-family:'Noto Sans TC',sans-serif;}
+.feat-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px;font-family:'Noto Sans TC',sans-serif;}
 .feat-txt{font-size:12px;font-weight:500;color:var(--muted);font-family:'Noto Sans TC',sans-serif;}
+.feat-arrow{font-size:16px;color:var(--muted);flex-shrink:0;}
 .ob-footer{padding:14px 24px max(env(safe-area-inset-bottom),22px);display:flex;flex-direction:column;gap:10px;background:var(--bg);}
-.ob-btn-main{background:var(--coral);color:#fff;border:none;border-radius:16px;padding:16px;font-size:16px;font-weight:700;font-family:'Noto Sans TC',sans-serif;cursor:pointer;width:100%;letter-spacing:0.01em;box-shadow:0 4px 16px rgba(216,90,48,0.25);}
-.ob-btn-ghost{background:transparent;color:var(--muted);border:none;padding:8px;font-size:13px;font-weight:600;font-family:'Noto Sans TC',sans-serif;cursor:pointer;width:100%;text-align:center;}
+.ob-btn-main{background:#D97A52;color:#fff;border:none;border-radius:20px;padding:18px;font-size:16px;font-weight:700;font-family:'Noto Sans TC',sans-serif;cursor:pointer;width:100%;letter-spacing:0.02em;box-shadow:0 4px 16px rgba(217,122,82,0.32);}
+.ob-btn-ghost{background:transparent;color:var(--muted);border:none;padding:8px;font-size:13px;font-weight:500;font-family:'Noto Sans TC',sans-serif;cursor:pointer;width:100%;text-align:center;}
 
 /* step */
 .step-hd{background:var(--bg);padding:max(env(safe-area-inset-top),14px) 22px 0;border-bottom:none;flex-shrink:0;}
@@ -211,13 +229,13 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .step-count{color:var(--muted);font-size:12px;font-weight:600;font-family:'Inter',sans-serif;}
 .step-dots{display:flex;gap:6px;padding-bottom:14px;}
 .step-dot{flex:1;height:4px;border-radius:2px;background:rgba(0,0,0,0.08);transition:background .25s;}
-.step-dot.done{background:var(--coral);}
+.step-dot.done{background:#D97A52;}
 .step-body{flex:1;overflow-y:auto;padding:20px 22px 12px;display:flex;flex-direction:column;gap:16px;background:var(--bg);}
 .step-footer{padding:12px 22px max(env(safe-area-inset-bottom),18px);display:flex;flex-direction:column;gap:10px;background:var(--bg);}
 .sf-group{display:flex;flex-direction:column;gap:7px;}
 .sf-label{font-size:12px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:0.08em;font-family:'Noto Sans TC',sans-serif;}
 .sf-input{border:none;border-radius:14px;padding:14px 16px;font-size:17px;font-weight:700;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';color:var(--text);background:var(--card);outline:none;width:100%;box-shadow:var(--shadow-sm);}
-.sf-input:focus{box-shadow:0 0 0 2px var(--coral);}
+.sf-input:focus{box-shadow:0 0 0 2px #D97A52;}
 .sf-hint{font-size:12px;color:var(--muted);font-weight:500;font-family:'Noto Sans TC',sans-serif;padding-left:4px;}
 .preview-card{border-radius:16px;padding:14px 16px;display:none;box-shadow:var(--shadow-sm);}
 .preview-card.show{display:block;}
@@ -234,139 +252,156 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .finish-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 22px;gap:12px;}
 .snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;}
 .snap-cell{border-radius:16px;border:none;padding:14px 16px;text-align:center;box-shadow:var(--shadow-sm);}
-.snap-cell.g{background:var(--green-soft);}
-.snap-cell.r{background:var(--red-soft);}
-.snap-cell.a{background:var(--amber-soft);grid-column:1/-1;}
-.snap-cell.b{background:var(--blue-soft);}
-.snap-cell.p{background:var(--coral-soft);}
-.sc-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;font-family:'Noto Sans TC',sans-serif;}
-.sc-lbl.g{color:#0F6E56;}.sc-lbl.r{color:#A32D2D;}.sc-lbl.a{color:var(--amber);}.sc-lbl.b{color:var(--blue);}.sc-lbl.p{color:#993C1D;}
-.sc-val{font-size:17px;font-weight:800;color:var(--text);font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;}
-.sc-val.big{font-size:24px;}
+.snap-cell{border-radius:16px;border:none;padding:14px 16px;text-align:center;box-shadow:var(--shadow-sm);}
+.snap-cell.g{background:#E8F7EF;}
+.snap-cell.r{background:#FFECEC;}
+.snap-cell.a{background:#FFF1EC;grid-column:1/-1;}
+.snap-cell.b{background:#ECF3FF;}
+.snap-cell.p{background:#FFF1EC;}
+.sc-lbl{font-size:11px;font-weight:700;letter-spacing:0.04em;margin-bottom:5px;font-family:'Noto Sans TC',sans-serif;}
+.sc-lbl.g{color:#2A7A50;}.sc-lbl.r{color:#B84848;}.sc-lbl.a{color:#D97A52;}.sc-lbl.b{color:#3868C0;}.sc-lbl.p{color:#D97A52;}
+.sc-val{font-size:18px;font-weight:800;color:#3A3028;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;}
+.sc-val.big{font-size:26px;}
 </style>
 
 
 <!-- SVG Icon Definitions -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-<symbol id="ico-home" viewBox="0 0 44 44">
-  <path d="M6 24L22 8L38 24" fill="#F5C8A8" stroke="#C89070" stroke-width="2.2" stroke-linejoin="round"/>
-  <rect x="10" y="23" width="24" height="18" rx="3" fill="#FFF8F4" stroke="#C89070" stroke-width="1.8"/>
-  <path d="M18 41v-9a4 4 0 018 0v9" fill="#EAC4A0" stroke="#C89070" stroke-width="1.5"/>
-  <rect x="27" y="27" width="5" height="5" rx="1.5" fill="#C8E8DC" stroke="#88BAA8" stroke-width="1.2"/>
-  <line x1="29.5" y1="27" x2="29.5" y2="32" stroke="#88BAA8" stroke-width="0.9"/>
-  <line x1="27" y1="29.5" x2="32" y2="29.5" stroke="#88BAA8" stroke-width="0.9"/>
-  <rect x="29" y="10" width="4" height="8" rx="1" fill="#EAC4A0" stroke="#C89070" stroke-width="1.3"/>
+<symbol id="ico-home" viewBox="0 0 48 48">
+  <path d="M6 26L24 8L42 26" fill="#F0C8A8" stroke="#C89070" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="11" y="25" width="26" height="17" rx="2" fill="#FFF8F4" stroke="#C89070" stroke-width="1.5"/>
+  <path d="M20 42v-9a4 4 0 018 0v9" fill="#EAC4A0" stroke="#C89070" stroke-width="1.3"/>
+  <rect x="30" y="28" width="5" height="5" rx="1" fill="#C8E8DC" stroke="#88BAA8" stroke-width="1"/>
+  <line x1="32.5" y1="28" x2="32.5" y2="33" stroke="#88BAA8" stroke-width="0.8"/>
+  <line x1="30" y1="30.5" x2="35" y2="30.5" stroke="#88BAA8" stroke-width="0.8"/>
+  <ellipse cx="37" cy="39" rx="4" ry="3" fill="#B8D8C4" stroke="#88BAA8" stroke-width="1"/>
+  <ellipse cx="34" cy="41" rx="3.5" ry="2.5" fill="#B8D8C4" stroke="#88BAA8" stroke-width="1"/>
+  <rect x="22" y="14" width="3" height="6" rx="1" fill="#EAC4A0" stroke="#C89070" stroke-width="1"/>
 </symbol>
-<symbol id="ico-asset" viewBox="0 0 44 44">
-  <rect x="8" y="6" width="22" height="30" rx="3" fill="#F5ECD8" stroke="#C0A070" stroke-width="1.8"/>
-  <path d="M24 6l6 6h-6V6z" fill="#E8D0A0" stroke="#C0A070" stroke-width="1.5" stroke-linejoin="round"/>
-  <line x1="12" y1="18" x2="26" y2="18" stroke="#C0A070" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="12" y1="23" x2="22" y2="23" stroke="#C0A070" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="12" y1="28" x2="24" y2="28" stroke="#C0A070" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="32" cy="32" r="8" fill="#F5D888" stroke="#C8A838" stroke-width="1.8"/>
-  <line x1="32" y1="28" x2="32" y2="33" stroke="#C8A838" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="29.5" y1="31" x2="34.5" y2="31" stroke="#C8A838" stroke-width="1.5" stroke-linecap="round"/>
+<symbol id="ico-asset" viewBox="0 0 48 48">
+  <rect x="7" y="5" width="22" height="30" rx="2.5" fill="#F5ECD8" stroke="#C0A070" stroke-width="1.5"/>
+  <path d="M23 5l8 8h-8V5z" fill="#E8D0A0" stroke="#C0A070" stroke-width="1.3" stroke-linejoin="round"/>
+  <line x1="11" y1="18" x2="25" y2="18" stroke="#C0A070" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="11" y1="22" x2="21" y2="22" stroke="#C0A070" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="11" y1="26" x2="23" y2="26" stroke="#C0A070" stroke-width="1.3" stroke-linecap="round"/>
+  <circle cx="35" cy="35" r="9" fill="#F5D888" stroke="#C8A838" stroke-width="1.5"/>
+  <line x1="35" y1="30" x2="35" y2="35.5" stroke="#C8A838" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="31.5" y1="35.5" x2="38.5" y2="35.5" stroke="#C8A838" stroke-width="1.5" stroke-linecap="round"/>
 </symbol>
-<symbol id="ico-cashflow" viewBox="0 0 44 44">
-  <rect x="6" y="15" width="32" height="24" rx="5" fill="#EAD8CC" stroke="#B89080" stroke-width="1.8"/>
-  <path d="M6 21h32v-6a5 5 0 00-5-5H11a5 5 0 00-5 5v6z" fill="#D8B8A8" stroke="#B89080" stroke-width="1.8"/>
-  <rect x="22" y="25" width="14" height="8" rx="3" fill="#EAD0B8" stroke="#B89080" stroke-width="1.5"/>
-  <circle cx="29" cy="29" r="3" fill="#F5D888" stroke="#C8A838" stroke-width="1.3"/>
+<symbol id="ico-cashflow" viewBox="0 0 48 48">
+  <rect x="6" y="14" width="36" height="24" rx="4" fill="#E8D8CC" stroke="#B89080" stroke-width="1.5"/>
+  <path d="M6 20h36v-6a4 4 0 00-4-4H10a4 4 0 00-4 4v6z" fill="#D4B8A8" stroke="#B89080" stroke-width="1.5"/>
+  <rect x="22" y="24" width="16" height="9" rx="3" fill="#EAD0B8" stroke="#B89080" stroke-width="1.3"/>
+  <circle cx="29" cy="28.5" r="3.5" fill="#F5D888" stroke="#C8A838" stroke-width="1.3"/>
+  <circle cx="33.5" cy="28.5" r="3.5" fill="#F0B888" stroke="#C89838" stroke-width="1.3" opacity="0.85"/>
 </symbol>
-<symbol id="ico-report" viewBox="0 0 44 44">
-  <rect x="5" y="7" width="34" height="28" rx="4" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.8"/>
-  <rect x="9" y="24" width="6" height="8" rx="2" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.3"/>
-  <rect x="18" y="16" width="6" height="16" rx="2" fill="#80A87C" stroke="#96AA90" stroke-width="1.3"/>
-  <rect x="27" y="20" width="6" height="12" rx="2" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.3"/>
-  <polyline points="12,22 21,14 30,18 38,10" fill="none" stroke="#96AA90" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<symbol id="ico-report" viewBox="0 0 48 48">
+  <rect x="5" y="7" width="38" height="30" rx="3.5" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.5"/>
+  <rect x="9" y="23" width="8" height="11" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.3"/>
+  <rect x="20" y="15" width="8" height="19" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.3"/>
+  <rect x="31" y="18" width="8" height="16" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.3"/>
+  <polyline points="13,21 24,11 35,15.5" fill="none" stroke="#96AA90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="35" cy="15.5" r="2.5" fill="#80A87C"/>
 </symbol>
-<!-- 資產內頁 icons -->
-<symbol id="ico-bank" viewBox="0 0 44 44">
-  <rect x="6" y="17" width="32" height="20" rx="4" fill="#EAE0D4" stroke="#B8A890" stroke-width="1.8"/>
-  <rect x="6" y="12" width="32" height="7" rx="3" fill="#C8A878" stroke="#B8A890" stroke-width="1.8"/>
-  <rect x="17" y="23" width="10" height="6" rx="2" fill="#FFF8F0" stroke="#B8A890" stroke-width="1.3"/>
-  <rect x="8" y="29" width="5" height="4" rx="1" fill="#FFF8F0" stroke="#B8A890" stroke-width="1"/>
-  <rect x="31" y="29" width="5" height="4" rx="1" fill="#FFF8F0" stroke="#B8A890" stroke-width="1"/>
+<symbol id="ico-bank" viewBox="0 0 48 48">
+  <rect x="5" y="17" width="38" height="22" rx="3.5" fill="#EAE0D4" stroke="#B8A890" stroke-width="1.5"/>
+  <rect x="5" y="11" width="38" height="8" rx="3" fill="#C8A878" stroke="#B8A890" stroke-width="1.5"/>
+  <rect x="18" y="23" width="12" height="7" rx="2" fill="#FFF8F0" stroke="#B8A890" stroke-width="1.2"/>
+  <rect x="7" y="31" width="6" height="5" rx="1" fill="#FFF8F0" stroke="#B8A890" stroke-width="1"/>
+  <rect x="35" y="31" width="6" height="5" rx="1" fill="#FFF8F0" stroke="#B8A890" stroke-width="1"/>
 </symbol>
-<symbol id="ico-stock" viewBox="0 0 44 44">
-  <rect x="5" y="8" width="34" height="26" rx="4" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.8"/>
-  <polyline points="9,28 17,18 23,23 33,12" fill="none" stroke="#80A87C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="33" cy="12" r="3.5" fill="#80A87C"/>
-  <rect x="8" y="29" width="5" height="5" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.2"/>
-  <rect x="15" y="27" width="5" height="7" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.2"/>
-  <rect x="22" y="30" width="5" height="4" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.2"/>
-  <rect x="29" y="28" width="5" height="6" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.2"/>
+<symbol id="ico-stock" viewBox="0 0 48 48">
+  <rect x="4" y="7" width="40" height="28" rx="3.5" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.5"/>
+  <polyline points="8,30 16,18 24,24 36,10" fill="none" stroke="#80A87C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="36" cy="10" r="3.5" fill="#80A87C"/>
+  <rect x="7" y="31" width="6" height="7" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.2"/>
+  <rect x="16" y="28" width="6" height="10" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.2"/>
+  <rect x="25" y="32" width="6" height="6" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.2"/>
+  <rect x="34" y="30" width="6" height="8" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.2"/>
 </symbol>
-<symbol id="ico-property" viewBox="0 0 44 44">
-  <path d="M6 24L22 8L38 24" fill="#F5C8A8" stroke="#C89070" stroke-width="2.2" stroke-linejoin="round"/>
-  <rect x="10" y="23" width="24" height="18" rx="3" fill="#FFF8F4" stroke="#C89070" stroke-width="1.8"/>
-  <path d="M18 41v-9a4 4 0 018 0v9" fill="#EAC4A0" stroke="#C89070" stroke-width="1.5"/>
-  <rect x="27" y="27" width="5" height="5" rx="1.5" fill="#C8E8DC" stroke="#88BAA8" stroke-width="1.2"/>
-  <line x1="29.5" y1="27" x2="29.5" y2="32" stroke="#88BAA8" stroke-width="0.9"/>
-  <line x1="27" y1="29.5" x2="32" y2="29.5" stroke="#88BAA8" stroke-width="0.9"/>
+<symbol id="ico-property" viewBox="0 0 48 48">
+  <path d="M6 26L24 8L42 26" fill="#F0C8A8" stroke="#C89070" stroke-width="1.5" stroke-linejoin="round"/>
+  <rect x="11" y="25" width="26" height="17" rx="2" fill="#FFF8F4" stroke="#C89070" stroke-width="1.5"/>
+  <path d="M20 42v-9a4 4 0 018 0v9" fill="#EAC4A0" stroke="#C89070" stroke-width="1.3"/>
+  <rect x="30" y="28" width="5" height="5" rx="1" fill="#C8E8DC" stroke="#88BAA8" stroke-width="1"/>
+  <line x1="32.5" y1="28" x2="32.5" y2="33" stroke="#88BAA8" stroke-width="0.8"/>
+  <line x1="30" y1="30.5" x2="35" y2="30.5" stroke="#88BAA8" stroke-width="0.8"/>
 </symbol>
-<symbol id="ico-car" viewBox="0 0 44 44">
-  <rect x="5" y="19" width="34" height="16" rx="5" fill="#D8E4EE" stroke="#94AABE" stroke-width="1.8"/>
-  <path d="M9 19l5-9h16l5 9" fill="#C4D4E4" stroke="#94AABE" stroke-width="1.8" stroke-linejoin="round"/>
-  <rect x="11" y="16" width="14" height="8" rx="2" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.2"/>
-  <circle cx="13" cy="35" r="5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.8"/>
-  <circle cx="13" cy="35" r="2" fill="#E8EEF4"/>
-  <circle cx="31" cy="35" r="5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.8"/>
-  <circle cx="31" cy="35" r="2" fill="#E8EEF4"/>
+<symbol id="ico-car" viewBox="0 0 48 48">
+  <rect x="4" y="19" width="40" height="18" rx="5" fill="#D8E4EE" stroke="#94AABE" stroke-width="1.5"/>
+  <path d="M8 19l5-10h22l5 10" fill="#C4D4E4" stroke="#94AABE" stroke-width="1.5" stroke-linejoin="round"/>
+  <rect x="10" y="16" width="16" height="9" rx="2" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.2"/>
+  <circle cx="13" cy="37" r="5.5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/>
+  <circle cx="13" cy="37" r="2.2" fill="#E8EEF4"/>
+  <circle cx="35" cy="37" r="5.5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/>
+  <circle cx="35" cy="37" r="2.2" fill="#E8EEF4"/>
 </symbol>
-<symbol id="ico-loan" viewBox="0 0 44 44">
-  <rect x="7" y="10" width="24" height="28" rx="3" fill="#F5ECD8" stroke="#C0A070" stroke-width="1.8"/>
-  <path d="M23 10l8 8h-8V10z" fill="#E8D0A0" stroke="#C0A070" stroke-width="1.5" stroke-linejoin="round"/>
-  <line x1="11" y1="22" x2="27" y2="22" stroke="#C0A070" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="11" y1="27" x2="22" y2="27" stroke="#C0A070" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="32" cy="32" r="8" fill="#EAB8B8" stroke="#C08080" stroke-width="1.8"/>
-  <path d="M32 27v5.5l3 2" stroke="#C08080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<symbol id="ico-loan" viewBox="0 0 48 48">
+  <rect x="6" y="8" width="26" height="32" rx="2.5" fill="#F5ECD8" stroke="#C0A070" stroke-width="1.5"/>
+  <path d="M25 8l9 9h-9V8z" fill="#E8D0A0" stroke="#C0A070" stroke-width="1.3" stroke-linejoin="round"/>
+  <line x1="10" y1="22" x2="28" y2="22" stroke="#C0A070" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="10" y1="27" x2="22" y2="27" stroke="#C0A070" stroke-width="1.3" stroke-linecap="round"/>
+  <circle cx="36" cy="36" r="9" fill="#EAB8B8" stroke="#C08080" stroke-width="1.5"/>
+  <path d="M36 30v7l3.5 2.5" stroke="#C08080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
-<symbol id="ico-card" viewBox="0 0 44 44">
-  <rect x="5" y="13" width="34" height="22" rx="4" fill="#EAD8CC" stroke="#B89080" stroke-width="1.8"/>
-  <rect x="5" y="19" width="34" height="7" fill="#D8B8A8" stroke="none"/>
-  <rect x="8" y="27" width="10" height="4" rx="2" fill="#FFF5EE" stroke="#B89080" stroke-width="1.2"/>
-  <rect x="20" y="27" width="6" height="4" rx="2" fill="#FFF5EE" stroke="#B89080" stroke-width="1.2"/>
-  <circle cx="30" cy="16" r="3.5" fill="#F5D888" stroke="#C8A838" stroke-width="1.3"/>
-  <circle cx="33.5" cy="16" r="3.5" fill="#EAC4A0" stroke="#C8A838" stroke-width="1.3"/>
+<symbol id="ico-card" viewBox="0 0 48 48">
+  <rect x="4" y="12" width="40" height="26" rx="4" fill="#EAD8CC" stroke="#B89080" stroke-width="1.5"/>
+  <rect x="4" y="19" width="40" height="8" fill="#D8B8A8"/>
+  <rect x="7" y="30" width="12" height="5" rx="2" fill="#FFF5EE" stroke="#B89080" stroke-width="1.2"/>
+  <rect x="21" y="30" width="7" height="5" rx="2" fill="#FFF5EE" stroke="#B89080" stroke-width="1.2"/>
+  <circle cx="34" cy="16.5" r="4" fill="#F5D888" stroke="#C8A838" stroke-width="1.3"/>
+  <circle cx="38.5" cy="16.5" r="4" fill="#EAC4A0" stroke="#C8A838" stroke-width="1.3"/>
 </symbol>
-<symbol id="ico-salary" viewBox="0 0 44 44">
-  <rect x="7" y="9" width="30" height="26" rx="4" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.8"/>
-  <circle cx="22" cy="19" r="6" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.5"/>
-  <path d="M11 35c0-6 5-9 11-9s11 3 11 9" fill="#C8E0C4" stroke="#96AA90" stroke-width="1.5"/>
-  <path d="M32 7l5 5-5 5" stroke="#80A87C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <line x1="37" y1="12" x2="30" y2="12" stroke="#80A87C" stroke-width="1.5" stroke-linecap="round"/>
+<symbol id="ico-salary" viewBox="0 0 48 48">
+  <rect x="5" y="8" width="38" height="30" rx="3.5" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.5"/>
+  <circle cx="24" cy="20" r="7" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.5"/>
+  <path d="M11 38c0-7 5.5-10 13-10s13 3 13 10" fill="#C8E0C4" stroke="#96AA90" stroke-width="1.3"/>
+  <path d="M34 7l6 6-6 6" stroke="#80A87C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="40" y1="13" x2="32" y2="13" stroke="#80A87C" stroke-width="1.5" stroke-linecap="round"/>
 </symbol>
-<symbol id="ico-invest" viewBox="0 0 44 44">
-  <circle cx="22" cy="22" r="16" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.8"/>
-  <polyline points="11,30 17,18 23,24 33,12" fill="none" stroke="#80A87C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="33" cy="12" r="3" fill="#80A87C"/>
-  <path d="M29 12l4-4 4 4" stroke="#80A87C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<symbol id="ico-invest" viewBox="0 0 48 48">
+  <circle cx="24" cy="24" r="18" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.5"/>
+  <polyline points="11,32 18,18 25,24 36,10" fill="none" stroke="#80A87C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="36" cy="10" r="3.5" fill="#80A87C"/>
+  <path d="M30 10l6-6 6 6" stroke="#80A87C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
-<symbol id="ico-food" viewBox="0 0 44 44">
-  <rect x="10" y="22" width="24" height="14" rx="4" fill="#F5ECD8" stroke="#C0A870" stroke-width="1.8"/>
-  <ellipse cx="22" cy="22" rx="12" ry="4" fill="#EAD8B8" stroke="#C0A870" stroke-width="1.8"/>
-  <line x1="16" y1="10" x2="16" y2="20" stroke="#C0A870" stroke-width="1.8" stroke-linecap="round"/>
-  <line x1="22" y1="8" x2="22" y2="20" stroke="#C0A870" stroke-width="1.8" stroke-linecap="round"/>
-  <path d="M26 10c0-2 4-2 4 0v10" stroke="#C0A870" stroke-width="1.8" stroke-linecap="round"/>
+<symbol id="ico-food" viewBox="0 0 48 48">
+  <rect x="9" y="24" width="30" height="17" rx="4" fill="#F5ECD8" stroke="#C0A870" stroke-width="1.5"/>
+  <ellipse cx="24" cy="24" rx="15" ry="5" fill="#EAD8B8" stroke="#C0A870" stroke-width="1.5"/>
+  <line x1="17" y1="9" x2="17" y2="22" stroke="#C0A870" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="24" y1="7" x2="24" y2="22" stroke="#C0A870" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M29 9c0-2.5 5-2.5 5 0v13" stroke="#C0A870" stroke-width="1.5" stroke-linecap="round"/>
 </symbol>
-<symbol id="ico-transport" viewBox="0 0 44 44">
-  <rect x="5" y="17" width="34" height="20" rx="6" fill="#D8E4EE" stroke="#94AABE" stroke-width="1.8"/>
-  <rect x="8" y="21" width="10" height="8" rx="2" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.3"/>
-  <rect x="26" y="21" width="10" height="8" rx="2" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.3"/>
-  <circle cx="13" cy="37" r="4.5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/>
-  <circle cx="13" cy="37" r="1.8" fill="#E8EEF4"/>
-  <circle cx="31" cy="37" r="4.5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/>
-  <circle cx="31" cy="37" r="1.8" fill="#E8EEF4"/>
+<symbol id="ico-transport" viewBox="0 0 48 48">
+  <rect x="4" y="16" width="40" height="23" rx="6" fill="#D8E4EE" stroke="#94AABE" stroke-width="1.5"/>
+  <rect x="7" y="20" width="12" height="10" rx="2" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.2"/>
+  <rect x="29" y="20" width="12" height="10" rx="2" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.2"/>
+  <circle cx="14" cy="39" r="5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/>
+  <circle cx="14" cy="39" r="2" fill="#E8EEF4"/>
+  <circle cx="34" cy="39" r="5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/>
+  <circle cx="34" cy="39" r="2" fill="#E8EEF4"/>
+  <line x1="2" y1="28" x2="6" y2="28" stroke="#94AABE" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="42" y1="28" x2="46" y2="28" stroke="#94AABE" stroke-width="1.5" stroke-linecap="round"/>
 </symbol>
-<symbol id="ico-insurance" viewBox="0 0 44 44">
-  <path d="M22 5l14 6v11c0 9-6 14-14 17C14 36 8 31 8 22V11l14-6z" fill="#EAE4DC" stroke="#B8A898" stroke-width="1.8" stroke-linejoin="round"/>
-  <path d="M15 23l5 5 9-9" stroke="#96AA90" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<symbol id="ico-insurance" viewBox="0 0 48 48">
+  <path d="M24 4l17 7v13c0 11-7 17-17 21C14 41 7 35 7 24V11l17-7z" fill="#EAE4DC" stroke="#B8A898" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M16 25l6 6 11-11" stroke="#96AA90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
-<symbol id="ico-utility" viewBox="0 0 44 44">
-  <path d="M22 6c0 0-13 12-13 20a13 13 0 0026 0C35 18 22 6 22 6z" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.8"/>
-  <path d="M22 16c0 0-7 8-7 12a7 7 0 0014 0c0-4-7-12-7-12z" fill="#A8C8DC" stroke="#94AABE" stroke-width="1.3"/>
-  <path d="M19 32a3 3 0 006 0" stroke="#94AABE" stroke-width="1.3" stroke-linecap="round"/>
+<symbol id="ico-utility" viewBox="0 0 48 48">
+  <path d="M24 5c0 0-15 14-15 23a15 15 0 0030 0C39 19 24 5 24 5z" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.5"/>
+  <path d="M24 16c0 0-8 9-8 13a8 8 0 0016 0c0-4-8-13-8-13z" fill="#A8C8DC" stroke="#94AABE" stroke-width="1.3"/>
+  <path d="M21 34a3 3 0 006 0" stroke="#94AABE" stroke-width="1.3" stroke-linecap="round"/>
+</symbol>
+<symbol id="ico-hint" viewBox="0 0 48 48">
+  <path d="M24 7c0 0-13 11-13 19a13 13 0 0026 0C37 18 24 7 24 7z" fill="#F5E888" stroke="#C8B828" stroke-width="1.5"/>
+  <path d="M24 17c0 0-7 8-7 10a7 7 0 0014 0c0-2-7-10-7-10z" fill="#F5D848" stroke="#C8A818" stroke-width="1.2"/>
+  <path d="M21 33a3 3 0 006 0" stroke="#C8A818" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="12" y1="26" x2="9" y2="26" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="36" y1="26" x2="39" y2="26" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="15" y1="15" x2="13" y2="13" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="33" y1="15" x2="35" y2="13" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="24" y1="9" x2="24" y2="6" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
+  <rect x="20" y="36" width="8" height="4" rx="2" fill="#F5E888" stroke="#C8B828" stroke-width="1.2"/>
 </symbol>
 </svg>
 <div class="frame">
@@ -379,43 +414,90 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="ob-page active" id="ob-welcome">
   <div class="ob-hero">
     <div class="ob-illus">
-      <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-        <circle cx="248" cy="28" r="36" fill="#FFF0EC" opacity="0.9"/>
-        <circle cx="36" cy="148" r="26" fill="#E1F5EE" opacity="0.9"/>
-        <circle cx="268" cy="155" r="18" fill="#FAEEDA" opacity="0.8"/>
-        <rect x="24" y="48" width="252" height="116" rx="18" fill="#fff" stroke="#f0ece4" stroke-width="1.5"/>
-        <rect x="42" y="106" width="20" height="42" rx="5" fill="#F5C4B3"/>
-        <rect x="70" y="90" width="20" height="58" rx="5" fill="#EF9F27"/>
-        <rect x="98" y="76" width="20" height="72" rx="5" fill="#D85A30"/>
-        <rect x="126" y="85" width="20" height="63" rx="5" fill="#EF9F27"/>
-        <rect x="154" y="68" width="20" height="80" rx="5" fill="#9FE1CB"/>
-        <rect x="182" y="58" width="20" height="90" rx="5" fill="#D85A30"/>
-        <polyline points="52,100 80,84 108,70 136,78 164,62 192,52" fill="none" stroke="#D85A30" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
-        <circle cx="52" cy="100" r="4" fill="#D85A30"/>
-        <circle cx="108" cy="70" r="4" fill="#D85A30"/>
-        <circle cx="192" cy="52" r="5" fill="#D85A30" stroke="#fff" stroke-width="2"/>
-        <rect x="196" y="30" width="68" height="20" rx="8" fill="#FAEEDA"/>
-        <text x="230" y="44" text-anchor="middle" font-size="9" font-weight="700" fill="#854F0B" font-family="sans-serif">淨資產 ↑</text>
-        <circle cx="40" cy="40" r="14" fill="#FAEEDA" stroke="#FAC775" stroke-width="1.5"/>
-        <text x="40" y="45" text-anchor="middle" font-size="13" font-family="sans-serif">💰</text>
-        <circle cx="258" cy="76" r="14" fill="#FFF0EC" stroke="#F5C4B3" stroke-width="1.5"/>
-        <text x="258" y="81" text-anchor="middle" font-size="13" font-family="sans-serif">🏠</text>
+      <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <!-- 背景裝飾圓 — 主色延伸 -->
+        <circle cx="260" cy="40" r="44" fill="#FFF1EC" opacity="0.8"/>
+        <circle cx="38" cy="165" r="30" fill="#E8F7EF" opacity="0.7"/>
+        <circle cx="272" cy="168" r="22" fill="#FFF5E5" opacity="0.7"/>
+        <!-- 主卡片 -->
+        <rect x="20" y="52" width="260" height="128" rx="20" fill="#FFFEF9" stroke="#EAE4DC" stroke-width="1.5"/>
+        <!-- 柱狀圖 — 主色色階 + 狀態色 -->
+        <rect x="38" y="118" width="18" height="48" rx="4" fill="#FFB093" stroke="#D97A52" stroke-width="1"/>
+        <rect x="64" y="102" width="18" height="64" rx="4" fill="#A8D8B8" stroke="#5BBE8A" stroke-width="1"/>
+        <rect x="90" y="88" width="18" height="78" rx="4" fill="#D97A52" stroke="#B86040" stroke-width="1"/>
+        <rect x="116" y="96" width="18" height="70" rx="4" fill="#A8D8B8" stroke="#5BBE8A" stroke-width="1"/>
+        <rect x="142" y="80" width="18" height="86" rx="4" fill="#FFC9B6" stroke="#D97A52" stroke-width="1"/>
+        <rect x="168" y="72" width="18" height="94" rx="4" fill="#D97A52" stroke="#B86040" stroke-width="1"/>
+        <!-- 折線 — 主色 -->
+        <polyline points="47,115 73,99 99,85 125,93 151,77 177,69"
+          fill="none" stroke="#D97A52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+        <!-- 折線節點 -->
+        <circle cx="47" cy="115" r="3.5" fill="#D97A52" stroke="#FFFEF9" stroke-width="1.5"/>
+        <circle cx="99" cy="85" r="3.5" fill="#D97A52" stroke="#FFFEF9" stroke-width="1.5"/>
+        <circle cx="177" cy="69" r="4.5" fill="#D97A52" stroke="#FFFEF9" stroke-width="2"/>
+        <!-- 淨資產標籤 — 主色 -->
+        <rect x="185" y="48" width="78" height="22" rx="8" fill="#FFF1EC" stroke="#FFB093" stroke-width="1"/>
+        <text x="224" y="63" text-anchor="middle" font-size="9" font-weight="700" fill="#D97A52" font-family="sans-serif">淨資產 ↑</text>
+        <!-- 房子 icon — 主色調 -->
+        <g transform="translate(28,58)">
+          <path d="M16 22L28 10L40 22" fill="#FFB093" stroke="#D97A52" stroke-width="1.3" stroke-linejoin="round"/>
+          <rect x="19" y="21" width="18" height="14" rx="1.5" fill="#FFF8F4" stroke="#D97A52" stroke-width="1.3"/>
+          <path d="M24 35v-7a3 3 0 016 0v7" fill="#FFB093" stroke="#D97A52" stroke-width="1.1"/>
+          <rect x="30" y="24" width="5" height="5" rx="1" fill="#A8D8B8" stroke="#5BBE8A" stroke-width="1"/>
+          <rect x="31" y="12" width="2.5" height="5" rx="0.8" fill="#FFB093" stroke="#D97A52" stroke-width="1"/>
+          <ellipse cx="37" cy="33" rx="3.5" ry="2.5" fill="#A8D8B8" stroke="#5BBE8A" stroke-width="1"/>
+          <ellipse cx="35" cy="34.5" rx="3" ry="2" fill="#A8D8B8" stroke="#5BBE8A" stroke-width="1"/>
+        </g>
+        <!-- 金幣 icon — 警告色 -->
+        <g transform="translate(222,56)">
+          <circle cx="14" cy="14" r="12" fill="#FFF5E5" stroke="#F5A623" stroke-width="1.3"/>
+          <circle cx="14" cy="14" r="8" fill="#F5D888" stroke="#F5A623" stroke-width="1"/>
+          <line x1="14" y1="10" x2="14" y2="14.5" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="11.5" y1="14.5" x2="16.5" y2="14.5" stroke="#F5A623" stroke-width="1.3" stroke-linecap="round"/>
+        </g>
       </svg>
     </div>
-    <div class="ob-title">個人財務管家</div>
-    <div class="ob-sub">輕鬆掌握你的資產與收支<br>讓財務健康一目瞭然</div>
+    <div class="ob-title" style="font-size:22px;font-weight:800;color:#3A3028;">個人財務管家</div>
+    <div class="ob-sub" style="font-size:13px;color:#9A9088;">輕鬆掌握資產與收支<br>讓財務健康一目瞭然</div>
     <div class="feat-list">
       <div class="feat-item">
-        <div class="feat-ico-wrap" style="background:#FFF0EC;">🏦</div>
-        <div class="feat-info"><div class="feat-title">資產負債表</div><div class="feat-txt">存款、不動產、車輛一次管理</div></div>
+        <div class="feat-ico-wrap" style="background:#FFF1EC;">
+          <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+            <rect x="7" y="5" width="22" height="30" rx="2.5" fill="#F5ECD8" stroke="#C0A070" stroke-width="1.5"/>
+            <path d="M23 5l8 8h-8V5z" fill="#E8D0A0" stroke="#C0A070" stroke-width="1.3" stroke-linejoin="round"/>
+            <line x1="11" y1="18" x2="25" y2="18" stroke="#C0A070" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="11" y1="22" x2="21" y2="22" stroke="#C0A070" stroke-width="1.3" stroke-linecap="round"/>
+            <circle cx="35" cy="35" r="9" fill="#F5D888" stroke="#C8A838" stroke-width="1.5"/>
+            <line x1="35" y1="30" x2="35" y2="35.5" stroke="#C8A838" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="31.5" y1="35.5" x2="38.5" y2="35.5" stroke="#C8A838" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feat-info"><div class="feat-title">資產負債表</div><div class="feat-txt">存款、不動產、車輛一次管理</div></div><span class="feat-arrow">›</span>
       </div>
       <div class="feat-item">
-        <div class="feat-ico-wrap" style="background:#E1F5EE;">📊</div>
-        <div class="feat-info"><div class="feat-title">每月收支分析</div><div class="feat-txt">即時顯示儲蓄率與6個月預估</div></div>
+        <div class="feat-ico-wrap" style="background:#E8F7EF;">
+          <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+            <rect x="5" y="7" width="38" height="30" rx="3.5" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.5"/>
+            <rect x="9" y="23" width="8" height="11" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.3"/>
+            <rect x="20" y="15" width="8" height="19" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.3"/>
+            <rect x="31" y="18" width="8" height="16" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.3"/>
+            <polyline points="13,21 24,11 35,15.5" fill="none" stroke="#96AA90" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="35" cy="15.5" r="2.5" fill="#80A87C"/>
+          </svg>
+        </div>
+        <div class="feat-info"><div class="feat-title">每月收支分析</div><div class="feat-txt">即時顯示儲蓄率與6個月預估</div></div><span class="feat-arrow">›</span>
       </div>
       <div class="feat-item">
-        <div class="feat-ico-wrap" style="background:#FAEEDA;">📈</div>
-        <div class="feat-info"><div class="feat-title">財務健康報表</div><div class="feat-txt">自動產生個人化財務建議</div></div>
+        <div class="feat-ico-wrap" style="background:#FFF5E5;">
+          <svg width="24" height="24" viewBox="0 0 48 48" fill="none">
+            <path d="M24 7c0 0-13 11-13 19a13 13 0 0026 0C37 18 24 7 24 7z" fill="#F5E888" stroke="#C8B828" stroke-width="1.5"/>
+            <path d="M24 17c0 0-7 8-7 10a7 7 0 0014 0c0-2-7-10-7-10z" fill="#F5D848" stroke="#C8A818" stroke-width="1.2"/>
+            <path d="M21 33a3 3 0 006 0" stroke="#C8A818" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="12" y1="26" x2="9" y2="26" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="36" y1="26" x2="39" y2="26" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="feat-info"><div class="feat-title">財務健康報表</div><div class="feat-txt">自動產生個人化財務建議</div></div><span class="feat-arrow">›</span>
       </div>
     </div>
   </div>
@@ -484,11 +566,11 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
     <div class="preview-card" id="ob-flow-card" style="background:#FFF5F0;border:1.5px solid #F5C4B3;">
       <div class="pc-row" style="margin-bottom:8px;">
         <div class="pc-item"><div class="pc-lbl">月結餘</div><div class="pc-val" id="ob-surplus">$0</div></div>
-        <div class="pc-item"><div class="pc-lbl">儲蓄率</div><div class="pc-val" id="ob-rate" style="color:var(--coral);">0%</div></div>
+        <div class="pc-item"><div class="pc-lbl">儲蓄率</div><div class="pc-val" id="ob-rate" style="color:#D97A52;">0%</div></div>
       </div>
       <div class="health-bar">
-        <div class="hb-label"><span style="color:#888;">財務健康</span><span id="ob-health-lbl" style="color:var(--coral);">—</span></div>
-        <div class="hb-track"><div class="hb-fill" id="ob-health-bar" style="width:0%;background:#9FE1CB;"></div></div>
+        <div class="hb-label"><span style="color:#888;">財務健康</span><span id="ob-health-lbl" style="color:#D97A52;">—</span></div>
+        <div class="hb-track"><div class="hb-fill" id="ob-health-bar" style="width:0%;background:#A8D8C0;"></div></div>
       </div>
     </div>
   </div>
@@ -498,24 +580,42 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <!-- OB 完成 -->
 <div class="ob-page" id="ob-finish">
   <div class="finish-hero">
-    <svg viewBox="0 0 120 100" width="100" height="84">
-      <circle cx="60" cy="45" r="38" fill="#FFF0EC"/>
-      <circle cx="60" cy="45" r="28" fill="#D85A30"/>
-      <path d="M46 45l10 10 18-18" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <circle cx="22" cy="18" r="10" fill="#FAEEDA"/><text x="22" y="23" text-anchor="middle" font-size="11" font-family="sans-serif">🌟</text>
-      <circle cx="98" cy="22" r="10" fill="#E1F5EE"/><text x="98" y="27" text-anchor="middle" font-size="11" font-family="sans-serif">💰</text>
-    </svg>
-    <div style="font-size:20px;font-weight:800;color:var(--text);font-family:'Noto Sans TC',sans-serif;">財務快照完成！</div>
-    <div style="font-size:13px;color:var(--muted);font-family:'Noto Sans TC',sans-serif;">初始資料已帶入 App</div>
+    <!-- 勾勾圓圈 -->
+    <div style="width:80px;height:80px;border-radius:50%;background:#D97A52;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(217,122,82,0.30);margin-bottom:4px;">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <path d="M10 20l8 8 14-14" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div style="font-size:22px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;">財務快照完成！</div>
+    <div style="font-size:13px;color:#9A9088;font-family:'Noto Sans TC',sans-serif;">初始資料已帶入 App</div>
+    <!-- 數值卡 -->
     <div class="snap-grid">
-      <div class="snap-cell g"><div class="sc-lbl g">總資產</div><div class="sc-val" id="sn-assets">$0</div></div>
-      <div class="snap-cell r"><div class="sc-lbl r">總負債</div><div class="sc-val" id="sn-liab">$0</div></div>
-      <div class="snap-cell a"><div class="sc-lbl a">淨資產</div><div class="sc-val big" id="sn-net">$0</div></div>
-      <div class="snap-cell b"><div class="sc-lbl b">月結餘</div><div class="sc-val" id="sn-surplus">$0</div></div>
-      <div class="snap-cell p"><div class="sc-lbl p">儲蓄率</div><div class="sc-val" id="sn-rate">0%</div></div>
+      <div class="snap-cell g">
+        <div class="sc-lbl g">總資產</div>
+        <div class="sc-val" id="sn-assets">$0</div>
+      </div>
+      <div class="snap-cell r">
+        <div class="sc-lbl r">總負債</div>
+        <div class="sc-val" id="sn-liab">$0</div>
+      </div>
+      <div class="snap-cell a">
+        <div class="sc-lbl a">淨資產</div>
+        <div class="sc-val big" id="sn-net">$0</div>
+      </div>
+      <div class="snap-cell b">
+        <div class="sc-lbl b">月結餘</div>
+        <div class="sc-val" id="sn-surplus">$0</div>
+      </div>
+      <div class="snap-cell p">
+        <div class="sc-lbl p">儲蓄率</div>
+        <div class="sc-val" id="sn-rate">0%</div>
+      </div>
     </div>
   </div>
-  <div class="ob-footer"><button class="ob-btn-main" onclick="enterApp()">進入我的財務 →</button></div>
+  <div class="ob-footer">
+    <button class="ob-btn-main" onclick="enterApp()">前往首頁</button>
+    <button class="ob-btn-ghost" onclick="enterApp()">稍後再看</button>
+  </div>
 </div>
 
 <!-- ══ MAIN APP ══ -->
@@ -526,8 +626,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="scroll">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
     <span style="font-size:13px;color:var(--muted);font-weight:600;font-family:'Noto Sans TC',sans-serif;" id="home-greeting">晚安 👋</span>
-    <div id="sig-btn" onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-      <canvas id="sig-preview" width="110" height="30" style="width:110px;height:30px;"></canvas>
+    <div id="sig-btn" onclick="openSig()" style="width:130px;height:40px;border-radius:22px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 6px;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
+      <canvas id="sig-preview" width="260" height="80" style="width:130px;height:40px;"></canvas>
     </div>
 
 <!-- 簽名 Modal -->
@@ -573,8 +673,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   </div>
 </div>
 <div class="hero-card">
-  <div class="hero-blob"></div><div class="hero-blob2"></div>
-  <div class="hero-tag">NET WORTH</div>
+  <div class="hero-tag">淨資產</div>
   <div class="hero-num" id="h-net">$0</div>
   <div class="hero-pill"><span class="hero-pill-txt" id="h-pill">輸入資料後自動計算</span></div>
 </div>
@@ -583,13 +682,13 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div class="mini"><div class="mini-lbl">總負債</div><div class="mini-val r" id="h-liab">$0</div></div>
 </div>
 <div class="scroll" style="padding-top:0;">
-  <div class="sec-head"><span class="sec-t">資產快覽</span><span class="sec-more" onclick="goPage('pg-assets')">編輯 →</span></div>
+  <div class="sec-head"><span class="sec-t">資產總覽</span><span class="sec-more" onclick="goPage('pg-assets')">編輯 →</span></div>
   <div class="asset-list" id="h-list">
     <div class="arow"><div class="aico m">💡</div><div class="ainfo"><div class="aname">尚未輸入資料</div><div class="asub">點下方「資產」開始填寫</div></div></div>
   </div>
   <div class="fc-wrap">
     <div class="fc-head"><span class="fc-t">收支預估</span><span class="fc-s">6個月</span></div>
-    <div class="fc-bars" id="h-chart" style="height:40px;">
+    <div class="fc-bars" id="h-chart">
       <div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc;"></div><div class="fc-lbl">—</div></div>
       <div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc;"></div><div class="fc-lbl">—</div></div>
       <div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc;"></div><div class="fc-lbl">—</div></div>
@@ -600,10 +699,38 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   </div>
 </div>
 <div class="tabbar-wrap"><div class="tabbar">
-  <button class="tab active" onclick="goPage('pg-home')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-home"/></svg><span class="tab-lbl on">總覽</span></div></button>
-  <button class="tab" onclick="goPage('pg-assets')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-asset"/></svg><span class="tab-lbl off">資產</span></div></button>
-  <button class="tab" onclick="goPage('pg-cashflow')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-cashflow"/></svg><span class="tab-lbl off">收支</span></div></button>
-  <button class="tab" onclick="goPage('pg-report')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-report"/></svg><span class="tab-lbl off">報表</span></div></button>
+  <button class="tab active" onclick="goPage('pg-home')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-home"/></svg>
+      </div>
+      <span class="tab-lbl on">總覽</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-assets')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-asset"/></svg>
+      </div>
+      <span class="tab-lbl off">資產</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-cashflow')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-cashflow"/></svg>
+      </div>
+      <span class="tab-lbl off">收支</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-report')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-report"/></svg>
+      </div>
+      <span class="tab-lbl off">報表</span>
+    </div>
+  </button>
 </div>
 </div><!-- /wrap -->
 </div>
@@ -614,13 +741,13 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
     <div class="page-title" style="margin-bottom:0;">資產負債表</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-      <canvas class="sig-preview-clone" width="110" height="30" style="width:110px;height:30px;"></canvas>
+      <canvas class="sig-preview-clone" width="260" height="80" style="width:130px;height:40px;"></canvas>
     </div>
   </div>
   <div class="blk">
     <div class="blk-head green"><span>流動資產</span><span class="hval" id="cur-lbl">$0</span></div>
-    <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#F0EDE8;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-bank"/></svg></div><span class="rlabel">銀行存款</span><input class="rval" type="number" placeholder="0" id="a-cash" oninput="calc()"></div>
-    <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#EEF5EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-stock"/></svg></div><span class="rlabel">股票/基金</span><input class="rval" type="number" placeholder="0" id="a-stock" oninput="calc()"></div>
+    <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-bank"/></svg></div><span class="rlabel">銀行存款</span><input class="rval" type="number" placeholder="0" id="a-cash" oninput="calc()"></div>
+    <div class="row"><div style="width:28px;height:28px;border-radius:8px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-stock"/></svg></div><span class="rlabel">股票/基金</span><input class="rval" type="number" placeholder="0" id="a-stock" oninput="calc()"></div>
     <div id="cur-extra-rows"></div>
     <button class="add-btn" onclick="addCurRow()">＋ 新增流動資產</button>
   </div>
@@ -668,19 +795,19 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div class="blk">
     <div class="blk-head red"><span>銀行貸款</span><span class="hval" id="loan-lbl">$0</span></div>
     <div id="loan-rows">
-      <div class="row" data-loan><div style="width:28px;height:28px;border-radius:8px;background:#F8F0EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-loan"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="房貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
-      <div class="row" data-loan><div style="width:28px;height:28px;border-radius:8px;background:#EEF3F8;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-car"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="車貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
+      <div class="row" data-loan><div style="width:28px;height:28px;border-radius:8px;background:#F8F0EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-loan"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="房貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
+      <div class="row" data-loan><div style="width:28px;height:28px;border-radius:8px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="車貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
     </div>
     <button class="add-btn" onclick="addLoanRow()">＋ 新增貸款</button>
   </div>
   <div class="blk">
     <div class="blk-head coral"><span>其他負債</span><span class="hval" id="other-lbl">$0</span></div>
     <div id="other-rows">
-      <div class="row" data-other><div style="width:28px;height:28px;border-radius:8px;background:#F8F2EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-card"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="信用卡"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delORow(this)">×</button></div>
+      <div class="row" data-other><div style="width:28px;height:28px;border-radius:8px;background:#F8F2EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-card"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="信用卡"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delORow(this)">×</button></div>
     </div>
     <button class="add-btn" onclick="addOtherRow()">＋ 新增其他負債</button>
   </div>
-  <div class="net-bar"><span class="net-label">淨資產 = 資產 − 負債</span><span class="net-val" id="net-val" style="color:var(--coral);">$0</span></div>
+  <div class="net-bar"><span class="net-label">淨資產 = 資產 − 負債</span><span class="net-val" id="net-val" style="color:#D97A52;">$0</span></div>
   <div class="sum-strip">
     <div class="ss-cell"><div class="ss-lbl">流動</div><div class="ss-val g" id="s-cur">$0</div></div>
     <div class="ss-cell"><div class="ss-lbl">不動產</div><div class="ss-val a" id="s-prop">$0</div></div>
@@ -689,10 +816,38 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   </div>
 </div>
 <div class="tabbar-wrap"><div class="tabbar">
-  <button class="tab" onclick="goPage('pg-home')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-home"/></svg><span class="tab-lbl off">總覽</span></div></button>
-  <button class="tab active" onclick="goPage('pg-assets')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-asset"/></svg><span class="tab-lbl on">資產</span></div></button>
-  <button class="tab" onclick="goPage('pg-cashflow')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-cashflow"/></svg><span class="tab-lbl off">收支</span></div></button>
-  <button class="tab" onclick="goPage('pg-report')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-report"/></svg><span class="tab-lbl off">報表</span></div></button>
+  <button class="tab" onclick="goPage('pg-home')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-home"/></svg>
+      </div>
+      <span class="tab-lbl off">總覽</span>
+    </div>
+  </button>
+  <button class="tab active" onclick="goPage('pg-assets')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-asset"/></svg>
+      </div>
+      <span class="tab-lbl on">資產</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-cashflow')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-cashflow"/></svg>
+      </div>
+      <span class="tab-lbl off">收支</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-report')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-report"/></svg>
+      </div>
+      <span class="tab-lbl off">報表</span>
+    </div>
+  </button>
 </div>
 </div><!-- /wrap -->
 </div>
@@ -703,27 +858,27 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
     <div class="page-title" style="margin-bottom:0;">每月收支</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-      <canvas class="sig-preview-clone" width="110" height="30" style="width:110px;height:30px;"></canvas>
+      <canvas class="sig-preview-clone" width="260" height="80" style="width:130px;height:40px;"></canvas>
     </div>
   </div>
   <div class="blk">
     <div class="blk-head green"><span>收入</span><span class="hval" id="inc-total">$0</span></div>
     <div id="inc-rows">
-      <div class="row" data-inc><div style="width:28px;height:28px;border-radius:8px;background:#EEF5EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-salary"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="薪資收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
-      <div class="row" data-inc><div style="width:28px;height:28px;border-radius:8px;background:#EEF5EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-invest"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="投資收益"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
-      <div class="row" data-inc><div style="width:28px;height:28px;border-radius:8px;background:#EEF5EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-salary"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="副業收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
+      <div class="row" data-inc><div style="width:28px;height:28px;border-radius:8px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-salary"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="薪資收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
+      <div class="row" data-inc><div style="width:28px;height:28px;border-radius:8px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-invest"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="投資收益"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
+      <div class="row" data-inc><div style="width:28px;height:28px;border-radius:8px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-salary"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="副業收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
     </div>
     <button class="add-btn" onclick="addIncRow()">＋ 新增收入</button>
   </div>
   <div class="blk">
     <div class="blk-head coral"><span>支出</span><span class="hval" id="exp-total">$0</span></div>
     <div id="cf-exp-rows">
-      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#FFF4EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-property"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="房貸/租金"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#FAF4E8;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="餐飲"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#EEF3F8;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-utility"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="水電瓦斯"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#EEF3F8;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-transport"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="交通"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#F5F0EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="娛樂"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#F0EDE8;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="18" height="18" viewBox="0 0 44 44"><use href="#ico-insurance"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="保險"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="房貸/租金"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#FAF4E8;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="餐飲"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-utility"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="水電瓦斯"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-transport"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="交通"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#F5F0EE;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="娛樂"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
+      <div class="row" data-cfexp><div style="width:28px;height:28px;border-radius:8px;background:#F1EDFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:4px;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-insurance"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:70px;flex-shrink:0;font-size:13px;" value="保險"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
     </div>
     <button class="add-btn" onclick="addExpRow()">＋ 新增支出</button>
   </div>
@@ -735,15 +890,43 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   </div>
   <div class="fc-wrap">
     <div class="fc-head"><span class="fc-t">6個月預估</span><span class="fc-s" id="cf-range">—</span></div>
-    <div class="fc-bars" id="cf-chart" style="height:56px;"></div>
+    <div class="fc-bars" id="cf-chart"></div>
   </div>
   <div class="fc-sum" id="cf-sum"></div>
 </div>
 <div class="tabbar-wrap"><div class="tabbar">
-  <button class="tab" onclick="goPage('pg-home')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-home"/></svg><span class="tab-lbl off">總覽</span></div></button>
-  <button class="tab" onclick="goPage('pg-assets')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-asset"/></svg><span class="tab-lbl off">資產</span></div></button>
-  <button class="tab active" onclick="goPage('pg-cashflow')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-cashflow"/></svg><span class="tab-lbl on">收支</span></div></button>
-  <button class="tab" onclick="goPage('pg-report')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-report"/></svg><span class="tab-lbl off">報表</span></div></button>
+  <button class="tab" onclick="goPage('pg-home')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-home"/></svg>
+      </div>
+      <span class="tab-lbl off">總覽</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-assets')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-asset"/></svg>
+      </div>
+      <span class="tab-lbl off">資產</span>
+    </div>
+  </button>
+  <button class="tab active" onclick="goPage('pg-cashflow')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-cashflow"/></svg>
+      </div>
+      <span class="tab-lbl on">收支</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-report')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-report"/></svg>
+      </div>
+      <span class="tab-lbl off">報表</span>
+    </div>
+  </button>
 </div>
 </div><!-- /wrap -->
 </div>
@@ -754,7 +937,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
     <div class="page-title" style="margin-bottom:0;">財務報表</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-      <canvas class="sig-preview-clone" width="110" height="30" style="width:110px;height:30px;"></canvas>
+      <canvas class="sig-preview-clone" width="260" height="80" style="width:130px;height:40px;"></canvas>
     </div>
   </div>
   <div class="sum-strip" style="margin-bottom:10px;">
@@ -768,10 +951,38 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div class="blk"><div class="blk-head amber"><span>財務建議</span><span>🌟</span></div><div id="r-advice" style="padding:12px 14px;font-size:13px;font-weight:600;color:#555;line-height:1.8;font-family:'Noto Sans TC',sans-serif;">請先填入資產與收支資料</div></div>
 </div>
 <div class="tabbar-wrap"><div class="tabbar">
-  <button class="tab" onclick="goPage('pg-home')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-home"/></svg><span class="tab-lbl off">總覽</span></div></button>
-  <button class="tab" onclick="goPage('pg-assets')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-asset"/></svg><span class="tab-lbl off">資產</span></div></button>
-  <button class="tab" onclick="goPage('pg-cashflow')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-cashflow"/></svg><span class="tab-lbl off">收支</span></div></button>
-  <button class="tab active" onclick="goPage('pg-report')"><div class="tab-inner"><svg width="26" height="26" viewBox="0 0 44 44"><use href="#ico-report"/></svg><span class="tab-lbl on">報表</span></div></button>
+  <button class="tab" onclick="goPage('pg-home')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-home"/></svg>
+      </div>
+      <span class="tab-lbl off">總覽</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-assets')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-asset"/></svg>
+      </div>
+      <span class="tab-lbl off">資產</span>
+    </div>
+  </button>
+  <button class="tab" onclick="goPage('pg-cashflow')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-cashflow"/></svg>
+      </div>
+      <span class="tab-lbl off">收支</span>
+    </div>
+  </button>
+  <button class="tab active" onclick="goPage('pg-report')">
+    <div class="tab-inner">
+      <div class="tab-ico-wrap">
+        <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><use href="#ico-report"/></svg>
+      </div>
+      <span class="tab-lbl on">報表</span>
+    </div>
+  </button>
 </div>
 </div><!-- /wrap -->
 </div>
@@ -828,8 +1039,9 @@ function saveSig(mode){
   pctx.clearRect(0,0,p.width,p.height);
   if(mode==='draw'){
     const c=document.getElementById('sig-canvas');
+    pctx.imageSmoothingEnabled=true;pctx.imageSmoothingQuality='high';
     pctx.drawImage(c,0,0,p.width,p.height);
-    localStorage.setItem('userSig',c.toDataURL());
+    localStorage.setItem('userSig',c.toDataURL('image/png',1.0));
     localStorage.removeItem('userSigFont');
   } else {
     if(selFontIdx===null)return;
@@ -845,12 +1057,14 @@ function saveSig(mode){
 function renderFontPreview(canvas,s,name){
   const ctx=canvas.getContext('2d');
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  const fontSize=parseInt(s.size)*canvas.height/56;
+  const fontSize=Math.round(parseInt(s.size)*canvas.height/56);
   ctx.font=`${fontSize}px ${s.font}`;
   ctx.fillStyle=s.c;
   ctx.textBaseline='middle';
   ctx.textAlign='center';
-  ctx.fillText(name,canvas.width/2,canvas.height/2);
+  ctx.imageSmoothingEnabled=true;
+  ctx.imageSmoothingQuality='high';
+  ctx.fillText(name,canvas.width/2,canvas.height/2+2);
 }
 function genFontSigs(){
   const name=document.getElementById('font-name-input').value||'Cram';
@@ -899,16 +1113,18 @@ function initCanvas(){
     img.src=drawData;
   } else {
     const ctx=p.getContext('2d');
-    ctx.font='italic 10px Georgia,serif';
+    ctx.clearRect(0,0,p.width,p.height);
+    ctx.font="italic 32px 'STXingkai','华文行楷',Georgia,serif";
     ctx.fillStyle='#C8A870';
     ctx.textBaseline='middle';
-    ctx.fillText('簽名',6,13);
+    ctx.textAlign='center';
+    ctx.fillText('簽名',p.width/2,p.height/2);
   }
 })();
 function obGo(id){document.querySelectorAll('.ob-page').forEach(p=>p.classList.remove('active'));const t=document.getElementById(id);if(t)t.classList.add('active');}
 function obCalcLiquid(){const b=parseFloat(document.getElementById('ob-bank').value)||0;const s=parseFloat(document.getElementById('ob-stock').value)||0;const c=document.getElementById('ob-liquid-card');c.classList.toggle('show',b+s>0);document.getElementById('ob-liquid-total').textContent='$'+(b+s).toLocaleString('zh-TW');}
 function obCalcProp(){const cost=parseFloat(document.getElementById('ob-pcost').value)||0;const mkt=parseFloat(document.getElementById('ob-pmkt').value)||0;const ping=parseFloat(document.getElementById('ob-ping').value)||0;const c=document.getElementById('ob-prop-card');c.classList.toggle('show',cost>0&&mkt>0);if(cost>0&&mkt>0){const g=((mkt-cost)/cost*100).toFixed(1);document.getElementById('ob-pgain').textContent=(g>=0?'+':'')+g+'%';document.getElementById('ob-pping').textContent=ping>0?'$'+(mkt/ping|0).toLocaleString('zh-TW')+'/坪':'—';}}
-function obCalcFlow(){const inc=parseFloat(document.getElementById('ob-income').value)||0;const exp=parseFloat(document.getElementById('ob-expense').value)||0;const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;const c=document.getElementById('ob-flow-card');c.classList.toggle('show',inc>0);document.getElementById('ob-surplus').textContent=(sur>=0?'+':'')+'$'+Math.abs(sur).toLocaleString('zh-TW');document.getElementById('ob-surplus').style.color=sur>=0?'#1D9E75':'#E24B4A';document.getElementById('ob-rate').textContent=rate+'%';const pct=Math.min(rate,100),bar=document.getElementById('ob-health-bar');bar.style.width=pct+'%';bar.style.background=rate>=30?'#9FE1CB':rate>=20?'#EF9F27':'#F09595';const lbl=document.getElementById('ob-health-lbl');lbl.textContent=rate>=30?'優秀 🌟':rate>=20?'良好 👍':rate>=0?'待加強 ⚠️':'赤字 🔴';lbl.style.color=rate>=30?'#1D9E75':rate>=20?'#BA7517':rate>=0?'#D85A30':'#E24B4A';}
+function obCalcFlow(){const inc=parseFloat(document.getElementById('ob-income').value)||0;const exp=parseFloat(document.getElementById('ob-expense').value)||0;const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;const c=document.getElementById('ob-flow-card');c.classList.toggle('show',inc>0);document.getElementById('ob-surplus').textContent=(sur>=0?'+':'')+'$'+Math.abs(sur).toLocaleString('zh-TW');document.getElementById('ob-surplus').style.color=sur>=0?'#5BBE8A':'#E45D5D';document.getElementById('ob-rate').textContent=rate+'%';const pct=Math.min(rate,100),bar=document.getElementById('ob-health-bar');bar.style.width=pct+'%';bar.style.background=rate>=30?'#5BBE8A':rate>=20?'#F5A623':'#E45D5D';const lbl=document.getElementById('ob-health-lbl');lbl.textContent=rate>=30?'優秀 🌟':rate>=20?'良好 👍':rate>=0?'待加強 ⚠️':'赤字 🔴';lbl.style.color=rate>=30?'#2A7A50':rate>=20?'#8A6010':rate>=0?'#D97A52':'#B84040';}
 function obFinish(){const bank=parseFloat(document.getElementById('ob-bank').value)||0;const stock=parseFloat(document.getElementById('ob-stock').value)||0;const pmkt=parseFloat(document.getElementById('ob-pmkt').value)||0;const pcost=parseFloat(document.getElementById('ob-pcost').value)||0;const ping=parseFloat(document.getElementById('ob-ping').value)||0;const mortgage=parseFloat(document.getElementById('ob-mortgage').value)||0;const carloan=parseFloat(document.getElementById('ob-carloan').value)||0;const cc=parseFloat(document.getElementById('ob-cc').value)||0;const income=parseFloat(document.getElementById('ob-income').value)||0;const expense=parseFloat(document.getElementById('ob-expense').value)||0;const assets=bank+stock+pmkt;const liab=mortgage+carloan+cc;const net=assets-liab;const sur=income-expense;const rate=income>0?Math.round(sur/income*100):0;const fmt=v=>v.toLocaleString('zh-TW');document.getElementById('sn-assets').textContent='$'+fmt(assets);document.getElementById('sn-liab').textContent='$'+fmt(liab);document.getElementById('sn-net').textContent='$'+fmt(net);document.getElementById('sn-surplus').textContent=(sur>=0?'+':'')+'$'+fmt(Math.abs(sur));document.getElementById('sn-rate').textContent=rate+'%';_obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense);obGo('ob-finish');}
 function _obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense){const set=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};set('a-cash',bank);set('a-stock',stock);if(pmkt||pcost){const propInp=document.querySelectorAll('#prop-list [data-prop] .pf input');if(propInp.length>=4){propInp[0].value=pcost||'';propInp[1].value=pmkt||'';propInp[2].value=ping||'';}}const loanInp=document.querySelectorAll('#loan-rows [data-loan] .rval');if(loanInp[0]&&mortgage)loanInp[0].value=mortgage;if(loanInp[1]&&carloan)loanInp[1].value=carloan;const otherInp=document.querySelectorAll('#other-rows [data-other] .rval');if(otherInp[0]&&cc)otherInp[0].value=cc;const incInp=document.querySelectorAll('#inc-rows [data-inc] .rval');if(incInp[0]&&income)incInp[0].value=income;const expInp=document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval');if(expInp[0]&&expense)expInp[0].value=expense;}
 function enterApp(){document.querySelectorAll('.ob-page').forEach(p=>p.classList.remove('active'));document.getElementById('main-app').style.display='block';const h=new Date().getHours();document.getElementById('home-greeting').textContent=h<12?'早安 👋':h<18?'午安 👋':'晚安 👋';calcProps();calcCar(document.querySelector('#car-list .pf input'));calc();calcFlow();updateAll();}
@@ -924,7 +1140,7 @@ function addLoanRow(){const d=document.createElement('div');d.className='row';d.
 function addOtherRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-other','');d.innerHTML=`<input style="border:none;background:transparent;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;width:80px;flex-shrink:0;font-size:13px;" placeholder="負債名稱"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delORow(this)">×</button>`;document.getElementById('other-rows').appendChild(d);}
 function delLRow(btn){if(document.querySelectorAll('#loan-rows [data-loan]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calc();}
 function delORow(btn){if(document.querySelectorAll('#other-rows [data-other]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calc();}
-function calcProps(){let cs=0,vs=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const inp=c.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,val=parseFloat(inp[1].value)||0,sqm=parseFloat(inp[2].value)||0;cs+=cost;vs+=val;inp[3].value=sqm>0&&val>0?Math.round(val/sqm).toLocaleString('zh-TW'):'—';const g=val-cost,r=cost>0?g/cost*100:0;c.querySelector('.gain-info').innerHTML=cost>0||val>0?`<span class="gain-badge ${g>=0?'gb-up':'gb-dn'}">${g>=0?'▲':'▼'} 損益 ${g>=0?'+':''}$${fmt(g)} (${r.toFixed(1)}%)</span>`:'';});document.getElementById('p-cost').textContent='$'+fmt(cs);document.getElementById('p-val').textContent='$'+fmt(vs);document.getElementById('p-val-lbl').textContent='$'+fmt(vs);const gt=vs-cs,ge=document.getElementById('p-gain');ge.textContent='損益 '+(gt>=0?'+':'')+'$'+fmt(gt);ge.style.color=gt>=0?'#1D9E75':'#E24B4A';calc();}
+function calcProps(){let cs=0,vs=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const inp=c.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,val=parseFloat(inp[1].value)||0,sqm=parseFloat(inp[2].value)||0;cs+=cost;vs+=val;inp[3].value=sqm>0&&val>0?Math.round(val/sqm).toLocaleString('zh-TW'):'—';const g=val-cost,r=cost>0?g/cost*100:0;c.querySelector('.gain-info').innerHTML=cost>0||val>0?`<span class="gain-badge ${g>=0?'gb-up':'gb-dn'}">${g>=0?'▲':'▼'} 損益 ${g>=0?'+':''}$${fmt(g)} (${r.toFixed(1)}%)</span>`:'';});document.getElementById('p-cost').textContent='$'+fmt(cs);document.getElementById('p-val').textContent='$'+fmt(vs);document.getElementById('p-val-lbl').textContent='$'+fmt(vs);const gt=vs-cs,ge=document.getElementById('p-gain');ge.textContent='損益 '+(gt>=0?'+':'')+'$'+fmt(gt);ge.style.color=gt>=0?'#4CAF7B':'#F26D6D';calc();}
 function addProp(){pCnt++;const d=document.createElement('div');d.className='prop-card';d.setAttribute('data-prop','');d.innerHTML=`<div class="prop-top"><input class="prop-name" value="房屋 ${pCnt}"><button class="rdel" onclick="delProp(this)">×</button></div><div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="window.open('https://lvr.land.moi.gov.tw/','_blank')" disabled>查實價登錄 ↗</button></div><div class="prop-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>每坪均價</label><input placeholder="—" readonly></div></div><div class="gain-info"></div>`;document.getElementById('prop-list').appendChild(d);}
 function delProp(btn){if(document.querySelectorAll('#prop-list [data-prop]').length<=1){alert('至少保留一筆');return;}btn.closest('.prop-card').remove();calcProps();}
 function getCarVal(c){const inp=c.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,year=parseInt(inp[1].value)||2022,life=Math.max(parseInt(inp[2].value)||5,1),sr=(parseFloat(inp[3].value)||10)/100;const elapsed=Math.max(0,new Date().getFullYear()-year),salvage=cost*sr,method=c.dataset.method||'straight';if(method==='straight')return elapsed>=life?salvage:Math.max(cost-(cost-salvage)/life*elapsed,salvage);const rate=1-Math.pow(Math.max(sr,0.01),1/life);let v=cost;for(let i=0;i<Math.min(elapsed,life);i++)v=Math.max(v*(1-rate),salvage);return v;}
@@ -938,6 +1154,7 @@ function addExpRow(){const d=document.createElement('div');d.className='row';d.s
 function delIRow(btn){if(document.querySelectorAll('#inc-rows [data-inc]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
 function delERow(btn){if(document.querySelectorAll('#cf-exp-rows [data-cfexp]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
 function calcFlow(){const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const exp=[...document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;document.getElementById('inc-total').textContent='$'+fmt(inc);document.getElementById('exp-total').textContent='$'+fmt(exp);document.getElementById('cf-inc').textContent='$'+fmt(inc);document.getElementById('cf-exp').textContent='$'+fmt(exp);const se=document.getElementById('cf-sur');se.textContent=(sur>=0?'+':'')+'$'+fmt(sur);se.style.color=sur>=0?'#D85A30':'#E24B4A';document.getElementById('cf-rate').textContent=rate+'%';renderChart(inc,exp,sur,'cf-chart','cf-range','cf-sum');updateAll();}
-function renderChart(inc,exp,sur,chartId,rangeId,sumId){const now=new Date();const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];const cash=n('a-cash');let c=cash,vals=[];for(let i=0;i<6;i++){c+=sur;vals.push(c);}const maxV=Math.max(...vals.map(v=>Math.abs(v)),1);let html='';for(let i=0;i<6;i++){const m=(now.getMonth()+i)%12,h=Math.max(Math.round(Math.abs(vals[i])/maxV*50),4);const col=vals[i]>=0?(i<3?'#9FE1CB':'#EF9F27'):'#F09595';html+=`<div class="fc-col"><div class="fc-bar" style="height:${h}px;background:${col}"></div><div class="fc-lbl">${mn[m]}</div></div>`;}document.getElementById(chartId).innerHTML=html;document.getElementById(rangeId).textContent=(now.getMonth()+1)+'月起';const ec=vals[5];document.getElementById(sumId).innerHTML=`<div class="fcs g"><div class="fcs-lbl g">月收入</div><div class="fcs-val g">$${fmt(inc)}</div></div><div class="fcs r"><div class="fcs-lbl r">月支出</div><div class="fcs-val r">$${fmt(exp)}</div></div><div class="fcs a"><div class="fcs-lbl a">月結餘</div><div class="fcs-val a">${sur>=0?'+':''}$${fmt(sur)}</div></div><div class="fcs b"><div class="fcs-lbl b">6月後現金</div><div class="fcs-val b">$${fmt(ec)}</div></div>`;document.getElementById('h-chart').innerHTML=html;}
-function updateAll(){const cash=n('a-cash'),stock=n('a-stock');const extraCur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cur=cash+stock+extraCur;let propV=0,propC=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const i=c.querySelectorAll('.pf input');propC+=parseFloat(i[0].value)||0;propV+=parseFloat(i[1].value)||0;});let carV=0,carC=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carC+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;carV+=getCarVal(c);});const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const liabT=loanT+otherT,totalA=cur+propV+carV,net=totalA-liabT,ratio=totalA>0?Math.round(liabT/totalA*100):0;document.getElementById('h-net').textContent='$'+fmt(net);document.getElementById('h-assets').textContent='$'+fmt(totalA);document.getElementById('h-liab').textContent='$'+fmt(liabT);document.getElementById('h-pill').textContent=totalA>0?'總資產 $'+fmt(totalA):'輸入資料後自動計算';const items=[];if(cash>0)items.push({t:'m',ico:'ico-bank',bg:'#F0EDE8',n:'銀行存款',s:'流動資產',v:cash,tag:'現金',tc:'up'});if(stock>0)items.push({t:'s',ico:'ico-stock',bg:'#EEF5EE',n:'股票/基金',s:'流動資產',v:stock,tag:'投資',tc:'up'});if(propV>0){const g=propV-propC,r=propC>0?g/propC*100:0;items.push({t:'h',ico:'ico-property',bg:'#FFF4EE',n:'不動產',s:'成本 $'+fmt(propC),v:propV,tag:(r>=0?'▲':'')+r.toFixed(1)+'%',tc:r>=0?'up':'neg'});}if(carV>0){const d=carC>0?(carC-carV)/carC*100:0;items.push({t:'c',ico:'ico-car',bg:'#EEF3F8',n:'車輛',s:'折舊 '+d.toFixed(0)+'%',v:carV,tag:'帳面值',tc:'dep'});}document.getElementById('h-list').innerHTML=items.length?items.map(i=>`<div class="arow"><div class="aico ${i.t}">${i.ico}</div><div class="ainfo"><div class="aname">${i.n}</div><div class="asub">${i.s}</div></div><div class="aright"><div class="aval">$${fmt(i.v)}</div><span class="atag ${i.tc}">${i.tag}</span></div></div>`).join(''):'<div class="arow"><div class="aico m">💡</div><div class="ainfo"><div class="aname">尚未輸入資料</div><div class="asub">點下方「資產」開始填寫</div></div></div>';document.getElementById('r-assets').textContent='$'+fmt(totalA);document.getElementById('r-liab').textContent='$'+fmt(liabT);const rn=document.getElementById('r-net');rn.textContent='$'+fmt(net);rn.className='ss-val '+(net>=0?'a':'r');document.getElementById('r-ratio').textContent=ratio+'%';const colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC'];document.getElementById('r-asset-bd').innerHTML=[{n:'流動資產',v:cur},{n:'不動產',v:propV},{n:'車輛',v:carV}].filter(x=>x.v>0).map((x,i)=>{const pct=totalA>0?Math.round(x.v/totalA*100):0;return`<div style="display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #f8f6f2;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:${colors[i]};flex-shrink:0;"></div><div style="flex:1;font-size:13px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:13px;font-weight:800;font-family:'Inter',sans-serif;">$${fmt(x.v)}</div><div style="font-size:10px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;">尚無資料</div>';const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cfExpRows=[...document.querySelectorAll('#cf-exp-rows [data-cfexp]')];const eItems=cfExpRows.map(r=>({n:r.querySelector('input').value||'支出',v:parseFloat(r.querySelector('.rval').value)||0})).filter(x=>x.v>0);const tExp=eItems.reduce((s,x)=>s+x.v,0);document.getElementById('r-exp-bd').innerHTML=eItems.map((x,i)=>{const pct=tExp>0?Math.round(x.v/tExp*100):0;return`<div style="display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #f8f6f2;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:${colors[i]||'#ccc'};flex-shrink:0;"></div><div style="flex:1;font-size:13px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:13px;font-weight:800;font-family:'Inter',sans-serif;">$${fmt(x.v)}</div><div style="font-size:10px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;">尚無資料</div>';const sur=inc-tExp,sr=inc>0?sur/inc*100:0;const adv=[];if(sr<20&&inc>0)adv.push('💡 儲蓄率 '+Math.round(sr)+'%，建議提升至 20% 以上');if(ratio>50)adv.push('⚠️ 負債比 '+ratio+'%，建議優先還款');if(cash<tExp*3&&tExp>0)adv.push('🏦 緊急預備金不足，建議存至 3～6 個月生活費');if(propV>propC&&propC>0)adv.push('🏠 不動產增值 $'+fmt(propV-propC)+'，資產狀況良好');if(sr>=20&&ratio<=50&&totalA>0)adv.push('🌟 財務健康！繼續保持良好習慣');document.getElementById('r-advice').innerHTML=adv.length?adv.join('<br>'):'請先填入資產與收支資料';}
+function renderChart(inc,exp,sur,chartId,rangeId,sumId){const now=new Date();const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];const cash=n('a-cash');let c=cash,vals=[];for(let i=0;i<6;i++){c+=sur;vals.push(c);}const maxV=Math.max(...vals.map(v=>Math.abs(v)),1);let html='';for(let i=0;i<6;i++){const m=(now.getMonth()+i)%12,pct=Math.max(Math.round(Math.abs(vals[i])/maxV*100),6);const col=vals[i]>=0?(i<3?'#A8D8C0':'#F5C878'):'#F8B8B8';html+=`<div class="fc-col"><div class="fc-bar" style="height:${pct}%;background:${col}"></div><div class="fc-lbl">${mn[m]}</div></div>`;}document.getElementById(chartId).innerHTML=html;document.getElementById(rangeId).textContent=(now.getMonth()+1)+'月起';const ec=vals[5];document.getElementById(sumId).innerHTML=`<div class="fcs g"><div class="fcs-lbl g">月收入</div><div class="fcs-val g">$${fmt(inc)}</div></div><div class="fcs r"><div class="fcs-lbl r">月支出</div><div class="fcs-val r">$${fmt(exp)}</div></div><div class="fcs a"><div class="fcs-lbl a">月結餘</div><div class="fcs-val a">${sur>=0?'+':''}$${fmt(sur)}</div></div><div class="fcs b"><div class="fcs-lbl b">6月後現金</div><div class="fcs-val b">$${fmt(ec)}</div></div>`;document.getElementById('h-chart').innerHTML=html;}
+function updateAll(){const cash=n('a-cash'),stock=n('a-stock');const extraCur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cur=cash+stock+extraCur;let propV=0,propC=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const i=c.querySelectorAll('.pf input');propC+=parseFloat(i[0].value)||0;propV+=parseFloat(i[1].value)||0;});let carV=0,carC=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carC+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;carV+=getCarVal(c);});const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const liabT=loanT+otherT,totalA=cur+propV+carV,net=totalA-liabT,ratio=totalA>0?Math.round(liabT/totalA*100):0;const hn=document.getElementById('h-net');hn.textContent='$'+fmt(net);hn.style.color=net>=0?'#D97A52':'#E45D5D';document.getElementById('h-assets').textContent='$'+fmt(totalA);document.getElementById('h-liab').textContent='$'+fmt(liabT);document.getElementById('h-pill').textContent=totalA>0?'總資產 $'+fmt(totalA):'輸入資料後自動計算';const items=[];const _ISVG={'ico-bank':'<svg width="24" height="24" viewBox="0 0 48 48" fill="none"><rect x="5" y="17" width="38" height="22" rx="3.5" fill="#EAE0D4" stroke="#B8A890" stroke-width="1.5"/><rect x="5" y="11" width="38" height="8" rx="3" fill="#C8A878" stroke="#B8A890" stroke-width="1.5"/><rect x="18" y="23" width="12" height="7" rx="2" fill="#FFF8F0" stroke="#B8A890" stroke-width="1.2"/><rect x="7" y="31" width="6" height="5" rx="1" fill="#FFF8F0" stroke="#B8A890" stroke-width="1"/><rect x="35" y="31" width="6" height="5" rx="1" fill="#FFF8F0" stroke="#B8A890" stroke-width="1"/></svg>','ico-stock':'<svg width="24" height="24" viewBox="0 0 48 48" fill="none"><rect x="4" y="7" width="40" height="28" rx="3.5" fill="#E8EDE8" stroke="#96AA90" stroke-width="1.5"/><polyline points="8,30 16,18 24,24 36,10" fill="none" stroke="#80A87C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="10" r="3.5" fill="#80A87C"/><rect x="7" y="31" width="6" height="7" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.2"/><rect x="16" y="28" width="6" height="10" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.2"/><rect x="25" y="32" width="6" height="6" rx="1.5" fill="#B8D0B4" stroke="#96AA90" stroke-width="1.2"/><rect x="34" y="30" width="6" height="8" rx="1.5" fill="#80A87C" stroke="#96AA90" stroke-width="1.2"/></svg>','ico-property':'<svg width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M6 26L24 8L42 26" fill="#F0C8A8" stroke="#C89070" stroke-width="1.5" stroke-linejoin="round"/><rect x="11" y="25" width="26" height="17" rx="2" fill="#FFF8F4" stroke="#C89070" stroke-width="1.5"/><path d="M20 42v-9a4 4 0 018 0v9" fill="#EAC4A0" stroke="#C89070" stroke-width="1.3"/><rect x="30" y="28" width="5" height="5" rx="1" fill="#C8E8DC" stroke="#88BAA8" stroke-width="1"/></svg>','ico-car':'<svg width="24" height="24" viewBox="0 0 48 48" fill="none"><rect x="4" y="19" width="40" height="18" rx="5" fill="#D8E4EE" stroke="#94AABE" stroke-width="1.5"/><path d="M8 19l5-10h22l5 10" fill="#C4D4E4" stroke="#94AABE" stroke-width="1.5" stroke-linejoin="round"/><rect x="10" y="16" width="16" height="9" rx="2" fill="#C8DCE8" stroke="#94AABE" stroke-width="1.2"/><circle cx="13" cy="37" r="5.5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/><circle cx="13" cy="37" r="2.2" fill="#E8EEF4"/><circle cx="35" cy="37" r="5.5" fill="#94AABE" stroke="#6A8AAE" stroke-width="1.5"/><circle cx="35" cy="37" r="2.2" fill="#E8EEF4"/></svg>','ico-hint':'<svg width="24" height="24" viewBox="0 0 48 48" fill="none"><path d="M24 7c0 0-13 11-13 19a13 13 0 0026 0C37 18 24 7 24 7z" fill="#F5E888" stroke="#C8B828" stroke-width="1.5"/><path d="M24 17c0 0-7 8-7 10a7 7 0 0014 0c0-2-7-10-7-10z" fill="#F5D848" stroke="#C8A818" stroke-width="1.2"/><path d="M21 33a3 3 0 006 0" stroke="#C8A818" stroke-width="1.3" stroke-linecap="round"/><line x1="12" y1="26" x2="9" y2="26" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/><line x1="36" y1="26" x2="39" y2="26" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/><line x1="24" y1="9" x2="24" y2="6" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/></svg>'};
+if(cash>0)items.push({t:'m',ico:'ico-bank',bg:'#DFF6EE',n:'銀行存款',s:'流動資產',v:cash,tag:'現金',tc:'up'});if(stock>0)items.push({t:'s',ico:'ico-stock',bg:'#EAF7EF',n:'股票/基金',s:'流動資產',v:stock,tag:'投資',tc:'up'});if(propV>0){const g=propV-propC,r=propC>0?g/propC*100:0;items.push({t:'h',ico:'ico-property',bg:'#FFF3E0',n:'不動產',s:'成本 $'+fmt(propC),v:propV,tag:(r>=0?'▲':'')+r.toFixed(1)+'%',tc:r>=0?'up':'neg'});}if(carV>0){const d=carC>0?(carC-carV)/carC*100:0;items.push({t:'c',ico:'ico-car',bg:'#ECF3FF',n:'車輛',s:'折舊 '+d.toFixed(0)+'%',v:carV,tag:'帳面值',tc:'dep'});}document.getElementById('h-list').innerHTML=items.length?items.map(i=>`<div class="arow"><div class="aico" style="background:${i.bg};width:48px;height:48px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">${_ISVG[i.ico]||''}</div><div class="ainfo"><div class="aname">${i.n}</div><div class="asub">${i.s}</div></div><div class="aright"><div class="aval">$${fmt(i.v)}</div><span class="atag ${i.tc}">${i.tag}</span></div></div>`).join(''):'<div class="arow"><div class="aico" style="background:#EAF2FF;width:48px;height:48px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'+(_ISVG['ico-hint']||'')+'</div><div class="ainfo"><div class="aname">尚未輸入資料</div><div class="asub">點下方「資產」開始填寫</div></div></div>';document.getElementById('r-assets').textContent='$'+fmt(totalA);document.getElementById('r-liab').textContent='$'+fmt(liabT);const rn=document.getElementById('r-net');rn.textContent='$'+fmt(net);rn.className='ss-val';rn.style.color=net>=0?'#D97A52':'#E45D5D';document.getElementById('r-ratio').textContent=ratio+'%';const colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC'];document.getElementById('r-asset-bd').innerHTML=[{n:'流動資產',v:cur},{n:'不動產',v:propV},{n:'車輛',v:carV}].filter(x=>x.v>0).map((x,i)=>{const pct=totalA>0?Math.round(x.v/totalA*100):0;return`<div style="display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #f8f6f2;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:${colors[i]};flex-shrink:0;"></div><div style="flex:1;font-size:13px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:13px;font-weight:800;font-family:'Inter',sans-serif;">$${fmt(x.v)}</div><div style="font-size:10px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;">尚無資料</div>';const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cfExpRows=[...document.querySelectorAll('#cf-exp-rows [data-cfexp]')];const eItems=cfExpRows.map(r=>({n:r.querySelector('input').value||'支出',v:parseFloat(r.querySelector('.rval').value)||0})).filter(x=>x.v>0);const tExp=eItems.reduce((s,x)=>s+x.v,0);document.getElementById('r-exp-bd').innerHTML=eItems.map((x,i)=>{const pct=tExp>0?Math.round(x.v/tExp*100):0;return`<div style="display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #f8f6f2;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:${colors[i]||'#ccc'};flex-shrink:0;"></div><div style="flex:1;font-size:13px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:13px;font-weight:800;font-family:'Inter',sans-serif;">$${fmt(x.v)}</div><div style="font-size:10px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;">尚無資料</div>';const sur=inc-tExp,sr=inc>0?sur/inc*100:0;const adv=[];if(sr<20&&inc>0)adv.push('💡 儲蓄率 '+Math.round(sr)+'%，建議提升至 20% 以上');if(ratio>50)adv.push('⚠️ 負債比 '+ratio+'%，建議優先還款');if(cash<tExp*3&&tExp>0)adv.push('🏦 緊急預備金不足，建議存至 3～6 個月生活費');if(propV>propC&&propC>0)adv.push('🏠 不動產增值 $'+fmt(propV-propC)+'，資產狀況良好');if(sr>=20&&ratio<=50&&totalA>0)adv.push('🌟 財務健康！繼續保持良好習慣');document.getElementById('r-advice').innerHTML=adv.length?adv.join('<br>'):'請先填入資產與收支資料';}
 </script>
