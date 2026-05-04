@@ -5,7 +5,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#FFFEF9">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap&font-display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&family=WindSong&family=Ms+Madi&family=Ephesis&family=Great+Vibes&display=swap&font-display=swap');
 *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
 img,svg{-webkit-backface-visibility:hidden;backface-visibility:hidden;transform:translateZ(0);}
 input,button{-webkit-font-smoothing:antialiased;font-family:inherit;}
@@ -669,10 +669,10 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label">💳 銀行存款（元）</div><input class="sf-input" type="number" id="ob-bank" placeholder="500000" oninput="obCalcLiquid()"></div>
-    <div class="sf-group"><div class="sf-label">📈 股票 / 基金（元）</div><input class="sf-input" type="number" id="ob-stock" placeholder="200000" oninput="obCalcLiquid()"><div class="sf-hint">填入目前市值即可</div></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-bank"/></svg></div><span>銀行存款（元）</span></div><input class="sf-input" type="number" id="ob-bank" placeholder="500000" oninput="obCalcLiquid()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-stock"/></svg></div><span>股票 / 基金（元）</span></div><input class="sf-input" type="number" id="ob-stock" placeholder="200000" oninput="obCalcLiquid()"><div class="sf-hint">填入目前市值即可</div></div>
     <div class="preview-card" id="ob-liquid-card" style="background:#E1F5EE;border:1.5px solid #9FE1CB;">
-      <div class="pc-row"><div class="pc-item"><div class="pc-lbl" style="color:#085041;">流動資產合計</div><div class="pc-val" id="ob-liquid-total">$0</div></div><div style="font-size:28px;">💚</div></div>
+      <div class="pc-row"><div class="pc-item"><div class="pc-lbl" style="color:#085041;">流動資產合計</div><div class="pc-val" id="ob-liquid-total">$0</div></div></div>
     </div>
   </div>
   <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s2')">下一步 →</button></div>
@@ -685,9 +685,9 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label">🏠 買入價格（元）</div><input class="sf-input" type="number" id="ob-pcost" placeholder="8000000" oninput="obCalcProp()"></div>
-    <div class="sf-group"><div class="sf-label">📍 目前市值（元）</div><input class="sf-input" type="number" id="ob-pmkt" placeholder="9500000" oninput="obCalcProp()"></div>
-    <div class="sf-group"><div class="sf-label">📐 坪數</div><input class="sf-input" type="number" id="ob-ping" placeholder="30" oninput="obCalcProp()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span>買入價格（元）</span></div><input class="sf-input" type="number" id="ob-pcost" placeholder="8000000" oninput="obCalcProp()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span>目前市值（元）</span></div><input class="sf-input" type="number" id="ob-pmkt" placeholder="9500000" oninput="obCalcProp()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span>坪數</span></div><input class="sf-input" type="number" id="ob-ping" placeholder="30" oninput="obCalcProp()"></div>
     <div class="preview-card" id="ob-prop-card" style="background:#FFFBF0;border:1.5px solid #FAC775;">
       <div class="pc-row"><div class="pc-item"><div class="pc-lbl">增值率</div><div class="pc-val" id="ob-pgain">—</div></div><div class="pc-item"><div class="pc-lbl">每坪均價</div><div class="pc-val" id="ob-pping">—</div></div></div>
     </div>
@@ -702,9 +702,9 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label">🏦 房貸餘額（元）</div><input class="sf-input" type="number" id="ob-mortgage" placeholder="6000000"></div>
-    <div class="sf-group"><div class="sf-label">🚗 車貸餘額（元）</div><input class="sf-input" type="number" id="ob-carloan" placeholder="300000"></div>
-    <div class="sf-group"><div class="sf-label">💳 信用卡未繳（元）</div><input class="sf-input" type="number" id="ob-cc" placeholder="30000"><div class="sf-hint">填入本月帳單未繳金額</div></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-loan"/></svg></div><span>房貸餘額（元）</span></div><input class="sf-input" type="number" id="ob-mortgage" placeholder="6000000"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><span>車貸餘額（元）</span></div><input class="sf-input" type="number" id="ob-carloan" placeholder="300000"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-card"/></svg></div><span>信用卡未繳（元）</span></div><input class="sf-input" type="number" id="ob-cc" placeholder="30000"><div class="sf-hint">填入本月帳單未繳金額</div></div>
   </div>
   <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s4')">下一步 →</button><button class="ob-btn-ghost" onclick="obGo('ob-s4')">略過（暫無負債）</button></div>
 </div>
@@ -716,8 +716,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label">💼 月收入（元）</div><input class="sf-input" type="number" id="ob-income" placeholder="60000" oninput="obCalcFlow()"></div>
-    <div class="sf-group"><div class="sf-label">💸 月支出（元）</div><input class="sf-input" type="number" id="ob-expense" placeholder="40000" oninput="obCalcFlow()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-salary"/></svg></div><span>月收入（元）</span></div><input class="sf-input" type="number" id="ob-income" placeholder="60000" oninput="obCalcFlow()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><span>月支出（元）</span></div><input class="sf-input" type="number" id="ob-expense" placeholder="40000" oninput="obCalcFlow()"></div>
     <div class="preview-card" id="ob-flow-card" style="background:#FFF5F0;border:1.5px solid #F5C4B3;">
       <div class="pc-row" style="margin-bottom:8px;">
         <div class="pc-item"><div class="pc-lbl">月結餘</div><div class="pc-val" id="ob-surplus">$0</div></div>
@@ -781,8 +781,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="scroll">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
     <span style="font-size:13px;color:var(--muted);font-weight:600;font-family:'Noto Sans TC',sans-serif;" id="home-greeting">晚安 👋</span>
-    <div id="sig-btn" onclick="openSig()" style="width:130px;height:40px;border-radius:22px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 6px;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
-      <canvas id="sig-preview" width="260" height="80" style="width:130px;height:40px;"></canvas>
+    <div id="sig-btn" onclick="openSig()" style="width:110px;height:28px;border-radius:16px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 4px;box-shadow:0 2px 10px rgba(0,0,0,0.09);">
+      <canvas id="sig-preview" width="220" height="56" style="width:110px;height:28px;"></canvas>
     </div>
 
 <!-- 簽名 Modal -->
@@ -896,7 +896,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
     <div class="page-title" style="margin-bottom:0;">資產負債表</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-      <canvas class="sig-preview-clone" width="260" height="80" style="width:130px;height:40px;"></canvas>
+      <canvas class="sig-preview-clone" width="220" height="56" style="width:110px;height:28px;"></canvas>
     </div>
   </div>
   <div class="blk">
@@ -1014,7 +1014,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
     <div class="page-title" style="margin-bottom:0;">每月收支</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-      <canvas class="sig-preview-clone" width="260" height="80" style="width:130px;height:40px;"></canvas>
+      <canvas class="sig-preview-clone" width="220" height="56" style="width:110px;height:28px;"></canvas>
     </div>
   </div>
   <div class="blk">
@@ -1093,7 +1093,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
     <div class="page-title" style="margin-bottom:0;">財務報表</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
-      <canvas class="sig-preview-clone" width="260" height="80" style="width:130px;height:40px;"></canvas>
+      <canvas class="sig-preview-clone" width="220" height="56" style="width:110px;height:28px;"></canvas>
     </div>
   </div>
   <div class="sum-strip" style="margin-bottom:10px;">
@@ -1224,7 +1224,7 @@ function saveSig(mode){
 function renderFontPreview(canvas,s,name){
   const ctx=canvas.getContext('2d');
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  const fontSize=Math.round(parseInt(s.size)*canvas.height/56);
+  const fontSize=Math.round(parseInt(s.size)*canvas.height/60);
   ctx.font=`${fontSize}px ${s.font}`;
   ctx.fillStyle=s.c;
   ctx.textBaseline='middle';
@@ -1281,7 +1281,7 @@ function initCanvas(){
   } else {
     const ctx=p.getContext('2d');
     ctx.clearRect(0,0,p.width,p.height);
-    ctx.font="italic 32px 'STXingkai','华文行楷',Georgia,serif";
+    ctx.font="italic 20px 'STXingkai','华文行楷',Georgia,serif";
     ctx.fillStyle='#C8A870';
     ctx.textBaseline='middle';
     ctx.textAlign='center';
