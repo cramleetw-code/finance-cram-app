@@ -98,18 +98,18 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .add-btn{padding:12px 16px;font-size:15px;font-weight:600;color:#D97A52;background:none;border:none;cursor:pointer;font-family:'Noto Sans TC',sans-serif;}
 
 /* ── 不動產 ── */
-.prop-card{padding:14px 16px;border-bottom:1px solid rgba(0,0,0,0.04);}
-.prop-top{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
+.prop-card{padding:14px 16px;border-bottom:1px solid rgba(0,0,0,0.04);overflow:hidden;}
+.prop-top{display:flex;align-items:center;gap:6px;margin-bottom:10px;min-width:0;}
 .prop-name{flex:1;border:none;background:transparent;font-size:16px;font-weight:700;color:var(--text);font-family:'Noto Sans TC',sans-serif;}
 .prop-name:focus{outline:none;border-bottom:2px solid var(--coral);}
-.prop-addr{display:flex;gap:6px;margin-bottom:10px;}
-.addr-inp{flex:1;border:none;border-radius:12px;padding:10px 12px;font-size:15px;font-family:'Noto Sans TC',sans-serif;color:var(--muted);background:#F5F3F0;}
-.lookup-btn{padding:10px 14px;background:var(--coral);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Noto Sans TC',sans-serif;}
+.prop-addr{display:flex;gap:6px;margin-bottom:10px;min-width:0;}
+.addr-inp{flex:1;min-width:0;border:none;border-radius:12px;padding:10px 12px;font-size:15px;font-family:'Noto Sans TC',sans-serif;color:var(--muted);background:#F5F3F0;}
+.lookup-btn{padding:10px 10px;background:var(--coral);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Noto Sans TC',sans-serif;flex-shrink:0;}
 .lookup-btn:disabled{opacity:0.35;cursor:not-allowed;}
-.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.prop-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;overflow:hidden;}
 .pf{display:flex;flex-direction:column;gap:5px;}
 .pf label{font-size:15px;font-weight:600;color:var(--muted);font-family:'Noto Sans TC',sans-serif;}
-.pf input{border:none;border-radius:12px;padding:10px 12px;font-size:17px;font-weight:700;text-align:right;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';color:var(--text);background:#F5F3F0;width:100%;}
+.pf input{border:none;border-radius:12px;padding:10px 12px;font-size:17px;font-weight:700;text-align:right;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';color:var(--text);background:#F5F3F0;width:100%;min-width:0;box-sizing:border-box;}
 .pf input:focus{outline:none;background:#EEE8E0;}
 .pf input[readonly]{background:transparent;color:#bbb;}
 .gain-info{margin-top:8px;}
@@ -222,8 +222,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 /* ── Onboarding ── */
 .ob-page{display:none;flex-direction:column;min-height:100vh;}
 .ob-page.active{display:flex;}
-.ob-hero{flex:1;display:flex;flex-direction:column;align-items:center;padding:20px 24px 12px;background:var(--bg);}
-.ob-illus{width:100%;max-width:320px;margin:0 auto 16px;}
+.ob-hero{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 20px 10px;background:var(--bg);}
+.ob-illus{width:100%;max-width:340px;margin:0 auto 12px;display:block;}
 .ob-title{font-size:24px;font-weight:800;color:var(--text);text-align:center;line-height:1.25;margin-bottom:8px;font-family:'Noto Sans TC',sans-serif;}
 .ob-sub{font-size:14px;color:var(--muted);font-weight:500;text-align:center;line-height:1.7;margin-bottom:20px;font-family:'Noto Sans TC',sans-serif;}
 .feat-list{display:flex;flex-direction:column;gap:10px;width:100%;}
@@ -567,7 +567,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="ob-page active" id="ob-welcome">
   <div class="ob-hero">
     <div class="ob-illus">
-      <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+      <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;margin:0 auto;">
         <!-- 背景裝飾圓 -->
         <circle cx="268" cy="28" r="36" fill="#FFF1EC" opacity="0.7"/>
         <circle cx="32" cy="132" r="24" fill="#E8F7EF" opacity="0.6"/>
