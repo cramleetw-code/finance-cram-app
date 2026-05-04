@@ -220,34 +220,34 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .ico-picker-btn.selected{border-color:#D97A52;background:#FFF1EC;}
 .ico-picker-lbl{font-size:9px;font-weight:600;color:#9A9088;font-family:'Noto Sans TC',sans-serif;text-align:center;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 /* ── Onboarding ── */
-.ob-page{display:none;flex-direction:column;min-height:100vh;}
-.ob-page.active{display:flex;}
-.ob-hero{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 20px 10px;background:var(--bg);}
-.ob-illus{width:100%;max-width:340px;margin:0 auto 12px;display:block;}
-.ob-title{font-size:24px;font-weight:800;color:var(--text);text-align:center;line-height:1.25;margin-bottom:8px;font-family:'Noto Sans TC',sans-serif;}
-.ob-sub{font-size:14px;color:var(--muted);font-weight:500;text-align:center;line-height:1.7;margin-bottom:20px;font-family:'Noto Sans TC',sans-serif;}
-.feat-list{display:flex;flex-direction:column;gap:10px;width:100%;}
-.feat-item{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:16px;border:none;box-shadow:var(--shadow-sm);padding:14px 16px;cursor:pointer;}
-.feat-ico-wrap{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ob-page{display:none;flex-direction:column;}
+.ob-page.active{display:flex;flex-direction:column;}
+.ob-hero{display:flex;flex-direction:column;align-items:center;padding:10px 20px 8px;background:var(--bg);}
+.ob-illus{width:100%;max-width:380px;margin:0 auto 16px;display:block;}
+.ob-title{font-size:22px;font-weight:800;color:var(--text);text-align:center;line-height:1.25;margin-bottom:8px;font-family:'Noto Sans TC',sans-serif;}
+.ob-sub{font-size:13px;color:var(--muted);font-weight:500;text-align:center;line-height:1.7;margin-bottom:18px;font-family:'Noto Sans TC',sans-serif;}
+.feat-list{display:flex;flex-direction:column;gap:8px;width:100%;}
+.feat-item{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:14px;border:none;box-shadow:var(--shadow-sm);padding:11px 14px;cursor:pointer;}
+.feat-ico-wrap{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .feat-info{flex:1;}
-.feat-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px;font-family:'Noto Sans TC',sans-serif;}
-.feat-txt{font-size:12px;font-weight:500;color:var(--muted);font-family:'Noto Sans TC',sans-serif;}
+.feat-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;font-family:'Noto Sans TC',sans-serif;}
+.feat-txt{font-size:11px;font-weight:500;color:var(--muted);font-family:'Noto Sans TC',sans-serif;}
 .feat-arrow{font-size:16px;color:var(--muted);flex-shrink:0;}
-.ob-footer{padding:14px 24px max(env(safe-area-inset-bottom),22px);display:flex;flex-direction:column;gap:10px;background:var(--bg);}
-.ob-btn-main{background:#D97A52;color:#fff;border:none;border-radius:20px;padding:18px;font-size:16px;font-weight:700;font-family:'Noto Sans TC',sans-serif;cursor:pointer;width:100%;letter-spacing:0.02em;box-shadow:0 4px 16px rgba(217,122,82,0.32);}
+.ob-footer{padding:14px 24px 24px;display:flex;flex-direction:column;gap:10px;background:var(--bg);}
+.ob-btn-main{background:#D97A52;color:#fff;border:none;border-radius:20px;padding:15px;font-size:16px;font-weight:700;font-family:'Noto Sans TC',sans-serif;cursor:pointer;width:100%;letter-spacing:0.02em;box-shadow:0 4px 16px rgba(217,122,82,0.32);}
 .ob-btn-ghost{background:transparent;color:var(--muted);border:none;padding:8px;font-size:13px;font-weight:500;font-family:'Noto Sans TC',sans-serif;cursor:pointer;width:100%;text-align:center;}
 
 /* step */
-.step-hd{background:var(--bg);padding:max(env(safe-area-inset-top),14px) 22px 0;border-bottom:none;flex-shrink:0;}
-.step-hd-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.step-hd{background:var(--bg);padding:14px 22px 0;border-bottom:none;}
+.step-hd-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
 .step-back{background:var(--card);border:none;border-radius:12px;padding:8px 14px;color:#888;font-size:13px;font-weight:600;font-family:'Noto Sans TC',sans-serif;cursor:pointer;box-shadow:var(--shadow-sm);}
 .step-label{color:var(--text);font-size:17px;font-weight:800;flex:1;font-family:'Noto Sans TC',sans-serif;}
 .step-count{color:var(--muted);font-size:12px;font-weight:600;font-family:'Inter',sans-serif;}
 .step-dots{display:flex;gap:6px;padding-bottom:14px;}
 .step-dot{flex:1;height:4px;border-radius:2px;background:rgba(0,0,0,0.08);transition:background .25s;}
 .step-dot.done{background:#D97A52;}
-.step-body{flex:1;overflow-y:auto;padding:20px 22px 12px;display:flex;flex-direction:column;gap:16px;background:var(--bg);}
-.step-footer{padding:12px 22px max(env(safe-area-inset-bottom),18px);display:flex;flex-direction:column;gap:10px;background:var(--bg);}
+.step-body{padding:16px 22px 10px;display:flex;flex-direction:column;gap:14px;background:var(--bg);}
+.step-footer{padding:14px 22px 24px;display:flex;flex-direction:column;gap:10px;background:var(--bg);}
 .sf-group{display:flex;flex-direction:column;gap:7px;}
 .sf-label{font-size:12px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:0.08em;font-family:'Noto Sans TC',sans-serif;}
 .sf-input{border:none;border-radius:14px;padding:14px 16px;font-size:17px;font-weight:700;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';color:var(--text);background:var(--card);outline:none;width:100%;box-shadow:var(--shadow-sm);}
@@ -265,10 +265,10 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .hb-fill{height:100%;border-radius:4px;transition:width .4s;}
 
 /* 完成頁 */
-.finish-hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 22px;gap:12px;}
-.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;}
-.snap-cell{border-radius:16px;border:none;padding:14px 16px;text-align:center;box-shadow:var(--shadow-sm);}
-.snap-cell{border-radius:16px;border:none;padding:14px 16px;text-align:center;box-shadow:var(--shadow-sm);}
+.finish-hero{display:flex;flex-direction:column;align-items:center;padding:24px 22px 12px;gap:12px;}
+.snap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
+.snap-cell{border-radius:14px;border:none;padding:12px 14px;text-align:center;box-shadow:var(--shadow-sm);}
+.snap-cell{border-radius:14px;border:none;padding:12px 14px;text-align:center;box-shadow:var(--shadow-sm);}
 .snap-cell.g{background:#E8F7EF;}
 .snap-cell.r{background:#FFECEC;}
 .snap-cell.a{background:#FFF1EC;grid-column:1/-1;}
@@ -736,12 +736,12 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="ob-page" id="ob-finish">
   <div class="finish-hero">
     <!-- 勾勾圓圈 -->
-    <div style="width:80px;height:80px;border-radius:50%;background:#D97A52;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(217,122,82,0.30);margin-bottom:4px;">
+    <div style="width:64px;height:64px;border-radius:50%;background:#D97A52;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(217,122,82,0.28);margin-bottom:2px;">
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
         <path d="M10 20l8 8 14-14" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <div style="font-size:22px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;">財務快照完成！</div>
+    <div style="font-size:20px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;">財務快照完成！</div>
     <div style="font-size:13px;color:#9A9088;font-family:'Noto Sans TC',sans-serif;">初始資料已帶入 App</div>
     <!-- 數值卡 -->
     <div class="snap-grid">
