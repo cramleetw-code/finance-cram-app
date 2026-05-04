@@ -197,10 +197,10 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .net-label{font-size:15px;font-weight:700;color:#8A6820;font-family:'Noto Sans TC',sans-serif;}
 .net-val{font-size:26px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;color:#D97A52;}
 .sum-strip{background:var(--card);border-radius:18px;border:none;box-shadow:var(--shadow-sm);display:flex;margin-bottom:14px;overflow:hidden;}
-.ss-cell{flex:1;padding:14px 4px;text-align:center;border-right:1px solid rgba(0,0,0,0.05);}
+.ss-cell{flex:1;padding:12px 4px;text-align:center;border-right:1px solid rgba(0,0,0,0.05);min-width:0;overflow:hidden;}
 .ss-cell:last-child{border-right:none;}
 .ss-lbl{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px;font-family:'Noto Sans TC',sans-serif;}
-.ss-val{font-size:17px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';}
+.ss-val{font-size:15px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .ss-val.g{color:#2A7A50;}
 .ss-val.r{color:#B84848;}
 .ss-val.a{color:#D97A52;}
@@ -673,11 +673,116 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   <circle cx="24" cy="24" r="10" fill="none" stroke="#C0A070" stroke-width="1.3" stroke-dasharray="3 2"/>
 </symbol>
 
+<!-- 1月開始（曆年制）橘色日曆 -->
+<symbol id="ico-cal-jan" viewBox="0 0 48 48">
+  <rect x="4" y="10" width="40" height="34" rx="5" fill="#FFE1D6" stroke="#D97A52" stroke-width="1.5"/>
+  <rect x="4" y="10" width="40" height="14" rx="5" fill="#FFB093" stroke="#D97A52" stroke-width="1.5"/>
+  <rect x="4" y="20" width="40" height="4" fill="#FFB093"/>
+  <line x1="15" y1="5" x2="15" y2="15" stroke="#D97A52" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="33" y1="5" x2="33" y2="15" stroke="#D97A52" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="24" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#D97A52" font-family="Inter,sans-serif">1</text>
+</symbol>
+
+<!-- 4月開始（日本）藍色日曆 -->
+<symbol id="ico-cal-apr" viewBox="0 0 48 48">
+  <rect x="4" y="10" width="40" height="34" rx="5" fill="#ECF3FF" stroke="#6CA8F7" stroke-width="1.5"/>
+  <rect x="4" y="10" width="40" height="14" rx="5" fill="#6CA8F7" stroke="#6CA8F7" stroke-width="1.5"/>
+  <rect x="4" y="20" width="40" height="4" fill="#6CA8F7"/>
+  <line x1="15" y1="5" x2="15" y2="15" stroke="#6CA8F7" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="33" y1="5" x2="33" y2="15" stroke="#6CA8F7" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="24" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#3868C0" font-family="Inter,sans-serif">4</text>
+</symbol>
+
+<!-- 自訂月份 紫色日曆+鉛筆 -->
+<symbol id="ico-cal-custom" viewBox="0 0 48 48">
+  <rect x="4" y="10" width="40" height="34" rx="5" fill="#F1EDFF" stroke="#9C8FFF" stroke-width="1.5"/>
+  <rect x="4" y="10" width="40" height="14" rx="5" fill="#9C8FFF" stroke="#9C8FFF" stroke-width="1.5"/>
+  <rect x="4" y="20" width="40" height="4" fill="#9C8FFF"/>
+  <line x1="15" y1="5" x2="15" y2="15" stroke="#9C8FFF" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="33" y1="5" x2="33" y2="15" stroke="#9C8FFF" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M14 38l10-10 4 4-10 10z" fill="#C8B0F8" stroke="#9C8FFF" stroke-width="1.3" stroke-linejoin="round"/>
+  <path d="M24 28l4 4" stroke="#9C8FFF" stroke-width="1.3" stroke-linecap="round"/>
+  <path d="M12 40l2-4 2 2z" fill="#9C8FFF"/>
+</symbol>
+
+<!-- 每月提醒 綠色日曆+循環箭頭 -->
+<symbol id="ico-remind-monthly" viewBox="0 0 48 48">
+  <rect x="4" y="8" width="40" height="34" rx="5" fill="#E8F7EF" stroke="#5BBE8A" stroke-width="1.5"/>
+  <rect x="4" y="8" width="40" height="13" rx="5" fill="#5BBE8A" stroke="#5BBE8A" stroke-width="1.5"/>
+  <rect x="4" y="17" width="40" height="4" fill="#5BBE8A"/>
+  <line x1="15" y1="4" x2="15" y2="13" stroke="#2A7A50" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="33" y1="4" x2="33" y2="13" stroke="#2A7A50" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M16 32a8 8 0 1016 0" fill="none" stroke="#5BBE8A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 29l1 4-4 0" fill="none" stroke="#5BBE8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+<!-- 每週提醒 橘色日曆+7點 -->
+<symbol id="ico-remind-weekly" viewBox="0 0 48 48">
+  <rect x="4" y="8" width="40" height="34" rx="5" fill="#FFF6E1" stroke="#F5A623" stroke-width="1.5"/>
+  <rect x="4" y="8" width="40" height="13" rx="5" fill="#F5A623" stroke="#F5A623" stroke-width="1.5"/>
+  <rect x="4" y="17" width="40" height="4" fill="#F5A623"/>
+  <line x1="15" y1="4" x2="15" y2="13" stroke="#BA7517" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="33" y1="4" x2="33" y2="13" stroke="#BA7517" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="12" cy="30" r="2.5" fill="#F5A623"/>
+  <circle cx="20" cy="30" r="2.5" fill="#F5A623"/>
+  <circle cx="28" cy="30" r="2.5" fill="#F5A623"/>
+  <circle cx="36" cy="30" r="2.5" fill="#F5A623"/>
+  <circle cx="12" cy="39" r="2.5" fill="#F5E8B8"/>
+  <circle cx="20" cy="39" r="2.5" fill="#BA7517"/>
+  <circle cx="28" cy="39" r="2.5" fill="#F5E8B8"/>
+  <circle cx="36" cy="39" r="2.5" fill="#F5E8B8"/>
+</symbol>
+
+<!-- 每季提醒 藍色日曆+4格 -->
+<symbol id="ico-remind-quarterly" viewBox="0 0 48 48">
+  <rect x="4" y="8" width="40" height="34" rx="5" fill="#ECF3FF" stroke="#6CA8F7" stroke-width="1.5"/>
+  <rect x="4" y="8" width="40" height="13" rx="5" fill="#6CA8F7" stroke="#6CA8F7" stroke-width="1.5"/>
+  <rect x="4" y="17" width="40" height="4" fill="#6CA8F7"/>
+  <line x1="15" y1="4" x2="15" y2="13" stroke="#3868C0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="33" y1="4" x2="33" y2="13" stroke="#3868C0" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="8" y="26" width="13" height="12" rx="2" fill="#B8D4F8" stroke="#6CA8F7" stroke-width="1.2"/>
+  <rect x="27" y="26" width="13" height="12" rx="2" fill="#6CA8F7" stroke="#3868C0" stroke-width="1.2"/>
+  <text x="14" y="35" text-anchor="middle" font-size="8" font-weight="700" fill="#3868C0" font-family="Inter,sans-serif">Q1</text>
+  <text x="33" y="35" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" font-family="Inter,sans-serif">Q2</text>
+</symbol>
+
+<!-- 每年提醒 紅色+動態年份（預留 id） -->
+<symbol id="ico-remind-yearly" viewBox="0 0 48 48">
+  <circle cx="24" cy="24" r="20" fill="#FFD0C8" stroke="#E45D5D" stroke-width="1.5"/>
+  <circle cx="24" cy="24" r="14" fill="#FFF1EC" stroke="#E45D5D" stroke-width="1.2"/>
+  <text id="ico-yearly-y1" x="24" y="21" text-anchor="middle" font-size="9" font-weight="700" fill="#E45D5D" font-family="Inter,sans-serif">2026</text>
+  <path d="M16 24 Q24 29 32 24" fill="none" stroke="#E45D5D" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M29 22l2.5 2.5-2.5 2" fill="none" stroke="#E45D5D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text id="ico-yearly-y2" x="24" y="34" text-anchor="middle" font-size="9" font-weight="700" fill="#C84040" font-family="Inter,sans-serif">2027</text>
+</symbol>
+
+<!-- 自訂提醒 紫色便利貼+鉛筆 -->
+<symbol id="ico-remind-custom" viewBox="0 0 48 48">
+  <path d="M8 8h24a3 3 0 013 3v22l-10 10H8a3 3 0 01-3-3V11a3 3 0 013-3z" fill="#D8D0F8" stroke="#9C8FFF" stroke-width="1.5"/>
+  <path d="M35 33v10l-10-10h10z" fill="#B8B0E8" stroke="#9C8FFF" stroke-width="1.2" stroke-linejoin="round"/>
+  <line x1="11" y1="18" x2="29" y2="18" stroke="#9C8FFF" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="11" y1="24" x2="26" y2="24" stroke="#9C8FFF" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="11" y1="30" x2="22" y2="30" stroke="#9C8FFF" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="30" y="4" width="8" height="18" rx="2" fill="#FFB093" stroke="#D97A52" stroke-width="1.3" transform="rotate(30 34 13)"/>
+  <path d="M28 22l4 4-2 1z" fill="#D97A52" transform="rotate(30 34 13)"/>
+</symbol>
+
+<!-- 提醒時間 時鐘 -->
+<symbol id="ico-remind-time" viewBox="0 0 48 48">
+  <circle cx="24" cy="26" r="18" fill="#ECF3FF" stroke="#6CA8F7" stroke-width="1.5"/>
+  <circle cx="24" cy="26" r="13" fill="#fff" stroke="#6CA8F7" stroke-width="1.2"/>
+  <line x1="24" y1="15" x2="24" y2="26" stroke="#6CA8F7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="24" y1="26" x2="30" y2="31" stroke="#3868C0" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="24" cy="26" r="2.5" fill="#6CA8F7"/>
+  <line x1="18" y1="8" x2="30" y2="8" stroke="#6CA8F7" stroke-width="2" stroke-linecap="round"/>
+  <line x1="24" y1="8" x2="24" y2="12" stroke="#6CA8F7" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+
 </svg>
 <div class="frame">
 <div class="sb" id="top-sb">
   <span class="sb-time num" id="sb-time">9:41</span>
-  <span class="sb-right" id="sb-title">我的財務</span>
+  <span class="sb-right" id="sb-title" data-i18n="app_title">我的財務</span>
 </div>
 
 <!-- ══ ONBOARDING ══ -->
@@ -729,8 +834,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
         <text x="242" y="156" text-anchor="middle" font-size="8" fill="#C8C0B8" font-family="sans-serif">10月</text>
       </svg>
     </div>
-    <div class="ob-title" style="font-size:22px;font-weight:800;color:#3A3028;">個人財務管家</div>
-    <div class="ob-sub" style="font-size:13px;color:#9A9088;">輕鬆掌握資產與收支<br>讓財務健康一目瞭然</div>
+    <div class="ob-title" style="font-size:22px;font-weight:800;color:#3A3028;" data-i18n="app_name">個人財務管家</div>
+    <div class="ob-sub" style="font-size:13px;color:#9A9088;" data-i18n="app_sub1">輕鬆掌握資產與收支<br>讓財務健康一目瞭然</div>
     <div class="feat-list">
       <div class="feat-item">
         <div class="feat-ico-wrap" style="background:#FFF1EC;">
@@ -744,7 +849,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
             <line x1="31.5" y1="35.5" x2="38.5" y2="35.5" stroke="#C8A838" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="feat-info"><div class="feat-title">資產負債表</div><div class="feat-txt">存款、不動產、車輛一次管理</div></div><span class="feat-arrow">›</span>
+        <div class="feat-info"><div class="feat-title" data-i18n="feat1_title">資產負債表</div><div class="feat-txt" data-i18n="feat1_sub">存款、不動產、車輛一次管理</div></div><span class="feat-arrow">›</span>
       </div>
       <div class="feat-item">
         <div class="feat-ico-wrap" style="background:#E8F7EF;">
@@ -757,7 +862,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
             <circle cx="35" cy="15.5" r="2.5" fill="#80A87C"/>
           </svg>
         </div>
-        <div class="feat-info"><div class="feat-title">每月收支分析</div><div class="feat-txt">即時顯示儲蓄率與6個月預估</div></div><span class="feat-arrow">›</span>
+        <div class="feat-info"><div class="feat-title" data-i18n="feat2_title">每月收支分析</div><div class="feat-txt" data-i18n="feat2_sub">即時顯示儲蓄率與6個月預估</div></div><span class="feat-arrow">›</span>
       </div>
       <div class="feat-item">
         <div class="feat-ico-wrap" style="background:#FFF5E5;">
@@ -769,84 +874,84 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
             <line x1="36" y1="26" x2="39" y2="26" stroke="#C8B828" stroke-width="1.3" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="feat-info"><div class="feat-title">財務健康報表</div><div class="feat-txt">自動產生個人化財務建議</div></div><span class="feat-arrow">›</span>
+        <div class="feat-info"><div class="feat-title" data-i18n="feat3_title">財務健康報表</div><div class="feat-txt" data-i18n="feat3_sub">自動產生個人化財務建議</div></div><span class="feat-arrow">›</span>
       </div>
     </div>
   </div>
   <div class="ob-footer">
-    <button class="ob-btn-main" onclick="obGo('ob-s1')">開始設定 →</button>
-    <button class="ob-btn-ghost" onclick="enterApp()">跳過，直接進入</button>
+    <button class="ob-btn-main" onclick="obGo('ob-s1')" data-i18n="start_btn">開始設定 →</button>
+    <button class="ob-btn-ghost" onclick="enterApp()" data-i18n="skip_btn">跳過，直接進入</button>
   </div>
 </div>
 
 <!-- OB-1 存款 -->
 <div class="ob-page" id="ob-s1">
   <div class="step-hd">
-    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-welcome')">← 返回</button><span class="step-label">存款與投資</span><span class="step-count">1 / 4</span></div>
+    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-welcome')">← 返回</button><span class="step-label" data-i18n="ob_s1_title">存款與投資</span><span class="step-count">1 / 4</span></div>
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-bank"/></svg></div><span>銀行存款（元）</span></div><input class="sf-input" type="number" id="ob-bank" placeholder="500000" oninput="obCalcLiquid()"></div>
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-stock"/></svg></div><span>股票 / 基金（元）</span></div><input class="sf-input" type="number" id="ob-stock" placeholder="200000" oninput="obCalcLiquid()"><div class="sf-hint">填入目前市值即可</div></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-bank"/></svg></div><span data-i18n="ob_bank_lbl">銀行存款（元）</span></div><input class="sf-input" type="number" id="ob-bank" placeholder="500000" oninput="obCalcLiquid()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-stock"/></svg></div><span data-i18n="ob_stock_lbl">股票 / 基金（元）</span></div><input class="sf-input" type="number" id="ob-stock" placeholder="200000" oninput="obCalcLiquid()"><div class="sf-hint" data-i18n="ob_stock_hint">填入目前市值即可</div></div>
     <div class="preview-card" id="ob-liquid-card" style="background:#E1F5EE;border:1.5px solid #9FE1CB;">
-      <div class="pc-row"><div class="pc-item"><div class="pc-lbl" style="color:#085041;">流動資產合計</div><div class="pc-val" id="ob-liquid-total">$0</div></div></div>
+      <div class="pc-row"><div class="pc-item"><div class="pc-lbl" style="color:#085041;" data-i18n="ob_liquid_total">流動資產合計</div><div class="pc-val" id="ob-liquid-total">$0</div></div></div>
     </div>
   </div>
-  <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s2')">下一步 →</button></div>
+  <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s2')" data-i18n="next_btn">下一步 →</button></div>
 </div>
 
 <!-- OB-2 不動產 -->
 <div class="ob-page" id="ob-s2">
   <div class="step-hd">
-    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-s1')">← 返回</button><span class="step-label">不動產</span><span class="step-count">2 / 4</span></div>
+    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-s1')">← 返回</button><span class="step-label" data-i18n="real_estate">不動產</span><span class="step-count">2 / 4</span></div>
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div><div class="step-dot"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span>買入價格（元）</span></div><input class="sf-input" type="number" id="ob-pcost" placeholder="8000000" oninput="obCalcProp()"></div>
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span>目前市值（元）</span></div><input class="sf-input" type="number" id="ob-pmkt" placeholder="9500000" oninput="obCalcProp()"></div>
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span>坪數</span></div><input class="sf-input" type="number" id="ob-ping" placeholder="30" oninput="obCalcProp()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span data-i18n="ob_buy_price">買入價格（元）</span></div><input class="sf-input" type="number" id="ob-pcost" placeholder="8000000" oninput="obCalcProp()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span data-i18n="ob_curr_value">目前市值（元）</span></div><input class="sf-input" type="number" id="ob-pmkt" placeholder="9500000" oninput="obCalcProp()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><span data-i18n="area_label">坪數</span></div><input class="sf-input" type="number" id="ob-ping" placeholder="30" oninput="obCalcProp()"></div>
     <div class="preview-card" id="ob-prop-card" style="background:#FFFBF0;border:1.5px solid #FAC775;">
-      <div class="pc-row"><div class="pc-item"><div class="pc-lbl">增值率</div><div class="pc-val" id="ob-pgain">—</div></div><div class="pc-item"><div class="pc-lbl">每坪均價</div><div class="pc-val" id="ob-pping">—</div></div></div>
+      <div class="pc-row"><div class="pc-item"><div class="pc-lbl" data-i18n="increase_rate">增值率</div><div class="pc-val" id="ob-pgain">—</div></div><div class="pc-item"><div class="pc-lbl" data-i18n="per_ping">每坪均價</div><div class="pc-val" id="ob-pping">—</div></div></div>
     </div>
   </div>
-  <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s3')">下一步 →</button><button class="ob-btn-ghost" onclick="obGo('ob-s3')">略過（暫無不動產）</button></div>
+  <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s3')" data-i18n="next_btn">下一步 →</button><button class="ob-btn-ghost" onclick="obGo('ob-s3')" data-i18n="skip_prop">略過（暫無不動產）</button></div>
 </div>
 
 <!-- OB-3 負債 -->
 <div class="ob-page" id="ob-s3">
   <div class="step-hd">
-    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-s2')">← 返回</button><span class="step-label">貸款與負債</span><span class="step-count">3 / 4</span></div>
+    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-s2')">← 返回</button><span class="step-label" data-i18n="ob_s3_title">貸款與負債</span><span class="step-count">3 / 4</span></div>
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-loan"/></svg></div><span>房貸餘額（元）</span></div><input class="sf-input" type="number" id="ob-mortgage" placeholder="6000000"></div>
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><span>車貸餘額（元）</span></div><input class="sf-input" type="number" id="ob-carloan" placeholder="300000"></div>
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-card"/></svg></div><span>信用卡未繳（元）</span></div><input class="sf-input" type="number" id="ob-cc" placeholder="30000"><div class="sf-hint">填入本月帳單未繳金額</div></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-loan"/></svg></div><span data-i18n="ob_mortgage_lbl">房貸餘額（元）</span></div><input class="sf-input" type="number" id="ob-mortgage" placeholder="6000000"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><span data-i18n="ob_carloan_lbl">車貸餘額（元）</span></div><input class="sf-input" type="number" id="ob-carloan" placeholder="300000"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-card"/></svg></div><span data-i18n="ob_cc_lbl">信用卡未繳（元）</span></div><input class="sf-input" type="number" id="ob-cc" placeholder="30000"><div class="sf-hint" data-i18n="ob_cc_hint">填入本月帳單未繳金額</div></div>
   </div>
-  <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s4')">下一步 →</button><button class="ob-btn-ghost" onclick="obGo('ob-s4')">略過（暫無負債）</button></div>
+  <div class="step-footer"><button class="ob-btn-main" onclick="obGo('ob-s4')" data-i18n="next_btn">下一步 →</button><button class="ob-btn-ghost" onclick="obGo('ob-s4')" data-i18n="skip_liab">略過（暫無負債）</button></div>
 </div>
 
 <!-- OB-4 收支 -->
 <div class="ob-page" id="ob-s4">
   <div class="step-hd">
-    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-s3')">← 返回</button><span class="step-label">每月收支</span><span class="step-count">4 / 4</span></div>
+    <div class="step-hd-row"><button class="step-back" onclick="obGo('ob-s3')">← 返回</button><span class="step-label" data-i18n="monthly_cashflow">每月收支</span><span class="step-count">4 / 4</span></div>
     <div class="step-dots"><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div></div>
   </div>
   <div class="step-body">
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-salary"/></svg></div><span>月收入（元）</span></div><input class="sf-input" type="number" id="ob-income" placeholder="60000" oninput="obCalcFlow()"></div>
-    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><span>月支出（元）</span></div><input class="sf-input" type="number" id="ob-expense" placeholder="40000" oninput="obCalcFlow()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-salary"/></svg></div><span data-i18n="ob_income_lbl">月收入（元）</span></div><input class="sf-input" type="number" id="ob-income" placeholder="60000" oninput="obCalcFlow()"></div>
+    <div class="sf-group"><div class="sf-label"><div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="24" height="24" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><span data-i18n="ob_expense_lbl">月支出（元）</span></div><input class="sf-input" type="number" id="ob-expense" placeholder="40000" oninput="obCalcFlow()"></div>
     <div class="preview-card" id="ob-flow-card" style="background:#FFF5F0;border:1.5px solid #F5C4B3;">
       <div class="pc-row" style="margin-bottom:8px;">
-        <div class="pc-item"><div class="pc-lbl">月結餘</div><div class="pc-val" id="ob-surplus">$0</div></div>
-        <div class="pc-item"><div class="pc-lbl">儲蓄率</div><div class="pc-val" id="ob-rate" style="color:#D97A52;">0%</div></div>
+        <div class="pc-item"><div class="pc-lbl" data-i18n="monthly_bal">月結餘</div><div class="pc-val" id="ob-surplus">$0</div></div>
+        <div class="pc-item"><div class="pc-lbl" data-i18n="savings_rate">儲蓄率</div><div class="pc-val" id="ob-rate" style="color:#D97A52;">0%</div></div>
       </div>
       <div class="health-bar">
-        <div class="hb-label"><span style="color:#888;">財務健康</span><span id="ob-health-lbl" style="color:#D97A52;">—</span></div>
+        <div class="hb-label"><span style="color:#888;" data-i18n="financial_health">財務健康</span><span id="ob-health-lbl" style="color:#D97A52;">—</span></div>
         <div class="hb-track"><div class="hb-fill" id="ob-health-bar" style="width:0%;background:#A8D8C0;"></div></div>
       </div>
     </div>
   </div>
-  <div class="step-footer"><button class="ob-btn-main" onclick="obFinish()">完成設定 ✓</button></div>
+  <div class="step-footer"><button class="ob-btn-main" onclick="obFinish()" data-i18n="finish_btn">完成設定 ✓</button></div>
 </div>
 
 <!-- OB 完成 -->
@@ -858,35 +963,35 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
         <path d="M10 20l8 8 14-14" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <div style="font-size:20px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;">財務快照完成！</div>
-    <div style="font-size:13px;color:#9A9088;font-family:'Noto Sans TC',sans-serif;">初始資料已帶入 App</div>
+    <div style="font-size:20px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;" data-i18n="finish_title">財務快照完成！</div>
+    <div style="font-size:13px;color:#9A9088;font-family:'Noto Sans TC',sans-serif;" data-i18n="finish_sub">初始資料已帶入 App</div>
     <!-- 數值卡 -->
     <div class="snap-grid">
       <div class="snap-cell g">
-        <div class="sc-lbl g">總資產</div>
+        <div class="sc-lbl g" data-i18n="total_assets">總資產</div>
         <div class="sc-val" id="sn-assets">$0</div>
       </div>
       <div class="snap-cell r">
-        <div class="sc-lbl r">總負債</div>
+        <div class="sc-lbl r" data-i18n="total_liab">總負債</div>
         <div class="sc-val" id="sn-liab">$0</div>
       </div>
       <div class="snap-cell a">
-        <div class="sc-lbl a">淨資產</div>
+        <div class="sc-lbl a" data-i18n="net_worth">淨資產</div>
         <div class="sc-val big" id="sn-net">$0</div>
       </div>
       <div class="snap-cell b">
-        <div class="sc-lbl b">月結餘</div>
+        <div class="sc-lbl b" data-i18n="monthly_bal">月結餘</div>
         <div class="sc-val" id="sn-surplus">$0</div>
       </div>
       <div class="snap-cell p">
-        <div class="sc-lbl p">儲蓄率</div>
+        <div class="sc-lbl p" data-i18n="savings_rate">儲蓄率</div>
         <div class="sc-val" id="sn-rate">0%</div>
       </div>
     </div>
   </div>
   <div class="ob-footer">
-    <button class="ob-btn-main" onclick="enterApp()">前往首頁</button>
-    <button class="ob-btn-ghost" onclick="enterApp()">稍後再看</button>
+    <button class="ob-btn-main" onclick="enterApp()" data-i18n="go_home_btn">前往首頁</button>
+    <button class="ob-btn-ghost" onclick="enterApp()" data-i18n="later_btn">稍後再看</button>
   </div>
 </div>
 
@@ -908,8 +1013,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 
     <!-- 標題 -->
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-      <span style="font-size:16px;font-weight:800;color:#1a1a1a;font-family:'Noto Sans TC',sans-serif;">我的簽名</span>
-      <button onclick="closeSig()" style="background:#f5f2ee;border:none;border-radius:10px;padding:7px 12px;font-size:12px;color:#888;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">關閉</button>
+      <span style="font-size:16px;font-weight:800;color:#1a1a1a;font-family:'Noto Sans TC',sans-serif;" data-i18n="sig_title">我的簽名</span>
+      <button onclick="closeSig()" style="background:#f5f2ee;border:none;border-radius:10px;padding:7px 12px;font-size:12px;color:#888;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" data-i18n="close_btn">關閉</button>
     </div>
 
     <!-- 模式切換 -->
@@ -922,8 +1027,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
     <div id="mode-draw">
       <canvas id="sig-canvas" width="335" height="140" style="width:100%;height:140px;border-radius:16px;background:#FAF8F5;touch-action:none;cursor:crosshair;display:block;"></canvas>
       <div style="display:flex;gap:8px;margin-top:12px;">
-        <button onclick="clearSig()" style="flex:1;background:#f5f2ee;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;color:#888;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">清除</button>
-        <button onclick="saveSig('draw')" style="flex:2;background:#D85A30;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">儲存簽名</button>
+        <button onclick="clearSig()" style="flex:1;background:#f5f2ee;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;color:#888;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" data-i18n="clear_btn">清除</button>
+        <button onclick="saveSig('draw')" style="flex:2;background:#D85A30;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" data-i18n="save_sig">儲存簽名</button>
       </div>
     </div>
 
@@ -937,7 +1042,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
       <!-- 字體選擇格 -->
       <div id="font-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;"></div>
       <!-- 儲存 -->
-      <button id="save-font-btn" onclick="saveSig('font')" style="display:none;width:100%;background:#D85A30;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">套用此簽名</button>
+      <button id="save-font-btn" onclick="saveSig('font')" style="display:none;width:100%;background:#D85A30;border:none;border-radius:12px;padding:12px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" data-i18n="apply_sig">套用此簽名</button>
     </div>
 
   </div>
@@ -947,19 +1052,19 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="hero-card">
   <div class="hero-tag">淨資產</div>
   <div class="hero-num" id="h-net">$0</div>
-  <div class="hero-pill"><span class="hero-pill-txt" id="h-pill">輸入資料後自動計算</span></div>
+  <div class="hero-pill"><span class="hero-pill-txt" id="h-pill" data-i18n="auto_calc">輸入資料後自動計算</span></div>
 </div>
 <div class="two-mini">
   <div class="mini"><div class="mini-lbl">總資產</div><div class="mini-val g" id="h-assets">$0</div></div>
   <div class="mini"><div class="mini-lbl">總負債</div><div class="mini-val r" id="h-liab">$0</div></div>
 </div>
 <div class="scroll" style="padding-top:0;">
-  <div class="sec-head"><span class="sec-t">資產總覽</span><span class="sec-more" onclick="goPage('pg-assets')">編輯 →</span></div>
+  <div class="sec-head"><span class="sec-t" data-i18n="asset_overview">資產總覽</span><span class="sec-more" onclick="goPage('pg-assets')" data-i18n="edit_btn">編輯 →</span></div>
   <div class="asset-list" id="h-list">
-    <div class="arow"><div class="aico m">💡</div><div class="ainfo"><div class="aname">尚未輸入資料</div><div class="asub">點下方「資產」開始填寫</div></div></div>
+    <div class="arow"><div class="aico m">💡</div><div class="ainfo"><div class="aname" data-i18n="no_data_title">尚未輸入資料</div><div class="asub" data-i18n="no_data_sub">點下方「資產」開始填寫</div></div></div>
   </div>
   <div class="fc-wrap">
-    <div class="fc-head"><span class="fc-t">收支預估</span><span class="fc-s">6個月</span></div>
+    <div class="fc-head"><span class="fc-t" data-i18n="cf_forecast">收支預估</span><span class="fc-s" data-i18n="six_months">6個月</span></div>
     <div class="fc-bars" id="h-chart">
       <div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc;"></div><div class="fc-lbl">—</div></div>
       <div class="fc-col"><div class="fc-bar" style="height:26px;background:#e8e4dc;"></div><div class="fc-lbl">—</div></div>
@@ -1019,81 +1124,81 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="page" id="pg-assets">
 <div class="scroll">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-    <div class="page-title" style="margin-bottom:0;">資產負債表</div>
+    <div class="page-title" style="margin-bottom:0;" data-i18n="feat1_title">資產負債表</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
       <canvas class="sig-preview-clone" width="220" height="56" style="width:110px;height:28px;"></canvas>
     </div>
   </div>
   <div class="blk">
-    <div class="blk-head green"><span>流動資產</span><span class="hval" id="cur-lbl">$0</span></div>
+    <div class="blk-head green"><span data-i18n="current_assets">流動資產</span><span class="hval" id="cur-lbl">$0</span></div>
     <div id="cur-extra-rows">
     <div class="row" data-cur><div style="width:42px;height:42px;border-radius:11px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-bank" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-bank"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="銀行存款"><input class="rval" type="number" placeholder="0" id="a-cash" oninput="calc()"><button class="rdel" onclick="if(document.querySelectorAll('#cur-extra-rows [data-cur]').length<=1){alert('至少保留一筆');}else{this.closest('.row').remove();calc();}">×</button></div>
     <div class="row" data-cur><div style="width:42px;height:42px;border-radius:11px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-stock" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-stock"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="股票/基金"><input class="rval" type="number" placeholder="0" id="a-stock" oninput="calc()"><button class="rdel" onclick="if(document.querySelectorAll('#cur-extra-rows [data-cur]').length<=1){alert('至少保留一筆');}else{this.closest('.row').remove();calc();}">×</button></div>
     </div>
-    <button class="add-btn" onclick="addCurRow()">＋ 新增流動資產</button>
+    <button class="add-btn" onclick="addCurRow()" data-i18n="add_cur">＋ 新增流動資產</button>
   </div>
   <div class="blk">
     <div class="blk-head amber"><span>不動產</span><span class="hval" id="p-val-lbl">$0</span></div>
     <div id="prop-list">
       <div class="prop-card" data-prop>
         <div class="prop-top"><div style="width:42px;height:42px;border-radius:11px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-property" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><input class="prop-name" value="房屋 A"><button class="rdel" onclick="delProp(this)">×</button></div>
-        <div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="window.open('https://lvr.land.moi.gov.tw/','_blank')" disabled>查實價登錄 ↗</button></div>
+        <div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="window.open('https://lvr.land.moi.gov.tw/','_blank')" disabled data-i18n="lookup_btn">查實價登錄 ↗</button></div>
         <div class="prop-grid">
-          <div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div>
-          <div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div>
-          <div class="pf"><label>坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div>
-          <div class="pf"><label>每坪均價</label><input placeholder="—" readonly></div>
+          <div class="pf"><label data-i18n="cost_label">成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div>
+          <div class="pf"><label data-i18n="value_label">現值</label><input type="number" placeholder="0" oninput="calcProps()"></div>
+          <div class="pf"><label data-i18n="area_label">坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div>
+          <div class="pf"><label data-i18n="per_ping">每坪均價</label><input placeholder="—" readonly></div>
         </div>
         <div class="gain-info"></div>
       </div>
     </div>
-    <button class="add-btn" onclick="addProp()">＋ 新增不動產</button>
+    <button class="add-btn" onclick="addProp()" data-i18n="add_prop">＋ 新增不動產</button>
     <div style="display:flex;justify-content:space-between;padding:10px 14px;background:#FFFBF0;border-top:1px solid #FAC775;font-size:12px;font-weight:700;font-family:'Noto Sans TC',sans-serif;">
-      <span style="color:#854F0B;">不動產合計</span>
+      <span style="color:#854F0B;" data-i18n="prop_total">不動產合計</span>
       <span class="num">成本 <span id="p-cost">$0</span> 現值 <span id="p-val" style="color:var(--green);">$0</span> <span id="p-gain" style="color:var(--green);">損益 $0</span></span>
     </div>
   </div>
   <div class="blk">
-    <div class="blk-head blue"><span>車輛折舊</span><span class="hval" id="c-val-lbl">$0</span></div>
+    <div class="blk-head blue"><span data-i18n="vehicle_dep">車輛折舊</span><span class="hval" id="c-val-lbl">$0</span></div>
     <div id="car-list">
       <div class="car-card" data-car data-method="straight">
-        <div class="car-top"><div style="width:42px;height:42px;border-radius:11px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-car" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><input class="prop-name" value="車輛 A"><div class="method-toggle"><button class="mt-btn on" onclick="setMethod(this,'straight')">直線</button><button class="mt-btn" onclick="setMethod(this,'declining')">遞減</button></div><button class="rdel" onclick="delCar(this)">×</button></div>
+        <div class="car-top"><div style="width:42px;height:42px;border-radius:11px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-car" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><input class="prop-name" value="車輛 A"><div class="method-toggle"><button class="mt-btn on" onclick="setMethod(this,'straight')" data-i18n="straight_line">直線</button><button class="mt-btn" onclick="setMethod(this,'declining')" data-i18n="declining">遞減</button></div><button class="rdel" onclick="delCar(this)">×</button></div>
         <div class="car-grid">
-          <div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcCar(this)"></div>
-          <div class="pf"><label>購入年份</label><input type="number" value="2022" oninput="calcCar(this)"></div>
-          <div class="pf"><label>年限(年)</label><input type="number" value="5" oninput="calcCar(this)"></div>
-          <div class="pf"><label>殘值率(%)</label><input type="number" value="10" oninput="calcCar(this)"></div>
+          <div class="pf"><label data-i18n="cost_label">成本價</label><input type="number" placeholder="0" oninput="calcCar(this)"></div>
+          <div class="pf"><label data-i18n="buy_year">購入年份</label><input type="number" value="2022" oninput="calcCar(this)"></div>
+          <div class="pf"><label data-i18n="years_label">年限(年)</label><input type="number" value="5" oninput="calcCar(this)"></div>
+          <div class="pf"><label data-i18n="residual_rate">殘值率(%)</label><input type="number" value="10" oninput="calcCar(this)"></div>
         </div>
         <div class="gain-info" style="margin-top:6px;"></div>
       </div>
     </div>
-    <button class="add-btn" onclick="addCar()">＋ 新增車輛</button>
+    <button class="add-btn" onclick="addCar()" data-i18n="add_car">＋ 新增車輛</button>
     <div style="display:flex;justify-content:space-between;padding:10px 14px;background:var(--blue-soft);border-top:1px solid #85B7EB;font-size:12px;font-weight:700;font-family:'Noto Sans TC',sans-serif;">
-      <span style="color:var(--blue);">車輛合計</span>
+      <span style="color:var(--blue);" data-i18n="car_total">車輛合計</span>
       <span class="num">成本 <span id="c-cost">$0</span> 帳面 <span id="c-val" style="color:#185FA5;">$0</span> 折舊 <span id="c-dep" style="color:var(--red);">$0</span></span>
     </div>
   </div>
   <div class="blk">
-    <div class="blk-head red"><span>銀行貸款</span><span class="hval" id="loan-lbl">$0</span></div>
+    <div class="blk-head red"><span data-i18n="bank_loan">銀行貸款</span><span class="hval" id="loan-lbl">$0</span></div>
     <div id="loan-rows">
       <div class="row" data-loan><div style="width:42px;height:42px;border-radius:11px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-loan" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-loan"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="房貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
       <div class="row" data-loan><div style="width:42px;height:42px;border-radius:11px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-car" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="車貸"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button></div>
     </div>
-    <button class="add-btn" onclick="addLoanRow()">＋ 新增貸款</button>
+    <button class="add-btn" onclick="addLoanRow()" data-i18n="add_loan">＋ 新增貸款</button>
   </div>
   <div class="blk">
-    <div class="blk-head coral"><span>其他負債</span><span class="hval" id="other-lbl">$0</span></div>
+    <div class="blk-head coral"><span data-i18n="other_liab">其他負債</span><span class="hval" id="other-lbl">$0</span></div>
     <div id="other-rows">
       <div class="row" data-other><div style="width:42px;height:42px;border-radius:11px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-card" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-card"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="信用卡"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delORow(this)">×</button></div>
     </div>
-    <button class="add-btn" onclick="addOtherRow()">＋ 新增其他負債</button>
+    <button class="add-btn" onclick="addOtherRow()" data-i18n="add_other">＋ 新增其他負債</button>
   </div>
-  <div class="net-bar"><span class="net-label">淨資產 = 資產 − 負債</span><span class="net-val" id="net-val" style="color:#D97A52;">$0</span></div>
+  <div class="net-bar"><span class="net-label" data-i18n="net_formula">淨資產 = 資產 − 負債</span><span class="net-val" id="net-val" style="color:#D97A52;">$0</span></div>
   <div class="sum-strip">
-    <div class="ss-cell"><div class="ss-lbl">流動</div><div class="ss-val g" id="s-cur">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">不動產</div><div class="ss-val a" id="s-prop">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">車輛</div><div class="ss-val b" id="s-car">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">負債</div><div class="ss-val r" id="s-liab">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="cur_label">流動</div><div class="ss-val g" id="s-cur">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="real_estate">不動產</div><div class="ss-val a" id="s-prop">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="car_label">車輛</div><div class="ss-val b" id="s-car">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="liab_label">負債</div><div class="ss-val r" id="s-liab">$0</div></div>
   </div>
 </div>
 <div class="tabbar-wrap"><div class="tabbar">
@@ -1145,22 +1250,22 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="page" id="pg-cashflow">
 <div class="scroll">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-    <div class="page-title" style="margin-bottom:0;">每月收支</div>
+    <div class="page-title" style="margin-bottom:0;" data-i18n="monthly_cashflow">每月收支</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
       <canvas class="sig-preview-clone" width="220" height="56" style="width:110px;height:28px;"></canvas>
     </div>
   </div>
   <div class="blk">
-    <div class="blk-head green"><span>收入</span><span class="hval" id="inc-total">$0</span></div>
+    <div class="blk-head green"><span data-i18n="income_section">收入</span><span class="hval" id="inc-total">$0</span></div>
     <div id="inc-rows">
       <div class="row" data-inc><div style="width:42px;height:42px;border-radius:11px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-salary" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-salary"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="薪資收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
       <div class="row" data-inc><div style="width:42px;height:42px;border-radius:11px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-salary" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-invest"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="投資收益"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
       <div class="row" data-inc><div style="width:42px;height:42px;border-radius:11px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-salary" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-salary"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="副業收入"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button></div>
     </div>
-    <button class="add-btn" onclick="addIncRow()">＋ 新增收入</button>
+    <button class="add-btn" onclick="addIncRow()" data-i18n="add_income">＋ 新增收入</button>
   </div>
   <div class="blk">
-    <div class="blk-head coral"><span>支出</span><span class="hval" id="exp-total">$0</span></div>
+    <div class="blk-head coral"><span data-i18n="expense_section">支出</span><span class="hval" id="exp-total">$0</span></div>
     <div id="cf-exp-rows">
       <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-property" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="房貸/租金"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
       <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FAF4E8;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-food" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="餐飲"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
@@ -1169,16 +1274,16 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
       <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-food" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="娛樂"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
       <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FFF1EC;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-insurance" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-insurance"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="保險"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
     </div>
-    <button class="add-btn" onclick="addExpRow()">＋ 新增支出</button>
+    <button class="add-btn" onclick="addExpRow()" data-i18n="add_expense">＋ 新增支出</button>
   </div>
   <div class="sum-strip">
-    <div class="ss-cell"><div class="ss-lbl">月收入</div><div class="ss-val g" id="cf-inc">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">月支出</div><div class="ss-val r" id="cf-exp">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">月結餘</div><div class="ss-val a" id="cf-sur">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">儲蓄率</div><div class="ss-val b" id="cf-rate">0%</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="monthly_inc">月收入</div><div class="ss-val g" id="cf-inc">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="monthly_exp">月支出</div><div class="ss-val r" id="cf-exp">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="monthly_bal">月結餘</div><div class="ss-val a" id="cf-sur">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="savings_rate">儲蓄率</div><div class="ss-val b" id="cf-rate">0%</div></div>
   </div>
   <div class="fc-wrap">
-    <div class="fc-head"><span class="fc-t">6個月預估</span><span class="fc-s" id="cf-range">—</span></div>
+    <div class="fc-head"><span class="fc-t" data-i18n="forecast_6m">6個月預估</span><span class="fc-s" id="cf-range">—</span></div>
     <div class="fc-bars" id="cf-chart"></div>
   </div>
   <div class="fc-sum" id="cf-sum"></div>
@@ -1232,20 +1337,20 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div class="page" id="pg-report">
 <div class="scroll">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-    <div class="page-title" style="margin-bottom:0;">財務報表</div>
+    <div class="page-title" style="margin-bottom:0;" data-i18n="report_title">財務報表</div>
     <div onclick="openSig()" style="width:120px;height:36px;border-radius:20px;background:#fff;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;padding:2px 8px;box-shadow:0 2px 10px rgba(0,0,0,0.08);">
       <canvas class="sig-preview-clone" width="220" height="56" style="width:110px;height:28px;"></canvas>
     </div>
   </div>
   <div class="sum-strip" style="margin-bottom:10px;">
-    <div class="ss-cell"><div class="ss-lbl">總資產</div><div class="ss-val g" id="r-assets">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">總負債</div><div class="ss-val r" id="r-liab">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">淨資產</div><div class="ss-val a" id="r-net">$0</div></div>
-    <div class="ss-cell"><div class="ss-lbl">負債比</div><div class="ss-val b" id="r-ratio">0%</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="total_assets">總資產</div><div class="ss-val g" id="r-assets">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="total_liab">總負債</div><div class="ss-val r" id="r-liab">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="net_worth">淨資產</div><div class="ss-val a" id="r-net">$0</div></div>
+    <div class="ss-cell"><div class="ss-lbl" data-i18n="debt_ratio">負債比</div><div class="ss-val b" id="r-ratio">0%</div></div>
   </div>
-  <div class="blk"><div class="blk-head teal"><span>資產結構</span></div><div id="r-asset-bd"><div style="padding:12px 14px;font-size:15px;color:var(--muted);font-family:'Noto Sans TC',sans-serif;">尚無資料</div></div></div>
-  <div class="blk"><div class="blk-head coral"><span>支出結構</span></div><div id="r-exp-bd"><div style="padding:12px 14px;font-size:15px;color:var(--muted);font-family:'Noto Sans TC',sans-serif;">尚無資料</div></div></div>
-  <div class="blk"><div class="blk-head amber"><span>財務建議</span><span>🌟</span></div><div id="r-advice" style="padding:14px 16px;font-size:15px;font-weight:600;color:#555;line-height:1.8;font-family:'Noto Sans TC',sans-serif;">請先填入資產與收支資料</div></div>
+  <div class="blk"><div class="blk-head teal"><span data-i18n="asset_breakdown">資產結構</span></div><div id="r-asset-bd"><div style="padding:12px 14px;font-size:15px;color:var(--muted);font-family:'Noto Sans TC',sans-serif;" data-i18n="no_data_report">尚無資料</div></div></div>
+  <div class="blk"><div class="blk-head coral"><span data-i18n="exp_breakdown">支出結構</span></div><div id="r-exp-bd"><div style="padding:12px 14px;font-size:15px;color:var(--muted);font-family:'Noto Sans TC',sans-serif;" data-i18n="no_data_report">尚無資料</div></div></div>
+  <div class="blk"><div class="blk-head amber"><span data-i18n="fin_advice">財務建議</span><span>🌟</span></div><div id="r-advice" style="padding:14px 16px;font-size:15px;font-weight:600;color:#555;line-height:1.8;font-family:'Noto Sans TC',sans-serif;" data-i18n="advice_empty">請先填入資產與收支資料</div></div>
 </div>
 <div class="tabbar-wrap"><div class="tabbar">
   <button class="tab" onclick="goPage('pg-home')">
@@ -1316,19 +1421,17 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
             <svg width="22" height="22" viewBox="0 0 48 48"><use href="#ico-profile"/></svg>
           </div>
           <span style="flex:1;font-size:15px;font-weight:600;color:#9A9088;" data-i18n="name_label">姓名</span>
-          <input id="profile-name-input" value="Cram" oninput="updateProfileName(this.value)" style="border:none;background:transparent;font-size:15px;font-weight:700;color:#3A3028;text-align:right;width:120px;font-family:'Noto Sans TC',sans-serif;outline:none;">
+          <input id="profile-name-input" value="Cram" oninput="updateProfileName(this.value)" style="border:none;background:transparent;font-size:15px;font-weight:700;color:#3A3028;font-size:13px;text-align:right;width:120px;font-family:'Noto Sans TC',sans-serif;outline:none;">
         </div>
         <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid rgba(0,0,0,0.04);gap:10px;">
           <div style="width:36px;height:36px;border-radius:10px;background:#FFF3E0;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <svg width="22" height="22" viewBox="0 0 48 48"><use href="#ico-currency"/></svg>
           </div>
           <span style="flex:1;font-size:15px;font-weight:600;color:#9A9088;" data-i18n="currency_label">貨幣</span>
-          <select id="currency-select" onchange="updateCurrency(this.value)" style="border:none;background:transparent;font-size:15px;font-weight:700;color:#3A3028;text-align:right;font-family:'Noto Sans TC',sans-serif;outline:none;cursor:pointer;">
+          <select id="currency-select" onchange="updateCurrency(this.value)" style="border:none;background:transparent;font-size:13px;font-weight:700;color:#3A3028;text-align:left;text-align-last:left;font-family:'Noto Sans TC',sans-serif;outline:none;cursor:pointer;">
             <option value="TWD">TWD 新台幣</option>
             <option value="USD">USD 美元</option>
             <option value="JPY">JPY 日圓</option>
-            <option value="CNY">CNY 人民幣</option>
-            <option value="HKD">HKD 港幣</option>
           </select>
         </div>
       </div>
@@ -1341,22 +1444,24 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
             <svg width="22" height="22" viewBox="0 0 48 48"><use href="#ico-language"/></svg>
           </div>
           <span style="flex:1;font-size:15px;font-weight:600;color:#9A9088;" data-i18n="language_label">語言</span>
-          <span style="font-size:14px;font-weight:700;color:#3A3028;" id="current-lang-display">繁體中文 🇹🇼</span>
-          <span style="font-size:16px;color:#C8C0B8;">›</span>
+          <span style="font-size:13px;font-weight:700;color:#3A3028;" id="current-lang-display">繁體中文 🇹🇼</span>
+          <span style="font-size:16px;color:#C8C0B8;margin-left:4px;">›</span>
         </div>
-        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid rgba(0,0,0,0.04);gap:10px;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="22" height="22" viewBox="0 0 48 48"><use href="#ico-calendar"/></svg>
+        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid rgba(0,0,0,0.04);gap:10px;cursor:pointer;" onclick="goPage('pg-fiscal')">
+          <div style="width:36px;height:36px;border-radius:10px;background:#FFF1EC;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ico-cal-jan" id="settings-fiscal-ico"/></svg>
           </div>
           <span style="flex:1;font-size:15px;font-weight:600;color:#9A9088;" data-i18n="fiscal_year_label">財務年度</span>
-          <span style="font-size:14px;font-weight:700;color:#3A3028;" data-i18n="fiscal_year_value">每年 1 月</span>
+          <span style="font-size:13px;font-weight:700;color:#3A3028;" id="fiscal-display">1月開始</span>
+          <span style="font-size:16px;color:#C8C0B8;">›</span>
         </div>
-        <div style="display:flex;align-items:center;padding:13px 16px;gap:10px;">
+        <div style="display:flex;align-items:center;padding:13px 16px;gap:10px;cursor:pointer;" onclick="goPage('pg-notify')">
           <div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="22" height="22" viewBox="0 0 48 48"><use href="#ico-notify"/></svg>
+            <svg width="28" height="28" viewBox="0 0 48 48"><use href="#ico-notify"/></svg>
           </div>
           <span style="flex:1;font-size:15px;font-weight:600;color:#9A9088;" data-i18n="notify_label">通知</span>
-          <span style="font-size:14px;font-weight:700;color:#3A3028;" data-i18n="notify_value">每月提醒</span>
+          <span style="font-size:13px;font-weight:700;color:#3A3028;" id="notify-display">每月提醒</span>
+          <span style="font-size:16px;color:#C8C0B8;">›</span>
         </div>
       </div>
 
@@ -1411,26 +1516,26 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 
         <div onclick="setLang('zh')" id="lang-zh" style="background:#fff;border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:12px;border:2px solid #D97A52;box-shadow:0 2px 12px rgba(217,122,82,0.12);cursor:pointer;">
           <div style="width:40px;height:40px;border-radius:12px;background:#FFF1EC;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🇹🇼</div>
-          <div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#3A3028;">繁體中文</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">Traditional Chinese</div></div>
+          <div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#3A3028;" data-i18n="lang_zh">繁體中文</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">Traditional Chinese</div></div>
           <div id="check-zh" style="width:22px;height:22px;border-radius:50%;background:#D97A52;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;">✓</div>
         </div>
 
         <div onclick="setLang('en')" id="lang-en" style="background:#fff;border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:12px;border:1.5px solid #EAE4DC;cursor:pointer;">
           <div style="width:40px;height:40px;border-radius:12px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🇺🇸</div>
-          <div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#3A3028;">English</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">英文</div></div>
+          <div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#3A3028;text-align:left;">English</div><div style="font-size:11px;color:#9A9088;margin-top:2px;text-align:left;">英文</div></div>
           <div id="check-en" style="width:22px;height:22px;border-radius:50%;background:#F0EDE8;border:2px solid #E8E4DC;display:flex;align-items:center;justify-content:center;"></div>
         </div>
 
         <div onclick="setLang('ja')" id="lang-ja" style="background:#fff;border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:12px;border:1.5px solid #EAE4DC;cursor:pointer;">
           <div style="width:40px;height:40px;border-radius:12px;background:#FFECEC;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🇯🇵</div>
-          <div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#3A3028;">日本語</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">Japanese</div></div>
+          <div style="flex:1;"><div style="font-size:15px;font-weight:700;color:#3A3028;text-align:left;">日本語</div><div style="font-size:11px;color:#9A9088;margin-top:2px;text-align:left;">Japanese</div></div>
           <div id="check-ja" style="width:22px;height:22px;border-radius:50%;background:#F0EDE8;border:2px solid #E8E4DC;display:flex;align-items:center;justify-content:center;"></div>
         </div>
 
       </div>
 
       <!-- 預覽 -->
-      <div style="font-size:10px;font-weight:700;color:#B0A898;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;" id="preview-label">切換後介面效果</div>
+      <div style="font-size:10px;font-weight:700;color:#B0A898;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;" id="preview-label" data-i18n="preview_label">切換後介面效果</div>
       <div class="blk" style="padding:14px 16px;margin-bottom:12px;">
         <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.04);">
           <span style="font-size:13px;color:#9A9088;" id="prev-networth">淨資產</span>
@@ -1447,10 +1552,182 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
       </div>
 
       <div style="background:#F5F2EE;border-radius:14px;padding:12px 14px;margin-bottom:8px;">
-        <div style="font-size:12px;color:#9A9088;line-height:1.7;" id="lang-hint">切換語言後介面文字即時更新，數字格式也會自動調整。</div>
+        <div style="font-size:12px;color:#9A9088;line-height:1.7;" id="lang-hint" data-i18n="lang_hint">切換語言後介面文字即時更新，數字格式也會自動調整。</div>
       </div>
     </div>
     <!-- tabbar -->
+    <div class="tabbar-wrap"><div class="tabbar">
+      <button class="tab" onclick="goPage('pg-home')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-home"/></svg></div><span class="tab-lbl off" data-i18n="tab_home">總覽</span></div></button>
+      <button class="tab" onclick="goPage('pg-assets')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-asset"/></svg></div><span class="tab-lbl off" data-i18n="tab_assets">資產</span></div></button>
+      <button class="tab" onclick="goPage('pg-cashflow')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-cashflow"/></svg></div><span class="tab-lbl off" data-i18n="tab_cashflow">收支</span></div></button>
+      <button class="tab" onclick="goPage('pg-report')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-report"/></svg></div><span class="tab-lbl off" data-i18n="tab_report">報表</span></div></button>
+      <button class="tab active" onclick="goPage('pg-settings')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-settings-tab"/></svg></div><span class="tab-lbl on" data-i18n="tab_settings">設定</span></div></button>
+    </div></div><!-- /wrap -->
+  </div>
+
+  <!-- ══ 財務年度頁面 ══ -->
+  <div class="page" id="pg-fiscal">
+    <div class="scroll">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+        <button onclick="goPage('pg-settings')" style="background:#FFF1EC;border:none;border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;color:#D97A52;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">← 返回</button>
+        <span style="font-size:20px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;">財務年度</span>
+      </div>
+      <div style="font-size:10px;font-weight:700;color:#B0A898;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">選擇財務年度起始月份</div>
+
+      <div id="fiscal-options" style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+        <!-- 1月 active -->
+                <div onclick="setFiscal('jan')" id="fiscal-jan" style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;border:2px solid #D97A52;box-shadow:0 2px 12px rgba(217,122,82,0.12);cursor:pointer;">
+          <div style="width:42px;height:42px;border-radius:12px;background:#FFF1EC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-cal-jan"/></svg></div>
+          <div style="flex:1;min-width:0;overflow:hidden;"><div style="font-size:15px;font-weight:700;color:#3A3028;">1 月開始</div><div style="font-size:11px;color:#9A9088;margin-top:3px;">🇹🇼 台灣 · 🇺🇸 美國（曆年制）</div></div>
+          <div id="check-fiscal-jan" style="width:22px;height:22px;min-width:22px;flex-shrink:0;border-radius:50%;background:#D97A52;color:#fff;border:2px solid #D97A52;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">✓</div>
+        </div>
+        <div onclick="setFiscal('apr')" id="fiscal-apr" style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;border:1.5px solid #EAE4DC;box-shadow:none;cursor:pointer;">
+          <div style="width:42px;height:42px;border-radius:12px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-cal-apr"/></svg></div>
+          <div style="flex:1;min-width:0;overflow:hidden;"><div style="font-size:15px;font-weight:700;color:#3A3028;">4 月開始</div><div style="font-size:11px;color:#9A9088;margin-top:3px;">🇯🇵 日本（会計年度 4〜3月）</div></div>
+          <div id="check-fiscal-apr" style="width:22px;height:22px;min-width:22px;flex-shrink:0;border-radius:50%;background:#F0EDE8;color:transparent;border:2px solid #E8E4DC;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;"></div>
+        </div>
+        <div onclick="setFiscal('custom')" id="fiscal-custom" style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;border:1.5px solid #EAE4DC;box-shadow:none;cursor:pointer;">
+          <div style="width:42px;height:42px;border-radius:12px;background:#F1EDFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-cal-custom"/></svg></div>
+          <div style="flex:1;min-width:0;overflow:hidden;"><div style="font-size:15px;font-weight:700;color:#3A3028;">自訂月份</div><div style="font-size:11px;color:#9A9088;margin-top:3px;">依個人需求設定起始月份</div></div>
+          <div id="check-fiscal-custom" style="width:22px;height:22px;min-width:22px;flex-shrink:0;border-radius:50%;background:#F0EDE8;color:transparent;border:2px solid #E8E4DC;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;"></div>
+        </div>
+      </div>
+
+      <!-- 自訂月份選擇（預設隱藏） -->
+      <div id="custom-month-wrap" style="display:none;background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:16px;box-shadow:0 1px 6px rgba(0,0,0,0.05);">
+        <div style="font-size:13px;font-weight:600;color:#9A9088;margin-bottom:10px;">選擇起始月份</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+          <div onclick="setCustomMonth(1)" id="cm-1" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#D97A52;color:#fff">1月</div>
+          <div onclick="setCustomMonth(2)" id="cm-2" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">2月</div>
+          <div onclick="setCustomMonth(3)" id="cm-3" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">3月</div>
+          <div onclick="setCustomMonth(4)" id="cm-4" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">4月</div>
+          <div onclick="setCustomMonth(5)" id="cm-5" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">5月</div>
+          <div onclick="setCustomMonth(6)" id="cm-6" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">6月</div>
+          <div onclick="setCustomMonth(7)" id="cm-7" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">7月</div>
+          <div onclick="setCustomMonth(8)" id="cm-8" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">8月</div>
+          <div onclick="setCustomMonth(9)" id="cm-9" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">9月</div>
+          <div onclick="setCustomMonth(10)" id="cm-10" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">10月</div>
+          <div onclick="setCustomMonth(11)" id="cm-11" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">11月</div>
+          <div onclick="setCustomMonth(12)" id="cm-12" style="border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;background:#F5F3F0;color:#3A3028">12月</div>
+        </div>
+      </div>
+
+      <div style="background:#F5F2EE;border-radius:14px;padding:12px 14px;">
+        <div style="font-size:12px;color:#9A9088;line-height:1.7;" id="fiscal-hint-text">財務年度影響年度報表的計算期間。台灣與美國採曆年制，統計從 1 月到 12 月。</div>
+      </div>
+    </div>
+    <div class="tabbar-wrap"><div class="tabbar">
+      <button class="tab" onclick="goPage('pg-home')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-home"/></svg></div><span class="tab-lbl off" data-i18n="tab_home">總覽</span></div></button>
+      <button class="tab" onclick="goPage('pg-assets')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-asset"/></svg></div><span class="tab-lbl off" data-i18n="tab_assets">資產</span></div></button>
+      <button class="tab" onclick="goPage('pg-cashflow')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-cashflow"/></svg></div><span class="tab-lbl off" data-i18n="tab_cashflow">收支</span></div></button>
+      <button class="tab" onclick="goPage('pg-report')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-report"/></svg></div><span class="tab-lbl off" data-i18n="tab_report">報表</span></div></button>
+      <button class="tab active" onclick="goPage('pg-settings')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-settings-tab"/></svg></div><span class="tab-lbl on" data-i18n="tab_settings">設定</span></div></button>
+    </div></div><!-- /wrap -->
+  </div>
+
+  <!-- ══ 通知設定頁面 ══ -->
+  <div class="page" id="pg-notify">
+    <div class="scroll">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+        <button onclick="goPage('pg-settings')" style="background:#FFF1EC;border:none;border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;color:#D97A52;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">← 返回</button>
+        <span style="font-size:20px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;">通知設定</span>
+      </div>
+
+      <!-- 開關 -->
+      <div style="font-size:10px;font-weight:700;color:#B0A898;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">通知開關</div>
+      <div class="blk" style="margin-bottom:14px;">
+        <div style="display:flex;align-items:center;padding:13px 16px;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="26" height="26" viewBox="0 0 48 48"><use href="#ico-notify"/></svg>
+          </div>
+          <div style="flex:1;"><div style="font-size:15px;font-weight:600;color:#3A3028;">開啟通知</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">定期提醒填寫財務資料</div></div>
+          <div id="notify-toggle" onclick="toggleNotify()" style="width:44px;height:24px;border-radius:12px;background:#D97A52;position:relative;cursor:pointer;flex-shrink:0;">
+            <div id="notify-dot" style="width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:2px;right:2px;transition:all .2s;box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 提醒頻率 -->
+      <div style="font-size:10px;font-weight:700;color:#B0A898;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">提醒頻率</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+                <div onclick="setNotifyFreq('monthly')" id="nf-monthly" style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;border:2px solid #D97A52;box-shadow:0 2px 12px rgba(217,122,82,0.1);cursor:pointer;">
+          <div style="width:42px;height:42px;border-radius:12px;background:#E8F7EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-remind-monthly"/></svg></div>
+          <div style="flex:1;min-width:0;overflow:hidden;"><div style="font-size:15px;font-weight:700;color:#3A3028;">每月提醒</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">每月固定日期提醒</div></div>
+          <div id="check-nf-monthly" style="width:22px;height:22px;min-width:22px;flex-shrink:0;border-radius:50%;background:#D97A52;color:#fff;border:2px solid #D97A52;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">✓</div>
+        </div>
+        <div onclick="setNotifyFreq('weekly')" id="nf-weekly" style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;border:1.5px solid #EAE4DC;box-shadow:none;cursor:pointer;">
+          <div style="width:42px;height:42px;border-radius:12px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-remind-weekly"/></svg></div>
+          <div style="flex:1;min-width:0;overflow:hidden;"><div style="font-size:15px;font-weight:700;color:#3A3028;">每週提醒</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">每週一提醒記帳</div></div>
+          <div id="check-nf-weekly" style="width:22px;height:22px;min-width:22px;flex-shrink:0;border-radius:50%;background:#F0EDE8;color:transparent;border:2px solid #E8E4DC;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;"></div>
+        </div>
+        <div onclick="setNotifyFreq('quarterly')" id="nf-quarterly" style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;border:1.5px solid #EAE4DC;box-shadow:none;cursor:pointer;">
+          <div style="width:42px;height:42px;border-radius:12px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-remind-quarterly"/></svg></div>
+          <div style="flex:1;min-width:0;overflow:hidden;"><div style="font-size:15px;font-weight:700;color:#3A3028;">每季提醒</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">每季初財務回顧</div></div>
+          <div id="check-nf-quarterly" style="width:22px;height:22px;min-width:22px;flex-shrink:0;border-radius:50%;background:#F0EDE8;color:transparent;border:2px solid #E8E4DC;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;"></div>
+        </div>
+        <div onclick="setNotifyFreq('yearly')" id="nf-yearly" style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;border:1.5px solid #EAE4DC;box-shadow:none;cursor:pointer;">
+          <div style="width:42px;height:42px;border-radius:12px;background:#FFECEC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-remind-yearly"/></svg></div>
+          <div style="flex:1;min-width:0;overflow:hidden;"><div style="font-size:15px;font-weight:700;color:#3A3028;">每年提醒</div><div style="font-size:11px;color:#9A9088;margin-top:2px;"><span id="yearly-freq-sub">年度財務總結</span></div></div>
+          <div id="check-nf-yearly" style="width:22px;height:22px;min-width:22px;flex-shrink:0;border-radius:50%;background:#F0EDE8;color:transparent;border:2px solid #E8E4DC;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;"></div>
+        </div>
+      </div>
+
+      <!-- 提醒時間 -->
+      <div style="font-size:10px;font-weight:700;color:#B0A898;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">提醒時間</div>
+      <div class="blk" style="margin-bottom:14px;">
+        <div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid rgba(0,0,0,0.04);gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="26" viewBox="0 0 48 48"><use href="#ico-calendar"/></svg></div>
+          <span style="flex:1;font-size:15px;font-weight:600;color:#9A9088;">提醒日期</span>
+          <select id="notify-day" style="border:none;background:transparent;font-size:15px;font-weight:700;color:#3A3028;font-family:'Noto Sans TC',sans-serif;outline:none;cursor:pointer;"><option value="1" selected>1 號</option>
+<option value="2">2 號</option>
+<option value="3">3 號</option>
+<option value="4">4 號</option>
+<option value="5">5 號</option>
+<option value="6">6 號</option>
+<option value="7">7 號</option>
+<option value="8">8 號</option>
+<option value="9">9 號</option>
+<option value="10">10 號</option>
+<option value="11">11 號</option>
+<option value="12">12 號</option>
+<option value="13">13 號</option>
+<option value="14">14 號</option>
+<option value="15">15 號</option>
+<option value="16">16 號</option>
+<option value="17">17 號</option>
+<option value="18">18 號</option>
+<option value="19">19 號</option>
+<option value="20">20 號</option>
+<option value="21">21 號</option>
+<option value="22">22 號</option>
+<option value="23">23 號</option>
+<option value="24">24 號</option>
+<option value="25">25 號</option>
+<option value="26">26 號</option>
+<option value="27">27 號</option>
+<option value="28">28 號</option>
+<option value="29">29 號</option>
+<option value="30">30 號</option>
+<option value="31">31 號</option></select>
+        </div>
+        <div style="display:flex;align-items:center;padding:13px 16px;gap:12px;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="26" viewBox="0 0 48 48"><use href="#ico-remind-time"/></svg></div>
+          <span style="flex:1;font-size:15px;font-weight:600;color:#9A9088;">提醒時間</span>
+          <input type="time" id="notify-time" value="09:00" style="border:none;background:transparent;font-size:15px;font-weight:700;color:#3A3028;font-family:'Inter',sans-serif;outline:none;cursor:pointer;">
+        </div>
+      </div>
+
+      <!-- 自訂提醒 -->
+      <div style="font-size:10px;font-weight:700;color:#B0A898;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">自訂提醒</div>
+      <div class="blk" style="margin-bottom:14px;">
+        <div id="custom-reminders"></div>
+        <div onclick="addCustomReminder()" style="display:flex;align-items:center;padding:13px 16px;gap:12px;cursor:pointer;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#F1EDFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="26" height="26" viewBox="0 0 48 48"><use href="#ico-remind-custom"/></svg></div>
+          <span style="font-size:15px;font-weight:700;color:#D97A52;">＋ 新增自訂提醒</span>
+        </div>
+      </div>
+
+    </div>
     <div class="tabbar-wrap"><div class="tabbar">
       <button class="tab" onclick="goPage('pg-home')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-home"/></svg></div><span class="tab-lbl off" data-i18n="tab_home">總覽</span></div></button>
       <button class="tab" onclick="goPage('pg-assets')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-asset"/></svg></div><span class="tab-lbl off" data-i18n="tab_assets">資產</span></div></button>
@@ -1466,14 +1743,15 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 <div id="ico-picker-modal" class="ico-picker-modal">
   <div class="ico-picker-wrap">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-      <span class="ico-picker-title">選擇圖示</span>
-      <button onclick="closeIconPicker()" style="background:#f5f2ee;border:none;border-radius:10px;padding:7px 12px;font-size:12px;color:#888;cursor:pointer;">關閉</button>
+      <span class="ico-picker-title" data-i18n="pick_icon">選擇圖示</span>
+      <button onclick="closeIconPicker()" style="background:#f5f2ee;border:none;border-radius:10px;padding:7px 12px;font-size:12px;color:#888;cursor:pointer;" data-i18n="close_btn">關閉</button>
     </div>
     <div class="ico-picker-grid" id="ico-picker-grid"></div>
   </div>
 </div>
 
 <script>
+
 (function tick(){const now=new Date();const h=now.getHours(),m=now.getMinutes();const el=document.getElementById('sb-time');if(el)el.textContent=h+':'+(m<10?'0':'')+m;setTimeout(tick,15000);})();
 
 function syncSigClones(){
@@ -1608,59 +1886,60 @@ function obGo(id){document.querySelectorAll('.ob-page').forEach(p=>p.classList.r
 function obCalcLiquid(){const b=parseFloat(document.getElementById('ob-bank').value)||0;const s=parseFloat(document.getElementById('ob-stock').value)||0;const c=document.getElementById('ob-liquid-card');c.classList.toggle('show',b+s>0);document.getElementById('ob-liquid-total').textContent='$'+(b+s).toLocaleString('zh-TW');}
 function obCalcProp(){const cost=parseFloat(document.getElementById('ob-pcost').value)||0;const mkt=parseFloat(document.getElementById('ob-pmkt').value)||0;const ping=parseFloat(document.getElementById('ob-ping').value)||0;const c=document.getElementById('ob-prop-card');c.classList.toggle('show',cost>0&&mkt>0);if(cost>0&&mkt>0){const g=((mkt-cost)/cost*100).toFixed(1);document.getElementById('ob-pgain').textContent=(g>=0?'+':'')+g+'%';document.getElementById('ob-pping').textContent=ping>0?'$'+(mkt/ping|0).toLocaleString('zh-TW')+'/坪':'—';}}
 function obCalcFlow(){const inc=parseFloat(document.getElementById('ob-income').value)||0;const exp=parseFloat(document.getElementById('ob-expense').value)||0;const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;const c=document.getElementById('ob-flow-card');c.classList.toggle('show',inc>0);document.getElementById('ob-surplus').textContent=(sur>=0?'+':'')+'$'+Math.abs(sur).toLocaleString('zh-TW');document.getElementById('ob-surplus').style.color=sur>=0?'#5BBE8A':'#E45D5D';document.getElementById('ob-rate').textContent=rate+'%';const pct=Math.min(rate,100),bar=document.getElementById('ob-health-bar');bar.style.width=pct+'%';bar.style.background=rate>=30?'#5BBE8A':rate>=20?'#F5A623':'#E45D5D';const lbl=document.getElementById('ob-health-lbl');lbl.textContent=rate>=30?'優秀 🌟':rate>=20?'良好 👍':rate>=0?'待加強 ⚠️':'赤字 🔴';lbl.style.color=rate>=30?'#2A7A50':rate>=20?'#8A6010':rate>=0?'#D97A52':'#B84040';}
-function obFinish(){const bank=parseFloat(document.getElementById('ob-bank').value)||0;const stock=parseFloat(document.getElementById('ob-stock').value)||0;const pmkt=parseFloat(document.getElementById('ob-pmkt').value)||0;const pcost=parseFloat(document.getElementById('ob-pcost').value)||0;const ping=parseFloat(document.getElementById('ob-ping').value)||0;const mortgage=parseFloat(document.getElementById('ob-mortgage').value)||0;const carloan=parseFloat(document.getElementById('ob-carloan').value)||0;const cc=parseFloat(document.getElementById('ob-cc').value)||0;const income=parseFloat(document.getElementById('ob-income').value)||0;const expense=parseFloat(document.getElementById('ob-expense').value)||0;const assets=bank+stock+pmkt;const liab=mortgage+carloan+cc;const net=assets-liab;const sur=income-expense;const rate=income>0?Math.round(sur/income*100):0;const fmt=v=>v.toLocaleString('zh-TW');document.getElementById('sn-assets').textContent='$'+fmt(assets);document.getElementById('sn-liab').textContent='$'+fmt(liab);document.getElementById('sn-net').textContent='$'+fmt(net);document.getElementById('sn-surplus').textContent=(sur>=0?'+':'')+'$'+fmt(Math.abs(sur));document.getElementById('sn-rate').textContent=rate+'%';_obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense);obGo('ob-finish');}
-function _obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense){
-  // 流動資產：找 cur-extra-rows 裡的 rval
-  const curRows=document.querySelectorAll('#cur-extra-rows [data-cur]');
-  if(curRows[0]){const inp=curRows[0].querySelector('.rval');if(inp&&bank)inp.value=bank;}
-  if(curRows[1]){const inp=curRows[1].querySelector('.rval');if(inp&&stock)inp.value=stock;}
-  // 相容舊 id
-  const cashEl=document.getElementById('a-cash');if(cashEl&&bank)cashEl.value=bank;
-  const stockEl=document.getElementById('a-stock');if(stockEl&&stock)stockEl.value=stock;
-  // 不動產
-  if(pmkt||pcost){const propInp=document.querySelectorAll('#prop-list [data-prop] .pf input');if(propInp.length>=4){propInp[0].value=pcost||'';propInp[1].value=pmkt||'';propInp[2].value=ping||'';}}
-  // 貸款
-  const loanInp=document.querySelectorAll('#loan-rows [data-loan] .rval');
-  if(loanInp[0]&&mortgage)loanInp[0].value=mortgage;
-  if(loanInp[1]&&carloan)loanInp[1].value=carloan;
-  // 其他負債
-  const otherInp=document.querySelectorAll('#other-rows [data-other] .rval');
-  if(otherInp[0]&&cc)otherInp[0].value=cc;
-  // 收支
-  const incInp=document.querySelectorAll('#inc-rows [data-inc] .rval');
-  if(incInp[0]&&income)incInp[0].value=income;
-  const expInp=document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval');
-  if(expInp[0]&&expense)expInp[0].value=expense;
-}
-function enterApp(){document.querySelectorAll('.ob-page').forEach(p=>p.classList.remove('active'));document.getElementById('main-app').style.display='block';const h=new Date().getHours();document.getElementById('home-greeting').textContent=h<12?'早安 👋':h<18?'午安 👋':'晚安 👋';setTimeout(()=>{calcProps();document.querySelectorAll('#car-list [data-car]').forEach(c=>calcCar(c.querySelector('.pf input')));calc();calcFlow();updateAll();},50);}
+
+function enterApp(){document.querySelectorAll('.ob-page').forEach(p=>p.classList.remove('active'));document.getElementById('main-app').style.display='block';const h=new Date().getHours();const greets={zh:h<12?'早安 👋':h<18?'午安 👋':'晚安 👋',en:h<12?'Good Morning 👋':h<18?'Good Afternoon 👋':'Good Evening 👋',ja:h<12?'おはようございます 👋':h<18?'こんにちは 👋':'こんばんは 👋'};document.getElementById('home-greeting').textContent=greets[currentLang]||greets.zh;setTimeout(()=>{calcProps();document.querySelectorAll('#car-list [data-car]').forEach(c=>calcCar(c.querySelector('.pf input')));calc();calcFlow();updateAll();},50);}
 </script>
 <script>
 let pCnt=1,cCnt=1;
 function fmt(v){return Math.round(v).toLocaleString('zh-TW');}
 function n(id){return parseFloat(document.getElementById(id)?.value)||0;}
-function goPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='pg-settings')syncSettingsSig();calc();calcFlow();updateAll();}
+function updateTabActive(id){
+  const tabMap={'pg-home':'tab_home','pg-assets':'tab_assets','pg-cashflow':'tab_cashflow','pg-report':'tab_report','pg-settings':'tab_settings'};
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.classList.remove('active');
+    t.querySelectorAll('.tab-lbl').forEach(l=>{l.className='tab-lbl off';});
+  });
+  const key=tabMap[id];
+  if(key){
+    document.querySelectorAll('.tab').forEach(t=>{
+      const lbl=t.querySelector('[data-i18n="'+key+'"]');
+      if(lbl){t.classList.add('active');lbl.className='tab-lbl on';}
+    });
+  }
+}
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById(id);
+  if(!pg)return;
+  pg.classList.add('active');
+  if(id==='pg-settings'){syncSettingsSig();applyLang(currentLang);}
+  if(id==='pg-fiscal'){setFiscal(currentFiscal);}
+  if(id==='pg-notify'){setNotifyFreq(notifyFreq);renderCustomReminders();}
+  if(['pg-home','pg-report'].includes(id)){calc();calcFlow();updateAll();}
+  updateTabActive(id);
+}
 function onAddr(inp){inp.closest('.prop-card').querySelector('.lookup-btn').disabled=!inp.value.trim();}
 function addCurRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-cur','');d.innerHTML=makeIcoDiv('ico-bank','#E8F7EF')+`<input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" placeholder="資產名稱"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="if(document.querySelectorAll('#cur-extra-rows [data-cur]').length<=1){alert('至少保留一筆');}else{this.closest('.row').remove();calc();}">×</button>`;document.getElementById('cur-extra-rows').appendChild(d);}
 function addLoanRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-loan','');d.innerHTML=makeIcoDiv('ico-loan','#FFECEC')+`<input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" placeholder="貸款名稱"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delLRow(this)">×</button>`;document.getElementById('loan-rows').appendChild(d);}
 function addOtherRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-other','');d.innerHTML=makeIcoDiv('ico-card','#FFECEC')+`<input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" placeholder="負債名稱"><input class="rval" type="number" placeholder="0" oninput="calc()"><button class="rdel" onclick="delORow(this)">×</button>`;document.getElementById('other-rows').appendChild(d);}
 function delLRow(btn){if(document.querySelectorAll('#loan-rows [data-loan]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calc();}
 function delORow(btn){if(document.querySelectorAll('#other-rows [data-other]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calc();}
-function calcProps(){let cs=0,vs=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const inp=c.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,val=parseFloat(inp[1].value)||0,sqm=parseFloat(inp[2].value)||0;cs+=cost;vs+=val;inp[3].value=sqm>0&&val>0?Math.round(val/sqm).toLocaleString('zh-TW'):'—';const g=val-cost,r=cost>0?g/cost*100:0;c.querySelector('.gain-info').innerHTML=cost>0||val>0?`<span class="gain-badge ${g>=0?'gb-up':'gb-dn'}">${g>=0?'▲':'▼'} 損益 ${g>=0?'+':''}$${fmt(g)} (${r.toFixed(1)}%)</span>`:'';});document.getElementById('p-cost').textContent='$'+fmt(cs);document.getElementById('p-val').textContent='$'+fmt(vs);document.getElementById('p-val-lbl').textContent='$'+fmt(vs);const gt=vs-cs,ge=document.getElementById('p-gain');ge.textContent='損益 '+(gt>=0?'+':'')+'$'+fmt(gt);ge.style.color=gt>=0?'#4CAF7B':'#F26D6D';calc();}
-function addProp(){pCnt++;const d=document.createElement('div');d.className='prop-card';d.setAttribute('data-prop','');d.innerHTML=`<div class="prop-top"><div style="width:42px;height:42px;border-radius:11px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-property" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><input class="prop-name" value="房屋 ${pCnt}"><button class="rdel" onclick="delProp(this)">×</button></div><div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="window.open('https://lvr.land.moi.gov.tw/','_blank')" disabled>查實價登錄 ↗</button></div><div class="prop-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>現值</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label>每坪均價</label><input placeholder="—" readonly></div></div><div class="gain-info"></div>`;document.getElementById('prop-list').appendChild(d);}
+function calcProps(){let cs=0,vs=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const inp=c.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,val=parseFloat(inp[1].value)||0,sqm=parseFloat(inp[2].value)||0;cs+=cost;vs+=val;inp[3].value=sqm>0&&val>0?Math.round(val/sqm).toLocaleString('zh-TW'):'—';const g=val-cost,r=cost>0?g/cost*100:0;c.querySelector('.gain-info').innerHTML=cost>0||val>0?`<span class="gain-badge ${g>=0?'gb-up':'gb-dn'}">${g>=0?'▲':'▼'} 損益 ${g>=0?'+':''}$${fmt(g)} (${r.toFixed(1)}%)</span>`:'';});document.getElementById('p-cost').textContent=fmtCurr(cs);document.getElementById('p-val').textContent=fmtCurr(vs);document.getElementById('p-val-lbl').textContent=fmtCurr(vs);const gt=vs-cs,ge=document.getElementById('p-gain');ge.textContent='損益 '+(gt>=0?'+':'')+fmtCurr(gt);ge.style.color=gt>=0?'#4CAF7B':'#F26D6D';calc();}
+function addProp(){pCnt++;const d=document.createElement('div');d.className='prop-card';d.setAttribute('data-prop','');d.innerHTML=`<div class="prop-top"><div style="width:42px;height:42px;border-radius:11px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-property" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><input class="prop-name" value="房屋 ${pCnt}"><button class="rdel" onclick="delProp(this)">×</button></div><div class="prop-addr"><input class="addr-inp" placeholder="填入地址後點查詢" oninput="onAddr(this)"><button class="lookup-btn" onclick="window.open('https://lvr.land.moi.gov.tw/','_blank')" disabled data-i18n="lookup_btn">查實價登錄 ↗</button></div><div class="prop-grid"><div class="pf"><label data-i18n="cost_label">成本價</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label data-i18n="value_label">現值</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label data-i18n="area_label">坪數</label><input type="number" placeholder="0" oninput="calcProps()"></div><div class="pf"><label data-i18n="per_ping">每坪均價</label><input placeholder="—" readonly></div></div><div class="gain-info"></div>`;document.getElementById('prop-list').appendChild(d);}
 function delProp(btn){if(document.querySelectorAll('#prop-list [data-prop]').length<=1){alert('至少保留一筆');return;}btn.closest('.prop-card').remove();calcProps();}
 function getCarVal(c){const inp=c.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,year=parseInt(inp[1].value)||2022,life=Math.max(parseInt(inp[2].value)||5,1),sr=(parseFloat(inp[3].value)||10)/100;const elapsed=Math.max(0,new Date().getFullYear()-year),salvage=cost*sr,method=c.dataset.method||'straight';if(method==='straight')return elapsed>=life?salvage:Math.max(cost-(cost-salvage)/life*elapsed,salvage);const rate=1-Math.pow(Math.max(sr,0.01),1/life);let v=cost;for(let i=0;i<Math.min(elapsed,life);i++)v=Math.max(v*(1-rate),salvage);return v;}
-function calcCar(input){if(!input)return;const card=input.closest('[data-car]');if(!card)return;const inp=card.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,val=getCarVal(card),dep=cost-val,dr=cost>0?dep/cost*100:0;const life=Math.max(parseInt(inp[2].value)||5,1),year=parseInt(inp[1].value)||2022,elapsed=Math.max(0,new Date().getFullYear()-year);card.querySelector('.gain-info').innerHTML=cost>0?`<span class="gain-badge gb-blue">帳面 $${fmt(val)}</span><span class="gain-badge gb-amber">折舊 $${fmt(dep)} (${dr.toFixed(1)}%)</span><span class="gain-badge ${elapsed>=life?'gb-dn':'gb-blue'}">${elapsed>=life?'已達年限':'剩 '+(life-elapsed)+' 年'}</span>`:'';let cs=0,vs=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{cs+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;vs+=getCarVal(c);});document.getElementById('c-cost').textContent='$'+fmt(cs);document.getElementById('c-val').textContent='$'+fmt(vs);document.getElementById('c-val-lbl').textContent='$'+fmt(vs);document.getElementById('c-dep').textContent='$'+fmt(cs-vs);calc();}
+function calcCar(input){if(!input)return;const card=input.closest('[data-car]');if(!card)return;const inp=card.querySelectorAll('.pf input');const cost=parseFloat(inp[0].value)||0,val=getCarVal(card),dep=cost-val,dr=cost>0?dep/cost*100:0;const life=Math.max(parseInt(inp[2].value)||5,1),year=parseInt(inp[1].value)||2022,elapsed=Math.max(0,new Date().getFullYear()-year);card.querySelector('.gain-info').innerHTML=cost>0?`<span class="gain-badge gb-blue">帳面 $${fmt(val)}</span><span class="gain-badge gb-amber">折舊 $${fmt(dep)} (${dr.toFixed(1)}%)</span><span class="gain-badge ${elapsed>=life?'gb-dn':'gb-blue'}">${elapsed>=life?'已達年限':'剩 '+(life-elapsed)+' 年'}</span>`:'';let cs=0,vs=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{cs+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;vs+=getCarVal(c);});document.getElementById('c-cost').textContent=fmtCurr(cs);document.getElementById('c-val').textContent=fmtCurr(vs);document.getElementById('c-val-lbl').textContent=fmtCurr(vs);document.getElementById('c-dep').textContent=fmtCurr(cs-vs);calc();}
 function setMethod(btn,m){const card=btn.closest('[data-car]');card.querySelectorAll('.mt-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');card.dataset.method=m;calcCar(card.querySelector('input'));}
-function addCar(){cCnt++;const d=document.createElement('div');d.className='car-card';d.setAttribute('data-car','');d.dataset.method='straight';d.innerHTML=`<div class="car-top"><div style="width:42px;height:42px;border-radius:11px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-car" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><input class="prop-name" value="車輛 ${cCnt}"><div class="method-toggle"><button class="mt-btn on" onclick="setMethod(this,'straight')">直線</button><button class="mt-btn" onclick="setMethod(this,'declining')">遞減</button></div><button class="rdel" onclick="delCar(this)">×</button></div><div class="car-grid"><div class="pf"><label>成本價</label><input type="number" placeholder="0" oninput="calcCar(this)"></div><div class="pf"><label>購入年份</label><input type="number" value="${new Date().getFullYear()}" oninput="calcCar(this)"></div><div class="pf"><label>年限(年)</label><input type="number" value="5" oninput="calcCar(this)"></div><div class="pf"><label>殘值率(%)</label><input type="number" value="10" oninput="calcCar(this)"></div></div><div class="gain-info" style="margin-top:6px;"></div>`;document.getElementById('car-list').appendChild(d);}
+function addCar(){cCnt++;const d=document.createElement('div');d.className='car-card';d.setAttribute('data-car','');d.dataset.method='straight';d.innerHTML=`<div class="car-top"><div style="width:42px;height:42px;border-radius:11px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-car" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-car"/></svg></div><input class="prop-name" value="車輛 ${cCnt}"><div class="method-toggle"><button class="mt-btn on" onclick="setMethod(this,'straight')" data-i18n="straight_line">直線</button><button class="mt-btn" onclick="setMethod(this,'declining')" data-i18n="declining">遞減</button></div><button class="rdel" onclick="delCar(this)">×</button></div><div class="car-grid"><div class="pf"><label data-i18n="cost_label">成本價</label><input type="number" placeholder="0" oninput="calcCar(this)"></div><div class="pf"><label data-i18n="buy_year">購入年份</label><input type="number" value="${new Date().getFullYear()}" oninput="calcCar(this)"></div><div class="pf"><label data-i18n="years_label">年限(年)</label><input type="number" value="5" oninput="calcCar(this)"></div><div class="pf"><label data-i18n="residual_rate">殘值率(%)</label><input type="number" value="10" oninput="calcCar(this)"></div></div><div class="gain-info" style="margin-top:6px;"></div>`;document.getElementById('car-list').appendChild(d);}
 function delCar(btn){if(document.querySelectorAll('#car-list [data-car]').length<=1){alert('至少保留一筆');return;}btn.closest('.car-card').remove();calc();}
-function calc(){const cur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cash=parseFloat(document.getElementById('a-cash')?.value)||0,stock=parseFloat(document.getElementById('a-stock')?.value)||0;document.getElementById('cur-lbl').textContent='$'+fmt(cur);let propV=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{propV+=parseFloat(c.querySelectorAll('.pf input')[1].value)||0;});let carV=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carV+=getCarVal(c);});const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const liabT=loanT+otherT;document.getElementById('loan-lbl').textContent='$'+fmt(loanT);document.getElementById('other-lbl').textContent='$'+fmt(otherT);const totalA=cur+propV+carV,net=totalA-liabT;const nv=document.getElementById('net-val');nv.textContent='$'+fmt(net);nv.style.color=net>=0?'#D85A30':'#E24B4A';document.getElementById('s-cur').textContent='$'+fmt(cur);document.getElementById('s-prop').textContent='$'+fmt(propV);document.getElementById('s-car').textContent='$'+fmt(carV);document.getElementById('s-liab').textContent='$'+fmt(liabT);updateAll();}
+function calc(){const cur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cash=parseFloat(document.getElementById('a-cash')?.value)||0,stock=parseFloat(document.getElementById('a-stock')?.value)||0;document.getElementById('cur-lbl').textContent=fmtCurr(cur);let propV=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{propV+=parseFloat(c.querySelectorAll('.pf input')[1].value)||0;});let carV=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carV+=getCarVal(c);});const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const liabT=loanT+otherT;document.getElementById('loan-lbl').textContent=fmtCurr(loanT);document.getElementById('other-lbl').textContent=fmtCurr(otherT);const totalA=cur+propV+carV,net=totalA-liabT;const nv=document.getElementById('net-val');nv.textContent=fmtCurr(net);nv.style.color=net>=0?'#D85A30':'#E24B4A';document.getElementById('s-cur').textContent=fmtCurr(cur);document.getElementById('s-prop').textContent=fmtCurr(propV);document.getElementById('s-car').textContent=fmtCurr(carV);document.getElementById('s-liab').textContent=fmtCurr(liabT);updateAll();}
 function addIncRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-inc','');d.innerHTML=makeIcoDiv('ico-salary','#E8F7EF')+`<input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" placeholder="收入名稱"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delIRow(this)">×</button>`;document.getElementById('inc-rows').appendChild(d);}
 function addExpRow(){const d=document.createElement('div');d.className='row';d.setAttribute('data-cfexp','');d.innerHTML=makeIcoDiv('ico-food','#FFF6E1')+`<input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" placeholder="支出名稱"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button>`;document.getElementById('cf-exp-rows').appendChild(d);}
 function delIRow(btn){if(document.querySelectorAll('#inc-rows [data-inc]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
 function delERow(btn){if(document.querySelectorAll('#cf-exp-rows [data-cfexp]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
-function calcFlow(){const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const exp=[...document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;document.getElementById('inc-total').textContent='$'+fmt(inc);document.getElementById('exp-total').textContent='$'+fmt(exp);document.getElementById('cf-inc').textContent='$'+fmt(inc);document.getElementById('cf-exp').textContent='$'+fmt(exp);const se=document.getElementById('cf-sur');se.textContent=(sur>=0?'+':'')+'$'+fmt(sur);se.style.color=sur>=0?'#D85A30':'#E24B4A';document.getElementById('cf-rate').textContent=rate+'%';renderChart(inc,exp,sur,'cf-chart','cf-range','cf-sum');updateAll();}
-function renderChart(inc,exp,sur,chartId,rangeId,sumId){const now=new Date();const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];const cash=n('a-cash');let c=cash,vals=[];for(let i=0;i<6;i++){c+=sur;vals.push(c);}const maxV=Math.max(...vals.map(v=>Math.abs(v)),1);let html='';for(let i=0;i<6;i++){const m=(now.getMonth()+i)%12,pct=Math.max(Math.round(Math.abs(vals[i])/maxV*100),6);const col=vals[i]>=0?(i<3?'#A8D8C0':'#F5C878'):'#F8B8B8';html+=`<div class="fc-col"><div class="fc-bar" style="height:${pct}%;background:${col}"></div><div class="fc-lbl">${mn[m]}</div></div>`;}document.getElementById(chartId).innerHTML=html;document.getElementById(rangeId).textContent=(now.getMonth()+1)+'月起';const ec=vals[5];document.getElementById(sumId).innerHTML=`<div class="fcs g"><div class="fcs-lbl g">月收入</div><div class="fcs-val g">$${fmt(inc)}</div></div><div class="fcs r"><div class="fcs-lbl r">月支出</div><div class="fcs-val r">$${fmt(exp)}</div></div><div class="fcs a"><div class="fcs-lbl a">月結餘</div><div class="fcs-val a">${sur>=0?'+':''}$${fmt(sur)}</div></div><div class="fcs b"><div class="fcs-lbl b">6月後現金</div><div class="fcs-val b">$${fmt(ec)}</div></div>`;document.getElementById('h-chart').innerHTML=html;}
-function updateAll(){const cur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cash=parseFloat(document.getElementById('a-cash')?.value)||0,stock=parseFloat(document.getElementById('a-stock')?.value)||0;let propV=0,propC=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const i=c.querySelectorAll('.pf input');propC+=parseFloat(i[0].value)||0;propV+=parseFloat(i[1].value)||0;});let carV=0,carC=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carC+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;carV+=getCarVal(c);});const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const liabT=loanT+otherT,totalA=cur+propV+carV,net=totalA-liabT,ratio=totalA>0?Math.round(liabT/totalA*100):0;const hn=document.getElementById('h-net');hn.textContent='$'+fmt(net);hn.style.color=net>=0?'#D97A52':'#E45D5D';document.getElementById('h-assets').textContent='$'+fmt(totalA);document.getElementById('h-liab').textContent='$'+fmt(liabT);document.getElementById('h-pill').textContent=totalA>0?'總資產 $'+fmt(totalA):'輸入資料後自動計算';const items=[];function getIcoSvg(id,size=36){return`<svg width="${size}" height="${size}" viewBox="0 0 48 48"><use href="#${id}"/></svg>`;}
+function calcFlow(){const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const exp=[...document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;document.getElementById('inc-total').textContent=fmtCurr(inc);document.getElementById('exp-total').textContent=fmtCurr(exp);document.getElementById('cf-inc').textContent=fmtCurr(inc);document.getElementById('cf-exp').textContent=fmtCurr(exp);const se=document.getElementById('cf-sur');se.textContent=(sur>=0?'+':'')+fmtCurr(sur);se.style.color=sur>=0?'#D85A30':'#E24B4A';document.getElementById('cf-rate').textContent=rate+'%';renderChart(inc,exp,sur,'cf-chart','cf-range','cf-sum');updateAll();}
+function renderChart(inc,exp,sur,chartId,rangeId,sumId){const now=new Date();const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];const cash=n('a-cash');let c=cash,vals=[];for(let i=0;i<6;i++){c+=sur;vals.push(c);}const maxV=Math.max(...vals.map(v=>Math.abs(v)),1);let html='';for(let i=0;i<6;i++){const m=(now.getMonth()+i)%12,pct=Math.max(Math.round(Math.abs(vals[i])/maxV*100),6);const col=vals[i]>=0?(i<3?'#A8D8C0':'#F5C878'):'#F8B8B8';html+=`<div class="fc-col"><div class="fc-bar" style="height:${pct}%;background:${col}"></div><div class="fc-lbl">${mn[m]}</div></div>`;}document.getElementById(chartId).innerHTML=html;document.getElementById(rangeId).textContent=(now.getMonth()+1)+'月起';const ec=vals[5];document.getElementById(sumId).innerHTML=`<div class="fcs g"><div class="fcs-lbl g" data-i18n="monthly_inc">月收入</div><div class="fcs-val g">${fmtCurr(inc)}</div></div><div class="fcs r"><div class="fcs-lbl r" data-i18n="monthly_exp">月支出</div><div class="fcs-val r">${fmtCurr(exp)}</div></div><div class="fcs a"><div class="fcs-lbl a" data-i18n="monthly_bal">月結餘</div><div class="fcs-val a">${sur>=0?'+':''}$${fmt(sur)}</div></div><div class="fcs b"><div class="fcs-lbl b">6月後現金</div><div class="fcs-val b">${fmtCurr(ec)}</div></div>`;document.getElementById('h-chart').innerHTML=html;}
+function updateAll(){const cur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cash=parseFloat(document.getElementById('a-cash')?.value)||0,stock=parseFloat(document.getElementById('a-stock')?.value)||0;let propV=0,propC=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const i=c.querySelectorAll('.pf input');propC+=parseFloat(i[0].value)||0;propV+=parseFloat(i[1].value)||0;});let carV=0,carC=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carC+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;carV+=getCarVal(c);});const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const liabT=loanT+otherT,totalA=cur+propV+carV,net=totalA-liabT,ratio=totalA>0?Math.round(liabT/totalA*100):0;const hn=document.getElementById('h-net');hn.textContent=fmtCurr(net);hn.style.color=net>=0?'#D97A52':'#E45D5D';document.getElementById('h-assets').textContent=fmtCurr(totalA);document.getElementById('h-liab').textContent=fmtCurr(liabT);const tp=I18N[currentLang]||I18N.zh;document.getElementById('h-pill').textContent=totalA>0?(tp.total_assets||'總資產')+' '+fmtCurr(totalA):(tp.auto_calc||'輸入資料後自動計算');const items=[];function getIcoSvg(id,size=36){return`<svg width="${size}" height="${size}" viewBox="0 0 48 48"><use href="#${id}"/></svg>`;}
 // 流動資產：從各 row 讀取自訂 icon 和名稱
 document.querySelectorAll('#cur-extra-rows [data-cur]').forEach(row=>{
   const rval=row.querySelector('.rval');
@@ -1693,7 +1972,15 @@ document.querySelectorAll('#car-list [data-car]').forEach(c=>{
   const icoDiv=c.querySelector('[data-ico-id]');
   const name=c.querySelector('.prop-name')?.value||'車輛';
   items.push({ico:icoDiv?.dataset?.icoId||'ico-car',bg:icoDiv?.style?.background||'#ECF3FF',n:name,s:'折舊 '+d.toFixed(0)+'%',v,tag:'帳面值',tc:'dep'});
-});document.getElementById('h-list').innerHTML=items.length?items.map(i=>`<div class="arow"><div class="aico" style="background:${i.bg};width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">${getIcoSvg(i.ico,42)}</div><div class="ainfo"><div class="aname">${i.n}</div><div class="asub">${i.s}</div></div><div class="aright"><div class="aval">$${fmt(i.v)}</div><span class="atag ${i.tc}">${i.tag}</span></div></div>`).join(''):'<div class="arow"><div class="aico" style="background:#EAF2FF;width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'+getIcoSvg('ico-hint',36)+'</div><div class="ainfo"><div class="aname">尚未輸入資料</div><div class="asub">點下方「資產」開始填寫</div></div></div>';const raEl=document.getElementById('r-assets');if(raEl)raEl.textContent='$'+fmt(totalA);const rlEl=document.getElementById('r-liab');if(rlEl)rlEl.textContent='$'+fmt(liabT);const rn=document.getElementById('r-net');if(rn){rn.textContent='$'+fmt(net);rn.className='ss-val';rn.style.color=net>=0?'#D97A52':'#E45D5D';}const rrEl=document.getElementById('r-ratio');if(rrEl)rrEl.textContent=ratio+'%';const colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC'];document.getElementById('r-asset-bd').innerHTML=[{n:'流動資產',v:cur},{n:'不動產',v:propV},{n:'車輛',v:carV}].filter(x=>x.v>0).map((x,i)=>{const pct=totalA>0?Math.round(x.v/totalA*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">$${fmt(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;">尚無資料</div>';const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cfExpRows=[...document.querySelectorAll('#cf-exp-rows [data-cfexp]')];const eItems=cfExpRows.map(r=>({n:r.querySelector('input').value||'支出',v:parseFloat(r.querySelector('.rval').value)||0})).filter(x=>x.v>0);const tExp=eItems.reduce((s,x)=>s+x.v,0);document.getElementById('r-exp-bd').innerHTML=eItems.map((x,i)=>{const pct=tExp>0?Math.round(x.v/tExp*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]||'#ccc'};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">$${fmt(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;">尚無資料</div>';const sur=inc-tExp,sr=inc>0?sur/inc*100:0;const adv=[];if(sr<20&&inc>0)adv.push('💡 儲蓄率 '+Math.round(sr)+'%，建議提升至 20% 以上');if(ratio>50)adv.push('⚠️ 負債比 '+ratio+'%，建議優先還款');if(cash<tExp*3&&tExp>0)adv.push('🏦 緊急預備金不足，建議存至 3～6 個月生活費');if(propV>propC&&propC>0)adv.push('🏠 不動產增值 $'+fmt(propV-propC)+'，資產狀況良好');if(sr>=20&&ratio<=50&&totalA>0)adv.push('🌟 財務健康！繼續保持良好習慣');document.getElementById('r-advice').innerHTML=adv.length?adv.join('<br>'):'請先填入資產與收支資料';}
+});document.getElementById('h-list').innerHTML=items.length?items.map(i=>`<div class="arow"><div class="aico" style="background:${i.bg};width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">${getIcoSvg(i.ico,42)}</div><div class="ainfo"><div class="aname">${i.n}</div><div class="asub">${i.s}</div></div><div class="aright"><div class="aval">${fmtCurr(i.v)}</div><span class="atag ${i.tc}">${i.tag}</span></div></div>`).join(''):'<div class="arow"><div class="aico" style="background:#EAF2FF;width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'+getIcoSvg('ico-hint',36)+'</div><div class="ainfo"><div class="aname" data-i18n="no_data_title">尚未輸入資料</div><div class="asub" data-i18n="no_data_sub">點下方「資產」開始填寫</div></div></div>';const raEl=document.getElementById('r-assets');if(raEl)raEl.textContent=fmtCurr(totalA);const rlEl=document.getElementById('r-liab');if(rlEl)rlEl.textContent=fmtCurr(liabT);const rn=document.getElementById('r-net');if(rn){rn.textContent=fmtCurr(net);rn.className='ss-val';rn.style.color=net>=0?'#D97A52':'#E45D5D';}const rrEl=document.getElementById('r-ratio');if(rrEl)rrEl.textContent=ratio+'%';const colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC'];document.getElementById('r-asset-bd').innerHTML=[{n:'流動資產',v:cur},{n:'不動產',v:propV},{n:'車輛',v:carV}].filter(x=>x.v>0).map((x,i)=>{const pct=totalA>0?Math.round(x.v/totalA*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">${fmtCurr(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;" data-i18n="no_data_report">尚無資料</div>';const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cfExpRows=[...document.querySelectorAll('#cf-exp-rows [data-cfexp]')];const eItems=cfExpRows.map(r=>({n:r.querySelector('input').value||'支出',v:parseFloat(r.querySelector('.rval').value)||0})).filter(x=>x.v>0);const tExp=eItems.reduce((s,x)=>s+x.v,0);document.getElementById('r-exp-bd').innerHTML=eItems.map((x,i)=>{const pct=tExp>0?Math.round(x.v/tExp*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]||'#ccc'};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">${fmtCurr(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;" data-i18n="no_data_report">尚無資料</div>';const sur=inc-tExp,sr=inc>0?sur/inc*100:0;const t=I18N[currentLang]||I18N.zh;
+const adv=[];
+if(sr<20&&inc>0)adv.push({zh:'💡 儲蓄率 '+Math.round(sr)+'%，建議提升至 20% 以上',en:'💡 Savings rate '+Math.round(sr)+'%, aim for 20%+',ja:'💡 貯蓄率 '+Math.round(sr)+'%、20%以上を目指しましょう'}[currentLang]||'');
+if(ratio>50)adv.push({zh:'⚠️ 負債比 '+ratio+'%，建議優先還款',en:'⚠️ Debt ratio '+ratio+'%, prioritize repayment',ja:'⚠️ 負債比率 '+ratio+'%、返済を優先しましょう'}[currentLang]||'');
+if(cash<tExp*3&&tExp>0)adv.push({zh:'🏦 緊急預備金不足，建議存至 3～6 個月生活費',en:'🏦 Emergency fund low, save 3–6 months of expenses',ja:'🏦 緊急資金が不足しています。3〜6ヶ月分の生活費を確保しましょう'}[currentLang]||'');
+if(propV>propC&&propC>0)adv.push({zh:'🏠 不動產增值 $'+fmt(propV-propC)+'，資產狀況良好',en:'🏠 Property gained $'+fmt(propV-propC)+', great asset growth',ja:'🏠 不動産が $'+fmt(propV-propC)+' 値上がりしました'}[currentLang]||'');
+if(sr>=20&&ratio<=50&&totalA>0)adv.push({zh:'🌟 財務健康！繼續保持良好習慣',en:'🌟 Financially healthy! Keep it up',ja:'🌟 財務状況は良好です！この調子で続けましょう'}[currentLang]||'');
+const noDataMsg={zh:'請先填入資產與收支資料',en:'Please enter assets & cash flow data',ja:'資産と収支のデータを入力してください'}[currentLang]||'';
+document.getElementById('r-advice').innerHTML=adv.filter(Boolean).length?adv.filter(Boolean).join('<br>'):noDataMsg;}
 
 /* ── Icon Picker ── */
 const ICO_LIST = [
@@ -1782,89 +2069,386 @@ function makeIcoDiv(icoId, bg) {
 /* ── i18n 語言系統 ── */
 const I18N = {
   zh: {
-    tab_home:'總覽', tab_assets:'資產', tab_cashflow:'收支', tab_report:'報表', tab_settings:'設定',
-    settings_title:'個人設定', profile_section:'個人資料', prefs_section:'偏好設定', data_section:'資料管理',
-    name_label:'姓名', currency_label:'貨幣', language_label:'語言', fiscal_year_label:'財務年度',
-    fiscal_year_value:'每年 1 月', notify_label:'通知', notify_value:'每月提醒',
-    export_label:'匯出資料', export_sub:'備份為 JSON 檔案',
-    import_label:'匯入資料', import_sub:'從備份還原',
-    reset_label:'重置所有資料', back_btn:'← 返回',
-    language_title:'語言設定', select_lang:'選擇顯示語言',
+    app_title:'我的財務',
+    app_name:'個人財務管家',
+    app_sub1:'輕鬆掌握資產與收支',
+    app_sub2:'讓財務健康一目瞭然',
+    feat1_title:'資產負債表',
+    feat1_sub:'存款、不動產、車輛一次管理',
+    feat2_title:'每月收支分析',
+    feat2_sub:'即時顯示儲蓄率與6個月預估',
+    feat3_title:'財務健康報表',
+    feat3_sub:'自動產生個人化財務建議',
+    start_btn:'開始設定 →',
+    skip_btn:'跳過，直接進入',
+    next_btn:'下一步 →',
+    finish_btn:'完成設定 ✓',
+    go_home_btn:'前往首頁',
+    later_btn:'稍後再看',
+    skip_prop:'略過（暫無不動產）',
+    skip_liab:'略過（暫無負債）',
+    ob_s1_title:'存款與投資',
+    ob_bank_lbl:'銀行存款（元）',
+    ob_stock_lbl:'股票 / 基金（元）',
+    ob_stock_hint:'填入目前市值即可',
+    ob_liquid_total:'流動資產合計',
+    ob_s3_title:'貸款與負債',
+    ob_mortgage_lbl:'房貸餘額（元）',
+    ob_carloan_lbl:'車貸餘額（元）',
+    ob_cc_lbl:'信用卡未繳（元）',
+    ob_cc_hint:'填入本月帳單未繳金額',
+    ob_income_lbl:'月收入（元）',
+    ob_expense_lbl:'月支出（元）',
+    finish_title:'財務快照完成！',
+    finish_sub:'初始資料已帶入 App',
+    asset_overview:'資產總覽',
+    edit_btn:'編輯 →',
+    no_data_title:'尚未輸入資料',
+    no_data_sub:'點下方「資產」開始填寫',
+    cf_forecast:'收支預估',
+    six_months:'6個月',
+    current_assets:'流動資產',
+    add_cur:'＋ 新增流動資產',
+    lookup_btn:'查實價登錄 ↗',
+    cost_label:'成本價',
+    value_label:'現值',
+    area_label:'坪數',
+    per_ping:'每坪均價',
+    add_prop:'＋ 新增不動產',
+    prop_total:'不動產合計',
+    vehicle_dep:'車輛折舊',
+    straight_line:'直線',
+    declining:'遞減',
+    buy_year:'購入年份',
+    years_label:'年限(年)',
+    residual_rate:'殘值率(%)',
+    add_car:'＋ 新增車輛',
+    car_total:'車輛合計',
+    bank_loan:'銀行貸款',
+    add_loan:'＋ 新增貸款',
+    other_liab:'其他負債',
+    add_other:'＋ 新增其他負債',
+    net_formula:'淨資產 = 資產 − 負債',
+    cur_label:'流動',
+    car_label:'車輛',
+    liab_label:'負債',
+    income_section:'收入',
+    add_income:'＋ 新增收入',
+    expense_section:'支出',
+    add_expense:'＋ 新增支出',
+    monthly_inc:'月收入',
+    monthly_exp:'月支出',
+    monthly_bal:'月結餘',
+    forecast_6m:'6個月預估',
+    report_title:'財務報表',
+    debt_ratio:'負債比',
+    asset_breakdown:'資產結構',
+    no_data_report:'尚無資料',
+    exp_breakdown:'支出結構',
+    fin_advice:'財務建議',
+    advice_empty:'請先填入資產與收支資料',
+    settings_title:'個人設定',
     tap_to_edit:'點擊更換簽名',
-    // 總覽
-    net_worth:'淨資產', total_assets:'總資產', total_liab:'總負債',
-    asset_overview:'資產總覽', cashflow_forecast:'收支預估',
-    no_data:'尚未輸入資料', no_data_sub:'點下方「資產」開始填寫',
-    // 資產
-    balance_sheet:'資產負債表', current_assets:'流動資產',
-    real_estate:'不動產', vehicle:'車輛折舊', bank_loan:'銀行貸款', other_liab:'其他負債',
-    // 收支
-    monthly_cashflow:'每月收支', income:'收入', expense:'支出',
-    monthly_balance:'月結餘', savings_rate:'儲蓄率',
-    // 報表
-    financial_report:'財務報表', asset_breakdown:'資產結構', expense_breakdown:'支出結構',
-    financial_advice:'財務建議', debt_ratio:'負債比',
-    // 預覽
-    prev_networth:'淨資產', prev_assets:'總資產', prev_savings:'儲蓄率',
+    balance_sheet:'資產負債表',
+    monthly_cashflow:'每月收支',
+    financial_report:'財務報表',
+    asset_section:'資產負債表',
+    profile_section:'個人資料',
+    name_label:'姓名',
+    currency_label:'貨幣',
+    twd:'TWD 新台幣',
+    usd:'USD 美元',
+    jpy:'JPY 日圓',
+    prefs_section:'偏好設定',
+    language_label:'語言',
+    fiscal_year_label:'財務年度',
+    fiscal_year_value:'每年 1 月',
+    notify_label:'通知',
+    notify_value:'每月提醒',
+    data_section:'資料管理',
+    export_label:'匯出資料',
+    export_sub:'備份為 JSON 檔案',
+    import_label:'匯入資料',
+    import_sub:'從備份還原',
+    reset_label:'重置所有資料',
+    language_title:'語言設定',
+    select_lang:'選擇顯示語言',
+    lang_zh:'繁體中文',
     preview_label:'切換後介面效果',
     lang_hint:'切換語言後介面文字即時更新，數字格式也會自動調整。',
+    pick_icon:'選擇圖示',
+    sig_title:'我的簽名',
+    close_btn:'關閉',
+    clear_btn:'清除',
+    save_sig:'儲存簽名',
+    apply_sig:'套用此簽名',
+    auto_calc:'輸入資料後自動計算',
     lang_display:'繁體中文 🇹🇼',
+    lang_hint:'切換語言後介面文字即時更新，數字格式也會自動調整。',
+    prev_networth:'淨資產',
+    prev_assets:'總資產',
+    prev_savings:'儲蓄率',
+    tab_home:'總覽',
+    tab_assets:'資產',
+    tab_cashflow:'收支',
+    tab_report:'報表',
+    tab_settings:'設定',
+    back_btn:'← 返回',
   },
   en: {
-    tab_home:'Overview', tab_assets:'Assets', tab_cashflow:'Cash Flow', tab_report:'Reports', tab_settings:'Settings',
-    settings_title:'Settings', profile_section:'PROFILE', prefs_section:'PREFERENCES', data_section:'DATA MANAGEMENT',
-    name_label:'Name', currency_label:'Currency', language_label:'Language', fiscal_year_label:'Fiscal Year',
-    fiscal_year_value:'January', notify_label:'Notifications', notify_value:'Monthly Reminder',
-    export_label:'Export Data', export_sub:'Save as JSON file',
-    import_label:'Import Data', import_sub:'Restore from backup',
-    reset_label:'Reset All Data', back_btn:'← Back',
-    language_title:'Language', select_lang:'DISPLAY LANGUAGE',
+    app_title:'My Finance',
+    app_name:'Personal Finance',
+    app_sub1:'Track your assets & cash flow',
+    app_sub2:'Your financial health at a glance',
+    feat1_title:'Balance Sheet',
+    feat1_sub:'Manage deposits, property & vehicles',
+    feat2_title:'Monthly Cash Flow',
+    feat2_sub:'Real-time savings rate & 6-month forecast',
+    feat3_title:'Financial Health',
+    feat3_sub:'Personalized financial advice',
+    start_btn:'Get Started →',
+    skip_btn:'Skip, enter directly',
+    next_btn:'Next →',
+    finish_btn:'Complete Setup ✓',
+    go_home_btn:'Go to Home',
+    later_btn:'Maybe Later',
+    skip_prop:'Skip (no property)',
+    skip_liab:'Skip (no liabilities)',
+    ob_s1_title:'Savings & Investments',
+    ob_bank_lbl:'Bank Deposits (TWD)',
+    ob_stock_lbl:'Stocks / Funds (TWD)',
+    ob_stock_hint:'Enter current market value',
+    ob_liquid_total:'Total Current Assets',
+    ob_s3_title:'Loans & Liabilities',
+    ob_mortgage_lbl:'Mortgage Balance (TWD)',
+    ob_carloan_lbl:'Car Loan Balance (TWD)',
+    ob_cc_lbl:'Credit Card Balance (TWD)',
+    ob_cc_hint:'Enter unpaid amount this month',
+    ob_income_lbl:'Monthly Income (TWD)',
+    ob_expense_lbl:'Monthly Expenses (TWD)',
+    finish_title:'Snapshot Complete!',
+    finish_sub:'Initial data loaded',
+    asset_overview:'Asset Overview',
+    edit_btn:'Edit →',
+    no_data_title:'No data entered',
+    no_data_sub:'Tap Assets below to start',
+    cf_forecast:'Cash Flow Forecast',
+    six_months:'6 Months',
+    current_assets:'Current Assets',
+    add_cur:'＋ Add Asset',
+    lookup_btn:'Check Registry ↗',
+    cost_label:'Cost',
+    value_label:'Current Value',
+    area_label:'Area (ping)',
+    per_ping:'Price / ping',
+    add_prop:'＋ Add Property',
+    prop_total:'Property Total',
+    vehicle_dep:'Vehicle Depreciation',
+    straight_line:'Straight-line',
+    declining:'Declining',
+    buy_year:'Year Purchased',
+    years_label:'Years',
+    residual_rate:'Residual (%)',
+    add_car:'＋ Add Vehicle',
+    car_total:'Vehicle Total',
+    bank_loan:'Bank Loans',
+    add_loan:'＋ Add Loan',
+    other_liab:'Other Liabilities',
+    add_other:'＋ Add Liability',
+    net_formula:'Net Worth = Assets − Liabilities',
+    cur_label:'Current',
+    car_label:'Vehicle',
+    liab_label:'Liabilities',
+    income_section:'Income',
+    add_income:'＋ Add Income',
+    expense_section:'Expenses',
+    add_expense:'＋ Add Expense',
+    monthly_inc:'Monthly Income',
+    monthly_exp:'Monthly Expenses',
+    monthly_bal:'Monthly Balance',
+    forecast_6m:'6-Month Forecast',
+    report_title:'Financial Report',
+    debt_ratio:'Debt Ratio',
+    asset_breakdown:'Asset Breakdown',
+    no_data_report:'No data yet',
+    exp_breakdown:'Expense Breakdown',
+    fin_advice:'Financial Advice',
+    advice_empty:'Please enter assets & cash flow data',
+    settings_title:'Settings',
     tap_to_edit:'Tap to change signature',
-    net_worth:'Net Worth', total_assets:'Total Assets', total_liab:'Total Liabilities',
-    asset_overview:'Asset Overview', cashflow_forecast:'Cash Flow Forecast',
-    no_data:'No data entered', no_data_sub:'Tap "Assets" below to start',
-    balance_sheet:'Balance Sheet', current_assets:'Current Assets',
-    real_estate:'Real Estate', vehicle:'Vehicle Depreciation', bank_loan:'Bank Loans', other_liab:'Other Liabilities',
-    monthly_cashflow:'Monthly Cash Flow', income:'Income', expense:'Expenses',
-    monthly_balance:'Monthly Balance', savings_rate:'Savings Rate',
-    financial_report:'Financial Report', asset_breakdown:'Asset Breakdown', expense_breakdown:'Expense Breakdown',
-    financial_advice:'Financial Advice', debt_ratio:'Debt Ratio',
-    prev_networth:'Net Worth', prev_assets:'Total Assets', prev_savings:'Savings Rate',
-    preview_label:'Preview after switching',
-    lang_hint:'Interface text updates instantly after switching. Number formats also adjust automatically.',
+    balance_sheet:'Balance Sheet',
+    monthly_cashflow:'Monthly Cash Flow',
+    financial_report:'Financial Report',
+    asset_section:'Balance Sheet',
+    profile_section:'Profile',
+    name_label:'Name',
+    currency_label:'Currency',
+    twd:'TWD New Taiwan Dollar',
+    usd:'USD US Dollar',
+    jpy:'JPY Japanese Yen',
+    prefs_section:'Preferences',
+    language_label:'Language',
+    fiscal_year_label:'Fiscal Year',
+    fiscal_year_value:'January',
+    notify_label:'Notifications',
+    notify_value:'Monthly Reminder',
+    data_section:'Data Management',
+    export_label:'Export Data',
+    export_sub:'Save as JSON file',
+    import_label:'Import Data',
+    import_sub:'Restore from backup',
+    reset_label:'Reset All Data',
+    language_title:'Language',
+    select_lang:'Display Language',
+    lang_zh:'Traditional Chinese',
+    preview_label:'Preview',
+    lang_hint:'Interface updates instantly. Number formats adjust automatically.',
+    pick_icon:'Choose Icon',
+    sig_title:'My Signature',
+    close_btn:'Close',
+    clear_btn:'Clear',
+    save_sig:'Save Signature',
+    apply_sig:'Apply Signature',
+    auto_calc:'Auto-calculated after data entry',
     lang_display:'English 🇺🇸',
+    lang_hint:'Interface updates instantly after switching.',
+    prev_networth:'Net Worth',
+    prev_assets:'Total Assets',
+    prev_savings:'Savings Rate',
+    tab_home:'Overview',
+    tab_assets:'Assets',
+    tab_cashflow:'Cash Flow',
+    tab_report:'Reports',
+    tab_settings:'Settings',
+    back_btn:'← Back',
   },
   ja: {
-    // 底部導航
-    tab_home:'ホーム', tab_assets:'資産', tab_cashflow:'収支', tab_report:'レポート', tab_settings:'設定',
-    // 設定頁
-    settings_title:'設定', profile_section:'プロフィール', prefs_section:'環境設定', data_section:'データ管理',
-    name_label:'名前', currency_label:'通貨', language_label:'言語', fiscal_year_label:'会計年度',
-    fiscal_year_value:'1月開始', notify_label:'通知', notify_value:'毎月リマインド',
-    export_label:'データの書き出し', export_sub:'JSONファイルとして保存',
-    import_label:'データの読み込み', import_sub:'バックアップから復元',
-    reset_label:'データをすべてリセット', back_btn:'← 戻る',
-    language_title:'言語', select_lang:'表示言語を選択',
+    app_title:'マイファイナンス',
+    app_name:'個人財務マネージャー',
+    app_sub1:'資産と収支を簡単に管理',
+    app_sub2:'財務状況を一目で把握',
+    feat1_title:'資産・負債一覧',
+    feat1_sub:'預金・不動産・車両を一括管理',
+    feat2_title:'月次収支分析',
+    feat2_sub:'貯蓄率と6ヶ月予測をリアルタイム表示',
+    feat3_title:'財務レポート',
+    feat3_sub:'パーソナル財務アドバイスを自動生成',
+    start_btn:'設定を開始 →',
+    skip_btn:'スキップして開始',
+    next_btn:'次へ →',
+    finish_btn:'設定を完了 ✓',
+    go_home_btn:'ホームへ',
+    later_btn:'あとで確認',
+    skip_prop:'スキップ（不動産なし）',
+    skip_liab:'スキップ（負債なし）',
+    ob_s1_title:'預金と投資',
+    ob_bank_lbl:'銀行預金（円）',
+    ob_stock_lbl:'株式・投資信託（円）',
+    ob_stock_hint:'現在の時価を入力してください',
+    ob_liquid_total:'流動資産合計',
+    ob_s3_title:'ローンと負債',
+    ob_mortgage_lbl:'住宅ローン残高（円）',
+    ob_carloan_lbl:'マイカーローン残高（円）',
+    ob_cc_lbl:'クレジットカード残高（円）',
+    ob_cc_hint:'今月の未払い金額を入力',
+    ob_income_lbl:'月収入（円）',
+    ob_expense_lbl:'月支出（円）',
+    finish_title:'スナップショット完了！',
+    finish_sub:'初期データが入力されました',
+    asset_overview:'資産一覧',
+    edit_btn:'編集 →',
+    no_data_title:'データが未入力です',
+    no_data_sub:'下の「Assets」から入力を始めましょう',
+    cf_forecast:'収支見込み',
+    six_months:'6ヶ月',
+    current_assets:'流動資産',
+    add_cur:'＋ 資産を追加',
+    lookup_btn:'実価登録を確認 ↗',
+    cost_label:'取得価格',
+    value_label:'現在価値',
+    area_label:'坪数',
+    per_ping:'坪単価',
+    add_prop:'＋ 不動産を追加',
+    prop_total:'不動産合計',
+    vehicle_dep:'車両の減価償却',
+    straight_line:'定額法',
+    declining:'定率法',
+    buy_year:'購入年',
+    years_label:'耐用年数',
+    residual_rate:'残存率（%）',
+    add_car:'＋ 車両を追加',
+    car_total:'車両合計',
+    bank_loan:'銀行ローン',
+    add_loan:'＋ ローンを追加',
+    other_liab:'その他の負債',
+    add_other:'＋ 負債を追加',
+    net_formula:'純資産 ＝ 資産 − 負債',
+    cur_label:'流動',
+    car_label:'車両',
+    liab_label:'負債',
+    income_section:'収入',
+    add_income:'＋ 収入を追加',
+    expense_section:'支出',
+    add_expense:'＋ 支出を追加',
+    monthly_inc:'月収入',
+    monthly_exp:'月支出',
+    monthly_bal:'月次収支',
+    forecast_6m:'6ヶ月予測',
+    report_title:'財務レポート',
+    debt_ratio:'負債比率',
+    asset_breakdown:'資産の内訳',
+    no_data_report:'データなし',
+    exp_breakdown:'支出の内訳',
+    fin_advice:'アドバイス',
+    advice_empty:'資産と収支のデータを入力してください',
+    settings_title:'設定',
     tap_to_edit:'タップしてサインを変更',
-    // 総覧
-    net_worth:'純資産', total_assets:'総資産', total_liab:'総負債',
-    asset_overview:'資産一覧', cashflow_forecast:'収支見込み',
-    no_data:'データが未入力です', no_data_sub:'下の「資産」から入力を始めましょう',
-    // 資産
-    balance_sheet:'資産・負債一覧', current_assets:'流動資産',
-    real_estate:'不動産', vehicle:'車両の減価償却', bank_loan:'銀行ローン', other_liab:'その他の負債',
-    // 収支
-    monthly_cashflow:'毎月の収支', income:'収入', expense:'支出',
-    monthly_balance:'月次収支', savings_rate:'貯蓄率',
-    // レポート
-    financial_report:'財務レポート', asset_breakdown:'資産の内訳', expense_breakdown:'支出の内訳',
-    financial_advice:'アドバイス', debt_ratio:'負債比率',
-    // 語言預覽
-    prev_networth:'純資産', prev_assets:'総資産', prev_savings:'貯蓄率',
+    balance_sheet:'資産・負債一覧',
+    monthly_cashflow:'月次収支',
+    financial_report:'財務レポート',
+    asset_section:'資産・負債一覧',
+    profile_section:'プロフィール',
+    name_label:'名前',
+    currency_label:'通貨',
+    twd:'TWD 台湾ドル',
+    usd:'USD 米ドル',
+    jpy:'JPY 日本円',
+    prefs_section:'環境設定',
+    language_label:'言語',
+    fiscal_year_label:'会計年度',
+    fiscal_year_value:'1月開始',
+    notify_label:'通知',
+    notify_value:'毎月リマインド',
+    data_section:'データ管理',
+    export_label:'データの書き出し',
+    export_sub:'JSONファイルとして保存',
+    import_label:'データの読み込み',
+    import_sub:'バックアップから復元',
+    reset_label:'データをすべてリセット',
+    language_title:'言語',
+    select_lang:'表示言語を選択',
+    lang_zh:'繁体字中国語',
     preview_label:'切替後の表示イメージ',
-    lang_hint:'言語を変更すると、画面のテキストがすぐに切り替わります。数字の形式も自動的に調整されます。',
+    lang_hint:'言語を変更すると画面のテキストがすぐに切り替わります。',
+    pick_icon:'アイコンを選択',
+    sig_title:'マイサイン',
+    close_btn:'閉じる',
+    clear_btn:'クリア',
+    save_sig:'サインを保存',
+    apply_sig:'このサインを適用',
+    auto_calc:'データ入力後に自動計算',
     lang_display:'日本語 🇯🇵',
-  }
+    lang_hint:'言語を変更すると画面のテキストがすぐに切り替わります。',
+    prev_networth:'純資産',
+    prev_assets:'総資産',
+    prev_savings:'貯蓄率',
+    tab_home:'ホーム',
+    tab_assets:'資産',
+    tab_cashflow:'収支',
+    tab_report:'レポート',
+    tab_settings:'設定',
+    back_btn:'← 戻る',
+  },
 };
 
 let currentLang = localStorage.getItem('appLang') || 'zh';
@@ -1872,18 +2456,13 @@ let currentLang = localStorage.getItem('appLang') || 'zh';
 function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('appLang', lang);
-  const t = I18N[lang];
+  const t = I18N[lang] || I18N.zh; if(!t) return;
   // 套用所有 data-i18n
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (t[key] !== undefined) el.textContent = t[key];
   });
-  // 頁面標題特殊處理
-  const titles = {
-    'pg-home': t.tab_home, 'pg-assets': t.balance_sheet,
-    'pg-cashflow': t.monthly_cashflow, 'pg-report': t.financial_report,
-    'pg-settings': t.settings_title
-  };
+  // 頁面標題 data-i18n 已自動處理
   // 語言頁預覽更新
   const p = document.getElementById('prev-networth'); if(p) p.textContent = t.prev_networth;
   const pa = document.getElementById('prev-assets'); if(pa) pa.textContent = t.prev_assets;
@@ -1976,8 +2555,256 @@ function syncSettingsSig() {
 }
 
 // 初始化語言
+
+
+
+/* ── 貨幣系統 ── */
+const CURRENCIES = {
+  TWD: { symbol: 'NT$', name: 'TWD 新台幣', rate: 1,      decimals: 0 },
+  USD: { symbol: '$',   name: 'USD 美元',   rate: 0.031,  decimals: 2 },
+  JPY: { symbol: '¥',   name: 'JPY 日圓',   rate: 4.8,    decimals: 0 },
+
+};
+let currentCurrency = localStorage.getItem('appCurrency') || 'TWD';
+
+function getCurrSymbol() { return CURRENCIES[currentCurrency]?.symbol || 'NT$'; }
+function convertAmt(twd) {
+  const c = CURRENCIES[currentCurrency];
+  if (!c) return twd;
+  return Math.round(twd * c.rate * Math.pow(10, c.decimals)) / Math.pow(10, c.decimals);
+}
+function fmtCurr(twd) {
+  const c = CURRENCIES[currentCurrency];
+  const amt = convertAmt(twd);
+  const sym = c?.symbol || 'NT$';
+  if (c?.decimals === 0) return sym + fmt(amt);
+  return sym + amt.toLocaleString('en-US', {minimumFractionDigits: c.decimals, maximumFractionDigits: c.decimals});
+}
+function obFinish(){
+  try {
+  const bank=parseFloat(document.getElementById('ob-bank').value)||0;
+  const stock=parseFloat(document.getElementById('ob-stock').value)||0;
+  const pmkt=parseFloat(document.getElementById('ob-pmkt').value)||0;
+  const pcost=parseFloat(document.getElementById('ob-pcost').value)||0;
+  const ping=parseFloat(document.getElementById('ob-ping').value)||0;
+  const mortgage=parseFloat(document.getElementById('ob-mortgage').value)||0;
+  const carloan=parseFloat(document.getElementById('ob-carloan').value)||0;
+  const cc=parseFloat(document.getElementById('ob-cc').value)||0;
+  const income=parseFloat(document.getElementById('ob-income').value)||0;
+  const expense=parseFloat(document.getElementById('ob-expense').value)||0;
+  const assets=bank+stock+pmkt;
+  const liab=mortgage+carloan+cc;
+  const net=assets-liab;
+  const sur=income-expense;
+  const rate=income>0?Math.round(sur/income*100):0;
+  const _fc = typeof fmtCurr === 'function' ? fmtCurr : (v=>'$'+v.toLocaleString());
+  document.getElementById('sn-assets').textContent=_fc(assets);
+  document.getElementById('sn-liab').textContent=_fc(liab);
+  document.getElementById('sn-net').textContent=_fc(net);
+  document.getElementById('sn-surplus').textContent=(sur>=0?'+':'')+_fc(Math.abs(sur));
+  document.getElementById('sn-rate').textContent=rate+'%';
+  _obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense);
+  obGo('ob-finish');
+  } catch(e) { alert('錯誤：'+e.message); }
+}
+function _obInject(bank,stock,pmkt,pcost,ping,mortgage,carloan,cc,income,expense){
+  // 流動資產：找 cur-extra-rows 裡的 rval
+  const curRows=document.querySelectorAll('#cur-extra-rows [data-cur]');
+  if(curRows[0]){const inp=curRows[0].querySelector('.rval');if(inp&&bank)inp.value=bank;}
+  if(curRows[1]){const inp=curRows[1].querySelector('.rval');if(inp&&stock)inp.value=stock;}
+  // 相容舊 id
+  const cashEl=document.getElementById('a-cash');if(cashEl&&bank)cashEl.value=bank;
+  const stockEl=document.getElementById('a-stock');if(stockEl&&stock)stockEl.value=stock;
+  // 不動產
+  if(pmkt||pcost){const propInp=document.querySelectorAll('#prop-list [data-prop] .pf input');if(propInp.length>=4){propInp[0].value=pcost||'';propInp[1].value=pmkt||'';propInp[2].value=ping||'';}}
+  // 貸款
+  const loanInp=document.querySelectorAll('#loan-rows [data-loan] .rval');
+  if(loanInp[0]&&mortgage)loanInp[0].value=mortgage;
+  if(loanInp[1]&&carloan)loanInp[1].value=carloan;
+  // 其他負債
+  const otherInp=document.querySelectorAll('#other-rows [data-other] .rval');
+  if(otherInp[0]&&cc)otherInp[0].value=cc;
+  // 收支
+  const incInp=document.querySelectorAll('#inc-rows [data-inc] .rval');
+  if(incInp[0]&&income)incInp[0].value=income;
+  const expInp=document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval');
+  if(expInp[0]&&expense)expInp[0].value=expense;
+}
+
+function updateCurrency(val) {
+  currentCurrency = val;
+  localStorage.setItem('appCurrency', val);
+  calc(); calcFlow(); updateAll();
+}
+// 覆寫 fmt 保持原格式，加入 fmtCurr
+
+
+(function initCurrency(){
+  currentCurrency = localStorage.getItem('appCurrency') || 'TWD';
+  const sel = document.getElementById('currency-select');
+  if(sel) sel.value = currentCurrency;
+})();
 (function initLang(){
   applyLang(currentLang);
+})();
+
+/* ── 財務年度 ── */
+let currentFiscal = localStorage.getItem('appFiscal') || 'jan';
+const FISCAL_MAP = {
+  jan:    { ico:'ico-cal-jan',    bg:'#FFF1EC', label:'1月開始' },
+  apr:    { ico:'ico-cal-apr',    bg:'#ECF3FF', label:'4月開始' },
+  custom: { ico:'ico-cal-custom', bg:'#F1EDFF', label:'自訂月份' },
+};
+
+const FISCAL_HINTS = {
+  jan:    '台灣與美國採曆年制，統計從 1 月到 12 月。適合一般個人財務管理。',
+  apr:    '日本会計年度制，統計從 4 月到隔年 3 月。適合在日本工作或生活者。',
+  custom: '自訂起始月份，依個人或企業需求設定財務年度的計算期間。',
+};
+
+function setFiscal(type) {
+  currentFiscal = type;
+  localStorage.setItem('appFiscal', type);
+  ['jan','apr','custom'].forEach(t => {
+    const row   = document.getElementById('fiscal-'+t);
+    const check = document.getElementById('check-fiscal-'+t);
+    if(!row||!check) return;
+    const on = t === type;
+    row.style.border       = on ? '2px solid #D97A52' : '1.5px solid #EAE4DC';
+    row.style.boxShadow    = on ? '0 2px 12px rgba(217,122,82,0.12)' : 'none';
+    check.style.background = on ? '#D97A52' : '#F0EDE8';
+    check.style.color      = on ? '#fff'    : 'transparent';
+    check.style.border     = on ? '2px solid #D97A52' : '2px solid #E8E4DC';
+    check.textContent      = on ? '✓' : '';
+  });
+  const cw = document.getElementById('custom-month-wrap');
+  if(cw) cw.style.display = type === 'custom' ? 'block' : 'none';
+  // 說明文字動態更新
+  const hint = document.getElementById('fiscal-hint-text');
+  if(hint) hint.textContent = '財務年度影響年度報表的計算期間。' + (FISCAL_HINTS[type]||'');
+  // 設定頁顯示
+  const fd = document.getElementById('fiscal-display');
+  if(fd) fd.textContent = FISCAL_MAP[type]?.label || '1月開始';
+  // 設定頁 icon
+  const fi = document.getElementById('settings-fiscal-ico');
+  if(fi) fi.setAttribute('href','#'+FISCAL_MAP[type]?.ico);
+}
+
+function setCustomMonth(m) {
+  for(let i=1;i<=12;i++){
+    const el=document.getElementById('cm-'+i);
+    if(!el) continue;
+    el.style.background = i===m ? '#D97A52' : '#F5F3F0';
+    el.style.color      = i===m ? '#fff'    : '#3A3028';
+  }
+  localStorage.setItem('appFiscalMonth', m);
+  const fd = document.getElementById('fiscal-display');
+  if(fd) fd.textContent = m+'月開始';
+}
+
+/* ── 通知設定 ── */
+let notifyOn   = localStorage.getItem('notifyOn') !== 'false';
+let notifyFreq = localStorage.getItem('notifyFreq') || 'monthly';
+const FREQ_LABEL = { monthly:'每月提醒', weekly:'每週提醒', quarterly:'每季提醒', yearly:'每年提醒' };
+
+function toggleNotify() {
+  notifyOn = !notifyOn;
+  localStorage.setItem('notifyOn', notifyOn);
+  const tg  = document.getElementById('notify-toggle');
+  const dot = document.getElementById('notify-dot');
+  if(!tg||!dot) return;
+  tg.style.background = notifyOn ? '#D97A52' : '#E0DDD8';
+  dot.style.right     = notifyOn ? '2px' : 'auto';
+  dot.style.left      = notifyOn ? 'auto' : '2px';
+}
+
+function setNotifyFreq(freq) {
+  notifyFreq = freq;
+  localStorage.setItem('notifyFreq', freq);
+  ['monthly','weekly','quarterly','yearly'].forEach(f => {
+    const row   = document.getElementById('nf-'+f);
+    const check = document.getElementById('check-nf-'+f);
+    if(!row||!check) return;
+    const on = f === freq;
+    row.style.border      = on ? '2px solid #D97A52' : '1.5px solid #EAE4DC';
+    row.style.boxShadow   = on ? '0 2px 12px rgba(217,122,82,0.1)' : 'none';
+    check.style.background = on ? '#D97A52' : '#F0EDE8';
+    check.style.color      = on ? '#fff'    : 'transparent';
+    check.style.border     = on ? '2px solid #D97A52' : '2px solid #E8E4DC';
+    check.textContent      = on ? '✓' : '';
+  });
+  const nd = document.getElementById('notify-display');
+  if(nd) nd.textContent = FREQ_LABEL[freq] || '每月提醒';
+}
+
+/* ── 自訂提醒 ── */
+let customReminders = JSON.parse(localStorage.getItem('customReminders')||'[]');
+
+function renderCustomReminders() {
+  const wrap = document.getElementById('custom-reminders');
+  if(!wrap) return;
+  wrap.innerHTML = customReminders.map((r,i) =>
+    `<div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(0,0,0,0.04);gap:10px;">
+      <div style="flex:1;"><div style="font-size:14px;font-weight:600;color:#3A3028;">每月 ${r.day} 號 ${r.time}</div><div style="font-size:11px;color:#9A9088;margin-top:2px;">${r.label}</div></div>
+      <span onclick="deleteReminder(${i})" style="font-size:12px;color:#E45D5D;font-weight:700;cursor:pointer;padding:4px 8px;">刪除</span>
+    </div>`
+  ).join('');
+}
+
+function addCustomReminder() {
+  const m = document.getElementById('custom-reminder-modal');
+  if(m) { m.style.display='flex'; document.getElementById('cr-day').value='1'; document.getElementById('cr-time').value='09:00'; document.getElementById('cr-label').value=''; }
+}
+function saveCustomReminder() {
+  const day   = parseInt(document.getElementById('cr-day').value)||1;
+  const time  = document.getElementById('cr-time').value||'09:00';
+  const label = document.getElementById('cr-label').value.trim();
+  if(!label) { alert('請輸入提醒說明'); return; }
+  customReminders.push({day, time, label});
+  localStorage.setItem('customReminders', JSON.stringify(customReminders));
+  renderCustomReminders();
+  document.getElementById('custom-reminder-modal').style.display='none';
+}
+function closeReminderModal() {
+  document.getElementById('custom-reminder-modal').style.display='none';
+}
+
+function deleteReminder(idx) {
+  customReminders.splice(idx,1);
+  localStorage.setItem('customReminders', JSON.stringify(customReminders));
+  renderCustomReminders();
+}
+
+/* ── 年度 icon 動態年份 ── */
+(function updateYearlyIcon(){
+  const y1 = new Date().getFullYear();
+  const y2 = y1 + 1;
+  // symbol 裡的文字
+  const t1 = document.getElementById('ico-yearly-y1');
+  const t2 = document.getElementById('ico-yearly-y2');
+  if(t1) t1.textContent = y1;
+  if(t2) t2.textContent = y2;
+  // 通知頁副標
+  const sub = document.getElementById('yearly-freq-sub');
+  if(sub) sub.textContent = `${y1} → ${y2} 年度總結`;
+  // 每年跨年後自動重新計算
+  const now = new Date();
+  const msToNewYear = new Date(y1+1,0,1) - now;
+  if(msToNewYear > 0) setTimeout(updateYearlyIcon, msToNewYear + 1000);
+})();
+
+/* ── 初始化 ── */
+(function initSettings(){
+  setFiscal(currentFiscal);
+  const tg  = document.getElementById('notify-toggle');
+  const dot = document.getElementById('notify-dot');
+  if(tg&&dot){
+    tg.style.background = notifyOn ? '#D97A52' : '#E0DDD8';
+    dot.style.right     = notifyOn ? '2px' : 'auto';
+    dot.style.left      = notifyOn ? 'auto' : '2px';
+  }
+  setNotifyFreq(notifyFreq);
+  renderCustomReminders();
 })();
 
 </script>
