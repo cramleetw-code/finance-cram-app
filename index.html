@@ -287,68 +287,94 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .sc-val{font-size:18px;font-weight:800;color:#3A3028;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;}
 .sc-val.big{font-size:26px;}
 
-/* Report page KPI cards - use original SVG icons */
-.report-kpi-grid{
+/* Report 2x2 summary cards - original SVG icons only */
+.report-summary-2x2{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:8px;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
   margin:0 0 14px;
 }
-.report-kpi-card{
+.report-summary-card{
   min-width:0;
+  min-height:92px;
+  display:flex;
+  align-items:center;
+  gap:11px;
   background:var(--card);
-  border-radius:18px;
-  padding:12px 6px 10px;
-  text-align:center;
+  border-radius:20px;
+  padding:13px 13px;
   box-shadow:var(--shadow-sm);
   overflow:hidden;
 }
-.report-kpi-icon{
-  width:38px;
-  height:38px;
-  border-radius:12px;
+.report-summary-card .rs-icon{
+  width:54px;
+  height:54px;
+  border-radius:14px;
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:0 auto 8px;
+  flex:0 0 54px;
 }
-.report-kpi-green .report-kpi-icon{background:var(--green-soft);}
-.report-kpi-red .report-kpi-icon{background:var(--red-soft);}
-.report-kpi-amber .report-kpi-icon{background:var(--amber-soft);}
-.report-kpi-blue .report-kpi-icon{background:var(--blue-soft);}
-.report-kpi-label{
-  font-size:12px;
-  font-weight:700;
+.report-summary-card.rs-green .rs-icon{background:var(--green-soft);}
+.report-summary-card.rs-red .rs-icon{background:var(--red-soft);}
+.report-summary-card.rs-amber .rs-icon{background:var(--amber-soft);}
+.report-summary-card.rs-blue .rs-icon{background:var(--blue-soft);}
+
+.rs-info{
+  min-width:0;
+  flex:1;
+  overflow:hidden;
+}
+
+.rs-label{
+  font-size:15px;
+  font-weight:800;
   color:var(--text);
   font-family:'Noto Sans TC',sans-serif;
   line-height:1.2;
   white-space:nowrap;
 }
-.report-kpi-value{
+.rs-value{
   margin-top:5px;
-  font-size:15px;
+  font-size:clamp(14px,1.8vw,20px);
   font-weight:800;
   font-family:'Inter',sans-serif;
   font-variant-numeric:tabular-nums;
   font-feature-settings:'tnum';
-  letter-spacing:-0.02em;
+  letter-spacing:-0.04em;
+  line-height:1.1;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+  width:100%;
 }
-.report-kpi-value.g{color:#178B55;}
-.report-kpi-value.r{color:#B84848;}
-.report-kpi-value.a{color:#D97A52;}
-.report-kpi-value.b{color:#3868C0;}
-.report-kpi-sub{
-  margin-top:4px;
-  font-size:10px;
+.rs-value.g{color:#178B55;}
+.rs-value.r{color:#B84848;}
+.rs-value.a{color:#D97A52;}
+.rs-value.b{color:#3868C0;}
+.rs-sub{
+  margin-top:5px;
+  font-size:12px;
   font-weight:600;
   color:var(--muted);
   font-family:'Noto Sans TC',sans-serif;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+}
+@media (max-width:380px){
+  .report-summary-card{
+    gap:8px;
+    padding:12px 10px;
+  }
+  .report-summary-card .rs-icon{
+    width:48px;
+    height:48px;
+    flex-basis:48px;
+  }
+  .rs-value{
+    font-size:18px;
+  }
 }
 
 </style>
@@ -1422,30 +1448,41 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
     <div class="ss-cell"><div class="ss-lbl" data-i18n="debt_ratio">負債比</div><div class="ss-val b" id="r-ratio">0%</div></div>
   </div>
 
-  <div class="report-kpi-grid" aria-label="報表摘要">
-    <div class="report-kpi-card report-kpi-green">
-      <div class="report-kpi-icon"><svg width="28" height="28" viewBox="0 0 48 48"><use href="#ico-bank"/></svg></div>
-      <div class="report-kpi-label">總資產</div>
-      <div class="report-kpi-value g" id="r-assets-card">$0</div>
-      <div class="report-kpi-sub">目前資產</div>
+  <div class="report-summary-2x2">
+    <div class="report-summary-card rs-green">
+      <div class="rs-icon"><svg width="34" height="34" viewBox="0 0 48 48"><use href="#ico-asset"/></svg></div>
+      <div class="rs-info">
+        <div class="rs-label" data-i18n="total_assets">總資產</div>
+        <div class="rs-value g" id="r-assets-card">$0</div>
+        <div class="rs-sub">目前資產</div>
+      </div>
     </div>
-    <div class="report-kpi-card report-kpi-red">
-      <div class="report-kpi-icon"><svg width="28" height="28" viewBox="0 0 48 48"><use href="#ico-loan"/></svg></div>
-      <div class="report-kpi-label">總負債</div>
-      <div class="report-kpi-value r" id="r-liab-card">$0</div>
-      <div class="report-kpi-sub">目前負債</div>
+
+    <div class="report-summary-card rs-red">
+      <div class="rs-icon"><svg width="34" height="34" viewBox="0 0 48 48"><use href="#ico-loan"/></svg></div>
+      <div class="rs-info">
+        <div class="rs-label" data-i18n="total_liab">總負債</div>
+        <div class="rs-value r" id="r-liab-card">$0</div>
+        <div class="rs-sub">目前負債</div>
+      </div>
     </div>
-    <div class="report-kpi-card report-kpi-amber">
-      <div class="report-kpi-icon"><svg width="28" height="28" viewBox="0 0 48 48"><use href="#ico-asset"/></svg></div>
-      <div class="report-kpi-label">淨資產</div>
-      <div class="report-kpi-value a" id="r-net-card">$0</div>
-      <div class="report-kpi-sub">資產－負債</div>
+
+    <div class="report-summary-card rs-amber">
+      <div class="rs-icon"><svg width="34" height="34" viewBox="0 0 48 48"><use href="#ico-bank"/></svg></div>
+      <div class="rs-info">
+        <div class="rs-label" data-i18n="net_worth">淨資產</div>
+        <div class="rs-value a" id="r-net-card">$0</div>
+        <div class="rs-sub">資產－負債</div>
+      </div>
     </div>
-    <div class="report-kpi-card report-kpi-blue">
-      <div class="report-kpi-icon"><svg width="28" height="28" viewBox="0 0 48 48"><use href="#ico-report"/></svg></div>
-      <div class="report-kpi-label">負債比</div>
-      <div class="report-kpi-value b" id="r-ratio-card">0%</div>
-      <div class="report-kpi-sub">風險比例</div>
+
+    <div class="report-summary-card rs-blue">
+      <div class="rs-icon"><svg width="34" height="34" viewBox="0 0 48 48"><use href="#ico-report"/></svg></div>
+      <div class="rs-info">
+        <div class="rs-label" data-i18n="debt_ratio">負債比</div>
+        <div class="rs-value b" id="r-ratio-card">0%</div>
+        <div class="rs-sub">風險比例</div>
+      </div>
     </div>
   </div>
 
@@ -2910,32 +2947,42 @@ function deleteReminder(idx) {
 
 </script>
 
+
 <script>
 (function(){
-  function syncReportKpiCards(){
-    var map = [
+  function syncReportSummaryCards(){
+    var pairs = [
       ['r-assets','r-assets-card'],
       ['r-liab','r-liab-card'],
       ['r-net','r-net-card'],
       ['r-ratio','r-ratio-card']
     ];
-    map.forEach(function(pair){
+    pairs.forEach(function(pair){
       var source = document.getElementById(pair[0]);
       var target = document.getElementById(pair[1]);
-      if(source && target){ target.textContent = source.textContent; }
+      if(source && target){
+        target.textContent = source.textContent;
+      }
     });
   }
 
-  window.syncReportKpiCards = syncReportKpiCards;
+  window.syncReportSummaryCards = syncReportSummaryCards;
+
   document.addEventListener('DOMContentLoaded', function(){
-    syncReportKpiCards();
+    syncReportSummaryCards();
+
     ['r-assets','r-liab','r-net','r-ratio'].forEach(function(id){
       var el = document.getElementById(id);
       if(el){
-        new MutationObserver(syncReportKpiCards).observe(el, {childList:true, characterData:true, subtree:true});
+        new MutationObserver(syncReportSummaryCards).observe(el, {
+          childList:true,
+          characterData:true,
+          subtree:true
+        });
       }
     });
   });
-  setInterval(syncReportKpiCards, 500);
+
+  setInterval(syncReportSummaryCards, 500);
 })();
 </script>
