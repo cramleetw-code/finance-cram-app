@@ -1,9 +1,60 @@
-
 <style>
 /* Hide asset page summary strip only */
 #pg-assets .sum-strip{
   display:none !important;
 }
+
+/* ── 明細 Modal ── */
+.detail-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.45);align-items:flex-end;justify-content:center;}
+.detail-modal.show{display:flex;}
+.detail-wrap{background:#FFFEF9;border-radius:24px 24px 0 0;padding:20px 18px max(env(safe-area-inset-bottom),28px);width:100%;max-width:480px;max-height:75vh;overflow-y:auto;}
+.detail-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.detail-title{font-size:17px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;}
+.detail-total-amt{font-size:28px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;margin-top:4px;}
+.detail-close{background:#F5F3F0;border:none;border-radius:10px;padding:7px 14px;font-size:13px;font-weight:700;color:#888;cursor:pointer;flex-shrink:0;}
+.detail-row{display:flex;align-items:center;padding:13px 0;border-bottom:1px solid #F0EDE8;gap:12px;}
+.detail-row:last-child{border-bottom:none;}
+.detail-ico{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.detail-name{flex:1;font-size:15px;font-weight:600;color:#3A3028;font-family:'Noto Sans TC',sans-serif;}
+.detail-val{font-size:16px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;}
+.detail-pct{font-size:11px;color:#9A9088;margin-top:2px;font-family:'Inter',sans-serif;}
+.detail-empty{padding:24px;text-align:center;color:#C8C0B8;font-size:14px;font-family:'Noto Sans TC',sans-serif;}
+
+/* ── 明細 Modal ── */
+.detail-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.45);align-items:flex-end;justify-content:center;}
+.detail-modal.show{display:flex;}
+.detail-wrap{background:#FFFEF9;border-radius:24px 24px 0 0;padding:20px 18px max(env(safe-area-inset-bottom),28px);width:100%;max-width:480px;max-height:75vh;overflow-y:auto;}
+
+/* ── 主科目系統 ── */
+.cat-row{display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);gap:10px;min-height:56px;cursor:pointer;}
+.cat-row:last-child{border-bottom:none;}
+.cat-info{flex:1;min-width:0;}
+.cat-name{font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;}
+.cat-pct{font-size:11px;color:var(--muted);margin-top:2px;font-family:'Inter',sans-serif;}
+.cat-amt{font-size:15px;font-weight:700;color:var(--text);font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;flex-shrink:0;}
+.cat-arrow{font-size:16px;color:var(--muted);flex-shrink:0;margin-left:4px;}
+
+/* ── 細項頁（slide panel）── */
+.cat-panel{position:absolute;top:0;left:0;width:100%;min-height:100%;transform:translateX(100%);z-index:200;background:var(--bg);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.cat-panel.open{transform:translateX(0);}
+.cat-panel-head{padding:max(env(safe-area-inset-top),14px) 20px 12px;display:flex;align-items:center;gap:12px;background:var(--bg);border-bottom:1px solid var(--border);flex-shrink:0;}
+.cat-panel-back{background:var(--coral-soft);border:none;border-radius:12px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--coral);cursor:pointer;font-family:'Noto Sans TC',sans-serif;}
+.cat-panel-title{flex:1;font-size:17px;font-weight:800;color:var(--text);font-family:'Noto Sans TC',sans-serif;}
+.cat-panel-total{font-size:15px;font-weight:800;color:#B84848;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;}
+.cat-panel-body{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+.detail-item{background:var(--card);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm);}
+.detail-item-info{flex:1;min-width:0;}
+.detail-item-name{font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;}
+.detail-item-sub{font-size:12px;color:var(--muted);margin-top:3px;font-family:'Noto Sans TC',sans-serif;}
+.detail-item-amt{font-size:16px;font-weight:800;color:#B84848;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;}
+.cat-add-btn{background:var(--coral-soft);border:1.5px dashed var(--coral-300);border-radius:16px;padding:14px;font-size:15px;font-weight:700;color:var(--coral);cursor:pointer;font-family:'Noto Sans TC',sans-serif;text-align:center;width:100%;}
+
+/* 新增明細表單 */
+.detail-form{background:var(--card);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;}
+.detail-form-row{display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid rgba(0,0,0,0.04);gap:12px;}
+.detail-form-row:last-child{border-bottom:none;}
+.detail-form-lbl{font-size:14px;font-weight:600;color:var(--muted);flex:1;font-family:'Noto Sans TC',sans-serif;}
+.detail-form-val{font-size:14px;font-weight:700;color:var(--text);font-family:'Inter',sans-serif;background:transparent;border:none;text-align:right;outline:none;width:140px;}
 </style>
 
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -58,7 +109,7 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
 .num{font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-feature-settings:'tnum';letter-spacing:-0.02em;}
 
 /* ── Frame ── */
-.frame{width:100%;max-width:480px;margin:0 auto;background:var(--bg);min-height:100vh;}
+.frame{width:100%;max-width:480px;margin:0 auto;background:var(--bg);min-height:100vh;position:relative;overflow-x:hidden;}
 
 /* ── Status bar ── */
 .sb{padding:max(env(safe-area-inset-top),14px) 22px 4px;display:flex;justify-content:space-between;align-items:center;background:var(--bg);position:sticky;top:0;z-index:10;}
@@ -1365,15 +1416,8 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
   </div>
   <div class="blk">
     <div class="blk-head coral"><span data-i18n="expense_section">支出</span><span class="hval" id="exp-total">$0</span></div>
-    <div id="cf-exp-rows">
-      <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-property" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-property"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="房貸/租金"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FAF4E8;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-food" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="餐飲"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-utility" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-utility"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="水電瓦斯"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#ECF3FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-transport" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-transport"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="交通"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FFF6E1;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-food" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-food"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="娛樂"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-      <div class="row" data-cfexp><div style="width:42px;height:42px;border-radius:11px;background:#FFF1EC;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;" data-ico-id="ico-insurance" onclick="openIconPicker(this)"><svg width="36" height="36" viewBox="0 0 48 48"><use href="#ico-insurance"/></svg></div><input style="border:none;background:transparent;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;width:120px;flex-shrink:0;font-size:15px;align-self:center;line-height:1.2;" value="保險"><input class="rval" type="number" placeholder="0" oninput="calcFlow()"><button class="rdel" onclick="delERow(this)">×</button></div>
-    </div>
-    <button class="add-btn" onclick="addExpRow()" data-i18n="add_expense">＋ 新增支出</button>
+    <div id="cf-exp-rows"><!-- 主科目由 JS 渲染 --></div>
+    <button class="add-btn" onclick="addCategory()">＋ 新增主科目</button>
   </div>
   <div class="sum-strip" style="display:none !important;">
     <div class="ss-cell"><div class="ss-lbl" data-i18n="monthly_inc">月收入</div><div class="ss-val g" id="cf-inc">$0</div></div>
@@ -1874,6 +1918,19 @@ body{font-family:'Noto Sans TC','Inter',sans-serif;background:var(--bg);color:va
       <button class="tab active" onclick="goPage('pg-settings')"><div class="tab-inner"><div class="tab-ico-wrap"><svg width="32" height="32" viewBox="0 0 48 48"><use href="#ico-settings-tab"/></svg></div><span class="tab-lbl on" data-i18n="tab_settings">設定</span></div></button>
     </div></div><!-- /wrap -->
   </div>
+
+<div id="cat-panel" class="cat-panel">
+  <div class="cat-panel-head">
+    <button class="cat-panel-back" onclick="closeCatPanel()">← 返回</button>
+    <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+      <div id="cat-panel-ico" style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"></div>
+      <span class="cat-panel-title" id="cat-panel-name">主科目</span>
+    </div>
+    <span class="cat-panel-total" id="cat-panel-total">NT$0</span>
+  </div>
+  <div class="cat-panel-body" id="cat-panel-body">
+  </div>
+</div>
 </div><!-- /main-app -->
 </div><!-- /frame -->
 
@@ -2076,7 +2133,7 @@ function addExpRow(){const d=document.createElement('div');d.className='row';d.s
 function delIRow(btn){if(document.querySelectorAll('#inc-rows [data-inc]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
 function delERow(btn){if(document.querySelectorAll('#cf-exp-rows [data-cfexp]').length<=1){alert('至少保留一筆');return;}btn.closest('.row').remove();calcFlow();}
 function calcFlow(){const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const exp=[...document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const sur=inc-exp,rate=inc>0?Math.round(sur/inc*100):0;document.getElementById('inc-total').textContent=fmtCurr(inc);document.getElementById('exp-total').textContent=fmtCurr(exp);document.getElementById('cf-inc').textContent=fmtCurr(inc);document.getElementById('cf-exp').textContent=fmtCurr(exp);const se=document.getElementById('cf-sur');se.textContent=(sur>=0?'+':'')+fmtCurr(sur);se.style.color=sur>=0?'#D85A30':'#E24B4A';document.getElementById('cf-rate').textContent=rate+'%';renderChart(inc,exp,sur,'cf-chart','cf-range','cf-sum');updateAll();}
-function renderChart(inc,exp,sur,chartId,rangeId,sumId){const now=new Date();const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];const cash=n('a-cash');let c=cash,vals=[];for(let i=0;i<6;i++){c+=sur;vals.push(c);}const maxV=Math.max(...vals.map(v=>Math.abs(v)),1);let html='';for(let i=0;i<6;i++){const m=(now.getMonth()+i)%12,pct=Math.max(Math.round(Math.abs(vals[i])/maxV*100),6);const col=vals[i]>=0?(i<3?'#A8D8C0':'#F5C878'):'#F8B8B8';html+=`<div class="fc-col"><div class="fc-bar" style="height:${pct}%;background:${col}"></div><div class="fc-lbl">${mn[m]}</div></div>`;}document.getElementById(chartId).innerHTML=html;document.getElementById(rangeId).textContent=(now.getMonth()+1)+'月起';const ec=vals[5];document.getElementById(sumId).innerHTML=`<div class="fcs g"><div class="fcs-lbl g" data-i18n="monthly_inc">月收入</div><div class="fcs-val g">${fmtCurr(inc)}</div></div><div class="fcs r"><div class="fcs-lbl r" data-i18n="monthly_exp">月支出</div><div class="fcs-val r">${fmtCurr(exp)}</div></div><div class="fcs a"><div class="fcs-lbl a" data-i18n="monthly_bal">月結餘</div><div class="fcs-val a">${sur>=0?'+':''}$${fmt(sur)}</div></div><div class="fcs b"><div class="fcs-lbl b">6月後現金</div><div class="fcs-val b">${fmtCurr(ec)}</div></div>`;document.getElementById('h-chart').innerHTML=html;}
+function renderChart(inc,exp,sur,chartId,rangeId,sumId){const now=new Date();const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];const cash=n('a-cash');let c=cash,vals=[];for(let i=0;i<6;i++){c+=sur;vals.push(c);}const maxV=Math.max(...vals.map(v=>Math.abs(v)),1);let html='';for(let i=0;i<6;i++){const m=(now.getMonth()+i)%12,pct=Math.max(Math.round(Math.abs(vals[i])/maxV*100),6);const col=vals[i]>=0?(i<3?'#A8D8C0':'#F5C878'):'#F8B8B8';html+=`<div class="fc-col"><div class="fc-bar" style="height:${pct}%;background:${col}"></div><div class="fc-lbl">${mn[m]}</div></div>`;}document.getElementById(chartId).innerHTML=html;document.getElementById(rangeId).textContent=(now.getMonth()+1)+'月起';const ec=vals[5];document.getElementById(sumId).innerHTML=`<div class="fcs g" onclick="showDetail('income',${inc})" style="cursor:pointer;"><div class="fcs-lbl g" data-i18n="monthly_inc">月收入</div><div class="fcs-val g">${fmtCurr(inc)}</div></div><div class="fcs r" onclick="showDetail('expense',${exp})" style="cursor:pointer;"><div class="fcs-lbl r" data-i18n="monthly_exp">月支出</div><div class="fcs-val r">${fmtCurr(exp)}</div></div><div class="fcs a" onclick="showDetail('balance',${sur})" style="cursor:pointer;"><div class="fcs-lbl a" data-i18n="monthly_bal">月結餘</div><div class="fcs-val a">${sur>=0?'+':''}$${fmt(sur)}</div></div><div class="fcs b" onclick="showDetail('future',${ec})" style="cursor:pointer;"><div class="fcs-lbl b">6月後現金</div><div class="fcs-val b">${fmtCurr(ec)}</div></div>`;document.getElementById('h-chart').innerHTML=html;}
 function updateAll(){const cur=[...document.querySelectorAll('#cur-extra-rows [data-cur] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cash=parseFloat(document.getElementById('a-cash')?.value)||0,stock=parseFloat(document.getElementById('a-stock')?.value)||0;let propV=0,propC=0;document.querySelectorAll('#prop-list [data-prop]').forEach(c=>{const i=c.querySelectorAll('.pf input');propC+=parseFloat(i[0].value)||0;propV+=parseFloat(i[1].value)||0;});let carV=0,carC=0;document.querySelectorAll('#car-list [data-car]').forEach(c=>{carC+=parseFloat(c.querySelectorAll('.pf input')[0].value)||0;carV+=getCarVal(c);});const loanT=[...document.querySelectorAll('#loan-rows [data-loan] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const otherT=[...document.querySelectorAll('#other-rows [data-other] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const liabT=loanT+otherT,totalA=cur+propV+carV,net=totalA-liabT,ratio=totalA>0?Math.round(liabT/totalA*100):0;const hn=document.getElementById('h-net');hn.textContent=fmtCurr(net);hn.style.color=net>=0?'#D97A52':'#E45D5D';document.getElementById('h-assets').textContent=fmtCurr(totalA);document.getElementById('h-liab').textContent=fmtCurr(liabT);const tp=I18N[currentLang]||I18N.zh;document.getElementById('h-pill').textContent=totalA>0?(tp.total_assets||'總資產')+' '+fmtCurr(totalA):(tp.auto_calc||'輸入資料後自動計算');const items=[];function getIcoSvg(id,size=36){return`<svg width="${size}" height="${size}" viewBox="0 0 48 48"><use href="#${id}"/></svg>`;}
 // 流動資產：從各 row 讀取自訂 icon 和名稱
 document.querySelectorAll('#cur-extra-rows [data-cur]').forEach(row=>{
@@ -2110,7 +2167,7 @@ document.querySelectorAll('#car-list [data-car]').forEach(c=>{
   const icoDiv=c.querySelector('[data-ico-id]');
   const name=c.querySelector('.prop-name')?.value||'車輛';
   items.push({ico:icoDiv?.dataset?.icoId||'ico-car',bg:icoDiv?.style?.background||'#ECF3FF',n:name,s:'折舊 '+d.toFixed(0)+'%',v,tag:'帳面值',tc:'dep'});
-});document.getElementById('h-list').innerHTML=items.length?items.map(i=>`<div class="arow"><div class="aico" style="background:${i.bg};width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">${getIcoSvg(i.ico,42)}</div><div class="ainfo"><div class="aname">${i.n}</div><div class="asub">${i.s}</div></div><div class="aright"><div class="aval">${fmtCurr(i.v)}</div><span class="atag ${i.tc}">${i.tag}</span></div></div>`).join(''):'<div class="arow"><div class="aico" style="background:#EAF2FF;width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'+getIcoSvg('ico-hint',36)+'</div><div class="ainfo"><div class="aname" data-i18n="no_data_title">尚未輸入資料</div><div class="asub" data-i18n="no_data_sub">點下方「資產」開始填寫</div></div></div>';const raEl=document.getElementById('r-assets');if(raEl)raEl.textContent=fmtCurr(totalA);const rlEl=document.getElementById('r-liab');if(rlEl)rlEl.textContent=fmtCurr(liabT);const rn=document.getElementById('r-net');if(rn){rn.textContent=fmtCurr(net);rn.className='ss-val';rn.style.color=net>=0?'#D97A52':'#E45D5D';}const rrEl=document.getElementById('r-ratio');if(rrEl)rrEl.textContent=ratio+'%';const colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC'];document.getElementById('r-asset-bd').innerHTML=[{n:'流動資產',v:cur},{n:'不動產',v:propV},{n:'車輛',v:carV}].filter(x=>x.v>0).map((x,i)=>{const pct=totalA>0?Math.round(x.v/totalA*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">${fmtCurr(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;" data-i18n="no_data_report">尚無資料</div>';const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const cfExpRows=[...document.querySelectorAll('#cf-exp-rows [data-cfexp]')];const eItems=cfExpRows.map(r=>({n:r.querySelector('input').value||'支出',v:parseFloat(r.querySelector('.rval').value)||0})).filter(x=>x.v>0);const tExp=eItems.reduce((s,x)=>s+x.v,0);document.getElementById('r-exp-bd').innerHTML=eItems.map((x,i)=>{const pct=tExp>0?Math.round(x.v/tExp*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]||'#ccc'};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">${fmtCurr(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;" data-i18n="no_data_report">尚無資料</div>';const sur=inc-tExp,sr=inc>0?sur/inc*100:0;const t=I18N[currentLang]||I18N.zh;
+});document.getElementById('h-list').innerHTML=items.length?items.map(i=>`<div class="arow"><div class="aico" style="background:${i.bg};width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">${getIcoSvg(i.ico,42)}</div><div class="ainfo"><div class="aname">${i.n}</div><div class="asub">${i.s}</div></div><div class="aright"><div class="aval">${fmtCurr(i.v)}</div><span class="atag ${i.tc}">${i.tag}</span></div></div>`).join(''):'<div class="arow"><div class="aico" style="background:#EAF2FF;width:42px;height:42px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'+getIcoSvg('ico-hint',36)+'</div><div class="ainfo"><div class="aname" data-i18n="no_data_title">尚未輸入資料</div><div class="asub" data-i18n="no_data_sub">點下方「資產」開始填寫</div></div></div>';const raEl=document.getElementById('r-assets');if(raEl)raEl.textContent=fmtCurr(totalA);const rlEl=document.getElementById('r-liab');if(rlEl)rlEl.textContent=fmtCurr(liabT);const rn=document.getElementById('r-net');if(rn){rn.textContent=fmtCurr(net);rn.className='ss-val';rn.style.color=net>=0?'#D97A52':'#E45D5D';}const rrEl=document.getElementById('r-ratio');if(rrEl)rrEl.textContent=ratio+'%';const colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC'];document.getElementById('r-asset-bd').innerHTML=[{n:'流動資產',v:cur},{n:'不動產',v:propV},{n:'車輛',v:carV}].filter(x=>x.v>0).map((x,i)=>{const pct=totalA>0?Math.round(x.v/totalA*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">${fmtCurr(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;" data-i18n="no_data_report">尚無資料</div>';const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);const eItems=typeof _categories!=='undefined'?_categories.filter(c=>c.items&&c.items.length>0).map(c=>({n:c.name,v:c.items.reduce((s,i)=>s+(i.amount||0),0)})).filter(x=>x.v>0):[...document.querySelectorAll('#cf-exp-rows [data-cfexp]')].map(r=>({n:r.querySelector('input:not([type=number])')?.value||'支出',v:parseFloat(r.querySelector('.rval')?.value)||0})).filter(x=>x.v>0);const tExp=eItems.reduce((s,x)=>s+x.v,0);document.getElementById('r-exp-bd').innerHTML=eItems.map((x,i)=>{const pct=tExp>0?Math.round(x.v/tExp*100):0;return`<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;"><div style="width:10px;height:10px;border-radius:50%;background:${colors[i]||'#ccc'};flex-shrink:0;"></div><div style="flex:1;font-size:15px;font-weight:600;color:var(--text);font-family:'Noto Sans TC',sans-serif;">${x.n}</div><div style="text-align:right;"><div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;">${fmtCurr(x.v)}</div><div style="font-size:13px;color:var(--muted);font-family:'Inter',sans-serif;">${pct}%</div></div></div>`;}).join('')||'<div style="padding:12px 14px;font-size:13px;color:var(--muted);font-family:\'Noto Sans TC\',sans-serif;" data-i18n="no_data_report">尚無資料</div>';const sur=inc-tExp,sr=inc>0?sur/inc*100:0;const t=I18N[currentLang]||I18N.zh;
 const adv=[];
 if(sr<20&&inc>0)adv.push({zh:'💡 儲蓄率 '+Math.round(sr)+'%，建議提升至 20% 以上',en:'💡 Savings rate '+Math.round(sr)+'%, aim for 20%+',ja:'💡 貯蓄率 '+Math.round(sr)+'%、20%以上を目指しましょう'}[currentLang]||'');
 if(ratio>50)adv.push({zh:'⚠️ 負債比 '+ratio+'%，建議優先還款',en:'⚠️ Debt ratio '+ratio+'%, prioritize repayment',ja:'⚠️ 負債比率 '+ratio+'%、返済を優先しましょう'}[currentLang]||'');
@@ -2986,3 +3043,591 @@ function deleteReminder(idx) {
   setInterval(syncReportSummaryCards, 500);
 })();
 </script>
+
+<div id="detail-modal" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.45);align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeDetail()">
+  <div style="background:#FFFEF9;border-radius:24px 24px 0 0;padding:20px 18px max(env(safe-area-inset-bottom),28px);width:100%;max-width:480px;max-height:75vh;overflow-y:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+      <div>
+        <div style="font-size:17px;font-weight:800;color:#3A3028;font-family:'Noto Sans TC',sans-serif;" id="detail-title">明細</div>
+        <div style="font-size:26px;font-weight:800;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;margin-top:4px;" id="detail-total"></div>
+      </div>
+      <button onclick="closeDetail()" style="background:#F5F3F0;border:none;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:700;color:#888;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">關閉</button>
+    </div>
+    <div id="detail-list"></div>
+  </div>
+</div>
+
+<script>
+/* ── 明細彈窗 ── */
+const _dc=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC','#A8D8C0','#F5D888','#C8D0F8'];
+function showDetail(type,total){
+  const titles={income:'月收入明細',expense:'月支出明細',balance:'月結餘',future:'6個月現金預估'};
+  const titleColors={income:'#2A7A50',expense:'#B84848',balance:'#D97A52',future:'#3868C0'};
+  document.getElementById('detail-title').textContent=titles[type]||'明細';
+  const totalEl=document.getElementById('detail-total');
+  totalEl.style.color=titleColors[type]||'#3A3028';
+  let rows=[];
+  if(type==='income'){
+    document.querySelectorAll('#inc-rows [data-inc]').forEach(row=>{
+      const v=parseFloat(row.querySelector('.rval')?.value)||0;if(v<=0)return;
+      const name=row.querySelector('input:not([type=number])')?.value||'收入';
+      rows.push({name,v});
+    });
+    totalEl.textContent=fmtCurr(total);
+  }else if(type==='expense'){
+    document.querySelectorAll('#cf-exp-rows [data-cfexp]').forEach(row=>{
+      const v=parseFloat(row.querySelector('.rval')?.value)||0;if(v<=0)return;
+      const name=row.querySelector('input:not([type=number])')?.value||'支出';
+      rows.push({name,v});
+    });
+    total=rows.reduce((s,r)=>s+r.v,0);
+    totalEl.textContent=fmtCurr(total);
+  }else if(type==='balance'){
+    const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,e)=>s+(parseFloat(e.value)||0),0);
+    const exp=[...document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval')].reduce((s,e)=>s+(parseFloat(e.value)||0),0);
+    const bal=inc-exp;
+    rows=[{name:'月收入',v:inc,color:'#2A7A50'},{name:'月支出',v:exp,color:'#B84848'},{name:'月結餘',v:bal,color:bal>=0?'#D97A52':'#E45D5D',bold:true}];
+    totalEl.textContent=(bal>=0?'+':'')+fmtCurr(Math.abs(bal));
+    totalEl.style.color=bal>=0?'#D97A52':'#E45D5D';
+    total=0;
+  }else if(type==='future'){
+    const inc=[...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,e)=>s+(parseFloat(e.value)||0),0);
+    const exp=[...document.querySelectorAll('#cf-exp-rows [data-cfexp] .rval')].reduce((s,e)=>s+(parseFloat(e.value)||0),0);
+    const sur=inc-exp;
+    const cash=parseFloat(document.getElementById('a-cash')?.value)||0;
+    const now=new Date();
+    const mn=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+    let c=cash;
+    for(let i=0;i<6;i++){c+=sur;rows.push({name:mn[(now.getMonth()+i+1)%12],v:c,color:c>=0?'#3868C0':'#B84848'});}
+    totalEl.textContent=fmtCurr(total);
+    total=0;
+  }
+  const tBase=total>0?total:0;
+  document.getElementById('detail-list').innerHTML=rows.length
+    ?rows.map((r,i)=>{
+      const pct=tBase>0?Math.round(r.v/tBase*100):0;
+      const color=r.color||_dc[i%_dc.length];
+      return `<div style="display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid #f8f6f2;gap:12px;">
+        <div style="width:10px;height:10px;border-radius:50%;background:${color};flex-shrink:0;"></div>
+        <div style="flex:1;font-size:15px;font-weight:${r.bold?800:600};color:var(--text);font-family:'Noto Sans TC',sans-serif;">${r.name}</div>
+        <div style="text-align:right;">
+          <div style="font-size:17px;font-weight:800;font-family:'Inter',sans-serif;color:${color};">${fmtCurr(r.v)}</div>
+          ${tBase>0?`<div style="font-size:13px;color:var(--muted);">${pct}%</div>`:''}
+        </div>
+      </div>`;
+    }).join('')
+    :'<div style="padding:24px;text-align:center;color:#C8C0B8;font-size:14px;">尚未輸入資料</div>';
+  document.getElementById('detail-modal').style.display='flex';
+}
+function closeDetail(){document.getElementById('detail-modal').style.display='none';}
+</script>
+
+<!-- 主科目細項頁 -->
+
+<!-- 新增明細 Modal -->
+<div id="detail-form-modal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.4);align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeDetailForm()">
+  <div style="background:#FFFEF9;border-radius:24px 24px 0 0;padding:20px 20px max(env(safe-area-inset-bottom),28px);width:100%;max-width:480px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <span style="font-size:17px;font-weight:800;color:var(--text);font-family:'Noto Sans TC',sans-serif;">新增明細</span>
+      <button onclick="closeDetailForm()" style="background:#F5F3F0;border:none;border-radius:10px;padding:7px 14px;font-size:13px;font-weight:700;color:#888;cursor:pointer;">取消</button>
+    </div>
+    <div class="detail-form">
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-calendar"/></svg>
+        <span class="detail-form-lbl">日期</span>
+        <input type="date" id="df-date" class="detail-form-val" style="width:140px;">
+      </div>
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-currency"/></svg>
+        <span class="detail-form-lbl">金額</span>
+        <input type="number" id="df-amount" class="detail-form-val" placeholder="0" min="0">
+      </div>
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-hint"/></svg>
+        <span class="detail-form-lbl">名稱</span>
+        <input type="text" id="df-name" class="detail-form-val" placeholder="例：Shell 加油站">
+      </div>
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-hint"/></svg>
+        <span class="detail-form-lbl">備註</span>
+        <input type="text" id="df-note" class="detail-form-val" placeholder="選填">
+      </div>
+    </div>
+    <button onclick="saveDetailItem()" style="width:100%;margin-top:14px;background:#D97A52;border:none;border-radius:16px;padding:15px;font-size:16px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">儲存</button>
+  </div>
+</div>
+
+<!-- 新增主科目 Modal -->
+<div id="add-cat-modal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.4);align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeAddCat()">
+  <div style="background:#FFFEF9;border-radius:24px 24px 0 0;padding:20px 20px max(env(safe-area-inset-bottom),28px);width:100%;max-width:480px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <span style="font-size:17px;font-weight:800;color:var(--text);font-family:'Noto Sans TC',sans-serif;">新增主科目</span>
+      <button onclick="closeAddCat()" style="background:#F5F3F0;border:none;border-radius:10px;padding:7px 14px;font-size:13px;font-weight:700;color:#888;cursor:pointer;">取消</button>
+    </div>
+    <div class="detail-form">
+      <div class="detail-form-row">
+        <span class="detail-form-lbl">科目名稱</span>
+        <input type="text" id="new-cat-name" class="detail-form-val" placeholder="例：固定支出">
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:8px;font-family:'Noto Sans TC',sans-serif;">選擇圖示</div>
+    <div id="new-cat-ico-grid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:14px;"></div>
+    <button onclick="saveNewCategory()" style="width:100%;background:#D97A52;border:none;border-radius:16px;padding:15px;font-size:16px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">建立主科目</button>
+  </div>
+</div>
+
+<script>
+/* ══ 主科目系統 ══ */
+
+// 預設主科目資料（含圖示）
+var _categories = [
+  {id:'cat1', name:'房貸/租金', ico:'ico-property', bg:'#FFF6E1', items:[]},
+  {id:'cat2', name:'餐飲',     ico:'ico-food',     bg:'#FAF4E8', items:[]},
+  {id:'cat3', name:'水電瓦斯', ico:'ico-utility',  bg:'#ECF3FF', items:[]},
+  {id:'cat4', name:'交通',     ico:'ico-transport',bg:'#ECF3FF', items:[]},
+  {id:'cat5', name:'娛樂',     ico:'ico-entertainment', bg:'#F1EDFF', items:[]},
+  {id:'cat6', name:'保險',     ico:'ico-insurance',bg:'#FFF1EC', items:[]},
+];
+var _curCatId = null;
+var _catIcoSel = 'ico-food';
+
+// 可供新增主科目選擇的圖示
+var _icoOptions = [
+  {id:'ico-food',bg:'#FAF4E8'},{id:'ico-transport',bg:'#ECF3FF'},{id:'ico-property',bg:'#FFF6E1'},
+  {id:'ico-utility',bg:'#ECF3FF'},{id:'ico-insurance',bg:'#FFF1EC'},{id:'ico-entertainment',bg:'#F1EDFF'},
+  {id:'ico-health',bg:'#FFECEC'},{id:'ico-education',bg:'#FFF5E5'},{id:'ico-shopping',bg:'#FFF1EC'},
+  {id:'ico-fitness',bg:'#E8F7EF'},{id:'ico-car',bg:'#ECF3FF'},{id:'ico-invest',bg:'#E8F7EF'},
+];
+
+function getCatTotal(cat){
+  return cat.items.reduce(function(s,i){return s+(i.amount||0);},0);
+}
+
+function renderCategories(){
+  var container = document.getElementById('cf-exp-rows');
+  if(!container) return;
+  var totalExp = _categories.reduce(function(s,c){return s+getCatTotal(c);},0);
+  container.innerHTML = '';
+
+  _categories.forEach(function(cat){
+    var total = getCatTotal(cat);
+    var pct = totalExp>0 ? Math.round(total/totalExp*100) : 0;
+
+    var row = document.createElement('div');
+    row.className = 'row';
+    row.setAttribute('data-cfexp','');
+    row.style.gap = '10px';
+
+    // Icon（點可換）
+    var icoDiv = document.createElement('div');
+    icoDiv.style.cssText = 'width:42px;height:42px;border-radius:11px;background:'+cat.bg+';display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;';
+    icoDiv.dataset.icoId = cat.ico;
+    icoDiv.innerHTML = '<svg width="36" height="36" viewBox="0 0 48 48"><use href="#'+cat.ico+'"/></svg>';
+    icoDiv.addEventListener('click', function(e){
+      e.stopPropagation();
+      var grid = document.getElementById('ico-picker-grid');
+      grid.innerHTML = ICO_LIST.map(function(ico){
+        var sel = cat.ico===ico.id;
+        return '<div class="ico-picker-btn'+(sel?' selected':'')+'" style="display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 4px;border-radius:14px;border:2px solid '+(sel?'#D97A52':'transparent')+';background:'+(sel?'#FFF1EC':'#FAF8F5')+';cursor:pointer;" data-ico="'+ico.id+'" data-bg="'+ico.bg+'">'+
+          '<div style="width:38px;height:38px;border-radius:10px;background:'+ico.bg+';display:flex;align-items:center;justify-content:center;"><svg width="38" height="38" viewBox="0 0 48 48"><use href="#'+ico.id+'"/></svg></div>'+
+          '<span style="font-size:9px;font-weight:600;color:#9A9088;text-align:center;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+ico.lbl+'</span>'+
+        '</div>';
+      }).join('');
+      grid.querySelectorAll('[data-ico]').forEach(function(el){
+        el.addEventListener('click', function(){
+          cat.ico = el.dataset.ico;
+          cat.bg = el.dataset.bg;
+          document.getElementById('ico-picker-modal').classList.remove('show');
+          renderCategories();
+        });
+      });
+      document.getElementById('ico-picker-modal').classList.add('show');
+    });
+
+    // 名稱（可直接輸入修改）
+    var nameInput = document.createElement('input');
+    nameInput.value = cat.name;
+    nameInput.style.cssText = 'border:none;background:transparent;font-weight:600;color:var(--text);font-family:"Noto Sans TC",sans-serif;flex:1;min-width:0;font-size:15px;align-self:center;line-height:1.2;outline:none;border-radius:8px;padding:4px 6px;transition:outline .15s;';
+    nameInput.addEventListener('focus', function(){ nameInput.style.outline='2px solid #D97A52'; });
+    nameInput.addEventListener('blur', function(){ nameInput.style.outline='none'; });
+    nameInput.addEventListener('input', function(e){
+      e.stopPropagation();
+      if(nameInput.value.trim()) cat.name = nameInput.value.trim();
+    });
+    nameInput.addEventListener('click', function(e){ e.stopPropagation(); });
+
+
+    // 金額（rval 樣式，跟收入一樣）
+    var amtSpan = document.createElement('input');
+    amtSpan.type = 'number';
+    amtSpan.className = 'rval';
+    amtSpan.placeholder = '0';
+    amtSpan.value = total > 0 ? total : '';
+    amtSpan.readOnly = true;
+    amtSpan.title = '金額由細項加總';
+    amtSpan.style.background = '#F5F3F0';
+
+    // 箭頭（進細項）
+    var arrow = document.createElement('button');
+    arrow.textContent = '›';
+    arrow.style.cssText = 'background:none;border:none;color:var(--muted);cursor:pointer;font-size:22px;padding:0 2px;flex-shrink:0;line-height:1;';
+    arrow.addEventListener('click', function(e){
+      e.stopPropagation();
+      openCatPanel(cat.id);
+    });
+
+    // 刪除
+    var delBtn = document.createElement('button');
+    delBtn.textContent = '×';
+    delBtn.className = 'rdel';
+    (function(c){
+      delBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        _categories = _categories.filter(function(x){return x.id!==c.id;});
+        renderCategories();
+      });
+    })(cat);
+
+    row.appendChild(icoDiv);
+    row.appendChild(nameInput);
+    row.appendChild(amtSpan);
+    row.appendChild(arrow);
+    row.appendChild(delBtn);
+    container.appendChild(row);
+  });
+
+  calcFlow();
+}
+function openCatPanel(catId){
+  _curCatId = catId;
+  var cat = _categories.find(function(c){return c.id===catId;});
+  if(!cat) return;
+  var nameEl = document.getElementById('cat-panel-name');
+  nameEl.textContent = cat.name;
+  nameEl.style.cursor = 'default';
+  nameEl.style.borderBottom = 'none';
+  nameEl.onclick = null;
+  document.getElementById('cat-panel-total').textContent = fmtCurr(getCatTotal(cat));
+  var icoDiv = document.getElementById('cat-panel-ico');
+  icoDiv.style.background = cat.bg;
+  icoDiv.innerHTML = '<svg width="28" height="28" viewBox="0 0 48 48"><use href="#'+cat.ico+'"/></svg>';
+  renderPanelItems(cat);
+  document.getElementById('cat-panel').classList.add('open');
+}
+
+function renderPanelItems(cat){
+  var body = document.getElementById('cat-panel-body');
+  body.innerHTML = '';
+  if(cat.items.length===0){
+    var empty = document.createElement('div');
+    empty.style.cssText = 'text-align:center;padding:32px 0;color:var(--muted);font-size:15px;';
+    empty.textContent = '尚未新增明細';
+    body.appendChild(empty);
+  } else {
+    cat.items.forEach(function(item,idx){
+      var div = document.createElement('div');
+      div.className = 'detail-item';
+      div.style.cursor = 'pointer';
+      var info = document.createElement('div');
+      info.className = 'detail-item-info';
+      var nameEl = document.createElement('div');
+      nameEl.className = 'detail-item-name';
+      nameEl.textContent = item.name||'明細';
+      var subEl = document.createElement('div');
+      subEl.className = 'detail-item-sub';
+      subEl.textContent = (item.date||'')+(item.note?' · '+item.note:'');
+      info.appendChild(nameEl);
+      info.appendChild(subEl);
+      var amt = document.createElement('span');
+      amt.className = 'detail-item-amt';
+      amt.textContent = fmtCurr(item.amount||0);
+      var arrow = document.createElement('span');
+      arrow.textContent = '›';
+      arrow.style.cssText = 'color:var(--muted);font-size:18px;flex-shrink:0;margin-left:4px;';
+      div.appendChild(info);
+      div.appendChild(amt);
+      div.appendChild(arrow);
+      (function(i){div.addEventListener('click', function(){openEditDetail(i);});})(idx);
+      body.appendChild(div);
+    });
+  }
+  var addBtn = document.createElement('button');
+  addBtn.className = 'cat-add-btn';
+  addBtn.textContent = '＋ 新增明細';
+  addBtn.addEventListener('click', openDetailForm);
+  body.appendChild(addBtn);
+}
+
+function closeCatPanel(){
+  document.getElementById('cat-panel').classList.remove('open');
+  _curCatId = null;
+  renderCategories();
+}
+
+function openDetailForm(){
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementById('df-date').value = today;
+  document.getElementById('df-amount').value = '';
+  document.getElementById('df-name').value = '';
+  document.getElementById('df-note').value = '';
+  document.getElementById('detail-form-modal').style.display = 'flex';
+}
+
+function closeDetailForm(){
+  document.getElementById('detail-form-modal').style.display = 'none';
+}
+
+function saveDetailItem(){
+  var cat = _categories.find(function(c){return c.id===_curCatId;});
+  if(!cat) return;
+  var amount = parseFloat(document.getElementById('df-amount').value)||0;
+  var name = document.getElementById('df-name').value.trim()||'明細';
+  var date = document.getElementById('df-date').value;
+  var note = document.getElementById('df-note').value.trim();
+  cat.items.push({amount:amount, name:name, date:date, note:note});
+  document.getElementById('cat-panel-total').textContent = fmtCurr(getCatTotal(cat));
+  renderPanelItems(cat);
+  closeDetailForm();
+  renderCategories();
+  calcFlow();
+}
+
+function deleteDetailItem(idx){
+  var cat = _categories.find(function(c){return c.id===_curCatId;});
+  if(!cat) return;
+  cat.items.splice(idx,1);
+  document.getElementById('cat-panel-total').textContent = fmtCurr(getCatTotal(cat));
+  renderPanelItems(cat);
+  calcFlow();
+}
+
+function addCategory(){
+  // 渲染圖示選擇
+  var grid = document.getElementById('new-cat-ico-grid');
+  _catIcoSel = 'ico-food';
+  grid.innerHTML = '';
+  _icoOptions.forEach(function(o){
+    var div = document.createElement('div');
+    div.style.cssText = 'width:100%;aspect-ratio:1;border-radius:12px;background:'+o.bg+';display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid transparent;';
+    div.dataset.ico = o.id;
+    div.dataset.bg = o.bg;
+    div.innerHTML = '<svg width="28" height="28" viewBox="0 0 48 48"><use href="#'+o.id+'"/></svg>';
+    div.addEventListener('click', function(){selectCatIco(div,o.id,o.bg);});
+    grid.appendChild(div);
+  });
+  // 預選第一個
+  var first = grid.querySelector('[data-ico]');
+  if(first) selectCatIco(first,'ico-food','#FAF4E8');
+  document.getElementById('new-cat-name').value = '';
+  document.getElementById('add-cat-modal').style.display = 'flex';
+}
+
+function selectCatIco(el,icoId,bg){
+  _catIcoSel = icoId;
+  document.querySelectorAll('#new-cat-ico-grid [data-ico]').forEach(function(d){
+    d.style.border = '2px solid transparent';
+  });
+  el.style.border = '2px solid #D97A52';
+  document.getElementById('add-cat-modal')._selBg = bg;
+}
+
+function closeAddCat(){
+  document.getElementById('add-cat-modal').style.display = 'none';
+}
+
+function saveNewCategory(){
+  var name = document.getElementById('new-cat-name').value.trim();
+  if(!name){alert('請輸入科目名稱');return;}
+  var bg = document.getElementById('add-cat-modal')._selBg||'#FAF4E8';
+  var id = 'cat'+Date.now();
+  _categories.push({id:id,name:name,ico:_catIcoSel,bg:bg,items:[]});
+  closeAddCat();
+  renderCategories();
+}
+
+// 覆寫 calcFlow 讓四格的月支出用主科目加總
+var _origCalcFlow = calcFlow;
+calcFlow = function(){
+  // 把主科目總額寫入隱藏的 rval（讓原本 calcFlow 計算）
+  var totalExp = _categories.reduce(function(s,c){return s+getCatTotal(c);},0);
+  // 直接更新支出相關元素
+  var expTotal = document.getElementById('exp-total');
+  if(expTotal) expTotal.textContent = fmtCurr(totalExp);
+  var inc = [...document.querySelectorAll('#inc-rows [data-inc] .rval')].reduce((s,e)=>s+(parseFloat(e.value)||0),0);
+  var sur = inc - totalExp;
+  var rate = inc>0?Math.round(sur/inc*100):0;
+  var incTotal = document.getElementById('inc-total');
+  if(incTotal) incTotal.textContent = fmtCurr(inc);
+  var cfInc = document.getElementById('cf-inc'); if(cfInc) cfInc.textContent = fmtCurr(inc);
+  var cfExp = document.getElementById('cf-exp'); if(cfExp) cfExp.textContent = fmtCurr(totalExp);
+  var cfSur = document.getElementById('cf-sur');
+  if(cfSur){cfSur.textContent=(sur>=0?'+':'')+fmtCurr(sur);cfSur.style.color=sur>=0?'#D85A30':'#E24B4A';}
+  var cfRate = document.getElementById('cf-rate'); if(cfRate) cfRate.textContent = rate+'%';
+  renderChart(inc,totalExp,sur,'cf-chart','cf-range','cf-sum');
+  updateAll();
+};
+
+// 覆寫 showDetail 的 expense，讓它顯示主科目分組
+var _origShowDetail = showDetail;
+showDetail = function(type, total){
+  if(type!=='expense'){_origShowDetail(type,total);return;}
+  var totalExp = _categories.reduce(function(s,c){return s+getCatTotal(c);},0);
+  document.getElementById('detail-title').textContent = '月支出明細';
+  var totalEl = document.getElementById('detail-total');
+  totalEl.textContent = fmtCurr(totalExp);
+  totalEl.style.color = '#B84848';
+  var colors=['#9FE1CB','#FAC775','#85B7EB','#F5C4B3','#AFA9EC','#A8D8C0','#F5D888','#C8D0F8'];
+  var list = document.getElementById('detail-list');
+  list.innerHTML = '';
+  var hasData = false;
+  _categories.forEach(function(cat,ci){
+    var t = getCatTotal(cat);
+    if(t<=0) return;
+    hasData = true;
+    var pct = totalExp>0?Math.round(t/totalExp*100):0;
+    // 主科目行
+    var catDiv = document.createElement('div');
+    catDiv.style.cssText = 'border-bottom:1px solid #f8f6f2;';
+    var headRow = document.createElement('div');
+    headRow.style.cssText = 'display:flex;align-items:center;padding:13px 16px;gap:12px;';
+    var dot = document.createElement('div');
+    dot.style.cssText = 'width:10px;height:10px;border-radius:50%;background:'+colors[ci%colors.length]+';flex-shrink:0;';
+    var icoWrap = document.createElement('div');
+    icoWrap.style.cssText = 'display:flex;align-items:center;gap:8px;flex:1;';
+    var icoBox = document.createElement('div');
+    icoBox.style.cssText = 'width:28px;height:28px;border-radius:8px;background:'+cat.bg+';display:flex;align-items:center;justify-content:center;';
+    icoBox.innerHTML = '<svg width="20" height="20" viewBox="0 0 48 48"><use href="#'+cat.ico+'"/></svg>';
+    var nameSpan = document.createElement('span');
+    nameSpan.style.cssText = 'font-size:15px;font-weight:600;color:var(--text);font-family:"Noto Sans TC",sans-serif;';
+    nameSpan.textContent = cat.name;
+    icoWrap.appendChild(icoBox);
+    icoWrap.appendChild(nameSpan);
+    var amtDiv = document.createElement('div');
+    amtDiv.style.cssText = 'text-align:right;';
+    var amtNum = document.createElement('div');
+    amtNum.style.cssText = 'font-size:17px;font-weight:800;font-family:"Inter",sans-serif;color:#B84848;';
+    amtNum.textContent = fmtCurr(t);
+    var amtPct = document.createElement('div');
+    amtPct.style.cssText = 'font-size:12px;color:var(--muted);';
+    amtPct.textContent = pct+'%';
+    amtDiv.appendChild(amtNum);
+    amtDiv.appendChild(amtPct);
+    headRow.appendChild(dot);
+    headRow.appendChild(icoWrap);
+    headRow.appendChild(amtDiv);
+    catDiv.appendChild(headRow);
+    // 細項
+    cat.items.forEach(function(item){
+      var subRow = document.createElement('div');
+      subRow.style.cssText = 'display:flex;justify-content:space-between;padding:6px 16px 6px 38px;border-top:0.5px solid #f8f6f2;';
+      var subLeft = document.createElement('span');
+      subLeft.style.cssText = 'font-size:13px;color:var(--muted);';
+      subLeft.textContent = (item.name||'明細')+(item.date?' · '+item.date:'');
+      var subAmt = document.createElement('span');
+      subAmt.style.cssText = 'font-size:13px;font-weight:700;color:var(--text);';
+      subAmt.textContent = fmtCurr(item.amount||0);
+      subRow.appendChild(subLeft);
+      subRow.appendChild(subAmt);
+      catDiv.appendChild(subRow);
+    });
+    list.appendChild(catDiv);
+  });
+  if(!hasData){
+    var empty = document.createElement('div');
+    empty.style.cssText = 'padding:24px;text-align:center;color:#C8C0B8;font-size:14px;';
+    empty.textContent = '尚未輸入明細';
+    list.appendChild(empty);
+  }
+  document.getElementById('detail-modal').style.display = 'flex';
+};
+
+// 初始化
+(function(){
+  renderCategories();
+})();
+
+var _editIdx = -1;
+
+function openEditDetail(idx){
+  var cat = _categories.find(function(c){return c.id===_curCatId;});
+  if(!cat) return;
+  var item = cat.items[idx];
+  if(!item) return;
+  _editIdx = idx;
+  document.getElementById('ef-date').value = item.date||'';
+  document.getElementById('ef-amount').value = item.amount||'';
+  document.getElementById('ef-name').value = item.name||'';
+  document.getElementById('ef-note').value = item.note||'';
+  document.getElementById('edit-detail-modal').style.display = 'flex';
+}
+
+function closeEditDetail(){
+  document.getElementById('edit-detail-modal').style.display = 'none';
+  _editIdx = -1;
+}
+
+function saveEditDetail(){
+  var cat = _categories.find(function(c){return c.id===_curCatId;});
+  if(!cat || _editIdx<0) return;
+  cat.items[_editIdx] = {
+    date: document.getElementById('ef-date').value,
+    amount: parseFloat(document.getElementById('ef-amount').value)||0,
+    name: document.getElementById('ef-name').value.trim()||'明細',
+    note: document.getElementById('ef-note').value.trim()
+  };
+  document.getElementById('cat-panel-total').textContent = fmtCurr(getCatTotal(cat));
+  renderPanelItems(cat);
+  closeEditDetail();
+  renderCategories();
+  calcFlow();
+}
+
+function deleteFromEdit(){
+  var cat = _categories.find(function(c){return c.id===_curCatId;});
+  if(!cat || _editIdx<0) return;
+  cat.items.splice(_editIdx, 1);
+  document.getElementById('cat-panel-total').textContent = fmtCurr(getCatTotal(cat));
+  renderPanelItems(cat);
+  closeEditDetail();
+  renderCategories();
+  calcFlow();
+}
+</script>
+
+<!-- 編輯明細 Modal -->
+<div id="edit-detail-modal" style="display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.4);align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeEditDetail()">
+  <div style="background:#FFFEF9;border-radius:24px 24px 0 0;padding:20px 20px max(env(safe-area-inset-bottom),28px);width:100%;max-width:480px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <span style="font-size:17px;font-weight:800;color:var(--text);font-family:'Noto Sans TC',sans-serif;">編輯明細</span>
+      <button onclick="closeEditDetail()" style="background:#F5F3F0;border:none;border-radius:10px;padding:7px 14px;font-size:13px;font-weight:700;color:#888;cursor:pointer;">取消</button>
+    </div>
+    <div class="detail-form">
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-calendar"/></svg>
+        <span class="detail-form-lbl">日期</span>
+        <input type="date" id="ef-date" class="detail-form-val" style="width:140px;">
+      </div>
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-currency"/></svg>
+        <span class="detail-form-lbl">金額</span>
+        <input type="number" id="ef-amount" class="detail-form-val" placeholder="0" min="0">
+      </div>
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-hint"/></svg>
+        <span class="detail-form-lbl">名稱</span>
+        <input type="text" id="ef-name" class="detail-form-val" placeholder="例：Shell 加油站">
+      </div>
+      <div class="detail-form-row">
+        <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;"><use href="#ico-hint"/></svg>
+        <span class="detail-form-lbl">備註</span>
+        <input type="text" id="ef-note" class="detail-form-val" placeholder="選填">
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button onclick="deleteFromEdit()" style="flex:1;background:#FFF0EE;border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:700;color:#E45D5D;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">刪除</button>
+      <button onclick="saveEditDetail()" style="flex:2;background:#D97A52;border:none;border-radius:16px;padding:15px;font-size:16px;font-weight:700;color:#fff;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">儲存</button>
+    </div>
+  </div>
+</div>
